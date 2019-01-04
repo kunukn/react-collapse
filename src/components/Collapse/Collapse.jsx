@@ -1,149 +1,181 @@
 import './collapse.scss';
 import React from 'react';
 
-const COLLAPSED = 1;
-const COLLAPSING = 2;
-const EXPANDED = 3;
-const EXPANDING = 4;
-
-let log = console.log.bind(console);
+const COLLAPSED = 'COLLAPSED';
+const COLLAPSING = 'COLLAPSING';
+const EXPANDING = 'EXPANDING';
+const EXPANDED = 'EXPANDED';
 
 export default class Collapse extends React.Component {
   state = {
-    isOpen: this.props.isOpen,
     collapse: this.props.isOpen ? EXPANDED : COLLAPSED,
+    collapseStyle: {
+      maxHeight: '0px',
+      visibility: 'hidden',
+    },
   };
 
   static getDerivedStateFromProps(props, state) {
-    if (!state.isOpen && props.isOpen) {
+    const isOpen = state.collapse === EXPANDED || state.collapse === EXPANDING;
+
+    if (!isOpen && props.isOpen) {
       return {
         collapse: EXPANDING,
-        isOpen: props.isOpen,
       };
     }
-    if (state.isOpen && !props.isOpen) {
+    if (isOpen && !props.isOpen) {
       return {
         collapse: COLLAPSING,
-        isOpen: props.isOpen,
       };
     }
 
     return null;
   }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, info) {}
 
   getSnapshotBeforeUpdate(prevProps, prevState) {
     return null;
   }
 
   componentDidMount() {
-    if (this.content && this.props.isOpen) {
-      this.applyExpanded();
-    }
+    if (this.state.collapse === EXPANDED) this.setExpanded();
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    if (!this.content) return;
+    console.log('componentDidUpdate');
 
-    if (this.state.collapse === EXPANDING && this.state.collapse !== prevState.collapse) {
-      this.applyExpanding();
-    } else if (this.state.collapse === COLLAPSING && this.state.collapse !== prevState.collapse) {
-      this.applyCollapsing();
-    } else if (this.state.collapse === EXPANDED && this.state.collapse !== prevState.collapse) {
-      this.applyExpanded();
-    } else if (this.state.collapse === COLLAPSED && this.state.collapse !== prevState.collapse) {
-      this.applyCollapsed();
+    if (!this.content) return;
+    if (this.state.collapse === prevState.collapse) return;
+
+    console.log('componentDidUpdate - real work');
+
+    this.props.internals && this.props.internals(this.state);
+
+    if (this.state.collapse === EXPANDING) {
+      this.setExpanding();
+    } else if (this.state.collapse === COLLAPSING) {
+      this.setCollapsing();
+    } else if (this.state.collapse === EXPANDED) {
+      this.setExpanded();
+    } else if (this.state.collapse === COLLAPSED) {
+      this.setCollapsed();
     }
   }
 
   componentWillUnmount() {}
 
   render() {
-    const { className, children, transition, isOpen, onComplete, ...attrs } = this.props;
+    const { className, children, transition, render, internals, isOpen, onComplete, ...attrs } = this.props;
 
     let style = {
       transition,
+      ...this.state.collapseStyle,
+    };
+
+    let getRender = () => {
+      if (typeof render === 'function') {
+        return render(this.state.collapse);
+      }
+      return children;
     };
 
     return (
-      <>
-        <pre>{JSON.stringify(this.state, null, 2)}</pre>
-        <div
-          ref={element => {
-            this.content = element;
-          }}
-          style={style}
-          className={className || 'kn-react-collapse'}
-          onTransitionEnd={this.onTransitionEnd}
-          {...attrs}
-        >
-          {children}
-        </div>
-      </>
+      <div
+        ref={element => {
+          this.content = element;
+        }}
+        style={style}
+        className={className || 'kn-react-collapse'}
+        onTransitionEnd={this.onTransitionEnd}
+        {...attrs}
+      >
+        {getRender()}
+      </div>
     );
   }
 
   onTransitionEnd = event => {
-    log('onTransitionEnd');
+    console.log('onTransitionEnd');
 
     const { onComplete } = this.props;
 
     if (event.target === this.content && event.propertyName === 'max-height') {
-      if (this.state.collapse === EXPANDING) {
-        log('expanded');
-        this.setState({ collapse: EXPANDED });
-      } else if (this.state.collapse === COLLAPSING) {
-        log('collapsed');
-        this.setState({ collapse: COLLAPSED });
-      }
+      let callbackWhenDone = onComplete ? () => onComplete(this.state.collapse) : () => {};
 
-      onComplete && onComplete(this.state);
+      if (this.state.collapse === EXPANDING) {
+        this.setState({ collapse: EXPANDED }, callbackWhenDone);
+      } else if (this.state.collapse === COLLAPSING) {
+        this.setState({ collapse: COLLAPSED }, callbackWhenDone);
+      }
     }
   };
 
   getHeight = () => this.content.scrollHeight + 'px';
 
-  applyCollapsing = () => {
-    log('applyCollapsing');
+  setCollapsed = () => {
+    console.log('setCollapsed');
 
     if (!this.content) return;
 
-    this.content.style.maxHeight = this.getHeight();
-    nextFrame(() => {
-      this.content.style.maxHeight = 0 + 'px';
+    this.setState({
+      collapseStyle: {
+        maxHeight: '0px',
+        visibility: 'hidden',
+      },
     });
   };
 
-  applyCollapsed = () => {
-    log('applyCollapsed');
+  setCollapsing = () => {
+    console.log('setCollapsing');
 
     if (!this.content) return;
 
-    this.content.style.visibility = 'hidden';
+    const maxHeight = this.getHeight();
+
+    this.setState({
+      collapseStyle: {
+        maxHeight,
+        visibility: '',
+      },
+    });
+
+    nextFrame(() => {
+      this.setState({
+        collapseStyle: {
+          maxHeight: '0px',
+          visibility: '',
+        },
+      });
+    });
   };
 
-  applyExpanding = () => {
-    log('applyExpanding');
+  setExpanding = () => {
+    console.log('setExpanding');
 
     nextFrame(() => {
       if (this.content) {
-        this.content.style.maxHeight = this.getHeight();
-        this.content.style.visibility = '';
+        const maxHeight = this.getHeight();
+
+        this.setState({
+          collapseStyle: {
+            maxHeight,
+            visibility: '',
+          },
+        });
       }
     });
   };
 
-  applyExpanded = () => {
-    log('applyExpanded');
+  setExpanded = () => {
+    console.log('setExpanded');
 
     if (!this.content) return;
 
-    this.content.style.maxHeight = '';
+    this.setState({
+      collapseStyle: {
+        maxHeight: '',
+        visibility: '',
+      },
+    });
   };
 }
 
