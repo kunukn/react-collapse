@@ -1,8 +1,26 @@
 .app {
+  margin: 0 auto;
   font-size: 2rem;
-  background: pink;
+  //background: pink;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  //min-height: 100vh;
+  max-width: 400px;
+  padding: 3rem 1rem 1rem;
+
+  &__toggle {
+    width: 100%;
+    margin-bottom: 1rem;
+    border: 1px solid;
+    box-shadow: none;
+    text-transform: uppercase;
+    padding: 1rem;
+  }
+
+  &__content {
+    border: 1px solid;
+    padding: 1rem;
+  }
 }
