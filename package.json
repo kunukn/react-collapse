@@ -1,20 +1,149 @@
 {
   "name": "@kunukn/react-collapse",
   "version": "0.0.1",
-  "description": "",
+  "description": "Collapse library based on css transition for React",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack-dev-server --color --mode development --http",
+    "build": "webpack --mode production",
+    "rebuild-node-sass": "npm rebuild node-sass",
+    "storybook": "start-storybook -p 6006",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "view-build": "browser-sync dist -w --port 4444",
+    "view-storybook": "browser-sync .out -w --port 4445",
+    "deploy-storybook": "storybook-to-ghpages",
+    "deploy-storybook-from-out": "npm run deploy-storybook -- --existing-output-dir=.out",
+    "source-map": "source-map-explorer dist/Collapse.js",
+    "build-deploy-storybook": "npm run build-storybook-to-out && npm run deploy-storybook-from-out"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kunukn/react-collapse.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "react",
+    "collapsible",
+    "library"
+  ],
+  "author": "kunukn",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/kunukn/react-collapse/issues"
   },
-  "homepage": "https://github.com/kunukn/react-collapse#readme"
+  "homepage": "https://github.com/kunukn/react-collapse#readme",
+  "jest": {
+    "setupTestFrameworkScriptFile": "<rootDir>/src/test/jestSetup.js",
+    "snapshotSerializers": [],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|scss)$": "identity-obj-proxy",
+      "\\.(xcss|xscss)$": "<rootDir>/__mocks__/styleMock.js"
+    },
+    "testEnvironment": "node",
+    "testURL": "http://localhost",
+    "testMatch": [
+      "<rootDir>/src/**/__tests__/**/*.{js,jsx}",
+      "<rootDir>/src/**/?(*.)(spec|test).{js,jsx}"
+    ],
+    "setupFiles": [
+      "<rootDir>/config/polyfills.js"
+    ],
+    "roots": [
+      "<rootDir>"
+    ],
+    "modulePaths": [],
+    "moduleDirectories": [
+      "node_modules",
+      "<rootDir>/src"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "css",
+      "scss"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.2.3",
+    "@babel/plugin-proposal-object-rest-spread": "^7.2.0",
+    "@babel/plugin-syntax-dynamic-import": "7.2.0",
+    "@babel/plugin-transform-runtime": "^7.2.0",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/runtime": "^7.2.0",
+    "@storybook/addon-actions": "^4.1.4",
+    "@storybook/addon-backgrounds": "^4.1.4",
+    "@storybook/addon-links": "^4.1.4",
+    "@storybook/addon-notes": "^4.1.4",
+    "@storybook/addon-viewport": "^4.1.4",
+    "@storybook/addons": "^4.0.4",
+    "@storybook/react": "^4.0.4",
+    "@storybook/storybook-deployer": "^2.8.1",
+    "autoprefixer": "^9.4.4",
+    "babel-core": "npm:@babel/core",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.6.0",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-module-resolver": "^3.1.1",
+    "babel-runtime": "^6.26.0",
+    "browser-sync": "^2.26.3",
+    "clean-webpack-plugin": "^1.0.0",
+    "copy-webpack-plugin": "^4.6.0",
+    "css-loader": "^2.1.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
+    "eslint": "^5.11.1",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-config-react-app": "^3.0.6",
+    "eslint-import-resolver-webpack": "^0.10.1",
+    "eslint-plugin-flowtype": "^3.2.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.12.2",
+    "file-loader": "^3.0.1",
+    "hoek": "6.1.2",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^23.6.0",
+    "mini-css-extract-plugin": "^0.5.0",
+    "minimist": "1.2.0",
+    "node-sass": "^4.11.0",
+    "nodemon": "^1.18.9",
+    "normalize-scss": "^7.0.1",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "postcss-loader": "^3.0.0",
+    "prettier": "^1.15.3",
+    "raw-loader": "^1.0.0",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-router-dom": "^4.3.1",
+    "react-test-renderer": "^16.7.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "stylelint": "^9.9.0",
+    "stylelint-config-prettier": "^4.0.0",
+    "stylelint-config-recommended-scss": "^3.2.0",
+    "stylelint-scss": "^3.4.4",
+    "uglifyjs-webpack-plugin": "^2.1.1",
+    "url-loader": "^1.1.2",
+    "webpack": "^4.28.3",
+    "webpack-cli": "^3.2.0",
+    "webpack-dev-server": "^3.1.14",
+    "webpack-hot-middleware": "^2.24.3",
+    "webpack-md5-hash": "0.0.6",
+    "whatwg-fetch": "^3.0.0"
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "react": "^15.x || ^16.x || ^17.x",
+    "react-dom": "^15.x || ^16.x || ^17.x"
+  }
 }

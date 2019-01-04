@@ -60,5 +60,9 @@ typings/
 # next.js build output
 .next
 
+
+# custom
 dist/
-.vscode/
+.out/
+.DS_Store
+
