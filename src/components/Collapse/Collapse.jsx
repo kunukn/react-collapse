@@ -14,8 +14,6 @@ export default class Collapse extends React.Component {
     collapse: this.props.isOpen ? EXPANDED : COLLAPSED,
   };
 
-  contentRef = React.createRef();
-
   static getDerivedStateFromProps(props, state) {
     if (!state.isOpen && props.isOpen) {
       return {
@@ -43,10 +41,14 @@ export default class Collapse extends React.Component {
     return null;
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    if (this.content && this.props.isOpen) {
+      this.applyExpanded();
+    }
+  }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    if (!this.contentRef) return;
+    if (!this.content) return;
 
     if (this.state.collapse === EXPANDING && this.state.collapse !== prevState.collapse) {
       this.applyExpanding();
@@ -62,7 +64,7 @@ export default class Collapse extends React.Component {
   componentWillUnmount() {}
 
   render() {
-    const { className, children, transition, isOpen, onRest, ...attrs } = this.props;
+    const { className, children, transition, isOpen, onComplete, ...attrs } = this.props;
 
     let style = {
       transition,
@@ -72,7 +74,9 @@ export default class Collapse extends React.Component {
       <>
         <pre>{JSON.stringify(this.state, null, 2)}</pre>
         <div
-          ref={this.contentRef}
+          ref={element => {
+            this.content = element;
+          }}
           style={style}
           className={className || 'kn-react-collapse'}
           onTransitionEnd={this.onTransitionEnd}
@@ -87,69 +91,62 @@ export default class Collapse extends React.Component {
   onTransitionEnd = event => {
     log('onTransitionEnd');
 
-    const { onRest, isOpen } = this.props;
+    const { onComplete } = this.props;
 
-    if (event.target === this.contentRef.current && event.propertyName === 'max-height') {
-      if (isOpen) {
+    if (event.target === this.content && event.propertyName === 'max-height') {
+      if (this.state.collapse === EXPANDING) {
+        log('expanded');
         this.setState({ collapse: EXPANDED });
-      } else {
+      } else if (this.state.collapse === COLLAPSING) {
         log('collapsed');
         this.setState({ collapse: COLLAPSED });
       }
 
-      onRest && onRest(this.state);
+      onComplete && onComplete(this.state);
     }
   };
 
-  getHeight = () => this.contentRef.current.scrollHeight + 'px';
+  getHeight = () => this.content.scrollHeight + 'px';
 
   applyCollapsing = () => {
     log('applyCollapsing');
 
-    let el = this.contentRef.current;
-    if (!el) return;
+    if (!this.content) return;
 
-    el.style.maxHeight = this.getHeight();
+    this.content.style.maxHeight = this.getHeight();
     nextFrame(() => {
-      el.style.maxHeight = 0 + 'px';
+      this.content.style.maxHeight = 0 + 'px';
     });
   };
 
   applyCollapsed = () => {
     log('applyCollapsed');
 
-    let el = this.contentRef.current;
-    if (!el) return;
+    if (!this.content) return;
 
-    el.style.visibility = 'hidden';
+    this.content.style.visibility = 'hidden';
   };
 
   applyExpanding = () => {
     log('applyExpanding');
 
-    let el = this.contentRef.current;
-    if (!el) return;
-
     nextFrame(() => {
-      el.style.maxHeight = this.getHeight();
-      this.contentRef.style.visibility = '';
+      if (this.content) {
+        this.content.style.maxHeight = this.getHeight();
+        this.content.style.visibility = '';
+      }
     });
   };
 
   applyExpanded = () => {
     log('applyExpanded');
 
-    let el = this.contentRef.current;
-    if (!el) return;
+    if (!this.content) return;
 
-    el.style.maxHeight = '';
+    this.content.style.maxHeight = '';
   };
 }
 
-function rAF(callback) {
-  requestAnimationFrame(callback);
-}
-
 function nextFrame(callback) {
-  rAF(_ => rAF(callback));
+  requestAnimationFrame(() => requestAnimationFrame(callback));
 }
