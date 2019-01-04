@@ -28,12 +28,6 @@ module.exports = (env = {}, argv = {}) => {
     devtool: isProd ? 'source-map' : 'cheap-module-source-map',
     mode: isProd ? 'production' : 'development',
     optimization: {
-      // minimize: false, // is default true in prod mode splitChunks: {   cacheGroups:
-      // {     commons: {       test: /[\\/]node_modules[\\/]/,       name: 'vendors',
-      //       chunks: 'all'     }   } }, // Keep the runtime chunk seperated to
-      // enable long term caching //
-      // https://twitter.com/wSokra/status/969679223278505985 runtimeChunk: true,
-
       minimizer: [
         isProd &&
           new UglifyJsPlugin({
@@ -59,7 +53,7 @@ module.exports = (env = {}, argv = {}) => {
       ].filter(Boolean),
     },
     entry: {
-      Library: isProd ? [prodEntry] : [devEntry],
+      Collapse: isProd ? [prodEntry] : [devEntry],
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
