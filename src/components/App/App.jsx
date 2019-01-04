@@ -34,12 +34,14 @@ export default class App extends React.Component {
           isOpen={this.state.isOpen2}
           onComplete={state => log('callback ' + state)}
           render={collapse => (
-            <div className="app__content">
-              <div>{JSON.stringify(collapse)}</div>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-              ea commodo consequat. <button>click</button>
-            </div>
+            <>
+              <div className="app__content">
+                <div>{JSON.stringify(collapse)}</div>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. <button>click</button>
+              </div>
+            </>
           )}
         />
 
