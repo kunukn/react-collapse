@@ -3,17 +3,14 @@
  * */
 
 const path = require('path');
-//const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-//const CopyWebpackPlugin = require('copy-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const webpack = require('webpack');
 
-// const package = require('./package.json');
 // const IsWebpackDevServer = /webpack-dev-server/.test(process.env.npm_lifecycle_script);
 
 module.exports = (env = {}, argv = {}) => {
@@ -125,20 +122,6 @@ module.exports = (env = {}, argv = {}) => {
               loader: 'sass-loader',
               options: {
                 sourceMap: true,
-              },
-            },
-          ],
-        },
-
-        {
-          test: /\.(svg)(\?v=\d+\.\d+\.\d+)?$/,
-          include: [path.resolve(__dirname, 'src/icon-system')],
-          use: [
-            {
-              loader: 'file-loader',
-              options: {
-                name: '[name].[ext]',
-                mimetype: 'image/svg+xml',
               },
             },
           ],
