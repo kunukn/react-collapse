@@ -1,0 +1,53 @@
+$duration: 350ms;
+
+.toggle {
+  width: 100%;
+  font-size: 2rem;
+  box-shadow: none;
+  text-transform: uppercase;
+  padding: 1em;
+  border: 1px solid gray;
+  background: #eee;
+  transition: 300ms;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.block {
+  max-width: 20em;
+  font-size: 2rem;
+  margin: 0 auto 1rem;
+  border-radius: 3px;
+
+  &--active {
+    .toggle {
+      background: #fff;
+    }
+  }
+}
+
+.text {
+  transition: max-height $duration cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  margin: 0;
+
+  &__content {
+    margin: 0;
+    padding: 1rem;
+    border: 1px solid #ccc;
+  }
+}
+
+.icon {
+  height: 2rem;
+  width: 2rem;
+  fill: gray;
+  transition: transform $duration;
+  transform: rotateZ(89.9deg);
+  will-change: transform;
+
+  &--expanded {
+    transform: rotateZ(-89.9deg);
+  }
+}
