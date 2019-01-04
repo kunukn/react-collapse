@@ -85,9 +85,9 @@ export default class Collapse extends React.Component {
   }
 
   onTransitionEnd = event => {
-    const { onRest, isOpen } = this.props;
+    log('onTransitionEnd');
 
-    console.log(event.propertyName, event.target === this.contentRef.current);
+    const { onRest, isOpen } = this.props;
 
     if (event.target === this.contentRef.current && event.propertyName === 'max-height') {
       if (isOpen) {
@@ -104,6 +104,8 @@ export default class Collapse extends React.Component {
   getHeight = () => this.contentRef.current.scrollHeight + 'px';
 
   applyCollapsing = () => {
+    log('applyCollapsing');
+
     let el = this.contentRef.current;
     if (!el) return;
 
@@ -114,6 +116,8 @@ export default class Collapse extends React.Component {
   };
 
   applyCollapsed = () => {
+    log('applyCollapsed');
+
     let el = this.contentRef.current;
     if (!el) return;
 
@@ -121,6 +125,8 @@ export default class Collapse extends React.Component {
   };
 
   applyExpanding = () => {
+    log('applyExpanding');
+
     let el = this.contentRef.current;
     if (!el) return;
 
@@ -131,6 +137,8 @@ export default class Collapse extends React.Component {
   };
 
   applyExpanded = () => {
+    log('applyExpanded');
+
     let el = this.contentRef.current;
     if (!el) return;
 
