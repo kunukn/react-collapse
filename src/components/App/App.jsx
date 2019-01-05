@@ -12,8 +12,6 @@ class App extends React.Component {
   };
 
   render() {
-    console.log(cx('icon', { 'icon--expanded': this.state.isOpen1 }));
-
     return (
       <div className="app">
         <pre style={{ fontSize: '10px', width: '100%' }}>{JSON.stringify(this.state.spy1, null, 2)}</pre>
