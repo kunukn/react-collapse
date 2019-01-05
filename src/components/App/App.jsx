@@ -31,7 +31,7 @@ class App extends React.Component {
         </button>
         <Collapse
           isOpen={this.state.isOpen1}
-          transition="max-height 280ms cubic-bezier(0.4, 0, 0.2, 1)"
+          transition="max-height 280ms ease-in-out"
           classNameAppend={
             'app__collapse app__collapse--gradient ' + (this.state.isOpen1 ? 'app__collapse--active' : '')
           }
