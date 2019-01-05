@@ -2,6 +2,12 @@
 
 Collapse component with css transition for elements with variable and dynamic height.
 
+# Demo
+
+https://codesandbox.io/s/k1439yw2v5
+
+# CSS required
+
 :warning: ️You need to specify the transition property or add a class selector with style (transition) in your own stylesheet to add animation. You can copy the smashing example below
 
 ```scss
