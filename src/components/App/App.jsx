@@ -12,20 +12,24 @@ class App extends React.Component {
   };
 
   render() {
+    console.log(cx('icon', { 'icon--expanded': this.state.isOpen1 }));
+
     return (
       <div className="app">
         <pre style={{ fontSize: '10px', width: '100%' }}>{JSON.stringify(this.state.spy1, null, 2)}</pre>
         <button className="app__toggle" onClick={() => this.toggle(1)}>
           <span className="app__toggle-text">toggle</span>
-          <svg
-            className={cx('icon', { 'icon--expanded': this.state.isOpen1 })}
-            viewBox="6 0 12 24"
-            width="16px"
-            height="16px"
-          >
-            <title>toggle</title>
-            <polygon points="8 0 6 1.8 14.4 12 6 22.2 8 24 18 12" />
-          </svg>
+          <div className="rotate90">
+            <svg
+              className={cx('icon', { 'icon--expanded': this.state.isOpen1 })}
+              viewBox="6 0 12 24"
+              width="16px"
+              height="16px"
+            >
+              <title>toggle</title>
+              <polygon points="8 0 6 1.8 14.4 12 6 22.2 8 24 18 12" />
+            </svg>
+          </div>
         </button>
         <Collapse
           isOpen={this.state.isOpen1}

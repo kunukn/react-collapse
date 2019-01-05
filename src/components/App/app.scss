@@ -67,9 +67,12 @@
   width: 1em;
   height: 1em;
   transition: transform 250ms ease-in-out;
-  transform: rotateZ(89.99deg);
   will-change: transform;
   &--expanded {
-    transform: rotateZ(-89.99deg);
+    transform: rotateZ(-179.99deg);
   }
+}
+
+.rotate90 {
+  transform: rotateZ(90deg);
 }
