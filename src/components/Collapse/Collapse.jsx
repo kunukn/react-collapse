@@ -10,10 +10,14 @@ export default class Collapse extends React.Component {
   state = {
     collapse: this.props.isOpen ? EXPANDED : COLLAPSED,
     collapseStyle: {
-      maxHeight: '0px',
-      visibility: 'hidden',
+      maxHeight: this.props.collapseHeight || '0px',
+      visibility: this.props.collapseHeight ? '' : 'hidden',
     },
   };
+
+  getCollapseHeight = () => this.props.collapseHeight || '0px';
+
+  getCollapsedVisibility = () => (this.props.collapseHeight ? '' : 'hidden');
 
   static getDerivedStateFromProps(props, state) {
     const isOpen = state.collapse === EXPANDED || state.collapse === EXPANDING;
@@ -66,6 +70,7 @@ export default class Collapse extends React.Component {
       transition,
       render,
       elementType,
+      collapseHeight,
       onChange,
       isOpen,
       ...attrs
@@ -86,7 +91,7 @@ export default class Collapse extends React.Component {
     const ElementType = elementType || 'div';
 
     let collapseClassName = className || 'collapse-css-transition';
-    if (classNameAppend) collapseClassName += ' ' + classNameAppend;
+    if (classNameAppend) collapseClassName += ` ${classNameAppend}`;
 
     return (
       <ElementType
@@ -106,22 +111,18 @@ export default class Collapse extends React.Component {
   onTransitionEnd = event => {
     console.log('onTransitionEnd');
 
-    const { onComplete } = this.props;
-
     if (event.target === this.content && event.propertyName === 'max-height') {
       if (this.state.collapse === EXPANDING) {
         this.setState({ collapse: EXPANDED });
       } else if (this.state.collapse === COLLAPSING) {
         this.setState({ collapse: COLLAPSED });
       }
-
-      onComplete && onComplete(this.state.collapse);
     }
   };
 
-  getHeight = () => this.content.scrollHeight + 'px';
+  getHeight = () => `${this.content.scrollHeight}px`;
 
-  getCallback = () =>
+  getOnChangeCallback = () =>
     this.props.onChange ? () => this.props.onChange({ ...this.state, transition: this.props.transition }) : () => {};
 
   setCollapsed = () => {
@@ -132,11 +133,11 @@ export default class Collapse extends React.Component {
     this.setState(
       {
         collapseStyle: {
-          maxHeight: '0px',
-          visibility: 'hidden',
+          maxHeight: this.getCollapseHeight(),
+          visibility: this.getCollapsedVisibility(),
         },
       },
-      this.getCallback()
+      this.getOnChangeCallback()
     );
   };
 
@@ -158,11 +159,11 @@ export default class Collapse extends React.Component {
       this.setState(
         {
           collapseStyle: {
-            maxHeight: '0px',
+            maxHeight: this.getCollapseHeight(),
             visibility: '',
           },
         },
-        this.getCallback()
+        this.getOnChangeCallback()
       );
     });
   };
@@ -181,7 +182,7 @@ export default class Collapse extends React.Component {
               visibility: '',
             },
           },
-          this.getCallback()
+          this.getOnChangeCallback()
         );
       }
     });
@@ -199,7 +200,7 @@ export default class Collapse extends React.Component {
           visibility: '',
         },
       },
-      this.getCallback()
+      this.getOnChangeCallback()
     );
   };
 }

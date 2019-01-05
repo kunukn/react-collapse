@@ -99,6 +99,16 @@ You can specify the element type for the collapse component. By default the elem
 </Collapse>
 ```
 
+#### `collapseHeight`: PropType.string
+
+You can specify the collapse height in CSS unit to partially show some content.
+
+```js
+<Collapse collapseHeight="50px">
+  <p>A long paragraph of text inside an article element</p>
+</Collapse>
+```
+
 #### `onChange = collapseState => { /* your implementation */ }`: PropTypes.func
 
 Callback function for when your transition on `max-height` (specified in `className`) is started or finished. It can be used to trigger any function after transition is done. A collapse state is provided to your callback function.

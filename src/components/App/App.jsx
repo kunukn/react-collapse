@@ -8,7 +8,6 @@ class App extends React.Component {
     isOpen1: false,
     isOpen2: false,
     isOpen3: false,
-    isOpen4: true,
     spy1: { collapse: null, collapseStyle: { maxHeight: null, visibility: null }, transition: null },
   };
 
@@ -31,7 +30,9 @@ class App extends React.Component {
         <Collapse
           isOpen={this.state.isOpen1}
           transition="max-height 250ms ease-in-out"
-          classNameAppend="app__collapse"
+          classNameAppend={
+            'app__collapse app__collapse--gradient ' + (this.state.isOpen1 ? 'app__collapse--active' : '')
+          }
           onChange={state => this.setState({ spy1: state })}
         >
           <div className="app__content">
@@ -48,8 +49,10 @@ class App extends React.Component {
 
         <Collapse
           isOpen={this.state.isOpen2}
-          classNameAppend="app__collapse"
-          transition="max-height 900ms cubic-bezier(0.4, 0, 0.2, 1)"
+          classNameAppend={
+            'app__collapse app__collapse--gradient ' + (this.state.isOpen2 ? 'app__collapse--active' : '')
+          }
+          transition="max-height 800ms cubic-bezier(0.4, 0, 0.2, 1)"
           aria-hidden={this.state.isOpen2 ? 'false' : 'true'}
           elementType="article"
           render={collapse => (
@@ -71,7 +74,10 @@ class App extends React.Component {
 
         <Collapse
           isOpen={this.state.isOpen3}
-          classNameAppend="app__collapse"
+          collapseHeight="70px"
+          classNameAppend={
+            'app__collapse app__collapse--gradient ' + (this.state.isOpen3 ? 'app__collapse--active' : '')
+          }
           render={collapse => (
             <div className="app__content">
               <div>{JSON.stringify(collapse)}</div>
