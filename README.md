@@ -21,7 +21,7 @@ or
 
 ```js
 import Collapse from '@kunukn/react-collapse';
-// or
+// or with require syntax
 const Collapse = require('@kunukn/react-collapse').default;
 
 <Collapse isOpen={true || false}>
@@ -101,9 +101,32 @@ To run example covering all features, use `npm run storybook` or `yarn storybook
 ```bash
 git clone [repo]
 cd [repo]
-npm install
+npm i
 npm start
 open [http://localhost:6007](http://localhost:6007)
+```
+
+or with yarn
+
+```bash
+git clone [repo]
+cd [repo]
+yarn
+yarn start
+open [http://localhost:6007](http://localhost:6007)
+```
+
+# CDN
+
+https://unpkg.com/@kunukn/react-collapse/
+
+```html
+<link rel="stylesheet" href="https://unpkg.com/@kunukn/react-collapse@0.0.4/dist/Collapse.css" />
+<script src="https://unpkg.com/@kunukn/react-collapse"></script>
+
+<script>
+  var Collapse = window.Collapse.default;
+</script>
 ```
 
 # Heavily inspired from
