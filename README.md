@@ -4,8 +4,8 @@ Collapse component with css transition for elements with variable and dynamic he
 
 # Demo
 
-- https://codesandbox.io/s/k1439yw2v5
-- https://codepen.io/kunukn/debug/9c1a4afa29f340eb56007a76262a1838
+- https://codesandbox.io/s/k1439yw2v5 // npm example
+- https://codepen.io/kunukn/debug/9c1a4afa29f340eb56007a76262a1838 // CDN example
 
 # CSS required
 
@@ -55,6 +55,8 @@ One or multiple children with static, variable or dynamic height.
 </Collapse>
 ```
 
+or
+
 ```js
 <Collapse
   isOpen
@@ -71,7 +73,11 @@ One or multiple children with static, variable or dynamic height.
 
 #### `className`: PropType.string
 
-You can specify a className with your desired style and animation. By default `kn-react-collapse` will be added to the component.
+You can specify a className with your desired style and animation. By default `collapse-css-transition` will be added to the component.
+
+#### `classNameAppend`: PropType.string
+
+You can specify a className to appended. Best used if className property is not to be used.
 
 #### `transition`: PropType.string
 
@@ -80,6 +86,16 @@ You can also specify a CSS transition in line by using the `transition` prop.
 ```js
 <Collapse transition="max-height 300ms cubic-bezier(.4, 0, .2, 1)">
   <p>Paragraph of text</p>
+</Collapse>
+```
+
+#### `elementType`: PropType.string
+
+You can specify the element type for the collapse component. By default the element type is a div element.
+
+```js
+<Collapse elementType="article">
+  <p>Paragraph of text inside an article element</p>
 </Collapse>
 ```
 
