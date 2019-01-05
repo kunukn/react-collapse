@@ -1,10 +1,9 @@
 import './app.scss';
 import React from 'react';
 import Collapse from 'components/Collapse/Collapse';
+import cx from 'classnames';
 
-const log = console.log.bind(console);
-
-export default class App extends React.Component {
+class App extends React.Component {
   state = {
     isOpen1: false,
     isOpen2: false,
@@ -18,7 +17,16 @@ export default class App extends React.Component {
       <div className="app">
         <pre style={{ fontSize: '10px' }}>{JSON.stringify(this.state.spy1, null, 2)}</pre>
         <button className="app__toggle" onClick={() => this.toggle(1)}>
-          toggle
+          <span className="app__toggle-text">toggle</span>
+          <svg
+            className={cx('icon', { 'icon--expanded': this.state.isOpen1 })}
+            viewBox="6 0 12 24"
+            width="16px"
+            height="16px"
+          >
+            <title>toggle</title>
+            <polygon points="8 0 6 1.8 14.4 12 6 22.2 8 24 18 12" />
+          </svg>
         </button>
         <Collapse
           isOpen={this.state.isOpen1}
@@ -29,6 +37,7 @@ export default class App extends React.Component {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
             ea commodo consequat. <button>click</button>
+            <img className="image" alt="random" src="https://source.unsplash.com/user/erondu/320x180" />
           </div>
         </Collapse>
 
@@ -47,6 +56,7 @@ export default class App extends React.Component {
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
                 dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
                 ex ea commodo consequat. <button>click</button>
+                <img className="image" alt="random" src="https://source.unsplash.com/user/erondu/320x180" />
               </div>
             </React.Fragment>
           )}
@@ -77,3 +87,5 @@ export default class App extends React.Component {
     this.setState(prevState => ({ [collapse]: !prevState[collapse] }));
   };
 }
+
+export default App;

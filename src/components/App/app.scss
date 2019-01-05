@@ -12,14 +12,33 @@
     width: 100%;
     margin-bottom: 1rem;
     border: 1px solid;
-    box-shadow: none;
     text-transform: uppercase;
     padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px #ccc;
+  }
+
+  &__toggle-text {
+    font-size: 2rem;
   }
 
   &__content {
     border: 1px solid;
     padding: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
+  }
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  transition: transform 250ms ease-in-out;
+  transform: rotateZ(89.9deg);
+  will-change: transform;
+  &--expanded {
+    transform: rotateZ(-89.9deg);
   }
 }
