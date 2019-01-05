@@ -1,7 +1,6 @@
 import './app.scss';
 import React from 'react';
-import Collapse from 'components/Collapse';
-//const Collapse = require('components/Collapse').default;
+import Collapse from 'components/Collapse/Collapse';
 
 const log = console.log.bind(console);
 
