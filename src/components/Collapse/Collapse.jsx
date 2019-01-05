@@ -106,7 +106,8 @@ export default class Collapse extends React.Component {
 
   getHeight = () => this.content.scrollHeight + 'px';
 
-  getCallback = () => (this.props.onChange ? () => this.props.onChange(this.state) : () => {});
+  getCallback = () =>
+    this.props.onChange ? () => this.props.onChange({ ...this.state, transition: this.props.transition }) : () => {};
 
   setCollapsed = () => {
     console.log('setCollapsed');

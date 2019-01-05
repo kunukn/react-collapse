@@ -10,7 +10,7 @@ export default class App extends React.Component {
     isOpen2: false,
     isOpen3: false,
     isOpen4: true,
-    spy1: { collapse: null, collapseStyle: { maxHeight: null, visibility: null } },
+    spy1: { collapse: null, collapseStyle: { maxHeight: null, visibility: null }, transition: null },
   };
 
   render() {
@@ -22,8 +22,8 @@ export default class App extends React.Component {
         </button>
         <Collapse
           isOpen={this.state.isOpen1}
-          onComplete={state => log('callback ' + state)}
-          internals={data => this.setState({ spy1: data })}
+          transition="max-height 250ms ease-in-out"
+          onChange={state => this.setState({ spy1: state })}
         >
           <div className="app__content">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
@@ -40,16 +40,15 @@ export default class App extends React.Component {
           transition="max-height 900ms cubic-bezier(0.4, 0, 0.2, 1)"
           aria-hidden={this.state.isOpen2 ? 'false' : 'true'}
           isOpen={this.state.isOpen2}
-          onComplete={state => log('callback ' + state)}
           render={collapse => (
-            <>
+            <React.Fragment>
               <div className="app__content">
                 <div>{JSON.stringify(collapse)}</div>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
                 dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
                 ex ea commodo consequat. <button>click</button>
               </div>
-            </>
+            </React.Fragment>
           )}
         />
 
@@ -59,7 +58,6 @@ export default class App extends React.Component {
 
         <Collapse
           isOpen={this.state.isOpen3}
-          onComplete={state => log('callback ' + state)}
           render={collapse => (
             <div className="app__content">
               <div>{JSON.stringify(collapse)}</div>
