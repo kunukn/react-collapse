@@ -40,9 +40,9 @@
   width: 1em;
   height: 1em;
   transition: transform 250ms ease-in-out;
-  transform: rotateZ(89.9deg);
+  transform: rotateZ(89.99deg);
   will-change: transform;
   &--expanded {
-    transform: rotateZ(-89.9deg);
+    transform: rotateZ(-89.99deg);
   }
 }

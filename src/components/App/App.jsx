@@ -15,7 +15,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="app">
-        <pre style={{ fontSize: '10px' }}>{JSON.stringify(this.state.spy1, null, 2)}</pre>
+        <pre style={{ fontSize: '10px', width: '100%' }}>{JSON.stringify(this.state.spy1, null, 2)}</pre>
         <button className="app__toggle" onClick={() => this.toggle(1)}>
           <span className="app__toggle-text">toggle</span>
           <svg
