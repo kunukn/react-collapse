@@ -1,19 +1,26 @@
 import './app.scss';
 import React from 'react';
-import Collapse from 'components/Collapse/Collapse';
+import Collapse from 'components/Collapse';
+//const Collapse = require('components/Collapse').default;
 
 const log = console.log.bind(console);
 
 export default class App extends React.Component {
-  state = { isOpen1: false, isOpen2: false, isOpen3: false, isOpen4: true };
+  state = {
+    isOpen1: false,
+    isOpen2: false,
+    isOpen3: false,
+    isOpen4: true,
+    spy1: { collapse: null, collapseStyle: { maxHeight: null, visibility: null } },
+  };
 
   render() {
     return (
       <div className="app">
+        <pre style={{ fontSize: '10px' }}>{JSON.stringify(this.state.spy1, null, 2)}</pre>
         <button className="app__toggle" onClick={() => this.toggle(1)}>
           toggle
         </button>
-        <pre style={{ fontSize: '10px' }}>{JSON.stringify(this.state.spy1, null, 2)}</pre>
         <Collapse
           isOpen={this.state.isOpen1}
           onComplete={state => log('callback ' + state)}
@@ -31,6 +38,8 @@ export default class App extends React.Component {
         </button>
 
         <Collapse
+          transition="max-height 900ms cubic-bezier(0.4, 0, 0.2, 1)"
+          aria-hidden={this.state.isOpen2 ? 'false' : 'true'}
           isOpen={this.state.isOpen2}
           onComplete={state => log('callback ' + state)}
           render={collapse => (

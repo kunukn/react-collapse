@@ -5,7 +5,7 @@ Collapse component with css transition for elements with variable and dynamic he
 :warning: ️You need to specify the transition property or add a class selector with style (transition) in your own stylesheet to add animation. You can copy the smashing example below
 
 ```scss
-.kn-react-collapse {
+.collapse-css-transition {
   transition: max-height 300ms cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
 }
@@ -13,7 +13,7 @@ Collapse component with css transition for elements with variable and dynamic he
 
 ## Installation
 
-`npm install -S @kunukn/react-collapse`
+`npm i -S @kunukn/react-collapse`
 
 or
 
@@ -68,7 +68,7 @@ You can specify a className with your desired style and animation. By default `k
 
 #### `transition`: PropType.string
 
-You can also specify a transition in line by using the `transition` prop.
+You can also specify a CSS transition in line by using the `transition` prop.
 
 ```js
 <Collapse transition="max-height 300ms cubic-bezier(.4, 0, .2, 1)">
@@ -76,13 +76,9 @@ You can also specify a transition in line by using the `transition` prop.
 </Collapse>
 ```
 
-#### `onComplete = (collapse) => { /* your implementation */}`: PropTypes.func
+#### `onComplete = collapseState => { /* your implementation */ }`: PropTypes.func
 
 Callback function for when your transition on `max-height` (specified in `className`) is finished. It can be used to trigger any function after transition is done. A collapse state is provided to your callback function.
-
-#### `internals = (state) => { /* internal state is provided to you */}`: PropTypes.func
-
-Callback function for the internals state used in the Collapse component.
 
 ### ARIA and data attributes
 
@@ -94,19 +90,22 @@ Callback function for the internals state used in the Collapse component.
 </Collapse>
 ```
 
+#### `internals = state => { /* internal state is provided to you */}`: PropTypes.func
+
+Callback function for the internals state used in the Collapse component.
+
 ## Development and testing
 
-To run example covering all features, use `npm run storybook`.
+To run example covering all features, use `npm run storybook` or `yarn storybook`.
 
 ```bash
 git clone [repo]
 cd [repo]
 npm install
 npm start
+open [http://localhost:6007](http://localhost:6007)
 ```
-
-Open [http://localhost:6006](http://localhost:6006) 🎆
 
 # Heavily inspired from
 
-https://github.com/SparebankenVest/react-css-collapse
+[https://github.com/SparebankenVest/react-css-collapse](https://github.com/SparebankenVest/react-css-collapse) 🎆

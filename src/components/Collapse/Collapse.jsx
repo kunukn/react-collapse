@@ -44,11 +44,10 @@ export default class Collapse extends React.Component {
     console.log('componentDidUpdate');
 
     if (!this.content) return;
+
     if (this.state.collapse === prevState.collapse) return;
 
     console.log('componentDidUpdate - real work');
-
-    this.props.internals && this.props.internals(this.state);
 
     if (this.state.collapse === EXPANDING) {
       this.setExpanding();
@@ -84,7 +83,7 @@ export default class Collapse extends React.Component {
           this.content = element;
         }}
         style={style}
-        className={className || 'kn-react-collapse'}
+        className={className || 'collapse-css-transition'}
         onTransitionEnd={this.onTransitionEnd}
         {...attrs}
       >
@@ -99,13 +98,13 @@ export default class Collapse extends React.Component {
     const { onComplete } = this.props;
 
     if (event.target === this.content && event.propertyName === 'max-height') {
-      let callbackWhenDone = onComplete ? () => onComplete(this.state.collapse) : () => {};
-
       if (this.state.collapse === EXPANDING) {
-        this.setState({ collapse: EXPANDED }, callbackWhenDone);
+        this.setState({ collapse: EXPANDED });
       } else if (this.state.collapse === COLLAPSING) {
-        this.setState({ collapse: COLLAPSED }, callbackWhenDone);
+        this.setState({ collapse: COLLAPSED });
       }
+
+      onComplete && onComplete(this.state.collapse);
     }
   };
 
@@ -116,12 +115,17 @@ export default class Collapse extends React.Component {
 
     if (!this.content) return;
 
-    this.setState({
-      collapseStyle: {
-        maxHeight: '0px',
-        visibility: 'hidden',
+    let internals = this.props.internals ? () => this.props.internals(this.state) : () => {};
+
+    this.setState(
+      {
+        collapseStyle: {
+          maxHeight: '0px',
+          visibility: 'hidden',
+        },
       },
-    });
+      internals
+    );
   };
 
   setCollapsing = () => {
@@ -139,12 +143,17 @@ export default class Collapse extends React.Component {
     });
 
     nextFrame(() => {
-      this.setState({
-        collapseStyle: {
-          maxHeight: '0px',
-          visibility: '',
+      let internals = this.props.internals ? () => this.props.internals(this.state) : () => {};
+
+      this.setState(
+        {
+          collapseStyle: {
+            maxHeight: '0px',
+            visibility: '',
+          },
         },
-      });
+        internals
+      );
     });
   };
 
@@ -154,13 +163,17 @@ export default class Collapse extends React.Component {
     nextFrame(() => {
       if (this.content) {
         const maxHeight = this.getHeight();
+        let internals = this.props.internals ? () => this.props.internals(this.state) : () => {};
 
-        this.setState({
-          collapseStyle: {
-            maxHeight,
-            visibility: '',
+        this.setState(
+          {
+            collapseStyle: {
+              maxHeight,
+              visibility: '',
+            },
           },
-        });
+          internals
+        );
       }
     });
   };
@@ -170,12 +183,17 @@ export default class Collapse extends React.Component {
 
     if (!this.content) return;
 
-    this.setState({
-      collapseStyle: {
-        maxHeight: '',
-        visibility: '',
+    let internals = this.props.internals ? () => this.props.internals(this.state) : () => {};
+
+    this.setState(
+      {
+        collapseStyle: {
+          maxHeight: '',
+          visibility: '',
+        },
       },
-    });
+      internals
+    );
   };
 }
 
