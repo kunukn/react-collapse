@@ -32,10 +32,6 @@ export default class Collapse extends React.Component {
     return null;
   }
 
-  getSnapshotBeforeUpdate(prevProps, prevState) {
-    return null;
-  }
-
   componentDidMount() {
     if (this.state.collapse === EXPANDED) this.setExpanded();
   }
@@ -63,7 +59,7 @@ export default class Collapse extends React.Component {
   componentWillUnmount() {}
 
   render() {
-    const { className, children, transition, render, internals, isOpen, onComplete, ...attrs } = this.props;
+    const { className, children, transition, render, onChange, isOpen, ...attrs } = this.props;
 
     let style = {
       transition,
@@ -110,12 +106,12 @@ export default class Collapse extends React.Component {
 
   getHeight = () => this.content.scrollHeight + 'px';
 
+  getCallback = () => (this.props.onChange ? () => this.props.onChange(this.state) : () => {});
+
   setCollapsed = () => {
     console.log('setCollapsed');
 
     if (!this.content) return;
-
-    let internals = this.props.internals ? () => this.props.internals(this.state) : () => {};
 
     this.setState(
       {
@@ -124,7 +120,7 @@ export default class Collapse extends React.Component {
           visibility: 'hidden',
         },
       },
-      internals
+      this.getCallback()
     );
   };
 
@@ -143,8 +139,6 @@ export default class Collapse extends React.Component {
     });
 
     nextFrame(() => {
-      let internals = this.props.internals ? () => this.props.internals(this.state) : () => {};
-
       this.setState(
         {
           collapseStyle: {
@@ -152,7 +146,7 @@ export default class Collapse extends React.Component {
             visibility: '',
           },
         },
-        internals
+        this.getCallback()
       );
     });
   };
@@ -163,7 +157,6 @@ export default class Collapse extends React.Component {
     nextFrame(() => {
       if (this.content) {
         const maxHeight = this.getHeight();
-        let internals = this.props.internals ? () => this.props.internals(this.state) : () => {};
 
         this.setState(
           {
@@ -172,7 +165,7 @@ export default class Collapse extends React.Component {
               visibility: '',
             },
           },
-          internals
+          this.getCallback()
         );
       }
     });
@@ -183,8 +176,6 @@ export default class Collapse extends React.Component {
 
     if (!this.content) return;
 
-    let internals = this.props.internals ? () => this.props.internals(this.state) : () => {};
-
     this.setState(
       {
         collapseStyle: {
@@ -192,7 +183,7 @@ export default class Collapse extends React.Component {
           visibility: '',
         },
       },
-      internals
+      this.getCallback()
     );
   };
 }

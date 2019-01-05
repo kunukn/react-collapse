@@ -4,7 +4,8 @@ Collapse component with css transition for elements with variable and dynamic he
 
 # Demo
 
-https://codesandbox.io/s/k1439yw2v5
+- https://codesandbox.io/s/k1439yw2v5
+- https://codepen.io/kunukn/debug/9c1a4afa29f340eb56007a76262a1838
 
 # CSS required
 
@@ -82,9 +83,9 @@ You can also specify a CSS transition in line by using the `transition` prop.
 </Collapse>
 ```
 
-#### `onComplete = collapseState => { /* your implementation */ }`: PropTypes.func
+#### `onChange = collapseState => { /* your implementation */ }`: PropTypes.func
 
-Callback function for when your transition on `max-height` (specified in `className`) is finished. It can be used to trigger any function after transition is done. A collapse state is provided to your callback function.
+Callback function for when your transition on `max-height` (specified in `className`) is started or finished. It can be used to trigger any function after transition is done. A collapse state is provided to your callback function.
 
 ### ARIA and data attributes
 
@@ -96,10 +97,6 @@ Callback function for when your transition on `max-height` (specified in `classN
 </Collapse>
 ```
 
-#### `internals = state => { /* internal state is provided to you */}`: PropTypes.func
-
-Callback function for the internals state used in the Collapse component.
-
 ## Development and testing
 
 To run example covering all features, use `npm run storybook` or `yarn storybook`.
@@ -109,17 +106,17 @@ git clone [repo]
 cd [repo]
 npm i
 npm start
-open [http://localhost:6007](http://localhost:6007)
+open http://localhost:6007
 ```
 
-or with yarn
+or with **yarn**
 
 ```bash
 git clone [repo]
 cd [repo]
 yarn
 yarn start
-open [http://localhost:6007](http://localhost:6007)
+open http://localhost:6007
 ```
 
 # CDN
@@ -127,7 +124,7 @@ open [http://localhost:6007](http://localhost:6007)
 https://unpkg.com/@kunukn/react-collapse/
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/@kunukn/react-collapse@0.0.4/dist/Collapse.css" />
+<link rel="stylesheet" href="https://unpkg.com/@kunukn/react-collapse@0.0.5/dist/Collapse.css" />
 <script src="https://unpkg.com/@kunukn/react-collapse"></script>
 
 <script>
