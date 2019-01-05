@@ -14,7 +14,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="app">
-        <pre style={{ fontSize: '10px', width: '100%' }}>{JSON.stringify(this.state.spy1, null, 2)}</pre>
+        <pre style={{ fontSize: '10px', width: '100%' }}>{JSON.stringify(this.state.spy1, null, 1)}</pre>
         <button className="app__toggle" onClick={() => this.toggle(1)}>
           <span className="app__toggle-text">toggle</span>
           <div className="rotate90">
@@ -31,7 +31,7 @@ class App extends React.Component {
         </button>
         <Collapse
           isOpen={this.state.isOpen1}
-          transition="max-height 250ms ease-in-out"
+          transition="max-height 280ms cubic-bezier(0.4, 0, 0.2, 1)"
           classNameAppend={
             'app__collapse app__collapse--gradient ' + (this.state.isOpen1 ? 'app__collapse--active' : '')
           }
