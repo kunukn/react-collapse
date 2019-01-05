@@ -31,6 +31,7 @@ class App extends React.Component {
         <Collapse
           isOpen={this.state.isOpen1}
           transition="max-height 250ms ease-in-out"
+          classNameAppend="app__collapse"
           onChange={state => this.setState({ spy1: state })}
         >
           <div className="app__content">
@@ -46,9 +47,11 @@ class App extends React.Component {
         </button>
 
         <Collapse
+          isOpen={this.state.isOpen2}
+          classNameAppend="app__collapse"
           transition="max-height 900ms cubic-bezier(0.4, 0, 0.2, 1)"
           aria-hidden={this.state.isOpen2 ? 'false' : 'true'}
-          isOpen={this.state.isOpen2}
+          elementType="article"
           render={collapse => (
             <React.Fragment>
               <div className="app__content">
@@ -68,6 +71,7 @@ class App extends React.Component {
 
         <Collapse
           isOpen={this.state.isOpen3}
+          classNameAppend="app__collapse"
           render={collapse => (
             <div className="app__content">
               <div>{JSON.stringify(collapse)}</div>

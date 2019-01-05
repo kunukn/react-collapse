@@ -5,8 +5,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 400px;
+  max-width: 500px;
   padding: 3rem 1rem 1rem;
+
+  &__collapse {
+    display: block;
+  }
 
   &__toggle {
     width: 100%;

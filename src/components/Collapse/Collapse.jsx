@@ -59,7 +59,17 @@ export default class Collapse extends React.Component {
   componentWillUnmount() {}
 
   render() {
-    const { className, children, transition, render, onChange, isOpen, ...attrs } = this.props;
+    const {
+      className,
+      classNameAppend,
+      children,
+      transition,
+      render,
+      elementType,
+      onChange,
+      isOpen,
+      ...attrs
+    } = this.props;
 
     let style = {
       transition,
@@ -73,18 +83,23 @@ export default class Collapse extends React.Component {
       return children;
     };
 
+    const ElementType = elementType || 'div';
+
+    let collapseClassName = className || 'collapse-css-transition';
+    if (classNameAppend) collapseClassName += ' ' + classNameAppend;
+
     return (
-      <div
+      <ElementType
         ref={element => {
           this.content = element;
         }}
         style={style}
-        className={className || 'collapse-css-transition'}
+        className={collapseClassName}
         onTransitionEnd={this.onTransitionEnd}
         {...attrs}
       >
         {getRender()}
-      </div>
+      </ElementType>
     );
   }
 

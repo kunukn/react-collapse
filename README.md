@@ -132,6 +132,32 @@ https://unpkg.com/@kunukn/react-collapse/
 </script>
 ```
 
-# Heavily inspired from
+# Supported browsers
+
+IE11 + Modern browsers
+
+# Support React versions
+
+React version 16.3+
+
+# Used React life-cycles
+
+- render // use the style states to invoke CSS transition
+- componentDidMount // initial expanded or collapsed state
+- getDerivedStateFromProps // detect if isOpen props has changed and apply a new collapse state
+- componentDidUpdate // update style state from the four possible collapse states
+
+# Design goals
+
+- let the browser handle the animation using CSS transition
+- minimalistic - only have a Collapse component which updates on isOpen props
+- flexible - provide your own markup, styling and easing
+- interruptible - can be reversed during movement
+- simple api with onChange event hook
+- inert - when collapsed you should tab over the collapsed component
+- minimal in file size
+- availability - from cdn or npm install
+
+# This was created with heavily inspiration from
 
 [https://github.com/SparebankenVest/react-css-collapse](https://github.com/SparebankenVest/react-css-collapse) 🎆
