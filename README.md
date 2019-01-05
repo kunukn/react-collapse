@@ -162,16 +162,16 @@ https://unpkg.com/@kunukn/react-collapse/
 
 IE11 + Modern browsers
 
-# Support React versions
+# Supported React versions
 
 React version 16.3+
 
 # Used React life-cycles
 
-- render // use the style states to invoke CSS transition
+- render // uses the style states to invoke CSS transition
 - componentDidMount // initial expanded or collapsed state
 - getDerivedStateFromProps // detect if isOpen props has changed and apply a new collapse state
-- componentDidUpdate // update style state from the four possible collapse states
+- componentDidUpdate // update style states from the four possible collapse states
 
 # Design goals
 
