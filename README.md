@@ -4,8 +4,9 @@ Collapse component with css transition for elements with variable and dynamic he
 
 # Demo
 
+- https://s.codepen.io/kunukn/debug/9c1a4afa29f340eb56007a76262a1838 // CDN example
+- https://s.codepen.io/kunukn/debug/985e42f3c7616dfcf05668139f7b0ef1 // Accordion demo
 - https://codesandbox.io/s/k1439yw2v5 // npm example
-- https://codepen.io/kunukn/debug/9c1a4afa29f340eb56007a76262a1838 // CDN example
 
 # CSS required
 
@@ -60,9 +61,9 @@ or
 ```js
 <Collapse
   isOpen
-  render={collapse => (
+  render={data => (
     <>
-      <p>this is the collapse state: {collapse}</p>
+      <p>this is the collapse state: {data.collapseState}</p>
       <p>Another paragraph is also OK</p>
       <p>Images and any other content are ok too</p>
       <img src="cutecat.gif" />
