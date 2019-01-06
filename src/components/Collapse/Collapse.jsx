@@ -11,13 +11,13 @@ export default class Collapse extends React.Component {
     collapse: this.props.isOpen ? EXPANDED : COLLAPSED,
     collapseStyle: {
       maxHeight: this.props.collapseHeight || '0px',
-      visibility: this.props.collapseHeight ? '' : 'hidden',
+      visibility: this.props.collapseHeight ? 'visible' : 'hidden',
     },
   };
 
   getCollapseHeight = () => this.props.collapseHeight || '0px';
 
-  getCollapsedVisibility = () => (this.props.collapseHeight ? '' : 'hidden');
+  getCollapsedVisibility = () => (this.props.collapseHeight ? 'visible' : 'hidden');
 
   static getDerivedStateFromProps(props, state) {
     const isOpen = state.collapse === EXPANDED || state.collapse === EXPANDING;
@@ -83,7 +83,7 @@ export default class Collapse extends React.Component {
 
     let getRender = () => {
       if (typeof render === 'function') {
-        return render(this.state.collapse);
+        return render({ collapseState: this.state.collapse });
       }
       return children;
     };
@@ -151,7 +151,7 @@ export default class Collapse extends React.Component {
     this.setState({
       collapseStyle: {
         maxHeight,
-        visibility: '',
+        visibility: 'visible',
       },
     });
 
@@ -160,7 +160,7 @@ export default class Collapse extends React.Component {
         {
           collapseStyle: {
             maxHeight: this.getCollapseHeight(),
-            visibility: '',
+            visibility: 'visible',
           },
         },
         this.getOnChangeCallback()
@@ -179,7 +179,7 @@ export default class Collapse extends React.Component {
           {
             collapseStyle: {
               maxHeight,
-              visibility: '',
+              visibility: 'visible',
             },
           },
           this.getOnChangeCallback()
@@ -197,7 +197,7 @@ export default class Collapse extends React.Component {
       {
         collapseStyle: {
           maxHeight: '',
-          visibility: '',
+          visibility: 'visible',
         },
       },
       this.getOnChangeCallback()
