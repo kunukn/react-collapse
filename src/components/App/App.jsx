@@ -15,7 +15,10 @@ class App extends React.Component {
     return (
       <div className="app">
         <pre style={{ fontSize: '10px', width: '100%' }}>{JSON.stringify(this.state.spy1, null, 1)}</pre>
-        <button className="app__toggle" onClick={() => this.toggle(1)}>
+        <button
+          className={cx('app__toggle', { 'app__toggle--active': this.state.isOpen1 })}
+          onClick={() => this.toggle(1)}
+        >
           <span className="app__toggle-text">toggle</span>
           <div className="rotate90">
             <svg
@@ -45,7 +48,10 @@ class App extends React.Component {
           </div>
         </Collapse>
 
-        <button className="app__toggle" onClick={() => this.toggle(2)}>
+        <button
+          className={cx('app__toggle', { 'app__toggle--active': this.state.isOpen2 })}
+          onClick={() => this.toggle(2)}
+        >
           toggle
         </button>
 
@@ -70,7 +76,10 @@ class App extends React.Component {
           )}
         />
 
-        <button className="app__toggle" onClick={() => this.toggle(3)}>
+        <button
+          className={cx('app__toggle', { 'app__toggle--active': this.state.isOpen3 })}
+          onClick={() => this.toggle(3)}
+        >
           toggle
         </button>
 
