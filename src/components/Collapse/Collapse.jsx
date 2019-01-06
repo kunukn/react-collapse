@@ -155,7 +155,7 @@ export default class Collapse extends React.Component {
       },
     });
 
-    afterFrame(() => {
+    nextFrame(() => {
       this.setState(
         {
           collapseStyle: {
@@ -171,7 +171,7 @@ export default class Collapse extends React.Component {
   setExpanding = () => {
     console.log('setExpanding');
 
-    afterFrame(() => {
+    nextFrame(() => {
       if (this.content) {
         const maxHeight = this.getHeight();
 
@@ -205,8 +205,15 @@ export default class Collapse extends React.Component {
   };
 }
 
+function nextFrame(callback) {
+  // ensure it is always visible on collapsing
+  requestAnimationFrame(() => requestAnimationFrame(callback));
+}
+
+/*
 function afterFrame(callback) {
   // https://nolanlawson.com/2018/09/25/accurately-measuring-layout-on-the-web/
   // https://github.com/andrewiggins/yield-to-browser
   requestAnimationFrame(() => setTimeout(callback, 0));
 }
+*/
