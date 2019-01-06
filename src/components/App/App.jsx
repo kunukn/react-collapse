@@ -88,12 +88,14 @@ class App extends React.Component {
               <div>{collapseState}</div>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
               dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-              ea commodo consequat.
+              ea commodo consequat. <a href="#">dummy link</a>
             </div>
           )}
         />
 
-        <p className="app__text">Some content below</p>
+        <p className="app__text">
+          Some content below <a href="#">dummy link</a>
+        </p>
       </div>
     );
   }
