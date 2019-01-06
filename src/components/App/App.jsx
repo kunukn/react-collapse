@@ -80,7 +80,7 @@ class App extends React.Component {
         <pre style={{ fontSize: '10px', width: '100%' }}>{JSON.stringify(this.state.spy3, null, 1)}</pre>
         <Collapse
           isOpen={this.state.isOpen3}
-          collapseHeight="70px"
+          collapseHeight="60px"
           className={'app__collapse app__collapse--gradient ' + (this.state.isOpen3 ? 'app__collapse--active' : '')}
           onChange={state => this.setState({ spy3: state })}
           render={({ collapseState }) => (

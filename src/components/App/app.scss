@@ -1,6 +1,6 @@
 .app {
   margin: 0 auto;
-  font-size: 2rem;
+  font-size: 1.6rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -72,7 +72,7 @@
   }
 
   &__toggle-text {
-    font-size: 2rem;
+    font-size: inherit;
   }
 
   &__button {
