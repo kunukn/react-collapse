@@ -8,6 +8,10 @@
   max-width: 500px;
   padding: 3rem 1rem 1rem;
 
+  &__text {
+    width: 100%;
+  }
+
   &__content {
     border: 1px solid;
     padding: 1rem;
@@ -17,6 +21,8 @@
   &__collapse {
     display: block;
     position: relative;
+    overflow: hidden;
+    transition: max-height 300ms cubic-bezier(0.4, 0, 0.2, 1);
 
     &--gradient {
       .app__content {
