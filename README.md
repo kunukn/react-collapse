@@ -62,12 +62,12 @@ or
 <Collapse
   isOpen
   render={collapseState => (
-    <>
+    <div className="item " + collapseState>
       <p>this is the collapse state: {collapseState}</p>
       <p>Another paragraph is also OK</p>
       <p>Images and any other content are ok too</p>
       <img src="cutecat.gif" />
-    </>
+    </div>
   )}
 />
 ```
@@ -147,7 +147,7 @@ open http://localhost:6007
 https://unpkg.com/@kunukn/react-collapse/
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/@kunukn/react-collapse@0.0.5/dist/Collapse.css" />
+<link rel="stylesheet" href="https://unpkg.com/@kunukn/react-collapse/dist/Collapse.css" />
 <script src="https://unpkg.com/@kunukn/react-collapse"></script>
 
 <script>
