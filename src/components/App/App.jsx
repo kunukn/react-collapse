@@ -27,8 +27,9 @@ class App extends React.Component {
         </button>
         <Collapse
           isOpen={this.state.isOpen1}
+          elementType="article"
           transition="max-height 280ms ease-in-out"
-          className={'app__collapse app__collapse--gradient ' + (this.state.isOpen1 ? 'app__collapse--active' : '')}
+          className={'app__collapse app__collapse--gradient' + (this.state.isOpen1 ? ' app__collapse--active' : '')}
         >
           <div className="app__content">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
