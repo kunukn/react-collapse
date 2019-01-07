@@ -61,9 +61,9 @@ or
 ```js
 <Collapse
   isOpen
-  render={data => (
+  render={collapseState => (
     <>
-      <p>this is the collapse state: {data.collapseState}</p>
+      <p>this is the collapse state: {collapseState}</p>
       <p>Another paragraph is also OK</p>
       <p>Images and any other content are ok too</p>
       <img src="cutecat.gif" />
@@ -75,10 +75,6 @@ or
 #### `className`: PropType.string
 
 You can specify a className with your desired style and animation. By default `collapse-css-transition` will be added to the component.
-
-#### `classNameAppend`: PropType.string
-
-You can specify a className to appended. Best used if className property is not to be used.
 
 #### `transition`: PropType.string
 

@@ -54,7 +54,7 @@ class App extends React.Component {
           transition="max-height 800ms cubic-bezier(0.4, 0, 0.2, 1)"
           aria-hidden={this.state.isOpen2 ? 'false' : 'true'}
           elementType="article"
-          render={({ collapseState }) => (
+          render={collapseState => (
             <React.Fragment>
               <div className="app__content">
                 <div>{collapseState}</div>
@@ -83,7 +83,7 @@ class App extends React.Component {
           collapseHeight="60px"
           className={'app__collapse app__collapse--gradient ' + (this.state.isOpen3 ? 'app__collapse--active' : '')}
           onChange={state => this.setState({ spy3: state })}
-          render={({ collapseState }) => (
+          render={collapseState => (
             <div className="app__content">
               <div>{collapseState}</div>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
@@ -101,7 +101,7 @@ class App extends React.Component {
   }
 
   toggle = index => {
-    let collapse = 'isOpen' + index;
+    const collapse = `isOpen${index}`;
 
     this.setState(prevState => ({ [collapse]: !prevState[collapse] }));
   };

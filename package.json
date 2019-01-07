@@ -1,6 +1,6 @@
 {
   "name": "@kunukn/react-collapse",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Collapse library based on css transition for React",
   "main": "dist/Collapse.js",
   "scripts": {
