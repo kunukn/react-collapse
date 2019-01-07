@@ -7,6 +7,7 @@ Collapse component with css transition for elements with variable and dynamic he
 - <a href="https://codepen.io/kunukn/debug/ebMryW" target="_blank">simple - codepen</a>
 - <a href="https://codepen.io/kunukn/debug/xmjRNo" target="_blank">accordion - codepen</a>
 - <a href="https://codesandbox.io/s/k1439yw2v5" target="_blank">using npm - codesandbox</a>
+- <a href="https://kunukn.github.io/react-collapse" target="_blank">view storybook</a>
 
 # CSS required
 
