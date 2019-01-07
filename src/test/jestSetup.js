@@ -9,3 +9,6 @@ configure({ adapter: new Adapter() });
 global.shallow = shallow;
 global.render = render;
 global.mount = mount;
+global.requestAnimationFrame = function(callback) {
+  setTimeout(callback, 0);
+};

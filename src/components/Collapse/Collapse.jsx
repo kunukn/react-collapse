@@ -75,12 +75,12 @@ export default class Collapse extends React.Component {
       ...attrs
     } = this.props;
 
-    let style = {
+    const style = {
       transition,
       ...this.state.collapseStyle,
     };
 
-    let getRender = () => {
+    const getRender = () => {
       if (typeof render === 'function') {
         return render(this.state.collapse);
       }
@@ -89,15 +89,13 @@ export default class Collapse extends React.Component {
 
     const ElementType = elementType || 'div';
 
-    let collapseClassName = className || 'collapse-css-transition';
-
     return (
       <ElementType
         ref={element => {
           this.content = element;
         }}
         style={style}
-        className={collapseClassName}
+        className={className || 'collapse-css-transition'}
         onTransitionEnd={this.onTransitionEnd}
         {...attrs}
       >
@@ -203,11 +201,6 @@ export default class Collapse extends React.Component {
   };
 }
 
-function nextFrame(callback) {
-  // Ensure it is always visible on collapsing
-  requestAnimationFrame(() => requestAnimationFrame(callback));
-}
-
 /*
 function afterFrame(callback) {
   // https://nolanlawson.com/2018/09/25/accurately-measuring-layout-on-the-web/
@@ -215,3 +208,8 @@ function afterFrame(callback) {
   requestAnimationFrame(() => setTimeout(callback, 0));
 }
 */
+
+function nextFrame(callback) {
+  // Ensure it is always visible on collapsing
+  requestAnimationFrame(() => requestAnimationFrame(callback));
+}
