@@ -4,9 +4,9 @@ Collapse component with css transition for elements with variable and dynamic he
 
 # Demo
 
-- https://s.codepen.io/kunukn/debug/9c1a4afa29f340eb56007a76262a1838 // CDN example
-- https://s.codepen.io/kunukn/debug/985e42f3c7616dfcf05668139f7b0ef1 // Accordion demo
-- https://codesandbox.io/s/k1439yw2v5 // npm example
+- <a href="https://s.codepen.io/kunukn/debug/9c1a4afa29f340eb56007a76262a1838" target="_blank">simple - codepen</a>
+- <a href="https://s.codepen.io/kunukn/debug/985e42f3c7616dfcf05668139f7b0ef1" target="_blank">accordion - codepen</a>
+- <a href="https://codesandbox.io/s/k1439yw2v5" target="_blank">using npm - codesandbox</a>
 
 # CSS required
 
