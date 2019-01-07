@@ -1,10 +1,10 @@
 import './collapse.scss';
 import React from 'react';
 
-const COLLAPSED = 'COLLAPSED';
-const COLLAPSING = 'COLLAPSING';
-const EXPANDING = 'EXPANDING';
-const EXPANDED = 'EXPANDED';
+const COLLAPSED = 'collapsed';
+const COLLAPSING = 'collapsing';
+const EXPANDING = 'expanding';
+const EXPANDED = 'expanded';
 
 export default class Collapse extends React.Component {
   state = {
