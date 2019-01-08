@@ -41,7 +41,7 @@ export default class Collapse extends React.Component {
     };
 
     const ElementType = elementType || 'div';
-    const collapseClassName = `${className || 'collapse-css-transition'} -is-${this.state.collapse}`;
+    const collapseClassName = `${className || 'collapse-css-transition'} --is-${this.state.collapse}`;
 
     return (
       <ElementType
