@@ -71,6 +71,10 @@ module.exports = (env = {}, argv = {}) => {
       watchContentBase: true,
       historyApiFallback: true,
     },
+    performance: {
+      maxEntrypointSize: 8000,
+      hints: 'warning',
+    },
     module: {
       rules: [
         {
