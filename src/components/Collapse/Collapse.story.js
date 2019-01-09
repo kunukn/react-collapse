@@ -57,7 +57,10 @@ usage description here
 ## React
 
 ~~~jsx
-<Collapse isOpen={this.state.isOpen}>
+<Collapse isOpen={this.state.isOpen1}>
+  content
+</Collapse>
+<Collapse isOpen={this.state.isOpen2}>
   content
 </Collapse>
 ~~~
