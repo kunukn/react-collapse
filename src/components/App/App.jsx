@@ -8,7 +8,7 @@ class App extends React.Component {
     isOpen1: false,
     isOpen2: false,
     isOpen3: false,
-    spy3: { collapse: null, collapseStyle: { maxHeight: null, visibility: null }, transition: null },
+    spy3: { collapse: null, collapseStyle: { height: null, visibility: null }, transition: null },
   };
 
   render() {
@@ -28,7 +28,7 @@ class App extends React.Component {
         <Collapse
           isOpen={this.state.isOpen1}
           elementType="article"
-          transition="max-height 280ms ease-in-out"
+          transition="height 280ms ease-in-out"
           className={'app__collapse app__collapse--gradient' + (this.state.isOpen1 ? ' app__collapse--active' : '')}
         >
           <div className="app__content">
@@ -52,7 +52,7 @@ class App extends React.Component {
         <Collapse
           isOpen={this.state.isOpen2}
           className={'app__collapse app__collapse--gradient ' + (this.state.isOpen2 ? 'app__collapse--active' : '')}
-          transition="max-height 800ms cubic-bezier(0.4, 0, 0.2, 1)"
+          transition="height 800ms cubic-bezier(0.4, 0, 0.2, 1)"
           aria-hidden={this.state.isOpen2 ? 'false' : 'true'}
           elementType="article"
           render={collapseState => (

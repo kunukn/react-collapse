@@ -17,7 +17,7 @@
     display: block;
     position: relative;
     overflow: hidden;
-    transition: max-height 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: height 300ms cubic-bezier(0.4, 0, 0.2, 1);
 
     &--gradient {
       .app__content {
@@ -66,6 +66,7 @@
     box-shadow: 0 2px 4px #888;
     background-color: #fff;
     transition: background-color 300ms;
+
     &--active {
       background-color: #fafafa;
     }
@@ -95,6 +96,7 @@
   height: 1em;
   transition: transform 250ms ease-in-out;
   will-change: transform;
+
   &--expanded {
     transform: rotateZ(-179.99deg);
   }

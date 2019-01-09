@@ -15,7 +15,7 @@ Collapse component with css transition for elements with variable and dynamic he
 
 ```scss
 .collapse-css-transition {
-  transition: max-height 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: height 300ms cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
 }
 ```
@@ -82,7 +82,7 @@ You can specify a className with your desired style and animation. By default `c
 You can also specify a CSS transition in line by using the `transition` prop.
 
 ```js
-<Collapse transition="max-height 300ms cubic-bezier(.4, 0, .2, 1)">
+<Collapse transition="height 300ms cubic-bezier(.4, 0, .2, 1)">
   <p>Paragraph of text</p>
 </Collapse>
 ```
@@ -109,7 +109,7 @@ You can specify the collapse height in CSS unit to partially show some content.
 
 #### `onChange = collapseState => { /* your implementation */ }`: PropTypes.func
 
-Callback function for when your transition on `max-height` (specified in `className`) is started or finished. It can be used to trigger any function after transition is done. A collapse state is provided to your callback function.
+Callback function for when your transition on `height` (specified in `className`) is started or finished. It can be used to trigger any function after transition is done. A collapse state is provided to your callback function.
 
 ### ARIA and data attributes
 

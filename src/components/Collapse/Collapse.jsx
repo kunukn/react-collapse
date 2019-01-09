@@ -10,7 +10,7 @@ export default class Collapse extends React.Component {
   state = {
     collapse: this.props.isOpen ? EXPANDED : COLLAPSED,
     collapseStyle: {
-      maxHeight: this.props.collapseHeight || '0px',
+      height: this.props.collapseHeight || '0px',
       visibility: this.props.collapseHeight ? '' : 'hidden',
     },
   };
@@ -112,7 +112,7 @@ export default class Collapse extends React.Component {
   onTransitionEnd = ({ target, propertyName }) => {
     console.log('onTransitionEnd', this.state.collapse, propertyName);
 
-    if (target === this.content && propertyName === 'max-height') {
+    if (target === this.content && propertyName === 'height') {
       switch (this.state.collapse) {
         case EXPANDING:
           this.setState({ collapse: EXPANDED });
@@ -145,7 +145,7 @@ export default class Collapse extends React.Component {
     this.setState(
       {
         collapseStyle: {
-          maxHeight: this.getCollapseHeight(),
+          height: this.getCollapseHeight(),
           visibility: this.getCollapsedVisibility(),
         },
       },
@@ -158,11 +158,11 @@ export default class Collapse extends React.Component {
 
     if (!this.content) return;
 
-    const maxHeight = this.getHeight();
+    const height = this.getHeight();
 
     this.setState({
       collapseStyle: {
-        maxHeight,
+        height,
         visibility: '',
       },
     });
@@ -171,7 +171,7 @@ export default class Collapse extends React.Component {
       this.setState(
         {
           collapseStyle: {
-            maxHeight: this.getCollapseHeight(),
+            height: this.getCollapseHeight(),
             visibility: '',
           },
         },
@@ -185,12 +185,12 @@ export default class Collapse extends React.Component {
 
     nextFrame(() => {
       if (this.content) {
-        const maxHeight = this.getHeight();
+        const height = this.getHeight();
 
         this.setState(
           {
             collapseStyle: {
-              maxHeight,
+              height,
               visibility: '',
             },
           },
@@ -208,7 +208,7 @@ export default class Collapse extends React.Component {
     this.setState(
       {
         collapseStyle: {
-          maxHeight: '',
+          height: '',
           visibility: '',
         },
       },
