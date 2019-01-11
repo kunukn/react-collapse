@@ -8,7 +8,7 @@ class App extends React.Component {
     isOpen1: false,
     isOpen2: false,
     isOpen3: false,
-    spy3: { collapse: null, collapseStyle: { height: null, visibility: null }, transition: null },
+    spy3: {},
   };
 
   render() {
