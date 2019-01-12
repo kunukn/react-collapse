@@ -29,6 +29,7 @@ module.exports = (env = {}, argv = {}) => {
         isProd &&
           new UglifyJsPlugin({
             uglifyOptions: {
+              mangle: true,
               compress: {
                 drop_console: true,
               },
