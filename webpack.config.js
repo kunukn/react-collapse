@@ -164,14 +164,14 @@ module.exports = (env = {}, argv = {}) => {
       root: 'React',
       commonjs2: 'react',
       commonjs: 'react',
-      amd: 'react',
+      //amd: 'react',
       umd: 'react',
     };
     config.externals['react-dom'] = {
       root: 'ReactDOM',
       commonjs2: 'react-dom',
       commonjs: 'react-dom',
-      amd: 'react-dom',
+      //amd: 'react-dom',
       umd: 'react-dom',
     };
   }
