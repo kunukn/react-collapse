@@ -13,6 +13,7 @@ export default class Collapse extends React.Component {
       height: this.props.collapseHeight || '0px',
       visibility: this.props.collapseHeight ? '' : 'hidden',
     },
+    hasReversed: false,
   };
 
   render() {
@@ -66,10 +67,10 @@ export default class Collapse extends React.Component {
     const isOpen = state.collapseState === EXPANDED || state.collapseState === EXPANDING;
 
     if (!isOpen && props.isOpen) {
-      return { collapseState: EXPANDING };
+      return { collapseState: EXPANDING, hasReversed: state.collapseState === COLLAPSING };
     }
     if (isOpen && !props.isOpen) {
-      return { collapseState: COLLAPSING };
+      return { collapseState: COLLAPSING, hasReversed: state.collapseState === EXPANDING };
     }
 
     return null;
