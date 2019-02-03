@@ -10,8 +10,8 @@ export default class Collapse extends React.Component {
   state = {
     collapseState: this.props.isOpen ? EXPANDED : COLLAPSED,
     collapseStyle: {
-      height: this.props.collapseHeight || '0px',
-      visibility: this.props.collapseHeight ? '' : 'hidden',
+      height: getCollapseHeight(this.props),
+      visibility: getCollapseVisibility(this.props),
     },
     hasReversed: false,
   };
@@ -53,10 +53,7 @@ export default class Collapse extends React.Component {
     );
   }
 
-  getCollapseHeight = () => this.props.collapseHeight || '0px';
-
-  getCollapsedVisibility = () => (this.props.collapseHeight ? '' : 'hidden');
-
+  // Detect a new collapse state from props.isOpen change
   static getDerivedStateFromProps(props, state) {
     const isOpen = state.collapseState === EXPANDED || state.collapseState === EXPANDING;
 
@@ -92,10 +89,6 @@ export default class Collapse extends React.Component {
 
     console.log('componentDidUpdate - real work');
 
-    this.updateStyleStateFromCollapseState();
-  }
-
-  updateStyleStateFromCollapseState = () => {
     switch (this.state.collapseState) {
       case EXPANDING:
         this.setExpanding();
@@ -111,7 +104,7 @@ export default class Collapse extends React.Component {
         break;
       // no default
     }
-  };
+  }
 
   onTransitionEnd = ({ target, propertyName }) => {
     console.log('onTransitionEnd', this.state.collapseState, propertyName);
@@ -147,8 +140,8 @@ export default class Collapse extends React.Component {
     this.setState(
       {
         collapseStyle: {
-          height: this.getCollapseHeight(),
-          visibility: this.getCollapsedVisibility(),
+          height: getCollapseHeight(this.props),
+          visibility: getCollapseVisibility(this.props),
         },
       },
       () => this.onCallback(this.props.onChange)
@@ -173,7 +166,7 @@ export default class Collapse extends React.Component {
       this.setState(
         {
           collapseStyle: {
-            height: this.getCollapseHeight(),
+            height: getCollapseHeight(this.props),
             visibility: '',
           },
         },
@@ -219,19 +212,19 @@ export default class Collapse extends React.Component {
   };
 }
 
-/*
-function afterFrame(callback) {
-  // https://nolanlawson.com/2018/09/25/accurately-measuring-layout-on-the-web/
-  // https://github.com/andrewiggins/yield-to-browser
-  requestAnimationFrame(() => setTimeout(callback, 0));
-}
-*/
-
 function nextFrame(callback) {
-  // Ensure it is always visible on collapsing
+  // Ensure it is always visible on collapsing, afterFrame didn't work
   requestAnimationFrame(() => requestAnimationFrame(callback));
 }
 
 function isMoving(collapseState) {
   return collapseState === EXPANDING || collapseState === COLLAPSING;
+}
+
+function getCollapseHeight(props) {
+  return props.collapseHeight || '0px';
+}
+
+function getCollapseVisibility(props) {
+  return props.collapseHeight ? '' : 'hidden';
 }
