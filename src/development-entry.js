@@ -5,9 +5,6 @@ import 'components/Base/base.scss';
 
 import App from 'components/App/App';
 
-// import testES8 from './test-es8';
-//testES8();
-
 ReactDOM.render(
   <StrictMode>
     <App />

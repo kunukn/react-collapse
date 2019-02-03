@@ -34,12 +34,7 @@ export default class Collapse extends React.Component {
       ...this.state.collapseStyle,
     };
 
-    const getRender = () => {
-      if (typeof render === 'function') {
-        return render(this.state.collapseState);
-      }
-      return children;
-    };
+    const getRender = () => (typeof render === 'function' ? render(this.state.collapseState) : children);
 
     const ElementType = elementType || 'div';
     const collapseClassName = `${className || 'collapse-css-transition'} --is-${this.state.collapseState}`;
@@ -128,14 +123,14 @@ export default class Collapse extends React.Component {
 
   getHeight = () => `${this.content.scrollHeight}px`;
 
-  getOnChangeCallback = () =>
-    this.props.onChange
-      ? () =>
-          this.props.onChange({
-            ...this.state,
-            isMoving: isMoving(this.state.collapseState),
-          })
-      : () => {};
+  onChangeCallback = () => {
+    if (this.props.onChange) {
+      this.props.onChange({
+        ...this.state,
+        isMoving: isMoving(this.state.collapseState),
+      });
+    }
+  };
 
   setCollapsed = () => {
     console.log('setCollapsed');
@@ -149,7 +144,7 @@ export default class Collapse extends React.Component {
           visibility: this.getCollapsedVisibility(),
         },
       },
-      this.getOnChangeCallback()
+      this.onChangeCallback
     );
   };
 
@@ -175,7 +170,7 @@ export default class Collapse extends React.Component {
             visibility: '',
           },
         },
-        this.getOnChangeCallback()
+        this.onChangeCallback
       );
     });
   };
@@ -194,7 +189,7 @@ export default class Collapse extends React.Component {
               visibility: '',
             },
           },
-          this.getOnChangeCallback()
+          this.onChangeCallback
         );
       }
     });
@@ -212,7 +207,7 @@ export default class Collapse extends React.Component {
           visibility: '',
         },
       },
-      this.getOnChangeCallback()
+      this.onChangeCallback
     );
   };
 }

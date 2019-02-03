@@ -27,6 +27,7 @@ class App extends React.Component {
         </button>
         <Collapse
           isOpen={this.state.isOpen1}
+          onChange={data => console.log('onChange', data)}
           elementType="article"
           transition="height 280ms ease-in-out"
           className={'app__collapse app__collapse--gradient' + (this.state.isOpen1 ? ' app__collapse--active' : '')}
@@ -54,6 +55,7 @@ class App extends React.Component {
           className={'app__collapse app__collapse--gradient ' + (this.state.isOpen2 ? 'app__collapse--active' : '')}
           transition="height 800ms cubic-bezier(0.4, 0, 0.2, 1)"
           aria-hidden={this.state.isOpen2 ? 'false' : 'true'}
+          onChange={data => console.log('onChange', data)}
           elementType="article"
           render={collapseState => (
             <React.Fragment>
