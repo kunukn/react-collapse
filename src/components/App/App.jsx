@@ -85,6 +85,7 @@ class App extends React.Component {
           isOpen={this.state.isOpen3}
           collapseHeight="60px"
           className={'app__collapse app__collapse--gradient ' + (this.state.isOpen3 ? 'app__collapse--active' : '')}
+          onInit={state => this.setState({ spy3: state })}
           onChange={state => this.setState({ spy3: state })}
           render={collapseState => (
             <div className="app__content">
