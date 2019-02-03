@@ -108,9 +108,13 @@ You can specify the collapse height in CSS unit to partially show some content.
 </Collapse>
 ```
 
-#### `onChange = ({ collapseState, isMoving, collapseStyle }) => { /* your implementation */ }`: PropTypes.func
+#### `onChange = ({ collapseState, isMoving, hasReversed, collapseStyle }) => { /* your implementation */ }`: PropTypes.func
 
 Callback function for when your transition on `height` (specified in `className`) is started or finished. It can be used to trigger any function after transition is done. Component state is provided to your callback function.
+
+#### `onInit = ({ collapseState, collapseStyle }) => { /* your implementation */ }`: PropTypes.func
+
+Callback function for when the component has mounted.
 
 ### ARIA and data attributes
 
