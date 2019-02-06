@@ -7,7 +7,7 @@ import App from 'components/App/App';
 
 ReactDOM.render(
   <StrictMode>
-    <App />
+    <App hooksVersion />
   </StrictMode>,
   document.getElementById('root')
 );

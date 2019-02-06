@@ -1,215 +1,200 @@
 import './collapse.scss';
-import React from 'react';
+import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 
 const COLLAPSED = 'collapsed';
 const COLLAPSING = 'collapsing';
 const EXPANDING = 'expanding';
 const EXPANDED = 'expanded';
 
-export default class Collapse extends React.Component {
-  state = {
-    collapseState: this.props.isOpen ? EXPANDED : COLLAPSED,
-    collapseStyle: {
-      height: getCollapseHeight(this.props),
-      visibility: getCollapseVisibility(this.props),
-    },
-    hasReversed: false,
-  };
+export default function Collapse(props) {
+  const {
+    className,
+    children,
+    transition,
+    render,
+    elementType,
+    collapseHeight, // exclude from attrs
+    onInit, // exclude from attrs
+    onChange, // exclude from attrs
+    isOpen, // exclude from attrs
+    ...attrs
+  } = props;
 
-  render() {
-    const {
-      className,
-      children,
-      transition,
-      render,
-      elementType,
-      collapseHeight, // exclude from attrs
-      onInit, // exclude from attrs
-      onChange, // exclude from attrs
-      isOpen, // exclude from attrs
-      ...attrs
-    } = this.props;
+  const contentRef = useRef(null);
+  const [collapseState, setCollapseState] = useState(props.isOpen ? EXPANDED : COLLAPSED);
+  const [collapseStyle, setCollapseStyle] = useState({
+    height: props.collapseHeight || '0px',
+    visibility: props.collapseHeight ? '' : 'hidden',
+  });
+  const [hasReversed, setHasReversed] = useState(false);
 
-    const style = {
-      transition,
-      ...this.state.collapseStyle,
-    };
+  useEffect(function didMount() {
+    console.log('componentDidMount');
 
-    const ElementType = elementType || 'div';
-    const collapseClassName = `${className || 'collapse-css-transition'} --is-${this.state.collapseState}`;
+    if (collapseState === EXPANDED) setExpanded();
 
-    return (
-      <ElementType
-        ref={element => {
-          this.content = element;
-        }}
-        style={style}
-        className={collapseClassName}
-        onTransitionEnd={this.onTransitionEnd}
-        {...attrs}
-      >
-        {typeof render === 'function' ? render(this.state.collapseState) : children}
-      </ElementType>
-    );
-  }
+    onCallback(props.onInit);
+  }, []);
 
-  // Detect a new collapse state from props.isOpen change
-  static getDerivedStateFromProps(props, state) {
-    const isOpen = state.collapseState === EXPANDED || state.collapseState === EXPANDING;
+  useLayoutEffect(
+    function didUpdate() {
+      console.log('componentDidUpdate');
 
-    if (!isOpen && props.isOpen) {
-      return {
-        hasReversed: state.collapseState === COLLAPSING,
-        collapseState: EXPANDING,
-      };
-    }
-    if (isOpen && !props.isOpen) {
-      return {
-        hasReversed: state.collapseState === EXPANDING,
-        collapseState: COLLAPSING,
-      };
-    }
+      if (!contentRef.current) return;
 
-    return null;
-  }
+      console.log('componentDidUpdate - real work');
 
-  componentDidMount() {
-    if (this.state.collapseState === EXPANDED) {
-      this.setExpanded();
-    }
-    this.onCallback(this.props.onInit);
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    console.log('componentDidUpdate');
-
-    if (!this.content) return;
-
-    if (this.state.collapseState === prevState.collapseState) return;
-
-    console.log('componentDidUpdate - real work');
-
-    switch (this.state.collapseState) {
-      case EXPANDING:
-        this.setExpanding();
-        break;
-      case COLLAPSING:
-        this.setCollapsing();
-        break;
-      case EXPANDED:
-        this.setExpanded();
-        break;
-      case COLLAPSED:
-        this.setCollapsed();
-        break;
-      // no default
-    }
-  }
-
-  onTransitionEnd = ({ target, propertyName }) => {
-    console.log('onTransitionEnd', this.state.collapseState, propertyName);
-
-    if (target === this.content && propertyName === 'height') {
-      switch (this.state.collapseState) {
+      switch (collapseState) {
         case EXPANDING:
-          this.setState({ collapseState: EXPANDED });
+          setExpanding();
           break;
         case COLLAPSING:
-          this.setState({ collapseState: COLLAPSED });
+          setCollapsing();
+          break;
+        case EXPANDED:
+          setExpanded();
+          break;
+        case COLLAPSED:
+          setCollapsed();
+          break;
+        // no default
+      }
+    },
+    [collapseState]
+  );
+
+  function onCallback(callback) {
+    console.log('onCallback');
+
+    callback &&
+      callback({
+        collapseState,
+        collapseStyle,
+        hasReversed,
+        isMoving: isMoving(collapseState),
+      });
+  }
+
+  function getCollapseHeight() {
+    return (props && props.collapseHeight) || '0px';
+  }
+
+  function getCollapsedVisibility() {
+    return props.collapseHeight ? '' : 'hidden';
+  }
+
+  function setCollapsed() {
+    console.log('setCollapsed');
+
+    if (!contentRef.current) return;
+
+    setCollapseStyle({
+      height: getCollapseHeight(),
+      visibility: getCollapsedVisibility(),
+    });
+    onCallback(props.onChange);
+  }
+
+  function setCollapsing() {
+    console.log('setCollapsing');
+
+    if (!contentRef.current) return;
+
+    const height = getContentHeight(); // capture height before setting it to async setState method
+
+    setCollapseStyle({
+      height,
+      visibility: '',
+    });
+
+    nextFrame(() => {
+      setCollapseStyle({
+        height: getCollapseHeight(),
+        visibility: '',
+      });
+      onCallback(props.onChange);
+    });
+  }
+
+  function setExpanding() {
+    console.log('setExpanding');
+
+    nextFrame(() => {
+      if (contentRef.current) {
+        const height = getContentHeight(); // capture height before setting it to async setState method
+
+        setCollapseStyle({
+          height,
+          visibility: '',
+        });
+        onCallback(props.onChange);
+      }
+    });
+  }
+
+  function setExpanded() {
+    console.log('setExpanded');
+
+    if (!contentRef.current) return;
+
+    setCollapseStyle({
+      height: '',
+      visibility: '',
+    });
+    onCallback(props.onChange);
+  }
+
+  function getContentHeight() {
+    return `${contentRef.current.scrollHeight}px`;
+  }
+
+  function onTransitionEnd({ target, propertyName }) {
+    console.log('onTransitionEnd', collapseState, propertyName);
+
+    if (target === contentRef.current && propertyName === 'height') {
+      switch (collapseState) {
+        case EXPANDING:
+          setCollapseState(EXPANDED);
+          break;
+        case COLLAPSING:
+          setCollapseState(COLLAPSED);
           break;
         // no default
       }
     }
+  }
+
+  // getDerivedStateFromProps
+  let didOpen = collapseState === EXPANDED || collapseState === EXPANDING;
+
+  if (!didOpen && props.isOpen) {
+    setHasReversed(collapseState === COLLAPSING);
+    setCollapseState(EXPANDING);
+  }
+  if (didOpen && !props.isOpen) {
+    setHasReversed(collapseState === EXPANDING);
+    setCollapseState(COLLAPSING);
+  }
+  // END getDerivedStateFromProps
+
+  const style = {
+    transition,
+    ...collapseStyle,
   };
+  const ElementType = elementType || 'div';
+  const collapseClassName = `${className || 'collapse-css-transition'} --is-${collapseState}`;
 
-  getHeight = () => `${this.content.scrollHeight}px`;
-
-  onCallback = callback => {
-    callback &&
-      callback({
-        ...this.state,
-        isMoving: isMoving(this.state.collapseState),
-      });
-  };
-
-  setCollapsed = () => {
-    console.log('setCollapsed');
-
-    if (!this.content) return;
-
-    this.setState(
-      {
-        collapseStyle: {
-          height: getCollapseHeight(this.props),
-          visibility: getCollapseVisibility(this.props),
-        },
-      },
-      () => this.onCallback(this.props.onChange)
-    );
-  };
-
-  setCollapsing = () => {
-    console.log('setCollapsing');
-
-    if (!this.content) return;
-
-    const height = this.getHeight();
-
-    this.setState({
-      collapseStyle: {
-        height,
-        visibility: '',
-      },
-    });
-
-    nextFrame(() => {
-      this.setState(
-        {
-          collapseStyle: {
-            height: getCollapseHeight(this.props),
-            visibility: '',
-          },
-        },
-        () => this.onCallback(this.props.onChange)
-      );
-    });
-  };
-
-  setExpanding = () => {
-    console.log('setExpanding');
-
-    nextFrame(() => {
-      if (this.content) {
-        const height = this.getHeight();
-
-        this.setState(
-          {
-            collapseStyle: {
-              height,
-              visibility: '',
-            },
-          },
-          () => this.onCallback(this.props.onChange)
-        );
-      }
-    });
-  };
-
-  setExpanded = () => {
-    console.log('setExpanded');
-
-    if (!this.content) return;
-
-    this.setState(
-      {
-        collapseStyle: {
-          height: '',
-          visibility: '',
-        },
-      },
-      () => this.onCallback(this.props.onChange)
-    );
-  };
+  return (
+    <ElementType
+      ref={contentRef}
+      style={style}
+      className={collapseClassName}
+      onTransitionEnd={onTransitionEnd}
+      {...attrs}
+    >
+      {typeof render === 'function' ? render(collapseState) : children}
+    </ElementType>
+  );
 }
 
 function nextFrame(callback) {
@@ -219,12 +204,4 @@ function nextFrame(callback) {
 
 function isMoving(collapseState) {
   return collapseState === EXPANDING || collapseState === COLLAPSING;
-}
-
-function getCollapseHeight(props) {
-  return props.collapseHeight || '0px';
-}
-
-function getCollapseVisibility(props) {
-  return props.collapseHeight ? '' : 'hidden';
 }

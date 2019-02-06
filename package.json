@@ -1,6 +1,6 @@
 {
   "name": "@kunukn/react-collapse",
-  "version": "1.0.3",
+  "version": "1.0.3-hooks",
   "description": "Collapse library based on css transition for React",
   "main": "dist/Collapse.js",
   "module": "dist/Collapse.es.js",
@@ -189,7 +189,7 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "react": "^16.3 || ^17.x",
-    "react-dom": "^16.3 || ^17.x"
+    "react": "^16.8 || ^17.x",
+    "react-dom": "^16.8 || ^17.x"
   }
 }

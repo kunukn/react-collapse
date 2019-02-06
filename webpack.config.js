@@ -18,7 +18,7 @@ module.exports = (env = {}, argv = {}) => {
 
   console.log('***', isProd ? 'prod' : 'dev', '***');
 
-  let prodEntry = './src/components/Collapse/Collapse.jsx';
+  let prodEntry = './src/components/Collapse/Collapse.hooks.jsx';
   let devEntry = './src/development-entry';
 
   let config = {
