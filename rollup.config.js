@@ -14,6 +14,7 @@ export default {
   external: ['react', 'react-dom'],
 
   input: 'src/components/Collapse/Collapse.jsx',
+  // input: 'src/production-entry.js',
   output: [
     1 && {
       file: pkg.main,
