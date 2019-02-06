@@ -13,7 +13,7 @@ import pkg from './package.json';
 export default {
   external: ['react', 'react-dom'],
 
-  input: 'src/lib/index.js',
+  input: 'src/components/Collapse/Collapse.jsx',
   output: [
     1 && {
       file: pkg.main,
@@ -28,7 +28,7 @@ export default {
     1 && {
       file: pkg.iife,
       format: 'iife',
-      name: 'Library',
+      name: 'Collapse',
       sourcemap: true,
       globals: {
         react: 'React',
@@ -38,7 +38,7 @@ export default {
     1 && {
       file: pkg.umd,
       format: 'umd',
-      name: 'Library',
+      name: 'Collapse',
       sourcemap: true,
       globals: {
         react: 'React',
