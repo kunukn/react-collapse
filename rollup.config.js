@@ -25,7 +25,7 @@ export default {
       format: 'es',
       sourcemap: true,
     },
-    1 && {
+    2 && {
       file: pkg.iife,
       format: 'iife',
       name: 'Collapse',
@@ -35,7 +35,7 @@ export default {
         'react-dom': 'ReactDOM',
       },
     },
-    1 && {
+    3 && {
       file: pkg.umd,
       format: 'umd',
       name: 'Collapse',
@@ -51,7 +51,7 @@ export default {
     postcss({
       plugins: [],
       minimize: true,
-      sourceMap: 'inline',
+      //sourceMap: 'inline',
     }),
     external({
       includeDependencies: false,
@@ -69,9 +69,7 @@ export default {
       ],
       exclude: 'node_modules/**',
     }),
-    commonjs({
-      include: 'node_modules/**',
-    }),
+    commonjs(),
     terser(),
   ],
 };
