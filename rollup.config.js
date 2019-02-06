@@ -13,7 +13,7 @@ import pkg from './package.json';
 export default {
   external: ['react', 'react-dom'],
 
-  input: 'src/components/Collapse/Collapse.jsx',
+  input: 'src/components/Collapse/Collapse.hooks.jsx',
   // input: 'src/production-entry.js',
   output: [
     1 && {
@@ -63,10 +63,10 @@ export default {
     babel({
       plugins: [
         '@babel/plugin-proposal-object-rest-spread',
-        '@babel/plugin-proposal-optional-chaining',
-        '@babel/plugin-syntax-dynamic-import',
+        //'@babel/plugin-proposal-optional-chaining',
+        //'@babel/plugin-syntax-dynamic-import',
         '@babel/plugin-proposal-class-properties',
-        'transform-react-remove-prop-types',
+        //'transform-react-remove-prop-types',
       ],
       exclude: 'node_modules/**',
     }),
