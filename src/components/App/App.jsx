@@ -7,11 +7,15 @@ class App extends React.Component {
     isOpen1: false,
     isOpen2: false,
     isOpen3: false,
+    isOpen4: false,
     spy3: {},
   };
 
   render() {
     let C = this.props.Collapse;
+    let C2 = this.props.Collapse2 ? this.props.Collapse2 : C;
+    let C3 = this.props.Collapse3 ? this.props.Collapse3 : C;
+    let C4 = this.props.Collapse4 ? this.props.Collapse4 : C;
 
     return (
       <div className="app">
@@ -51,7 +55,7 @@ class App extends React.Component {
           toggle
         </button>
 
-        <C
+        <C2
           isOpen={this.state.isOpen2}
           className={'app__collapse app__collapse--gradient ' + (this.state.isOpen2 ? 'app__collapse--active' : '')}
           transition="height 800ms cubic-bezier(0.4, 0, 0.2, 1)"
@@ -82,7 +86,7 @@ class App extends React.Component {
         </button>
 
         <pre style={{ fontSize: '10px', width: '100%' }}>{JSON.stringify(this.state.spy3, null, 1)}</pre>
-        <C
+        <C3
           isOpen={this.state.isOpen3}
           collapseHeight="60px"
           className={'app__collapse app__collapse--gradient ' + (this.state.isOpen3 ? 'app__collapse--active' : '')}
@@ -93,7 +97,27 @@ class App extends React.Component {
               <div>{collapseState}</div>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
               dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-              ea commodo consequat. <a href="#">dummy link</a>
+              ea commodo consequat. <a href="/">dummy link</a>
+            </div>
+          )}
+        />
+
+        <button
+          className={cx('app__toggle', { 'app__toggle--active': this.state.isOpen4 })}
+          onClick={() => this.toggle(4)}
+        >
+          toggle
+        </button>
+
+        <C4
+          isOpen={this.state.isOpen4}
+          className={'app__collapse app__collapse--gradient ' + (this.state.isOpen4 ? 'app__collapse--active' : '')}
+          render={collapseState => (
+            <div className="app__content">
+              <div>{collapseState}</div>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo consequat. <a href="/">dummy link</a>
             </div>
           )}
         />

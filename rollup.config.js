@@ -9,12 +9,13 @@ import svgr from '@svgr/rollup';
 import { terser } from 'rollup-plugin-terser';
 
 import pkg from './package.json';
+let input = 'src/components/Collapse/Collapse.jsx'; // React 16.3+
+//let input = 'src/components/Collapse/Collapse.hooks.jsx'; // React 16.8+
 
 export default {
   external: ['react', 'react-dom'],
 
-  input: 'src/components/Collapse/Collapse.jsx',
-  //input: 'src/components/Collapse/Collapse.hooks.jsx',
+  input,
 
   output: [
     1 && {

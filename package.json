@@ -1,6 +1,6 @@
 {
   "name": "@kunukn/react-collapse",
-  "version": "1.0.3-hooks",
+  "version": "1.0.4",
   "description": "Collapse library based on css transition for React",
   "main": "dist/Collapse.js",
   "module": "dist/Collapse.es.js",
@@ -13,15 +13,13 @@
   },
   "scripts": {
     "clean": "rimraf dist/**",
-    "dev": "npm-run-all -p -r start storybook",
-    "start": "webpack-dev-server --color --mode development --env.HELLO=1",
+    "start": "webpack-dev-server --color --mode development",
     "validate": "webpack-dev-server --color --mode development --env.VALIDATE=1",
-    "build": "webpack --mode production",
-    "rebuild-node-sass": "npm rebuild node-sass",
-    "test": "jest",
-    "rdev": "npm-run-all -p -r rbuild:watch storybook",
-    "rbuild": "npm run clean && rollup -c",
-    "rbuild:watch": "rollup -c -w",
+    "build": "npm run clean && rollup -c",
+    "build:watch": "rollup -c -w",
+    "dev": "npm-run-all -p -r build:watch storybook",
+    "webpack-dev": "npm-run-all -p -r start storybook",
+    "webpack-build": "webpack --mode production",
     "source-map": "source-map-explorer dist/Collapse.js",
     "sm": "yarn source-map",
     "storybook": "start-storybook -p 6006",
@@ -32,7 +30,9 @@
     "view-storybook": "browser-sync .out -w --port 4445",
     "deploy-storybook": "storybook-to-ghpages",
     "deploy-storybook-from-out": "npm run deploy-storybook -- --existing-output-dir=.out",
-    "build-deploy-storybook": "npm run build-storybook-to-out && npm run deploy-storybook-from-out"
+    "build-deploy-storybook": "npm run build-storybook-to-out && npm run deploy-storybook-from-out",
+    "test": "jest",
+    "rebuild-node-sass": "npm rebuild node-sass"
   },
   "repository": {
     "type": "git",
@@ -189,7 +189,7 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "react": "^16.8 || ^17.x",
-    "react-dom": "^16.8 || ^17.x"
+    "react": "^16.3 || ^17.x",
+    "react-dom": "^16.3 || ^17.x"
   }
 }

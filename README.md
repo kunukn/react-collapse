@@ -1,6 +1,6 @@
 # react-collapse
 
-Collapse component with css transition for elements with variable and dynamic height.
+Collapse component with CSS transition for elements with variable and dynamic height.
 
 # Demo
 
@@ -12,7 +12,7 @@ Collapse component with css transition for elements with variable and dynamic he
 
 # CSS required
 
-:warning: ️You need to specify the transition property or add a class selector with style (transition) in your own stylesheet to add animation. You can copy the smashing example below
+:warning: ️You need to specify the transition property or add a class selector with style (transition) in your own stylesheet to add animation. Here is an example.
 
 ```scss
 .collapse-css-transition {
@@ -21,7 +21,15 @@ Collapse component with css transition for elements with variable and dynamic he
 }
 ```
 
-## Installation
+## Installation for React 16.3+
+
+`npm i -S @kunukn/react-collapse@^1`
+
+or
+
+`yarn add @kunukn/react-collapse@^1`
+
+## Installation for React 16.8+
 
 `npm i -S @kunukn/react-collapse`
 
@@ -32,7 +40,7 @@ or
 ```js
 import Collapse from '@kunukn/react-collapse';
 // or with require syntax
-const Collapse = require('@kunukn/react-collapse').default;
+const Collapse = require('@kunukn/react-collapse');
 
 <Collapse isOpen={true || false}>
   <div>Random content</div>
@@ -50,7 +58,7 @@ Expands or collapses content.
 One or multiple children with static, variable or dynamic height.
 
 ```js
-<Collapse isOpen>
+<Collapse isOpen={false || true}>
   <p>Paragraph of text</p>
   <p>Another paragraph is also OK</p>
   <p>Images and any other content are ok too</p>
@@ -62,10 +70,10 @@ or
 
 ```js
 <Collapse
-  isOpen
+  isOpen={ false || true }
   render={collapseState => (
-    <div className="item " + collapseState>
-      <p>this is the collapse state: {collapseState}</p>
+    <div className="using-collapse-state-to-add-css-class " + collapseState>
+      <p>I know the collapse state: {collapseState}</p>
       <p>Another paragraph is also OK</p>
       <p>Images and any other content are ok too</p>
       <img src="cutecat.gif" />
@@ -90,7 +98,7 @@ You can also specify a CSS transition in line by using the `transition` prop.
 
 #### `elementType`: PropType.string
 
-You can specify the element type for the collapse component. By default the element type is a div element.
+You can specify the HTML element type for the collapse component. By default the element type is a div element.
 
 ```js
 <Collapse elementType="article">
@@ -110,7 +118,7 @@ You can specify the collapse height in CSS unit to partially show some content.
 
 #### `onChange = ({ collapseState, isMoving, hasReversed, collapseStyle }) => { /* your implementation */ }`: PropTypes.func
 
-Callback function for when your transition on `height` (specified in `className`) is started or finished. It can be used to trigger any function after transition is done. Component state is provided to your callback function.
+Callback function for when your transition on `height` (specified in `className`) is started or finished. It can be used to trigger any function after transition is done.
 
 #### `onInit = ({ collapseState, collapseStyle }) => { /* your implementation */ }`: PropTypes.func
 
@@ -128,7 +136,9 @@ Callback function for when the component has mounted.
 
 ## Development and testing
 
-To run example covering all features, use `npm run storybook` or `yarn storybook`.
+To run development
+
+`npm start` or `yarn start`
 
 ```bash
 git clone [repo]
@@ -148,6 +158,8 @@ yarn start
 open http://localhost:6007
 ```
 
+To run example covering all features, use `npm run storybook` or `yarn storybook`.
+
 # CDN
 
 https://unpkg.com/@kunukn/react-collapse/
@@ -157,7 +169,7 @@ https://unpkg.com/@kunukn/react-collapse/
 <script src="https://unpkg.com/@kunukn/react-collapse"></script>
 
 <script>
-  var Collapse = window.Collapse.default;
+  var Collapse = window.Collapse;
 </script>
 ```
 
@@ -167,14 +179,21 @@ IE11 + Modern browsers
 
 # Supported React versions
 
-React version 16.3+
+- React version 16.3+ : use Collapse version 1
+- React version 16.8+ : use Collapse version 2+
 
-# Used React life-cycles
+# Used React 16.3 life-cycles
 
 - render // uses the style states to invoke CSS transition
 - componentDidMount // initial expanded or collapsed state
 - getDerivedStateFromProps // detect if isOpen props has changed and apply a new collapse state
 - componentDidUpdate // update style states from the four possible collapse states
+
+# Used React 16.8 life-cycles
+
+- render
+- useState
+- useEffect
 
 # Design goals
 
