@@ -19,7 +19,7 @@ export default {
 
   output: [
     1 && {
-      file: pkg.main,
+      file: pkg.cjs,
       format: 'cjs',
       sourcemap: true,
     },
@@ -39,7 +39,7 @@ export default {
       },
     },
     1 && {
-      file: pkg.umd,
+      file: pkg.main,
       format: 'umd',
       name: 'Collapse',
       sourcemap: true,

@@ -166,7 +166,7 @@ https://unpkg.com/@kunukn/react-collapse/
 
 ```html
 <link rel="stylesheet" href="https://unpkg.com/@kunukn/react-collapse/dist/Collapse.css" />
-<script src="https://unpkg.com/@kunukn/react-collapse@2.0.0/dist/Collapse.umd.js"></script>
+<script src="https://unpkg.com/@kunukn/react-collapse/dist/Collapse.js"></script>
 
 <script>
   var Collapse = window.Collapse;

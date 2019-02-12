@@ -5,16 +5,13 @@ import 'components/Base/base.scss';
 
 import App from 'components/App/App';
 import Collapse from 'root/dist/Collapse.js';
-import CollapseUmd from 'root/dist/Collapse.umd.js';
+import CollapseCjs from 'root/dist/Collapse.cjs.js';
 let RequireCollapse = require('root/dist/Collapse.js');
-let RequireCollapseUmd = require('root/dist/Collapse.umd.js');
-
-console.log(Collapse);
-console.log(CollapseUmd);
+let RequireCollapseCjs = require('root/dist/Collapse.cjs.js');
 
 ReactDOM.render(
   <StrictMode>
-    <App Collapse={Collapse} Collapse2={CollapseUmd} Collapse3={RequireCollapse} Collapse4={RequireCollapseUmd} />
+    <App Collapse={Collapse} Collapse2={CollapseCjs} Collapse3={RequireCollapse} Collapse4={RequireCollapseCjs} />
   </StrictMode>,
   document.getElementById('root')
 );
