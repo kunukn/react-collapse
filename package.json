@@ -14,7 +14,8 @@
   "scripts": {
     "clean": "rimraf dist/**",
     "dev": "npm-run-all -p -r start storybook",
-    "start": "webpack-dev-server --color --mode development --http",
+    "start": "webpack-dev-server --color --mode development --env.HELLO=1",
+    "validate": "webpack-dev-server --color --mode development --env.VALIDATE=1",
     "build": "webpack --mode production",
     "rebuild-node-sass": "npm rebuild node-sass",
     "test": "jest",
@@ -150,7 +151,6 @@
     "stylelint-config-prettier": "^4.0.0",
     "stylelint-config-recommended-scss": "^3.2.0",
     "stylelint-scss": "^3.5.3",
-    "uglify-js": "^3.4.9",
     "uglifyjs-webpack-plugin": "^2.1.1",
     "url-loader": "^1.1.2",
     "webpack": "^4.29.3",

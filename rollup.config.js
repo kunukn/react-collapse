@@ -13,8 +13,9 @@ import pkg from './package.json';
 export default {
   external: ['react', 'react-dom'],
 
-  input: 'src/components/Collapse/Collapse.hooks.jsx',
-  // input: 'src/production-entry.js',
+  input: 'src/components/Collapse/Collapse.jsx',
+  //input: 'src/components/Collapse/Collapse.hooks.jsx',
+
   output: [
     1 && {
       file: pkg.main,

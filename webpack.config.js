@@ -14,16 +14,34 @@ const webpack = require('webpack');
 // const IsWebpackDevServer = /webpack-dev-server/.test(process.env.npm_lifecycle_script);
 
 module.exports = (env = {}, argv = {}) => {
-  const isProd = argv.mode === 'production';
+  //console.log('***', 'env', env, 'argv', argv, '***');
 
-  console.log('***', isProd ? 'prod' : 'dev', '***');
+  const PRODUCTION = 'production';
+  const DEVELOPMENT = 'development';
+  const VALIDATE = 'validate';
+  const types = { PRODUCTION, DEVELOPMENT, VALIDATE };
 
-  let prodEntry = './src/components/Collapse/Collapse.hooks.jsx';
-  let devEntry = './src/development-entry';
+  const entries = {
+    [PRODUCTION]: './src/components/Collapse/Collapse.hooks.jsx',
+    [DEVELOPMENT]: './src/development-entry',
+    [VALIDATE]: './src/validate-entry',
+  };
+
+  let type;
+  if (env.VALIDATE) {
+    type = VALIDATE;
+  } else {
+    type = argv.mode === PRODUCTION ? PRODUCTION : DEVELOPMENT;
+  }
+
+  const isProd = argv.mode === PRODUCTION;
+  let entry = entries[type];
+
+  console.log('***', type, entry, '***');
 
   let config = {
     devtool: isProd ? 'source-map' : 'cheap-module-source-map',
-    mode: isProd ? 'production' : 'development',
+    mode: isProd ? PRODUCTION : DEVELOPMENT,
     optimization: {
       minimizer: [
         isProd &&
@@ -51,7 +69,7 @@ module.exports = (env = {}, argv = {}) => {
       ].filter(Boolean),
     },
     entry: {
-      Collapse: isProd ? [prodEntry] : [devEntry],
+      Collapse: entry,
     },
     output: {
       path: path.resolve(__dirname, 'dist'),

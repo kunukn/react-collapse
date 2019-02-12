@@ -1,7 +1,5 @@
 import './app.scss';
 import React from 'react';
-import Collapse from 'components/Collapse/Collapse';
-import CollapseHooks from 'components/Collapse/Collapse.hooks';
 import cx from 'classnames';
 
 class App extends React.Component {
@@ -13,7 +11,7 @@ class App extends React.Component {
   };
 
   render() {
-    let C = this.props.hooksVersion ? CollapseHooks : Collapse;
+    let C = this.props.Collapse;
 
     return (
       <div className="app">
@@ -101,7 +99,7 @@ class App extends React.Component {
         />
 
         <p className="app__text">
-          Some content below <a href="#">dummy link</a>
+          Some content below <a href="/">dummy link</a>
         </p>
       </div>
     );
