@@ -2,6 +2,9 @@
 
 Collapse component with CSS transition for elements with variable and dynamic height.
 
+[![npm version](https://img.shields.io/npm/v/@kunukn/react-collapse.svg?style=flat-square)](https://www.npmjs.com/package/@kunukn/react-collapse)
+[![npm downloads](https://img.shields.io/npm/dm/@kunukn/react-collapse.svg?style=flat-square)](https://www.npmjs.com/package/@kunukn/react-collapse)
+
 # Demo
 
 - <a href="https://codepen.io/kunukn/debug/ebMryW" target="_blank">simple - codepen</a>
