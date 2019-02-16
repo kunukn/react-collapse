@@ -9,8 +9,10 @@ import svgr from '@svgr/rollup';
 import { terser } from 'rollup-plugin-terser';
 
 import pkg from './package.json';
-//let input = 'src/components/Collapse/Collapse.jsx'; // React 16.3+
-let input = 'src/components/Collapse/Collapse.hooks.jsx'; // React 16.8+
+
+//leconstt input = 'src/components/Collapse/Collapse.jsx'; // React 16.3+
+const input = 'src/components/Collapse/Collapse.hooks.jsx'; // React 16.8+
+const name = 'ReactCollapse';
 
 export default {
   external: ['react', 'react-dom'],
@@ -28,10 +30,10 @@ export default {
       format: 'es',
       sourcemap: true,
     },
-    1 && {
+    0 && {
       file: pkg.iife,
       format: 'iife',
-      name: 'Collapse',
+      name: name,
       sourcemap: true,
       globals: {
         react: 'React',
@@ -41,7 +43,7 @@ export default {
     1 && {
       file: pkg.main,
       format: 'umd',
-      name: 'Collapse',
+      name: name,
       sourcemap: true,
       globals: {
         react: 'React',
