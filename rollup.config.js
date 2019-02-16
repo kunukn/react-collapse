@@ -12,7 +12,7 @@ import pkg from './package.json';
 
 //leconstt input = 'src/components/Collapse/Collapse.jsx'; // React 16.3+
 const input = 'src/components/Collapse/Collapse.hooks.jsx'; // React 16.8+
-const name = 'ReactCollapse';
+const name = 'Collapse';
 
 export default {
   external: ['react', 'react-dom'],
