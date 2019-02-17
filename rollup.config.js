@@ -1,3 +1,4 @@
+import includePaths from 'rollup-plugin-includepaths';
 import babel from 'rollup-plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
 import external from 'rollup-plugin-peer-deps-external';
@@ -10,9 +11,16 @@ import { terser } from 'rollup-plugin-terser';
 
 import pkg from './package.json';
 
-//leconstt input = 'src/components/Collapse/Collapse.jsx'; // React 16.3+
-const input = 'src/components/Collapse/Collapse.hooks.jsx'; // React 16.8+
+//const input = 'components/Collapse/Collapse.jsx'; // React 16.3+
+const input = 'components/Collapse/Collapse.hooks.jsx'; // React 16.8+
 const name = 'Collapse';
+
+let includePathOptions = {
+  include: {},
+  paths: ['./', 'src'],
+  external: [],
+  extensions: ['.js', '.jsx', '.scss', '.json', '.html'],
+};
 
 export default {
   external: ['react', 'react-dom'],
@@ -20,7 +28,7 @@ export default {
   input,
 
   output: [
-    1 && {
+    0 && {
       file: pkg.cjs,
       format: 'cjs',
       sourcemap: true,
@@ -52,6 +60,7 @@ export default {
     },
   ].filter(Boolean),
   plugins: [
+    includePaths(includePathOptions),
     scss(),
     postcss({
       plugins: [],
