@@ -1,14 +1,12 @@
 module.exports = {
-  "settings": {
-    "import/resolver": {
-      "webpack": {
-        "config": "webpack.config.js"
+  settings: {
+    'import/resolver': {
+      webpack: {
+        config: 'webpack.config.js'
       }
     }
   },
-  extends: [
-    'react-app', 'plugin:jsx-a11y/recommended', 'prettier', 'prettier/react'
-  ],
+  extends: ['react-app', 'plugin:jsx-a11y/recommended', 'prettier', 'prettier/react'],
   parser: 'babel-eslint',
   parserOptions: {
     ecmaVersion: 8,
@@ -24,16 +22,17 @@ module.exports = {
     node: true
   },
   rules: {
+    'react-hooks/rules-of-hooks': 'error',
     'no-unused-vars': [
-      1, {
+      1,
+      {
         argsIgnorePattern: 'res|next|^err'
       }
     ],
-    'arrow-body-style': [
-      2, 'as-needed'
-    ],
+    'arrow-body-style': [2, 'as-needed'],
     'no-param-reassign': [
-      2, {
+      2,
+      {
         props: false
       }
     ],
@@ -51,33 +50,30 @@ module.exports = {
     'react/forbid-prop-types': 0,
     'react/no-unescaped-entities': 0,
     'react/jsx-filename-extension': [
-      1, {
+      1,
+      {
         extensions: ['.js', '.jsx']
       }
     ],
     radix: 0,
     'no-shadow': [
-      2, {
+      2,
+      {
         hoist: 'all',
-        allow: [
-          'resolve',
-          'reject',
-          'done',
-          'next',
-          'err',
-          'error'
-        ]
+        allow: ['resolve', 'reject', 'done', 'next', 'err', 'error']
       }
     ],
     quotes: [
       2,
-      'single', {
+      'single',
+      {
         avoidEscape: true,
         allowTemplateLiterals: true
       }
     ],
     'prettier/prettier': [
-      'error', {
+      'error',
+      {
         trailingComma: 'es5',
         singleQuote: true,
         printWidth: 120,
@@ -85,21 +81,23 @@ module.exports = {
         useTabs: false
       }
     ],
-    "jsx-a11y/label-has-for": [
-      2, {
-        "components": ["Label"],
-        "required": {
-          "some": ["nesting", "id"]
+    'jsx-a11y/label-has-for': [
+      2,
+      {
+        components: ['Label'],
+        required: {
+          some: ['nesting', 'id']
         },
-        "allowChildren": false
+        allowChildren: false
       }
     ],
     'jsx-a11y/href-no-hash': 'off',
     'jsx-a11y/anchor-is-valid': [
-      'warn', {
+      'warn',
+      {
         aspects: ['invalidHref']
       }
     ]
   },
-  plugins: ['prettier']
+  plugins: ['react-hooks', 'prettier']
 };

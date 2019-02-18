@@ -9,7 +9,7 @@ import CollapseHooks from 'components/Collapse/Collapse.hooks';
 
 ReactDOM.render(
   <StrictMode>
-    <App Collapse={Collapse} />
+    <App Collapse={CollapseHooks} />
   </StrictMode>,
   document.getElementById('root')
 );
