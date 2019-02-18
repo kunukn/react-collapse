@@ -84,6 +84,8 @@ export default {
       exclude: 'node_modules/**',
     }),
     commonjs(),
-    terser(),
+    terser({
+      compress: { drop_console: true },
+    }),
   ],
 };
