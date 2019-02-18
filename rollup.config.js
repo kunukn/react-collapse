@@ -28,19 +28,9 @@ export default {
   input,
 
   output: [
-    0 && {
-      file: pkg.cjs,
-      format: 'cjs',
-      sourcemap: true,
-    },
     1 && {
-      file: pkg.module,
-      format: 'es',
-      sourcemap: true,
-    },
-    0 && {
-      file: pkg.iife,
-      format: 'iife',
+      file: pkg.main,
+      format: 'umd',
       name: name,
       sourcemap: true,
       globals: {
@@ -48,9 +38,19 @@ export default {
         'react-dom': 'ReactDOM',
       },
     },
-    1 && {
-      file: pkg.main,
-      format: 'umd',
+    0 && {
+      file: pkg.cjs,
+      format: 'cjs',
+      sourcemap: true,
+    },
+    0 && {
+      file: pkg.module,
+      format: 'es',
+      sourcemap: true,
+    },
+    0 && {
+      file: pkg.iife,
+      format: 'iife',
       name: name,
       sourcemap: true,
       globals: {
