@@ -13,11 +13,11 @@ export default function Collapse(props) {
     transition,
     render,
     elementType,
+    layoutEffect,
     collapseHeight, // exclude from attrs
     onInit, // exclude from attrs
     onChange, // exclude from attrs
     isOpen, // exclude from attrs
-    layoutEffect, // exclude from attrs
     ...attrs
   } = props;
 
