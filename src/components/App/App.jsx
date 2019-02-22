@@ -1,5 +1,5 @@
 import './app.scss';
-import React from 'react';
+import React, { Fragment } from 'react';
 import cx from 'classnames';
 
 class App extends React.Component {
@@ -63,18 +63,16 @@ class App extends React.Component {
           onChange={data => console.log('onChange', data)}
           elementType="article"
           render={collapseState => (
-            <React.Fragment>
-              <div className="app__content">
-                <div>{collapseState}</div>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat.
-                <img className="image" alt="random" src="https://source.unsplash.com/user/erondu/500x200" />
-                <button onClick={() => this.toggle(2)} className="app__button">
-                  close
-                </button>
-              </div>
-            </React.Fragment>
+            <div className="app__content">
+              <div>{collapseState}</div>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo consequat.
+              <img className="image" alt="random" src="https://source.unsplash.com/user/erondu/500x200" />
+              <button onClick={() => this.toggle(2)} className="app__button">
+                close
+              </button>
+            </div>
           )}
         />
 

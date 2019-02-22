@@ -1,5 +1,5 @@
 import './collapse.scss';
-import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
 
 const COLLAPSED = 'collapsed';
 const COLLAPSING = 'collapsing';
@@ -17,6 +17,7 @@ export default function Collapse(props) {
     onInit, // exclude from attrs
     onChange, // exclude from attrs
     isOpen, // exclude from attrs
+    layoutEffect, // exclude from attrs
     ...attrs
   } = props;
 
@@ -36,7 +37,9 @@ export default function Collapse(props) {
     onCallback(props.onInit);
   }, []);
 
-  useLayoutEffect(
+  let effect = layoutEffect ? useLayoutEffect : useEffect;
+
+  effect(
     function didUpdate() {
       console.log('componentDidUpdate');
 
