@@ -41,11 +41,9 @@ export default function Collapse(props) {
 
   effect(
     function didUpdate() {
-      console.log('componentDidUpdate');
-
       if (!contentRef.current) return;
 
-      console.log('componentDidUpdate - real work');
+      console.log('hooks componentDidUpdate');
 
       switch (collapseState) {
         case EXPANDING:

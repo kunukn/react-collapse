@@ -105,7 +105,7 @@ You can also specify a CSS transition in line by using the `transition` prop.
 
 #### `elementType`: PropType.string
 
-You can specify the HTML element type for the collapse component. By default the element type is a div element.
+You can specify the HTML element type for the collapse component. By default the element type is a `div` element.
 
 ```js
 <Collapse elementType="article">
