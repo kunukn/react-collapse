@@ -116,6 +116,33 @@ module.exports = (env = {}, argv = {}) => {
           },
         },
         {
+          test: /\.css$/,
+          exclude: /node_modules/,
+          include: path.join(__dirname, 'src'),
+          use: [
+            {
+              loader: isProd ? MiniCssExtractPlugin.loader : 'style-loader',
+              options: isProd
+                ? {
+                    publicPath: './',
+                  }
+                : {},
+            },
+            {
+              loader: 'css-loader',
+              options: {
+                sourceMap: true,
+              },
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                sourceMap: true,
+              },
+            },
+          ],
+        },
+        {
           test: /\.scss$/,
           exclude: /node_modules/,
           include: path.join(__dirname, 'src'),

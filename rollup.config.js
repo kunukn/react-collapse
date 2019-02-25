@@ -19,7 +19,7 @@ let includePathOptions = {
   include: {},
   paths: ['./', 'src'],
   external: [],
-  extensions: ['.js', '.jsx', '.scss', '.json', '.html'],
+  extensions: ['.js', '.jsx', '.css', '.scss', '.json', '.html'],
 };
 
 export default {
@@ -61,8 +61,9 @@ export default {
   ].filter(Boolean),
   plugins: [
     includePaths(includePathOptions),
-    scss(),
+    //scss(),
     postcss({
+      extract: true,
       plugins: [],
       minimize: true,
       //sourceMap: 'inline',

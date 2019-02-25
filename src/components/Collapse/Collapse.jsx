@@ -1,4 +1,4 @@
-import './collapse.scss';
+import './collapse.css';
 import React from 'react';
 
 const COLLAPSED = 'collapsed';

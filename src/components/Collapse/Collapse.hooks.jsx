@@ -1,4 +1,4 @@
-import './collapse.scss';
+import './collapse.css';
 import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
 
 const COLLAPSED = 'collapsed';
