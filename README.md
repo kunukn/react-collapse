@@ -36,7 +36,7 @@ or
 
 ## Installation for React 16.8+
 
-(about 4kb)
+(about 3.4kb)
 
 `npm i -S @kunukn/react-collapse`
 
