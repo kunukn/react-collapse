@@ -14,18 +14,18 @@ export default function Collapse(props) {
     render,
     elementType,
     layoutEffect,
-    collapseHeight, // exclude from attrs
-    onInit, // exclude from attrs
-    onChange, // exclude from attrs
-    isOpen, // exclude from attrs
+    isOpen,
+    collapseHeight,
+    onInit,
+    onChange,
     ...attrs
   } = props;
 
   const contentRef = useRef(null);
-  const [collapseState, setCollapseState] = useState(props.isOpen ? EXPANDED : COLLAPSED);
+  const [collapseState, setCollapseState] = useState(isOpen ? EXPANDED : COLLAPSED);
   const [collapseStyle, setCollapseStyle] = useState({
-    height: props.collapseHeight || '0px',
-    visibility: props.collapseHeight ? '' : 'hidden',
+    height: collapseHeight || '0px',
+    visibility: collapseHeight ? '' : 'hidden',
   });
   const [hasReversed, setHasReversed] = useState(false);
 
@@ -34,7 +34,7 @@ export default function Collapse(props) {
 
     if (collapseState === EXPANDED) setExpanded();
 
-    onCallback(props.onInit);
+    onCallback(onInit);
   }, []);
 
   let effect = layoutEffect ? useLayoutEffect : useEffect;
@@ -79,11 +79,11 @@ export default function Collapse(props) {
   }
 
   function getCollapseHeight() {
-    return (props && props.collapseHeight) || '0px';
+    return collapseHeight || '0px';
   }
 
   function getCollapsedVisibility() {
-    return props.collapseHeight ? '' : 'hidden';
+    return collapseHeight ? '' : 'hidden';
   }
 
   function setCollapsed() {
@@ -95,7 +95,7 @@ export default function Collapse(props) {
       height: getCollapseHeight(),
       visibility: getCollapsedVisibility(),
     });
-    onCallback(props.onChange);
+    onCallback(onChange);
   }
 
   function setCollapsing() {
@@ -115,7 +115,7 @@ export default function Collapse(props) {
         height: getCollapseHeight(),
         visibility: '',
       });
-      onCallback(props.onChange);
+      onCallback(onChange);
     });
   }
 
@@ -130,7 +130,7 @@ export default function Collapse(props) {
           height,
           visibility: '',
         });
-        onCallback(props.onChange);
+        onCallback(onChange);
       }
     });
   }
@@ -144,7 +144,7 @@ export default function Collapse(props) {
       height: '',
       visibility: '',
     });
-    onCallback(props.onChange);
+    onCallback(onChange);
   }
 
   function getContentHeight() {
@@ -170,11 +170,11 @@ export default function Collapse(props) {
   // getDerivedStateFromProps
   let didOpen = collapseState === EXPANDED || collapseState === EXPANDING;
 
-  if (!didOpen && props.isOpen) {
+  if (!didOpen && isOpen) {
     setHasReversed(collapseState === COLLAPSING);
     setCollapseState(EXPANDING);
   }
-  if (didOpen && !props.isOpen) {
+  if (didOpen && !isOpen) {
     setHasReversed(collapseState === EXPANDING);
     setCollapseState(COLLAPSING);
   }
