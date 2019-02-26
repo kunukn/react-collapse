@@ -167,6 +167,10 @@ open http://localhost:6007
 
 To run example covering all features, use `npm run storybook` or `yarn storybook`.
 
+- To develop and play around: `yarn start`
+- To build the bundle: `yarn build`
+- To validate the bundle: `yarn validate`
+
 # CDN
 
 https://unpkg.com/@kunukn/react-collapse/
