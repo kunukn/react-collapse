@@ -23,7 +23,7 @@ export default function Collapse({
   const [collapseState, setCollapseState] = useState(isOpen ? EXPANDED : COLLAPSED);
   const [collapseStyle, setCollapseStyle] = useState({
     height: collapseHeight || '0px',
-    visibility: collapseHeight ? '' : 'hidden'
+    visibility: collapseHeight ? '' : 'hidden',
   });
   const [hasReversed, setHasReversed] = useState(false);
 
@@ -72,7 +72,7 @@ export default function Collapse({
         collapseState,
         collapseStyle,
         hasReversed,
-        isMoving: isMoving(collapseState)
+        isMoving: isMoving(collapseState),
       });
   }
 
@@ -91,7 +91,7 @@ export default function Collapse({
 
     setCollapseStyle({
       height: getCollapseHeight(),
-      visibility: getCollapsedVisibility()
+      visibility: getCollapsedVisibility(),
     });
     onCallback(onChange);
   }
@@ -105,13 +105,13 @@ export default function Collapse({
 
     setCollapseStyle({
       height,
-      visibility: ''
+      visibility: '',
     });
 
     nextFrame(() => {
       setCollapseStyle({
         height: getCollapseHeight(),
-        visibility: ''
+        visibility: '',
       });
       onCallback(onChange);
     });
@@ -126,7 +126,7 @@ export default function Collapse({
 
         setCollapseStyle({
           height,
-          visibility: ''
+          visibility: '',
         });
         onCallback(onChange);
       }
@@ -140,7 +140,7 @@ export default function Collapse({
 
     setCollapseStyle({
       height: '',
-      visibility: ''
+      visibility: '',
     });
     onCallback(onChange);
   }
@@ -180,7 +180,7 @@ export default function Collapse({
 
   const style = {
     transition,
-    ...collapseStyle
+    ...collapseStyle,
   };
   const ElementType = elementType || 'div';
   const collapseClassName = `${className || 'collapse-css-transition'} --is-${collapseState}`;
