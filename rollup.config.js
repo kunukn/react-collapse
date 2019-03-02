@@ -10,6 +10,7 @@ import svgr from '@svgr/rollup';
 import { terser } from 'rollup-plugin-terser';
 
 import pkg from './package.json';
+import sizes from './rollup-plugins/sizes-plugin';
 
 //const input = 'components/Collapse/Collapse.jsx'; // React 16.3+
 const input = 'components/Collapse/Collapse.hooks.jsx'; // React 16.8+
@@ -87,6 +88,12 @@ export default {
     commonjs(),
     terser({
       compress: { drop_console: true },
+    }),
+    sizes({
+      getSize: (size, gzip) => {
+        console.log('minified', size);
+        console.log('gzip minified', gzip);
+      },
     }),
   ],
 };
