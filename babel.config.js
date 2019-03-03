@@ -5,7 +5,7 @@ module.exports = {
       {
         modules: false,
         // targets: {
-        //   node: '6.5' /* ES2016 */,
+        //   node: '6.5' /* ES2016 compilation target */,
         // },
       },
     ],
