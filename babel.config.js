@@ -11,6 +11,7 @@ module.exports = {
     ],
     '@babel/preset-react',
   ],
+  ignore: ['third_party'],
   plugins: [
     '@babel/plugin-proposal-object-rest-spread',
     //'@babel/plugin-proposal-optional-chaining',
