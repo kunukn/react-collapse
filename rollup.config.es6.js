@@ -29,10 +29,20 @@ export default {
   input,
 
   output: [
-    1 && {
+    0 && {
       file: pkg.main,
       format: 'umd',
-      name,
+      name: name,
+      sourcemap: true,
+      globals: {
+        react: 'React',
+        'react-dom': 'ReactDOM',
+      },
+    },
+    1 && {
+      file: pkg['main-es6'],
+      format: 'umd',
+      name: name,
       sourcemap: true,
       globals: {
         react: 'React',
@@ -44,7 +54,7 @@ export default {
       format: 'cjs',
       sourcemap: true,
     },
-    1 && {
+    0 && {
       file: pkg.module,
       format: 'es',
       sourcemap: true,
@@ -52,7 +62,7 @@ export default {
     0 && {
       file: pkg.iife,
       format: 'iife',
-      name,
+      name: name,
       sourcemap: true,
       globals: {
         react: 'React',
@@ -65,7 +75,7 @@ export default {
     //scss(),
     postcss({
       inject: false,
-      extract: false, // skip creating file
+      extract: true, // create css file
       plugins: [],
       minimize: true,
       //sourceMap: 'inline',
@@ -73,13 +83,24 @@ export default {
     external({
       includeDependencies: false,
     }),
-    url({}),
+    url(),
     //svgr(),
     resolve(),
     babel({
-      babelrc: true,
-      presets: [],
-      plugins: [],
+      babelrc: false,
+      presets: [
+        [
+          '@babel/preset-env',
+          {
+            modules: false,
+            targets: {
+              node: '6.5' /* ES2016 compilation target */,
+            },
+          },
+        ],
+        '@babel/preset-react',
+      ],
+      plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/plugin-proposal-class-properties'],
       exclude: 'node_modules/**',
     }),
     commonjs(),
