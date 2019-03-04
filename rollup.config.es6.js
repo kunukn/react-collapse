@@ -113,5 +113,5 @@ export default {
         console.log('gzip minified', gzip);
       },
     }),
-  ],
+  ].filter(Boolean),
 };
