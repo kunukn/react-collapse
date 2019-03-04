@@ -176,7 +176,7 @@ To run example covering all features, use `npm run storybook` or `yarn storybook
 https://unpkg.com/@kunukn/react-collapse/
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/@kunukn/react-collapse/dist/Collapse.css" />
+<link rel="stylesheet" href="https://unpkg.com/@kunukn/react-collapse/dist/Collapse.es6.css" />
 <script src="https://unpkg.com/@kunukn/react-collapse/dist/Collapse.js"></script>
 
 <script>
@@ -217,6 +217,6 @@ IE11 + Modern browsers
 - minimal in file size
 - availability - from cdn or npm install
 
-# This was created with heavily inspiration from
+# This was created with heavy inspiration from
 
 [https://github.com/SparebankenVest/react-css-collapse](https://github.com/SparebankenVest/react-css-collapse) 🎆
