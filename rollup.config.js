@@ -44,7 +44,7 @@ export default {
       format: 'cjs',
       sourcemap: true,
     },
-    0 && {
+    1 && {
       file: pkg.module,
       format: 'es',
       sourcemap: true,
@@ -90,8 +90,8 @@ export default {
       compress: { drop_console: true },
     }),
     sizes({
-      getSize: (size, gzip) => {
-        console.log('minified', size);
+      getSize: (size, gzip, filename) => {
+        console.log('minified', size, filename);
         console.log('gzip minified', gzip);
       },
     }),
