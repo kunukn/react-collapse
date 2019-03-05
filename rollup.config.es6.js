@@ -3,10 +3,8 @@ import babel from 'rollup-plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
 import external from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
-import scss from 'rollup-plugin-scss';
 import resolve from 'rollup-plugin-node-resolve';
 import url from 'rollup-plugin-url';
-import svgr from '@svgr/rollup';
 import { terser } from 'rollup-plugin-terser';
 
 import pkg from './package.json';
@@ -72,7 +70,6 @@ export default {
   ].filter(Boolean),
   plugins: [
     includePaths(includePathOptions),
-    //scss(),
     postcss({
       inject: false,
       extract: true, // create css file
@@ -84,7 +81,6 @@ export default {
       includeDependencies: false,
     }),
     url(),
-    //svgr(),
     resolve(),
     babel({
       babelrc: false,
