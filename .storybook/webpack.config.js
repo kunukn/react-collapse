@@ -13,9 +13,9 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const log = console.log;
 const root = path.resolve(__dirname, '../');
 
-module.exports = (baseConfig, env, defaultConfig) => {
+module.exports = ({config, mode}) => {
   // Extend defaultConfig as you need.
-  defaultConfig
+  config
     .module
     .rules
     .push({
@@ -40,7 +40,7 @@ module.exports = (baseConfig, env, defaultConfig) => {
       ]
     });
 
-  defaultConfig
+    config
     .module
     .rules
     .push({
@@ -57,13 +57,13 @@ module.exports = (baseConfig, env, defaultConfig) => {
       ]
     });
 
-  defaultConfig
+    config
     .resolve
     .extensions
     .push('.scss');
-  defaultConfig.resolve.alias.root = root;
-  defaultConfig.resolve.alias.src = path.resolve(root, 'src');
-  defaultConfig.resolve.alias.components = path.resolve(root, 'src/components');
+    config.resolve.alias.root = root;
+    config.resolve.alias.src = path.resolve(root, 'src');
+    config.resolve.alias.components = path.resolve(root, 'src/components');
 
-  return defaultConfig;
+  return config;
 };

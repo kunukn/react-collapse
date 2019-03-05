@@ -78,8 +78,6 @@ export default {
     resolve(),
     babel({
       babelrc: true,
-      presets: [],
-      plugins: [],
       exclude: 'node_modules/**',
     }),
     commonjs(),
