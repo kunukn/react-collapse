@@ -6,9 +6,12 @@ export default function sizes(options) {
     generateBundle(outputOptions, bundle, isWrite) {
       Object.keys(bundle).forEach(id => {
         const chunk = bundle[id];
-        const size = Buffer.byteLength(chunk.code);
-        const gzipSize = gzip.sync(chunk.code);
-        options.getSize(size, gzipSize, chunk.fileName);
+
+        if (chunk && chunk.code) {
+          const size = Buffer.byteLength(chunk.code);
+          const gzipSize = gzip.sync(chunk.code);
+          options.getSize(size, gzipSize, chunk.fileName);
+        }
       });
     },
   };
