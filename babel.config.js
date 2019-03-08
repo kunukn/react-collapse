@@ -4,9 +4,6 @@ module.exports = {
       '@babel/preset-env',
       {
         modules: false,
-        // targets: {
-        //   node: '6.5' /* ES2016 compilation target */,
-        // },
       },
     ],
     '@babel/preset-react',
@@ -14,11 +11,7 @@ module.exports = {
   ignore: ['third_party'],
   plugins: [
     '@babel/plugin-proposal-object-rest-spread',
-    //'@babel/plugin-proposal-optional-chaining',
-    //'@babel/plugin-syntax-dynamic-import',
     '@babel/plugin-proposal-class-properties',
-    //'@babel/plugin-transform-runtime',
-    //'@babel/plugin-transform-destructuring',
     [
       'module-resolver',
       {
