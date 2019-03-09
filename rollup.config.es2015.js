@@ -38,7 +38,7 @@ export default {
       },
     },
     1 && {
-      file: pkg['main-es6'],
+      file: pkg['main-es2015'],
       format: 'umd',
       name: name,
       sourcemap: true,
