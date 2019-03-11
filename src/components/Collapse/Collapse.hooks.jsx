@@ -1,10 +1,10 @@
 import './collapse.css';
 import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
 
-const COLLAPSED = 'collapsed';
-const COLLAPSING = 'collapsing';
-const EXPANDING = 'expanding';
-const EXPANDED = 'expanded';
+let COLLAPSED = 'collapsed';
+let COLLAPSING = 'collapsing';
+let EXPANDING = 'expanding';
+let EXPANDED = 'expanded';
 
 export default function Collapse({
   className,
@@ -19,14 +19,14 @@ export default function Collapse({
   onChange,
   ...attrs
 }) {
-  const contentRef = useRef(null);
-  const [collapseState, setCollapseState] = useState(isOpen ? EXPANDED : COLLAPSED);
-  const [collapseStyle, setCollapseStyle] = useState({
+  let contentRef = useRef(null);
+  let [collapseState, setCollapseState] = useState(isOpen ? EXPANDED : COLLAPSED);
+  let [collapseStyle, setCollapseStyle] = useState({
     height: isOpen ? null : collapseHeight || '0px',
     visibility: isOpen ? null : collapseHeight ? '' : 'hidden',
   });
-  const [hasReversed, setHasReversed] = useState(false);
-  const firstUpdate = useRef(true);
+  let [hasReversed, setHasReversed] = useState(false);
+  let firstUpdate = useRef(true);
 
   let effect = layoutEffect ? useLayoutEffect : useEffect;
   effect(
@@ -100,7 +100,7 @@ export default function Collapse({
 
     if (!contentRef.current) return;
 
-    const height = getContentHeight(); // capture height before setting it to async setState method
+    let height = getContentHeight(); // capture height before setting it to async setState method
 
     setCollapseStyle({
       height,
@@ -121,7 +121,7 @@ export default function Collapse({
 
     nextFrame(() => {
       if (contentRef.current) {
-        const height = getContentHeight(); // capture height before setting it to async setState method
+        let height = getContentHeight(); // capture height before setting it to async setState method
 
         setCollapseStyle({
           height,
@@ -177,12 +177,12 @@ export default function Collapse({
   }
   // END getDerivedStateFromProps
 
-  const style = {
+  let style = {
     transition,
     ...collapseStyle,
   };
-  const ElementType = elementType || 'div';
-  const collapseClassName = `${className || 'collapse-css-transition'} --is-${collapseState}`;
+  let ElementType = elementType || 'div';
+  let collapseClassName = `${className || 'collapse-css-transition'} --is-${collapseState}`;
 
   return (
     <ElementType
