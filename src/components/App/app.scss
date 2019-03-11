@@ -105,3 +105,18 @@
 .rotate90 {
   transform: rotateZ(90deg);
 }
+
+.image-wrapper {
+  position: relative;
+  max-width: 500px;
+  height: 0;
+  padding-bottom: 40%;
+  margin-bottom: 1rem;
+  background: #eee;
+
+  &__img {
+    object-fit: cover;
+    width: 100%;
+    position: absolute;
+  }
+}
