@@ -21,25 +21,30 @@ export default function Collapse({
 }) {
   const contentRef = useRef(null);
   const [collapseState, setCollapseState] = useState(isOpen ? EXPANDED : COLLAPSED);
+
+  let initialHeight = isOpen ? null : collapseHeight || '0px';
+  let initialVisibility = isOpen ? null : collapseHeight ? '' : 'hidden';
+
   const [collapseStyle, setCollapseStyle] = useState({
-    height: collapseHeight || '0px',
-    visibility: collapseHeight ? '' : 'hidden',
+    height: initialHeight,
+    visibility: initialVisibility,
   });
   const [hasReversed, setHasReversed] = useState(false);
+  const firstUpdate = useRef(true);
 
   let effect = layoutEffect ? useLayoutEffect : useEffect;
-
-  useEffect(function didMount() {
-    if (!contentRef.current) return;
-
-    console.log('effect after didMount DOM update');
-
-    onCallback(onInit);
-  }, []);
-
   effect(
     function didUpdate() {
       if (!contentRef.current) return;
+
+      if (firstUpdate.current) {
+        onCallback(onInit);
+
+        // Don't run effect on first render, the DOM styles are already correctly set
+        firstUpdate.current = false;
+        console.log('skip effect first render');
+        return;
+      }
 
       console.log('effect after didUpdate DOM update');
 
@@ -63,15 +68,15 @@ export default function Collapse({
   );
 
   function onCallback(callback) {
-    console.log('onCallback');
-
-    callback &&
+    if (callback) {
+      console.log('onCallback ' + callback.name);
       callback({
         collapseState,
         collapseStyle,
         hasReversed,
         isMoving: isMoving(collapseState),
       });
+    }
   }
 
   function getCollapseHeight() {

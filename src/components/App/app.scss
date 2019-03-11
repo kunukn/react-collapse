@@ -1,3 +1,32 @@
+.icon {
+  width: 1em;
+  height: 1em;
+  will-change: transform;
+
+  &--expanded {
+    transform: rotateZ(-179.99deg);
+  }
+}
+
+.rotate90 {
+  transform: rotateZ(90deg);
+}
+
+.image-wrapper {
+  position: relative;
+  max-width: 500px;
+  height: 0;
+  padding-bottom: 40%;
+  margin-bottom: 1rem;
+  background: #eee;
+
+  &__img {
+    object-fit: cover;
+    width: 100%;
+    position: absolute;
+  }
+}
+
 .app {
   margin: 0 auto;
   font-size: 1.6rem;
@@ -7,6 +36,12 @@
   align-items: center;
   max-width: 500px;
   padding: 3rem 1rem 1rem;
+
+  &--transition-enabled {
+    .icon {
+      transition: transform 250ms ease-in-out;
+    }
+  }
 
   &__text {
     width: 100%;
@@ -88,35 +123,5 @@
     max-width: 100%;
     height: auto;
     display: block;
-  }
-}
-
-.icon {
-  width: 1em;
-  height: 1em;
-  transition: transform 250ms ease-in-out;
-  will-change: transform;
-
-  &--expanded {
-    transform: rotateZ(-179.99deg);
-  }
-}
-
-.rotate90 {
-  transform: rotateZ(90deg);
-}
-
-.image-wrapper {
-  position: relative;
-  max-width: 500px;
-  height: 0;
-  padding-bottom: 40%;
-  margin-bottom: 1rem;
-  background: #eee;
-
-  &__img {
-    object-fit: cover;
-    width: 100%;
-    position: absolute;
   }
 }
