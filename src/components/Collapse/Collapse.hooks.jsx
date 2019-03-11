@@ -29,39 +29,36 @@ export default function Collapse({
   let firstUpdate = useRef(true);
 
   let effect = layoutEffect ? useLayoutEffect : useEffect;
-  effect(
-    function didUpdate() {
-      if (!contentRef.current) return;
+  effect(() => {
+    if (!contentRef.current) return;
 
-      if (firstUpdate.current) {
-        onCallback(onInit);
+    if (firstUpdate.current) {
+      onCallback(onInit);
 
-        // Don't run effect on first render, the DOM styles are already correctly set
-        firstUpdate.current = false;
-        console.log('skip effect first render');
-        return;
-      }
+      // Don't run effect on first render, the DOM styles are already correctly set
+      firstUpdate.current = false;
+      console.log('skip effect first render');
+      return;
+    }
 
-      console.log('effect after didUpdate DOM update');
+    console.log('effect after didUpdate DOM update');
 
-      switch (collapseState) {
-        case EXPANDING:
-          setExpanding();
-          break;
-        case COLLAPSING:
-          setCollapsing();
-          break;
-        case EXPANDED:
-          setExpanded();
-          break;
-        case COLLAPSED:
-          setCollapsed();
-          break;
-        // no default
-      }
-    },
-    [collapseState]
-  );
+    switch (collapseState) {
+      case EXPANDING:
+        setExpanding();
+        break;
+      case COLLAPSING:
+        setCollapsing();
+        break;
+      case EXPANDED:
+        setExpanded();
+        break;
+      case COLLAPSED:
+        setCollapsed();
+        break;
+      // no default
+    }
+  }, [collapseState]);
 
   function onCallback(callback) {
     if (callback) {
