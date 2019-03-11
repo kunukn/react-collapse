@@ -4,7 +4,7 @@ import cx from 'classnames';
 
 class App extends React.Component {
   state = {
-    isOpen1: false,
+    isOpen1: true,
     isOpen2: false,
     isOpen3: false,
     isOpen4: false,

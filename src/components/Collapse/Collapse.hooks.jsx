@@ -27,23 +27,21 @@ export default function Collapse({
   });
   const [hasReversed, setHasReversed] = useState(false);
 
+  let effect = layoutEffect ? useLayoutEffect : useEffect;
+
   useEffect(function didMount() {
     if (!contentRef.current) return;
 
-    console.log('hooks componentDidMount');
-
-    if (collapseState === EXPANDED) setExpanded();
+    console.log('effect after didMount DOM update');
 
     onCallback(onInit);
   }, []);
-
-  let effect = layoutEffect ? useLayoutEffect : useEffect;
 
   effect(
     function didUpdate() {
       if (!contentRef.current) return;
 
-      console.log('hooks componentDidUpdate');
+      console.log('effect after didUpdate DOM update');
 
       switch (collapseState) {
         case EXPANDING:
