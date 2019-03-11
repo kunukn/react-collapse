@@ -4,6 +4,9 @@ module.exports = {
       '@babel/preset-env',
       {
         modules: false,
+        // targets: {
+        //   node: '6.5', /* ES2015 */
+        // },
       },
     ],
     '@babel/preset-react',
