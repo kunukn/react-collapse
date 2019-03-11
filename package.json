@@ -1,6 +1,6 @@
 {
   "name": "@kunukn/react-collapse",
-  "version": "2.0.8",
+  "version": "2.0.9",
   "description": "Collapse library based on CSS transition for React",
   "main": "dist/Collapse.js",
   "main-es2015": "dist/Collapse.es2015.js",
@@ -14,8 +14,8 @@
   },
   "scripts": {
     "clean": "rimraf dist/**",
-    "start": "webpack-dev-server --color --mode development",
-    "validate": "webpack-dev-server --color --mode development --env.VALIDATE=1",
+    "start": "webpack-dev-server --color --mode development --env.PORT=6007",
+    "validate": "webpack-dev-server --color --mode development --env.VALIDATE=1 --env.PORT=6008",
     "build": "npm run clean && rollup -c rollup.config.js",
     "build-es2015": "rollup -c rollup.config.es2015.js",
     "build-all": "yarn build && yarn build-es2015",
