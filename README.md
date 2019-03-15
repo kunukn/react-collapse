@@ -89,6 +89,8 @@ or
 />
 ```
 
+There are four possible collapse states: `collapsed`, `collapsing`, `expanded`, `expanding`.
+
 #### `className`: PropType.string
 
 You can specify a className with your desired style and animation. By default `collapse-css-transition` will be added to the component.
@@ -125,7 +127,7 @@ You can specify the collapse height in CSS unit to partially show some content.
 
 #### `onChange = ({ collapseState, isMoving, hasReversed, collapseStyle }) => { /* your implementation */ }`: PropTypes.func
 
-Callback function for when your transition on `height` (specified in `className`) is started or finished. It can be used to trigger any function after transition is done.
+Callback function for when the transition changes.
 
 #### `onInit = ({ collapseState, collapseStyle }) => { /* your implementation */ }`: PropTypes.func
 
