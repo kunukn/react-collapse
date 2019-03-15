@@ -22,8 +22,8 @@ export default function Collapse({
   let contentRef = useRef(null);
   let [collapseState, setCollapseState] = useState(isOpen ? EXPANDED : COLLAPSED);
   let [collapseStyle, setCollapseStyle] = useState({
-    height: isOpen ? null : collapseHeight || '0px',
-    visibility: isOpen ? null : collapseHeight ? '' : 'hidden',
+    height: isOpen ? null : getCollapseHeight(),
+    visibility: isOpen ? null : getCollapsedVisibility(),
   });
   let [hasReversed, setHasReversed] = useState(false);
   let firstUpdate = useRef(true);
