@@ -10,6 +10,7 @@ module.exports = {
       },
     ],
     '@babel/preset-react',
+    '@babel/preset-flow',
   ],
   ignore: ['third_party'],
   plugins: [
