@@ -217,6 +217,7 @@ IE11 + Modern browsers
 - interruptible - can be reversed during movement
 - inert - when collapsed you should tab over the collapsed component
 - availability - from cdn or npm install
+- Collapsible on height only
 
 # This was created with heavy inspiration from
 
