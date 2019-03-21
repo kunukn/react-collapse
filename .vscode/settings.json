@@ -1,9 +1,12 @@
 {
+  "workbench.colorCustomizations": {
+    "titleBar.activeForeground": "#06b7a1",
+    "titleBar.activeBackground": "#111"
+  },
   "editor.formatOnSave": true,
   "[javascript]": {
     "editor.formatOnSave": false
   },
-  "stylelint.enable": true,
   "eslint.autoFixOnSave": true,
   "eslint.alwaysShowStatus": true
 }

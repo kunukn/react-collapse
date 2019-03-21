@@ -38,10 +38,8 @@ or
 
 (about 3.4kb, gzipped 1.5kb)
 
-`npm i -S @kunukn/react-collapse`
-
-or
-
+`npm i -S @kunukn/react-collapse`<br>
+_or_<br>
 `yarn add @kunukn/react-collapse`
 
 ```js
@@ -60,12 +58,16 @@ const Collapse = require('@kunukn/react-collapse');
 
 Expands or collapses content.
 
-#### `children`: PropTypes.node or `render`: PropTypes.func
+#### `children`: PropTypes.node
+
+#### `render`: PropTypes.func
+
+Renders content
 
 One or multiple children with static, variable or dynamic height.
 
 ```js
-<Collapse isOpen={false || true}>
+<Collapse isOpen={true || false}>
   <p>Paragraph of text</p>
   <p>Another paragraph is also OK</p>
   <p>Images and any other content are ok too</p>
@@ -77,7 +79,7 @@ or
 
 ```js
 <Collapse
-  isOpen={ false || true }
+  isOpen={ true || false }
   render={collapseState => (
     <div className="using-collapse-state-to-add-css-class " + collapseState>
       <p>I know the collapse state: {collapseState}</p>
@@ -125,20 +127,30 @@ You can specify the collapse height in CSS unit to partially show some content.
 </Collapse>
 ```
 
-#### `onChange = ({ collapseState, isMoving, hasReversed, collapseStyle }) => { /* your implementation */ }`: PropTypes.func
+#### `onChange` : PropTypes.func
 
 Callback function for when the transition changes.
 
-#### `onInit = ({ collapseState, collapseStyle }) => { /* your implementation */ }`: PropTypes.func
+```jsx
+let myCallback = ({ collapseState, isMoving, hasReversed, collapseStyle }) => {
+  /* your implementation */
+};
 
-Callback function for when the component has mounted.
+<Collapse onChange={myCallback} isOpen={true || false}>
+  <p>A long paragraph of text inside an article element</p>
+</Collapse>;
+```
+
+#### `onInit` : PropTypes.func
+
+Similar to onChange but only invoked on mount.
 
 ### ARIA and data attributes
 
 `Collapse` transfers `aria-` and `data-` attributes to the component's rendered DOM element. For example this can be used to set the `aria-hidden` attribute:
 
 ```js
-<Collapse isOpen={isOpenState} aria-hidden={isOpenState ? 'false' : 'true'}>
+<Collapse aria-hidden={isOpenState ? 'false' : 'true'} isOpen={isOpenState}>
   <p>Paragraph of text</p>
 </Collapse>
 ```
