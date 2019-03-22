@@ -33,12 +33,7 @@ module.exports = (env = {}, argv = {}) => {
     type = argv.mode === PRODUCTION ? PRODUCTION : DEVELOPMENT;
   }
 
-  let port;
-  if (env.PORT) {
-    port = env.PORT;
-  } else {
-    port = 5555;
-  }
+  let port = env.PORT ? env.PORT : 5555;
 
   const isProd = argv.mode === PRODUCTION;
   let entry = entries[type];
