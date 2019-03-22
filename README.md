@@ -26,7 +26,7 @@ Collapse component with CSS transition for elements with variable and dynamic he
 
 ## Installation for React 16.3+
 
-(about 5.2kb, gzipped 1.9kb)
+(UMD minified 5.2kb, gzipped 1.9kb)
 
 `npm i -S @kunukn/react-collapse@^1`
 
@@ -36,7 +36,7 @@ or
 
 ## Installation for React 16.8+
 
-(about 3.4kb, gzipped 1.5kb)
+(UMD minified 3.4kb, gzipped 1.5kb)
 
 `npm i -S @kunukn/react-collapse`<br>
 _or_<br>
