@@ -83,7 +83,7 @@ export default {
     url(),
     resolve(),
     babel({
-      babelrc: false,
+      babelrc: true,
       presets: [
         [
           '@babel/preset-env',
@@ -96,8 +96,6 @@ export default {
         ],
         '@babel/preset-react',
       ],
-      plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/plugin-proposal-class-properties'],
-      exclude: 'node_modules/**',
     }),
     commonjs(),
     terser({
