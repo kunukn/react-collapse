@@ -38,6 +38,8 @@ or
 
 (UMD minified 3.4kb, gzipped 1.5kb)
 
+(UMD ES2015 minified 2.9kb, gzipped 1.3kb)
+
 `npm i -S @kunukn/react-collapse`<br>
 _or_<br>
 `yarn add @kunukn/react-collapse`

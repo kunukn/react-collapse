@@ -8,6 +8,7 @@ import resolve from 'rollup-plugin-node-resolve';
 import url from 'rollup-plugin-url';
 //import svgr from '@svgr/rollup';
 import { terser } from 'rollup-plugin-terser';
+import strip from 'rollup-plugin-strip';
 
 import pkg from './package.json';
 import sizes from './rollup-plugins/sizes-plugin';
@@ -20,7 +21,7 @@ let includePathOptions = {
   include: {},
   paths: ['./', 'src'],
   external: [],
-  extensions: ['.js', '.jsx', '.css', '.scss', '.json', '.html'],
+  extensions: ['.js', '.jsx', '.css', '.scss', '.json', '.html']
 };
 
 let isEs5 = process.env.ES5 === 'true';
@@ -34,25 +35,25 @@ export default {
   input,
 
   output: [
-    isEs5 && {
-      file: pkg.main,
+    (isEs5 || isEs6) && {
+      file: isEs5 ? pkg.main : pkg['main-es2015'],
       format: 'umd',
       name,
       sourcemap: true,
       globals: {
         react: 'React',
-        'react-dom': 'ReactDOM',
-      },
+        'react-dom': 'ReactDOM'
+      }
     },
     0 && {
       file: pkg.cjs,
       format: 'cjs',
-      sourcemap: true,
+      sourcemap: true
     },
-    isEs6 && {
+    0 && {
       file: pkg.module,
       format: 'es',
-      sourcemap: true,
+      sourcemap: true
     },
     0 && {
       file: pkg.iife,
@@ -61,9 +62,9 @@ export default {
       sourcemap: true,
       globals: {
         react: 'React',
-        'react-dom': 'ReactDOM',
-      },
-    },
+        'react-dom': 'ReactDOM'
+      }
+    }
   ].filter(Boolean),
   plugins: [
     includePaths(includePathOptions),
@@ -72,11 +73,17 @@ export default {
       inject: false,
       extract: false, // skip creating file
       plugins: [],
-      minimize: true,
+      minimize: true
       //sourceMap: 'inline',
     }),
     external({
-      includeDependencies: false,
+      includeDependencies: false
+    }),
+
+    strip({
+      debugger: true,
+      functions: ['console.log', 'debug.trace'],
+      sourceMap: true
     }),
     url({}),
     //svgr(),
@@ -94,17 +101,17 @@ export default {
           }
         ]
       ].filter(Boolean),
-      exclude: 'node_modules/**',
+      exclude: 'node_modules/**'
     }),
     commonjs(),
     terser({
-      compress: { drop_console: true },
+      compress: { drop_console: true }
     }),
     sizes({
       getSize: (size, gzip, filename) => {
         console.log('minified', size, filename);
         console.log('gzip minified', gzip);
-      },
-    }),
-  ].filter(Boolean),
+      }
+    })
+  ].filter(Boolean)
 };
