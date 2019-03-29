@@ -23,13 +23,18 @@ let includePathOptions = {
   extensions: ['.js', '.jsx', '.css', '.scss', '.json', '.html'],
 };
 
+let isEs5 = process.env.ES5 === 'true';
+let isEs6 = process.env.ES6 === 'true';
+console.log('*** isEs5', isEs5, '***');
+console.log('*** isEs6', isEs6, '***');
+
 export default {
   external: ['react', 'react-dom'],
 
   input,
 
   output: [
-    1 && {
+    isEs5 && {
       file: pkg.main,
       format: 'umd',
       name,
@@ -44,7 +49,7 @@ export default {
       format: 'cjs',
       sourcemap: true,
     },
-    1 && {
+    isEs6 && {
       file: pkg.module,
       format: 'es',
       sourcemap: true,
@@ -78,6 +83,17 @@ export default {
     resolve(),
     babel({
       babelrc: true,
+      presets: [
+        isEs6 && [
+          '@babel/preset-env',
+          {
+            modules: false,
+            targets: {
+              node: '6.5' /* ES2016 compilation target */
+            }
+          }
+        ]
+      ].filter(Boolean),
       exclude: 'node_modules/**',
     }),
     commonjs(),
