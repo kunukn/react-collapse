@@ -26,8 +26,8 @@ let includePathOptions = {
 
 let isEs5 = process.env.ES5 === 'true';
 let isEs6 = process.env.ES6 === 'true';
-console.log('*** isEs5', isEs5, '***');
-console.log('*** isEs6', isEs6, '***');
+isEs5 && console.log('*** ES5 ***');
+isEs6 && console.log('*** ES2015 ***');
 
 export default {
   external: ['react', 'react-dom'],
