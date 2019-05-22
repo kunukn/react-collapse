@@ -4,10 +4,10 @@ import { storiesOf } from '@storybook/react';
 import { withNotes, withMarkdownNotes } from '@storybook/addon-notes';
 import { action } from '@storybook/addon-actions';
 //import { linkTo } from '@storybook/addon-links';
-//import { backgrounds } from 'root/stories/addon-backgrounds';
+//import { backgrounds } from '~/stories/addon-backgrounds';
 import Component from '@reach/component-component';
 import 'components/Base/base.scss';
-import 'root/stories/storybook.scss';
+import '~/stories/storybook.scss';
 
 export default function CollapseStory() {
   const props = {};

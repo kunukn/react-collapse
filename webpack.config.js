@@ -197,7 +197,7 @@ module.exports = (env = {}, argv = {}) => {
       //modules: [path.resolve(__dirname), 'node_modules'],
       extensions: ['.js', '.jsx', '.scss'],
       alias: {
-        root: __dirname,
+        '~': __dirname,
         src: path.resolve(__dirname, 'src'),
         components: path.resolve(__dirname, 'src/components'),
       },

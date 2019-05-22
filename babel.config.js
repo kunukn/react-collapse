@@ -4,9 +4,6 @@ module.exports = {
       '@babel/preset-env',
       {
         modules: false,
-        // targets: {
-        //   node: '6.5', /* ES2015 compilation target */
-        // },
       },
     ],
     '@babel/preset-react',
@@ -21,8 +18,8 @@ module.exports = {
         extensions: ['.js', '.jsx', '.css', '.scss'],
         root: ['./src'],
         alias: {
-          /* this is for Jest */
-          root: '.',
+          /* this is for tools like Jest */
+          '~': '.',
           src: './src',
           components: './src/components',
         },
