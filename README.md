@@ -105,7 +105,13 @@ Remove the CSS class name `collapse-css-transition`
 
 #### `removeCSS`: PropType.boolean
 
-Remove all internal applied CSS class names including the collapse states
+Remove all internal applied CSS class names including the collapse states.
+By default one of the state class names are applied:
+
+- `-c--collapsed`
+- `-c--collapsing`
+- `-c--expanded`
+- `-c--expanding`
 
 #### `transition`: PropType.string
 

@@ -1,3 +1,7 @@
+/**
+ * All console logs are removed on build
+ */
+
 import './collapse.css';
 import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
 
@@ -182,7 +186,7 @@ export default function Collapse({
   };
   let ElementType = elementType || 'div';
   let collapseClassName = `${className || ''} ${removeClassName || removeCSS ? '' : 'collapse-css-transition'} ${
-    removeCSS ? '' : '--is-' + collapseState
+    removeCSS ? '' : '-c--' + collapseState
   }`.trim();
 
   return (
