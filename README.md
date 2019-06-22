@@ -206,8 +206,8 @@ To run example covering all features, use `npm run storybook` or `yarn storybook
 https://unpkg.com/@kunukn/react-collapse/
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/@kunukn/react-collapse/dist/Collapse.es6.css" />
-<script src="https://unpkg.com/@kunukn/react-collapse/dist/Collapse.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/@kunukn/react-collapse/dist/Collapse.umd.css" />
+<script src="https://unpkg.com/@kunukn/react-collapse/dist/Collapse.umd.js"></script>
 
 <script>
   var Collapse = window.Collapse;
