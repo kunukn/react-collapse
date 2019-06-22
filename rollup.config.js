@@ -9,6 +9,7 @@ import url from 'rollup-plugin-url';
 //import svgr from '@svgr/rollup';
 import { terser } from 'rollup-plugin-terser';
 import strip from 'rollup-plugin-strip';
+import copy from "rollup-plugin-copy";
 
 import pkg from './package.json';
 import sizes from './rollup-plugins/sizes-plugin';
@@ -71,7 +72,7 @@ export default {
     //scss(),
     postcss({
       inject: false,
-      extract: false, // skip creating file
+      extract: isEs5, // creating file
       plugins: [],
       minimize: true
       //sourceMap: 'inline',
@@ -112,6 +113,13 @@ export default {
         console.log('minified', size, filename);
         console.log('gzip minified', gzip);
       }
+    }),
+    copy({
+      targets: false && isEs5
+        ? [
+            { src: "src/Collapse/*.css", dest: "dist" },
+          ]
+        : []
     })
   ].filter(Boolean)
 };
