@@ -8,6 +8,8 @@ let EXPANDED = 'expanded';
 
 export default function Collapse({
   className,
+  removeClassName,
+  removeCSS,
   children,
   transition,
   render,
@@ -17,13 +19,13 @@ export default function Collapse({
   collapseHeight,
   onInit,
   onChange,
-  ...attrs
+  ...rest
 }) {
-  let contentRef = useRef(null);
+  let contentRef = useRef();
   let [collapseState, setCollapseState] = useState(isOpen ? EXPANDED : COLLAPSED);
   let [collapseStyle, setCollapseStyle] = useState({
     height: isOpen ? null : getCollapseHeight(),
-    visibility: isOpen ? null : getCollapsedVisibility(),
+    visibility: isOpen ? null : getCollapsedVisibility()
   });
   let [hasReversed, setHasReversed] = useState(false);
   let firstUpdate = useRef(true);
@@ -67,7 +69,7 @@ export default function Collapse({
         collapseState,
         collapseStyle,
         hasReversed,
-        isMoving: isMoving(collapseState),
+        isMoving: isMoving(collapseState)
       });
     }
   }
@@ -87,7 +89,7 @@ export default function Collapse({
 
     setCollapseStyle({
       height: getCollapseHeight(),
-      visibility: getCollapsedVisibility(),
+      visibility: getCollapsedVisibility()
     });
     onCallback(onChange);
   }
@@ -101,13 +103,13 @@ export default function Collapse({
 
     setCollapseStyle({
       height,
-      visibility: '',
+      visibility: ''
     });
 
     nextFrame(() => {
       setCollapseStyle({
         height: getCollapseHeight(),
-        visibility: '',
+        visibility: ''
       });
       onCallback(onChange);
     });
@@ -122,7 +124,7 @@ export default function Collapse({
 
         setCollapseStyle({
           height,
-          visibility: '',
+          visibility: ''
         });
         onCallback(onChange);
       }
@@ -136,7 +138,7 @@ export default function Collapse({
 
     setCollapseStyle({
       height: '',
-      visibility: '',
+      visibility: ''
     });
     onCallback(onChange);
   }
@@ -176,10 +178,12 @@ export default function Collapse({
 
   let style = {
     transition,
-    ...collapseStyle,
+    ...collapseStyle
   };
   let ElementType = elementType || 'div';
-  let collapseClassName = `${className || 'collapse-css-transition'} --is-${collapseState}`;
+  let collapseClassName = `${className || ''} ${removeClassName || removeCSS ? '' : 'collapse-css-transition'} ${
+    removeCSS ? '' : '--is-' + collapseState
+  }`.trim();
 
   return (
     <ElementType
@@ -187,7 +191,7 @@ export default function Collapse({
       style={style}
       className={collapseClassName}
       onTransitionEnd={onTransitionEnd}
-      {...attrs}
+      {...rest}
     >
       {typeof render === 'function' ? render(collapseState) : children}
     </ElementType>

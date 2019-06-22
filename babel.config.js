@@ -1,12 +1,14 @@
+console.log('process.env.NODE_ENV', `[${process.env.NODE_ENV + ''}]`);
+
 module.exports = {
   presets: [
     [
       '@babel/preset-env',
       {
-        modules: false,
-      },
+        modules: process.env.NODE_ENV + '' === 'test' ? 'cjs' : false
+      }
     ],
-    '@babel/preset-react',
+    '@babel/preset-react'
   ],
   ignore: ['third_party'],
   plugins: [
@@ -21,9 +23,9 @@ module.exports = {
           /* this is for tools like Jest */
           '~': '.',
           src: './src',
-          components: './src/components',
-        },
-      },
-    ],
-  ],
+          components: './src/components'
+        }
+      }
+    ]
+  ]
 };

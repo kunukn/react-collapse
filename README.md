@@ -97,7 +97,15 @@ There are four possible collapse states: `collapsed`, `collapsing`, `expanded`, 
 
 #### `className`: PropType.string
 
-You can specify a className with your desired style and animation. By default `collapse-css-transition` will be added to the component.
+You can specify a className. The CSS class name `collapse-css-transition` will be added to the component by default.
+
+#### `removeClassName`: PropType.boolean
+
+Remove the CSS class name `collapse-css-transition`
+
+#### `removeCSS`: PropType.boolean
+
+Remove all internal applied CSS class names including the collapse states
 
 #### `transition`: PropType.string
 

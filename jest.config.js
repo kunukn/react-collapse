@@ -1,6 +1,9 @@
 module.exports = {
-  setupTestFrameworkScriptFile: '<rootDir>/src/test/jestSetup.js',
+  setupFilesAfterEnv: ['<rootDir>/src/test/jestSetup.js'],
   snapshotSerializers: [],
+  transform: {
+    '^.+\\.(js|jsx)?$': 'babel-jest'
+  },
   moduleNameMapper: {
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
       '<rootDir>/__mocks__/fileMock.js',
@@ -14,5 +17,10 @@ module.exports = {
   roots: ['<rootDir>'],
   modulePaths: [],
   moduleDirectories: ['node_modules', '<rootDir>/src'],
-  moduleFileExtensions: ['js', 'jsx', 'css', 'scss']
+  moduleFileExtensions: ['js', 'jsx', 'css', 'scss'],
+  transformIgnorePatterns: ['<rootDir>/node_modules/', 
+
+ // Change MODULE_NAME_HERE to your module that isn't being compiled
+//  '/node_modules/(?!MODULE_NAME_HERE).+\\.js$'
+]
 };
