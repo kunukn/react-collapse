@@ -238,7 +238,7 @@ IE11 + Modern browsers
 
 # Design goals
 
-- let the browser handle the animation using CSS transition
+- let the browser handle the animation using CSS height transition
 - minimal in file size
 - minimalistic API - only have a Collapse component which updates on isOpen props
 - flexible - provide your own markup, styling and easing
