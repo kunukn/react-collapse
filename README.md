@@ -182,6 +182,7 @@ cd [repo]
 npm i
 npm start
 open http://localhost:6007
+npm test
 ```
 
 or with **yarn**
@@ -192,6 +193,7 @@ cd [repo]
 yarn
 yarn start
 open http://localhost:6007
+yarn test
 ```
 
 To run example covering all features, use `npm run storybook` or `yarn storybook`.
