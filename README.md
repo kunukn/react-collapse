@@ -104,10 +104,10 @@ You can specify a custom className. By default the className `collapse-css-trans
 Exclude the applied CSS collapse state.
 By default one of the class names are applied:
 
-- `-c--collapsed`
-- `-c--collapsing`
-- `-c--expanded`
-- `-c--expanding`
+- `-c-is--collapsed`
+- `-c-is--collapsing`
+- `-c-is--expanded`
+- `-c-is--expanding`
 
 #### `transition`: PropType.string
 
