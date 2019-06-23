@@ -12,8 +12,7 @@ let EXPANDED = 'expanded';
 
 export default function Collapse({
   className,
-  removeClassName,
-  removeCSS,
+  excludeStateCSS,
   children,
   transition,
   render,
@@ -180,14 +179,13 @@ export default function Collapse({
   }
   // END getDerivedStateFromProps
 
-  let style = {
+  const style = {
     transition,
     ...collapseStyle
   };
-  let ElementType = elementType || 'div';
-  let collapseClassName = `${className || ''} ${removeClassName || removeCSS ? '' : 'collapse-css-transition'} ${
-    removeCSS ? '' : '-c--' + collapseState
-  }`.trim();
+  const ElementType = elementType || 'div';
+  let collapseClassName = `${className || 'collapse-css-transition'}`;
+  if (!excludeStateCSS) collapseClassName += ` -c-is--${collapseState}`;
 
   return (
     <ElementType

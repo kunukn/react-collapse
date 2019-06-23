@@ -7,18 +7,18 @@
   will-change: transform;
 }
 
-.-c--collapsing > * {
+.-c-is--collapsing > * {
   transform: translateY(-6px);
 }
 
-.-c--collapsed > * {
+.-c-is--collapsed > * {
   transform: translateY(-6px);
 }
 
-.-c--expanding > * {
+.-c-is--expanding > * {
   transform: translateX(0);
 }
 
-.-c--expanded > * {
+.-c-is--expanded > * {
   transform: translateX(0);
 }

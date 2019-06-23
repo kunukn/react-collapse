@@ -8,7 +8,7 @@ class App extends React.Component {
     isOpen2: false,
     isOpen3: false,
     isOpen4: false,
-    spy3: {},
+    spy3: {}
   };
 
   componentDidMount() {
@@ -41,7 +41,10 @@ class App extends React.Component {
           onChange={data => console.log('onChange', data)}
           elementType="article"
           transition="height 280ms ease-in-out"
-          className={'app__collapse app__collapse--gradient' + (this.state.isOpen1 ? ' app__collapse--active' : '')}
+          className={
+            'collapse-css-transition app__collapse app__collapse--gradient' +
+            (this.state.isOpen1 ? ' app__collapse--active' : '')
+          }
         >
           <div className="app__content">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
@@ -65,11 +68,15 @@ class App extends React.Component {
 
         <C2
           isOpen={this.state.isOpen2}
-          className={'app__collapse app__collapse--gradient ' + (this.state.isOpen2 ? 'app__collapse--active' : '')}
+          className={
+            'collapse-css-transition app__collapse app__collapse--gradient ' +
+            (this.state.isOpen2 ? 'app__collapse--active' : '')
+          }
           transition="height 800ms cubic-bezier(0.4, 0, 0.2, 1)"
           aria-hidden={this.state.isOpen2 ? 'false' : 'true'}
           onChange={data => console.log('onChange', data)}
           elementType="article"
+          excludeStateCSS
           render={collapseState => (
             <div className="app__content">
               <div>{collapseState}</div>
@@ -101,9 +108,13 @@ class App extends React.Component {
         <C3
           isOpen={this.state.isOpen3}
           collapseHeight="60px"
-          className={'app__collapse app__collapse--gradient ' + (this.state.isOpen3 ? 'app__collapse--active' : '')}
+          className={
+            'collapse-css-transition app__collapse app__collapse--gradient ' +
+            (this.state.isOpen3 ? 'app__collapse--active' : '')
+          }
           onInit={state => this.setState({ spy3: state })}
           onChange={state => this.setState({ spy3: state })}
+          excludeStateCSS
           render={collapseState => (
             <div className="app__content">
               <div>{collapseState}</div>
@@ -123,7 +134,10 @@ class App extends React.Component {
 
         <C4
           isOpen={this.state.isOpen4}
-          className={'app__collapse app__collapse--gradient ' + (this.state.isOpen4 ? 'app__collapse--active' : '')}
+          className={
+            'collapse-css-transition app__collapse app__collapse--gradient ' +
+            (this.state.isOpen4 ? 'app__collapse--active' : '')
+          }
           render={collapseState => (
             <div className="app__content">
               <div>{collapseState}</div>
