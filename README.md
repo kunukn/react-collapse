@@ -49,9 +49,8 @@ import Collapse from '@kunukn/react-collapse';
 // or with require syntax
 const Collapse = require('@kunukn/react-collapse');
 
-/* You can move the styling to a CSS class */
-<Collapse isOpen={true || false} style={{ transition: 'height 300ms', overflow: 'hidden' }}>
-  <div>Random content</div>
+<Collapse isOpen={true || false}>
+  <div>Your content</div>
 </Collapse>;
 ```
 

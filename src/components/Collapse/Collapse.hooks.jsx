@@ -15,6 +15,7 @@ function Collapse({
   excludeStateCSS,
   children,
   transition,
+  style,
   render,
   elementType,
   layoutEffect,
@@ -179,7 +180,9 @@ function Collapse({
   }
   // END getDerivedStateFromProps
 
-  const style = {
+  const computedStyle = {
+    //overflow: 'hidden',
+    ...style,
     transition,
     ...collapseStyle
   };
@@ -190,7 +193,7 @@ function Collapse({
   return (
     <ElementType
       ref={contentRef}
-      style={style}
+      style={computedStyle}
       className={collapseClassName}
       onTransitionEnd={onTransitionEnd}
       {...rest}
@@ -201,7 +204,8 @@ function Collapse({
 }
 
 Collapse.defaultProps = {
-  className: 'collapse-css-transition'
+  className: 'collapse-css-transition',
+  style: {}
 };
 
 export default Collapse;
