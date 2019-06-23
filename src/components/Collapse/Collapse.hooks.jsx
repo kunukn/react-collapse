@@ -10,7 +10,7 @@ let COLLAPSING = 'collapsing';
 let EXPANDING = 'expanding';
 let EXPANDED = 'expanded';
 
-export default function Collapse({
+function Collapse({
   className,
   excludeStateCSS,
   children,
@@ -184,7 +184,7 @@ export default function Collapse({
     ...collapseStyle
   };
   const ElementType = elementType || 'div';
-  let collapseClassName = `${className || 'collapse-css-transition'}`;
+  let collapseClassName = className;
   if (!excludeStateCSS) collapseClassName += ` -c-is--${collapseState}`;
 
   return (
@@ -199,6 +199,12 @@ export default function Collapse({
     </ElementType>
   );
 }
+
+Collapse.defaultProps = {
+  className: 'collapse-css-transition'
+};
+
+export default Collapse;
 
 function nextFrame(callback) {
   // Ensure it is always visible on collapsing, afterFrame didn't work

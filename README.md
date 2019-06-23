@@ -15,7 +15,7 @@ Collapse component with CSS transition for elements with variable and dynamic he
 
 # CSS required
 
-:warning: ️You need to specify the transition property or add a class selector with style (transition) in your own stylesheet to add animation. Here is an example.
+:warning: ️You need to add style (transition) in your own stylesheet to add animation. Here is an example.
 
 ```scss
 .collapse-css-transition {
@@ -49,7 +49,8 @@ import Collapse from '@kunukn/react-collapse';
 // or with require syntax
 const Collapse = require('@kunukn/react-collapse');
 
-<Collapse isOpen={true || false}>
+/* You can move the styling to a CSS class */
+<Collapse isOpen={true || false} style={{ transition: 'height 300ms', overflow: 'hidden' }}>
   <div>Random content</div>
 </Collapse>;
 ```
@@ -97,7 +98,7 @@ There are four possible collapse states: `collapsed`, `collapsing`, `expanded`, 
 
 #### `className`: PropType.string
 
-You can specify a custom className. By default the className `collapse-css-transition` is applied.
+You can specify a custom className. The default value is `collapse-css-transition`.
 
 #### `excludeStateCSS`: PropType.boolean
 
