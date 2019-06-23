@@ -37,6 +37,7 @@ class App extends React.Component {
           </div>
         </button>
         <C
+          style={{ outline: '1px dashed lightblue' }}
           isOpen={this.state.isOpen1}
           onChange={data => console.log('onChange', data)}
           elementType="article"

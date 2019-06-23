@@ -181,9 +181,9 @@ function Collapse({
   // END getDerivedStateFromProps
 
   const computedStyle = {
-    //overflow: 'hidden',
-    ...style,
+    overflow: 'hidden',
     transition,
+    ...style,
     ...collapseStyle
   };
   const ElementType = elementType || 'div';

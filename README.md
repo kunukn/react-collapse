@@ -17,12 +17,15 @@ Collapse component with CSS transition for elements with variable and dynamic he
 
 :warning: ️You need to add style (transition) in your own stylesheet to add animation. Here is an example.
 
-```scss
-.collapse-css-transition {
-  transition: height 300ms cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
-}
+```html
+<style>
+  .collapse-css-transition {
+    transition: height 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+</style>
 ```
+
+Alternatively you can add it using the `transition` prop.
 
 ## Installation for React 16.3+
 
