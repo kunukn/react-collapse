@@ -1,5 +1,5 @@
 module.exports = {
-  setupFilesAfterEnv: ['<rootDir>/src/test/jestSetup.js'],
+  setupFilesAfterEnv: ['<rootDir>/src/test/jestSetup.js', '@testing-library/react/cleanup-after-each'],
   snapshotSerializers: [],
   transform: {
     '^.+\\.(js|jsx)?$': 'babel-jest'
@@ -18,9 +18,10 @@ module.exports = {
   modulePaths: [],
   moduleDirectories: ['node_modules', '<rootDir>/src'],
   moduleFileExtensions: ['js', 'jsx', 'css', 'scss'],
-  transformIgnorePatterns: ['<rootDir>/node_modules/', 
+  transformIgnorePatterns: [
+    '<rootDir>/node_modules/'
 
- // Change MODULE_NAME_HERE to your module that isn't being compiled
-//  '/node_modules/(?!MODULE_NAME_HERE).+\\.js$'
-]
+    // Change MODULE_NAME_HERE to your module that isn't being compiled
+    //  '/node_modules/(?!MODULE_NAME_HERE).+\\.js$'
+  ]
 };
