@@ -1,10 +1,9 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-//import { render, fireEvent } from '@testing-library/react';
-import Collapse from './Collapse';
+import Collapse from './Collapse.hooks';
 
-const wrap = (props = {}) => shallow(<Collapse {...props} />);
-const doMount = (props = {}) => mount(<Collapse {...props} />);
+const wrap = (props = {}) => global.enzymeShallow(<Collapse {...props} />);
+const wrapMount = (props = {}) => global.enzymeMount(<Collapse {...props} />);
+const wrapRender = (props = {}) => global.enzymeRender(<Collapse {...props} />);
 
 test('render children', () => {
   const wrapper = wrap({
@@ -12,13 +11,4 @@ test('render children', () => {
   });
 
   expect(wrapper.contains('test')).toBe(true);
-});
-
-test('render mounted children', () => {
-  const mounted = doMount({
-    children: 'test'
-  });
-  expect(mounted.contains('test')).toBe(true);
-  expect(mounted).to.have.style('height', '0px');
-  expect(mounted).to.have.style('visibility', 'hidden');
 });
