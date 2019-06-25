@@ -8,13 +8,12 @@ afterEach(cleanup);
 describe('<Collapse />', () => {
   it('should render without errors', () => {
     let Child = () => 'Some content';
-    const { getByText, getByTestId, container, asFragment } = render(
+    const { getByText, findByText, getByTestId, container, asFragment } = render(
       <Collapse>
         <Child />
       </Collapse>
     );
 
-    let el = getByText('Some content');
-    expect(el).toBeTruthy();
+    expect(getByText('Some content')).toBeTruthy;
   });
 });
