@@ -1,5 +1,4 @@
 import Enzyme, { shallow, render as enzymeRender, mount, configure } from 'enzyme';
-import { render, fireEvent } from '@testing-library/react';
 import Adapter from 'enzyme-adapter-react-16';
 const { JSDOM } = require('jsdom');
 
@@ -12,9 +11,6 @@ global.enzymeShallow = shallow;
 global.enzymeRender = enzymeRender;
 global.enzymeMount = mount;
 global.Enzyme = Enzyme;
-// testing-library
-global.render_ = render;
-global.fireEvent_ = fireEvent;
 
 const jsdom = new JSDOM('<!doctype html><html><body></body></html>');
 const { window } = jsdom;
