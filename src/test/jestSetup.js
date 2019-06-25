@@ -1,16 +1,4 @@
-import Enzyme, { shallow, render as enzymeRender, mount, configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
 const { JSDOM } = require('jsdom');
-
-console.log('setupEnzyme');
-
-configure({ adapter: new Adapter() });
-
-// Make Enzyme functions available in all test files without importing
-global.enzymeShallow = shallow;
-global.enzymeRender = enzymeRender;
-global.enzymeMount = mount;
-global.Enzyme = Enzyme;
 
 const jsdom = new JSDOM('<!doctype html><html><body></body></html>');
 const { window } = jsdom;
@@ -34,4 +22,5 @@ global.requestAnimationFrame = function(callback) {
 global.cancelAnimationFrame = function(id) {
   clearTimeout(id);
 };
+
 copyProps(window, global);

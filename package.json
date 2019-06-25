@@ -90,8 +90,6 @@
     "copy-webpack-plugin": "^5.0.3",
     "cross-env": "^5.2.0",
     "css-loader": "^3.0.0",
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.14.0",
     "eslint": "^6.0.0",
     "eslint-config-react-app": "^4.0.1",
     "eslint-plugin-react-hooks": "1.6.0",

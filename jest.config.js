@@ -1,4 +1,5 @@
 module.exports = {
+  verbose: true,
   setupFilesAfterEnv: ['<rootDir>/src/test/jestSetup.js', '@testing-library/react/cleanup-after-each'],
   snapshotSerializers: [],
   transform: {
