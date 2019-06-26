@@ -38,7 +38,7 @@
     "build-deploy-storybook": "npm run build-storybook-to-out && npm run deploy-storybook-from-out",
     "rebuild-node-sass": "npm rebuild node-sass",
     "lint": "eslint src/components/Collapse/Collapse.hooks.jsx",
-    "lint-all": "eslint src/components/**/*.jsx"
+    "lint-all": "eslint src/**/*.jsx src/**/*.js"
   },
   "repository": {
     "type": "git",
