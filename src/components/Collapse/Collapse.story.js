@@ -10,7 +10,6 @@ import 'components/Base/base.scss';
 import '~/stories/storybook.scss';
 
 export default function CollapseStory() {
-  const props = {};
 
   storiesOf('Collapses', module)
     //.addDecorator(backgrounds)

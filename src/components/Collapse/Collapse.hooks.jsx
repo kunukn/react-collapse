@@ -1,14 +1,16 @@
+/* eslint-env browser */
+
 /**
  * All console logs are removed on build
  */
 
-import './collapse.css';
-import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
+import "./collapse.css";
+import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
 
-let COLLAPSED = 'collapsed';
-let COLLAPSING = 'collapsing';
-let EXPANDING = 'expanding';
-let EXPANDED = 'expanded';
+let COLLAPSED = "collapsed";
+let COLLAPSING = "collapsing";
+let EXPANDING = "expanding";
+let EXPANDED = "expanded";
 
 function Collapse({
   className,
@@ -26,7 +28,9 @@ function Collapse({
   ...rest
 }) {
   let contentRef = useRef();
-  let [collapseState, setCollapseState] = useState(isOpen ? EXPANDED : COLLAPSED);
+  let [collapseState, setCollapseState] = useState(
+    isOpen ? EXPANDED : COLLAPSED
+  );
   let [collapseStyle, setCollapseStyle] = useState({
     height: isOpen ? null : getCollapseHeight(),
     visibility: isOpen ? null : getCollapsedVisibility()
@@ -43,11 +47,11 @@ function Collapse({
 
       // Don't run effect on first render, the DOM styles are already correctly set
       firstUpdate.current = false;
-      console.log('skip effect first render');
+      console.log("skip effect first render");
       return;
     }
 
-    console.log('effect after didUpdate DOM update');
+    console.log("effect after didUpdate DOM update");
 
     switch (collapseState) {
       case EXPANDING:
@@ -68,7 +72,7 @@ function Collapse({
 
   function onCallback(callback) {
     if (callback) {
-      console.log('onCallback ' + callback.name);
+      console.log("onCallback " + callback.name);
       callback({
         collapseState,
         collapseStyle,
@@ -79,15 +83,15 @@ function Collapse({
   }
 
   function getCollapseHeight() {
-    return collapseHeight || '0px';
+    return collapseHeight || "0px";
   }
 
   function getCollapsedVisibility() {
-    return collapseHeight ? '' : 'hidden';
+    return collapseHeight ? "" : "hidden";
   }
 
   function setCollapsed() {
-    console.log('setCollapsed');
+    console.log("setCollapsed");
 
     if (!contentRef.current) return;
 
@@ -99,7 +103,7 @@ function Collapse({
   }
 
   function setCollapsing() {
-    console.log('setCollapsing');
+    console.log("setCollapsing");
 
     if (!contentRef.current) return;
 
@@ -107,20 +111,20 @@ function Collapse({
 
     setCollapseStyle({
       height,
-      visibility: ''
+      visibility: ""
     });
 
     nextFrame(() => {
       setCollapseStyle({
         height: getCollapseHeight(),
-        visibility: ''
+        visibility: ""
       });
       onCallback(onChange);
     });
   }
 
   function setExpanding() {
-    console.log('setExpanding');
+    console.log("setExpanding");
 
     nextFrame(() => {
       if (contentRef.current) {
@@ -128,7 +132,7 @@ function Collapse({
 
         setCollapseStyle({
           height,
-          visibility: ''
+          visibility: ""
         });
         onCallback(onChange);
       }
@@ -136,13 +140,13 @@ function Collapse({
   }
 
   function setExpanded() {
-    console.log('setExpanded');
+    console.log("setExpanded");
 
     if (!contentRef.current) return;
 
     setCollapseStyle({
-      height: '',
-      visibility: ''
+      height: "",
+      visibility: ""
     });
     onCallback(onChange);
   }
@@ -152,9 +156,9 @@ function Collapse({
   }
 
   function onTransitionEnd({ target, propertyName }) {
-    console.log('onTransitionEnd', collapseState, propertyName);
+    console.log("onTransitionEnd", collapseState, propertyName);
 
-    if (target === contentRef.current && propertyName === 'height') {
+    if (target === contentRef.current && propertyName === "height") {
       switch (collapseState) {
         case EXPANDING:
           setCollapseState(EXPANDED);
@@ -181,12 +185,12 @@ function Collapse({
   // END getDerivedStateFromProps
 
   const computedStyle = {
-    overflow: 'hidden',
+    overflow: "hidden",
     transition,
     ...style,
     ...collapseStyle
   };
-  const ElementType = elementType || 'div';
+  const ElementType = elementType || "div";
   let collapseClassName = className;
   if (!excludeStateCSS) collapseClassName += ` -c-is--${collapseState}`;
 
@@ -198,13 +202,13 @@ function Collapse({
       onTransitionEnd={onTransitionEnd}
       {...rest}
     >
-      {typeof render === 'function' ? render(collapseState) : children}
+      {typeof render === "function" ? render(collapseState) : children}
     </ElementType>
   );
 }
 
 Collapse.defaultProps = {
-  className: 'collapse-css-transition',
+  className: "collapse-css-transition",
   style: {}
 };
 
