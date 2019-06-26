@@ -1,6 +1,6 @@
 module.exports = {
   verbose: true,
-  setupFilesAfterEnv: ['<rootDir>/test/jestSetup.js', '@testing-library/react/cleanup-after-each'],
+  setupFilesAfterEnv: ['<rootDir>/test/__mocks__/client.js', '@testing-library/react/cleanup-after-each'],
   snapshotSerializers: [],
   transform: {
     '^.+\\.(js|jsx|tsx)?$': 'babel-jest'
@@ -14,7 +14,7 @@ module.exports = {
   testEnvironment: 'node',
   testURL: 'http://localhost',
   testMatch: ['<rootDir>/src/**/__tests__/**/*.{js,jsx}', '<rootDir>/src/**/?(*.)(spec|test).{js,jsx}'],
-  setupFiles: ['<rootDir>/test/__mocks__/client.js', '<rootDir>/test/__mocks__/polyfills.js'],
+  setupFiles: ['<rootDir>/test/__mocks__/polyfills.js'],
   roots: ['<rootDir>'],
   modulePaths: [],
   moduleDirectories: ['node_modules', '<rootDir>/src'],
