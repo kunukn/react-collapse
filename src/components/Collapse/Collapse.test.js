@@ -30,13 +30,26 @@ describe("<Collapse />", () => {
     expect(getByText(text)).toBeTruthy();
   });
 
+  it("should render elementType", () => {
+    const props = {
+      elementType: "article",
+      isOpen: false
+    };
+
+    const { container } = render(<Collapse {...props} />);
+
+    const collapse = container.firstChild;
+
+    expect(collapse.nodeName).toBe("ARTICLE");
+  });
+
   it("should render collapsed by default", () => {
     const { container } = render(<Collapse />);
 
-    const el = container.firstChild;
+    const collapse = container.firstChild;
 
-    expect(el.style.height).toBe("0px");
-    expect(el.style.visibility).toBe("hidden");
+    expect(collapse.style.height).toBe("0px");
+    expect(collapse.style.visibility).toBe("hidden");
   });
 
   it("should render expanded when isOpen is true", () => {
@@ -46,19 +59,19 @@ describe("<Collapse />", () => {
 
     const { container } = render(<Collapse {...props} />);
 
-    const el = container.firstChild;
+    const collapse = container.firstChild;
 
-    expect(el.style.height).not.toBe("0px");
-    expect(el.style.visibility).not.toBe("hidden");
+    expect(collapse.style.height).not.toBe("0px");
+    expect(collapse.style.visibility).not.toBe("hidden");
   });
 
   it("should render default classNames", () => {
     const { container } = render(<Collapse />);
 
-    const el = container.firstChild;
+    const collapse = container.firstChild;
 
-    expect(el.className.indexOf("collapse-css-transition") >= 0).toBe(true);
-    expect(el.className.indexOf(" -c-is--collapsed") >= 0).toBe(true);
+    expect(collapse.className.indexOf("collapse-css-transition") >= 0).toBe(true);
+    expect(collapse.className.indexOf(" -c-is--collapsed") >= 0).toBe(true);
   });
 
   it("should call onChange on isOpen change", () => {
@@ -67,13 +80,7 @@ describe("<Collapse />", () => {
       onChange: jest.fn()
     };
 
-    const { container, rerender } = render(<Collapse {...props} />);
-
-    const collapse = container.firstChild;
-
-    if (!collapse) {
-      throw new Error("not found");
-    }
+    const { rerender } = render(<Collapse {...props} />);
 
     rerender(<Collapse {...props} isOpen={true} />);
 
