@@ -6,8 +6,8 @@ import {
   waitForElement
 } from "@testing-library/react";
 import "jest-dom/extend-expect";
-jest.mock('./debugLog');
-const Collapse = require('./Collapse.hooks').default;
+jest.mock("./debugLog");
+const Collapse = require("./Collapse.hooks").default;
 
 global.requestAnimationFrame = cb => void cb();
 
@@ -64,7 +64,7 @@ describe("<Collapse />", () => {
   it("should call onChange on isOpen change", () => {
     const props = {
       isOpen: false,
-      onChange: jest.fn(),
+      onChange: jest.fn()
     };
 
     const { container, rerender } = render(<Collapse {...props} />);
@@ -78,5 +78,16 @@ describe("<Collapse />", () => {
     rerender(<Collapse {...props} isOpen={true} />);
 
     expect(props.onChange.mock.calls.length).toBe(1);
+  });
+
+  it("should call onInit", () => {
+    const props = {
+      isOpen: false,
+      onInit: jest.fn()
+    };
+
+    render(<Collapse {...props} />);
+
+    expect(props.onInit.mock.calls.length).toBe(1);
   });
 });

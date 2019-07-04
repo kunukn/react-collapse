@@ -1,7 +1,7 @@
 /* eslint-env browser */
 
 /**
- * All console logs are removed on build
+ * All debug logs are removed on build
  */
 
 import "./collapse.css";
@@ -60,7 +60,7 @@ let Collapse = ({
       return;
     }
 
-    debugLog("effect after didUpdate DOM update");
+    debugLog("effect after collapseState update");
 
     switch (collapseState) {
       case EXPANDING:
