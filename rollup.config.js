@@ -1,69 +1,69 @@
-import includePaths from 'rollup-plugin-includepaths';
-import babel from 'rollup-plugin-babel';
-import commonjs from 'rollup-plugin-commonjs';
-import external from 'rollup-plugin-peer-deps-external';
-import postcss from 'rollup-plugin-postcss';
+import includePaths from "rollup-plugin-includepaths";
+import babel from "rollup-plugin-babel";
+import commonjs from "rollup-plugin-commonjs";
+import external from "rollup-plugin-peer-deps-external";
+import postcss from "rollup-plugin-postcss";
 //import scss from 'rollup-plugin-scss';
-import resolve from 'rollup-plugin-node-resolve';
-import url from 'rollup-plugin-url';
+import resolve from "rollup-plugin-node-resolve";
+import url from "rollup-plugin-url";
 //import svgr from '@svgr/rollup';
-import { terser } from 'rollup-plugin-terser';
-import strip from 'rollup-plugin-strip';
+import { terser } from "rollup-plugin-terser";
+import strip from "rollup-plugin-strip";
 import copy from "rollup-plugin-copy";
 
-import pkg from './package.json';
-import sizes from './rollup-plugins/sizes-plugin';
+import pkg from "./package.json";
+import sizes from "./rollup-plugins/sizes-plugin";
 
 //const input = 'components/Collapse/Collapse.jsx'; // React 16.3+
-const input = 'components/Collapse/Collapse.hooks.jsx'; // React 16.8+
-const name = 'Collapse';
+const input = "components/Collapse/Collapse.hooks.jsx"; // React 16.8+
+const name = "Collapse";
 
 let includePathOptions = {
   include: {},
-  paths: ['./', 'src'],
+  paths: ["./", "src"],
   external: [],
-  extensions: ['.js', '.jsx', '.css', '.scss', '.json', '.html']
+  extensions: [".js", ".jsx", ".css", ".scss", ".json", ".html"]
 };
 
-let isEs5 = process.env.ES5 === 'true';
-let isEs6 = process.env.ES6 === 'true';
-isEs5 && console.log('*** ES5 ***');
-isEs6 && console.log('*** ES2015 ***');
+let isEs5 = process.env.ES5 === "true";
+let isEs6 = process.env.ES6 === "true";
+isEs5 && console.log("*** ES5 ***");
+isEs6 && console.log("*** ES2015 ***");
 
 export default {
-  external: ['react', 'react-dom'],
+  external: ["react", "react-dom"],
 
   input,
 
   output: [
     (isEs5 || isEs6) && {
-      file: isEs5 ? pkg.main : pkg['main-es2015'],
-      format: 'umd',
+      file: isEs5 ? pkg.main : pkg["main-es2015"],
+      format: "umd",
       name,
       sourcemap: true,
       globals: {
-        react: 'React',
-        'react-dom': 'ReactDOM'
+        react: "React",
+        "react-dom": "ReactDOM"
       }
     },
     0 && {
       file: pkg.cjs,
-      format: 'cjs',
+      format: "cjs",
       sourcemap: true
     },
     0 && {
       file: pkg.module,
-      format: 'es',
+      format: "es",
       sourcemap: true
     },
     0 && {
       file: pkg.iife,
-      format: 'iife',
+      format: "iife",
       name,
       sourcemap: true,
       globals: {
-        react: 'React',
-        'react-dom': 'ReactDOM'
+        react: "React",
+        "react-dom": "ReactDOM"
       }
     }
   ].filter(Boolean),
@@ -83,7 +83,7 @@ export default {
 
     strip({
       debugger: true,
-      functions: ['console.log', 'debug.trace'],
+      functions: ["console.log", "debugLog", "debug.trace"],
       sourceMap: true
     }),
     url({}),
@@ -93,16 +93,16 @@ export default {
       babelrc: true,
       presets: [
         isEs6 && [
-          '@babel/preset-env',
+          "@babel/preset-env",
           {
             modules: false,
             targets: {
-              node: '6.5' /* ES2016 compilation target */
+              node: "6.5" /* ES2016 compilation target */
             }
           }
         ]
       ].filter(Boolean),
-      exclude: 'node_modules/**'
+      exclude: "node_modules/**"
     }),
     commonjs(),
     terser({
@@ -110,16 +110,13 @@ export default {
     }),
     sizes({
       getSize: (size, gzip, filename) => {
-        console.log('minified', size, filename);
-        console.log('gzip minified', gzip);
+        console.log("minified", size, filename);
+        console.log("gzip minified", gzip);
       }
     }),
     copy({
-      targets: false && isEs5
-        ? [
-            { src: "src/Collapse/*.css", dest: "dist" },
-          ]
-        : []
+      targets:
+        false && isEs5 ? [{ src: "src/Collapse/*.css", dest: "dist" }] : []
     })
   ].filter(Boolean)
 };

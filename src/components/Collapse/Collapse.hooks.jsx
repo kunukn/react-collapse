@@ -6,13 +6,23 @@
 
 import "./collapse.css";
 import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
+import debugLog from "./debugLog";
 
 let COLLAPSED = "collapsed";
 let COLLAPSING = "collapsing";
 let EXPANDING = "expanding";
 let EXPANDED = "expanded";
 
-function Collapse({
+let nextFrame = callback => {
+  // This function could also be `setTimeout(callback, 0)`
+  // Ensure it is always visible on collapsing, afterFrame didn't work
+  requestAnimationFrame(() => requestAnimationFrame(callback));
+};
+
+let isMoving = collapseState =>
+  collapseState === EXPANDING || collapseState === COLLAPSING;
+
+let Collapse = ({
   className,
   excludeStateCSS,
   children,
@@ -26,7 +36,7 @@ function Collapse({
   onInit,
   onChange,
   ...rest
-}) {
+}) => {
   let contentRef = useRef();
   let [collapseState, setCollapseState] = useState(
     isOpen ? EXPANDED : COLLAPSED
@@ -47,11 +57,11 @@ function Collapse({
 
       // Don't run effect on first render, the DOM styles are already correctly set
       firstUpdate.current = false;
-      console.log("skip effect first render");
+      debugLog("skip effect first render");
       return;
     }
 
-    console.log("effect after didUpdate DOM update");
+    debugLog("effect after didUpdate DOM update");
 
     switch (collapseState) {
       case EXPANDING:
@@ -70,9 +80,9 @@ function Collapse({
     }
   }, [collapseState]);
 
-  function onCallback(callback) {
+  let onCallback = callback => {
     if (callback) {
-      console.log("onCallback " + callback.name);
+      debugLog("onCallback " + callback.name);
       callback({
         collapseState,
         collapseStyle,
@@ -80,7 +90,7 @@ function Collapse({
         isMoving: isMoving(collapseState)
       });
     }
-  }
+  };
 
   function getCollapseHeight() {
     return collapseHeight || "0px";
@@ -91,7 +101,7 @@ function Collapse({
   }
 
   function setCollapsed() {
-    console.log("setCollapsed");
+    debugLog("setCollapsed");
 
     if (!contentRef.current) return;
 
@@ -103,7 +113,7 @@ function Collapse({
   }
 
   function setCollapsing() {
-    console.log("setCollapsing");
+    debugLog("setCollapsing");
 
     if (!contentRef.current) return;
 
@@ -124,7 +134,7 @@ function Collapse({
   }
 
   function setExpanding() {
-    console.log("setExpanding");
+    debugLog("setExpanding");
 
     nextFrame(() => {
       if (contentRef.current) {
@@ -140,7 +150,7 @@ function Collapse({
   }
 
   function setExpanded() {
-    console.log("setExpanded");
+    debugLog("setExpanded");
 
     if (!contentRef.current) return;
 
@@ -156,7 +166,7 @@ function Collapse({
   }
 
   function onTransitionEnd({ target, propertyName }) {
-    console.log("onTransitionEnd", collapseState, propertyName);
+    debugLog("onTransitionEnd", collapseState, propertyName);
 
     if (target === contentRef.current && propertyName === "height") {
       switch (collapseState) {
@@ -205,7 +215,7 @@ function Collapse({
       {typeof render === "function" ? render(collapseState) : children}
     </ElementType>
   );
-}
+};
 
 Collapse.defaultProps = {
   className: "collapse-css-transition",
@@ -213,13 +223,3 @@ Collapse.defaultProps = {
 };
 
 export default Collapse;
-
-function nextFrame(callback) {
-  // This function could also be `setTimeout(callback, 0)`
-  // Ensure it is always visible on collapsing, afterFrame didn't work
-  requestAnimationFrame(() => requestAnimationFrame(callback));
-}
-
-function isMoving(collapseState) {
-  return collapseState === EXPANDING || collapseState === COLLAPSING;
-}

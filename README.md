@@ -39,18 +39,18 @@ or
 
 ## Installation for React 16.8+
 
-(UMD minified 3.4kb, gzipped 1.5kb)
+(UMD minified 3.6kb, gzipped 1.6kb)
 
-(UMD ES2015 minified 2.9kb, gzipped 1.3kb)
+(UMD ES2015 minified 3.1kb, gzipped 1.3kb)
 
 `npm i -S @kunukn/react-collapse`<br>
 _or_<br>
 `yarn add @kunukn/react-collapse`
 
 ```js
-import Collapse from '@kunukn/react-collapse';
+import Collapse from "@kunukn/react-collapse";
 // or with require syntax
-const Collapse = require('@kunukn/react-collapse');
+const Collapse = require("@kunukn/react-collapse");
 
 <Collapse isOpen={true || false}>
   <div>Your content</div>
@@ -165,7 +165,7 @@ Similar to onChange but only invoked on mount.
 `Collapse` transfers `aria-` and `data-` attributes to the component's rendered DOM element. For example this can be used to set the `aria-hidden` attribute:
 
 ```js
-<Collapse aria-hidden={isOpenState ? 'false' : 'true'} isOpen={isOpenState}>
+<Collapse aria-hidden={isOpenState ? "false" : "true"} isOpen={isOpenState}>
   <p>Paragraph of text</p>
 </Collapse>
 ```
@@ -207,7 +207,10 @@ To run example covering all features, use `npm run storybook` or `yarn storybook
 https://unpkg.com/@kunukn/react-collapse/
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/@kunukn/react-collapse/dist/Collapse.umd.css" />
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/@kunukn/react-collapse/dist/Collapse.umd.css"
+/>
 <script src="https://unpkg.com/@kunukn/react-collapse/dist/Collapse.umd.js"></script>
 
 <script>
