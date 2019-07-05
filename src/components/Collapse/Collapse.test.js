@@ -70,7 +70,9 @@ describe("<Collapse />", () => {
 
     const collapse = container.firstChild;
 
-    expect(collapse.className.indexOf("collapse-css-transition") >= 0).toBe(true);
+    expect(collapse.className.indexOf("collapse-css-transition") >= 0).toBe(
+      true
+    );
     expect(collapse.className.indexOf(" -c-is--collapsed") >= 0).toBe(true);
   });
 
@@ -89,12 +91,90 @@ describe("<Collapse />", () => {
 
   it("should call onInit", () => {
     const props = {
-      isOpen: false,
       onInit: jest.fn()
     };
 
     render(<Collapse {...props} />);
 
     expect(props.onInit.mock.calls.length).toBe(1);
+  });
+
+  it("should apply transition prop", () => {
+    const props = {
+      transition: "height 300ms cubic-bezier(.4, 0, .2, 1)"
+    };
+
+    const { container } = render(<Collapse {...props} />);
+
+    const collapse = container.firstChild;
+
+    expect(collapse.style.transition).toBe(
+      "height 300ms cubic-bezier(.4, 0, .2, 1)"
+    );
+  });
+
+  it("should apply collapseHeight prop", () => {
+    const props = {
+      collapseHeight: "10px"
+    };
+
+    const { container } = render(
+      <Collapse {...props}>
+        <p>this is a long paragraph</p>
+      </Collapse>
+    );
+
+    const collapse = container.firstChild;
+
+    expect(collapse.style.height).toBe("10px");
+  });
+
+  it("should apply custom props", () => {
+    const props = {
+      "aria-hidden": "true"
+    };
+
+    const { container } = render(
+      <Collapse {...props}>
+        <p>this is a long paragraph</p>
+      </Collapse>
+    );
+
+    const collapse = container.firstChild;
+
+    expect(collapse.getAttribute("aria-hidden")).toBe("true");
+  });
+
+  it("should render excludeStateCSS correctly", () => {
+    const props = {
+      excludeStateCSS: true
+    };
+
+    const { container } = render(<Collapse {...props} />);
+
+    const collapse = container.firstChild;
+
+    expect(collapse.className.indexOf("collapse-css-transition") >= 0).toBe(
+      true
+    );
+
+    expect(collapse.className.indexOf(" -c-is--collapsed") >= 0).toBe(false);
+  });
+
+  it("should render exclude all class names correctly", () => {
+    const props = {
+      excludeStateCSS: true,
+      className: ""
+    };
+
+    const { container } = render(<Collapse {...props} />);
+
+    const collapse = container.firstChild;
+
+    expect(collapse.className.indexOf("collapse-css-transition") >= 0).toBe(
+      false
+    );
+
+    expect(collapse.className.indexOf(" -c-is--collapsed") >= 0).toBe(false);
   });
 });
