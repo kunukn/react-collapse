@@ -177,4 +177,25 @@ describe("<Collapse />", () => {
 
     expect(collapse.className.indexOf(" -c-is--collapsed") >= 0).toBe(false);
   });
+
+  it("should call render prop collapsed", () => {
+    const props = {
+      render: collapseState => <div>{collapseState}</div>
+    };
+
+    const { getByText } = render(<Collapse {...props} />);
+
+    expect(getByText("collapsed")).toBeTruthy();
+  });
+
+  it("should call render prop expanded", () => {
+    const props = {
+      isOpen: true,
+      render: collapseState => <div>{collapseState}</div>
+    };
+
+    const { getByText } = render(<Collapse {...props} />);
+
+    expect(getByText("expanded")).toBeTruthy();
+  });
 });
