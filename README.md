@@ -31,7 +31,7 @@ Alternatively you can add it using the `transition` prop.
 
 (UMD minified 5.2kb, gzipped 1.9kb)
 
-`npm i -S @kunukn/react-collapse@^1`
+`npm i @kunukn/react-collapse@^1`
 
 or
 
