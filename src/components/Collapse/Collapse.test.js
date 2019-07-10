@@ -5,7 +5,7 @@ import {
   cleanup,
   waitForElement
 } from "@testing-library/react";
-import "jest-dom/extend-expect";
+import "@testing-library/jest-dom/extend-expect";
 jest.mock("./debugLog");
 const Collapse = require("./Collapse.hooks").default;
 
