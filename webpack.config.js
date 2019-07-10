@@ -120,7 +120,7 @@ module.exports = (env = {}, argv = {}) => {
         {
           test: /\.css$/,
           exclude: /node_modules/,
-          include: path.join(__dirname, 'src'),
+          include: path.join(__dirname),
           use: [
             {
               loader: isProd ? MiniCssExtractPlugin.loader : 'style-loader',
@@ -147,7 +147,7 @@ module.exports = (env = {}, argv = {}) => {
         {
           test: /\.scss$/,
           exclude: /node_modules/,
-          include: path.join(__dirname, 'src'),
+          include: path.join(__dirname),
           use: [
             {
               loader: isProd ? MiniCssExtractPlugin.loader : 'style-loader',

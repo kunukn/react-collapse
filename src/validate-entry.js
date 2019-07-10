@@ -1,6 +1,7 @@
 import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 
+import '~/dist/Collapse.umd.css';
 import 'components/Base/base.scss';
 
 import App from 'components/App/App';

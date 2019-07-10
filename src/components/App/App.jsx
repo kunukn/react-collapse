@@ -52,6 +52,7 @@ let App = props => {
         style={{ outline: "1px dashed lightblue" }}
         isOpen={state.isOpen1}
         onChange={data => console.log("onChange", data)}
+        onInit={data => console.log("onInit", data)}
         elementType="article"
         transition="height 280ms ease-in-out"
         className={

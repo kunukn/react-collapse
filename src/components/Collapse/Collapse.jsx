@@ -13,8 +13,8 @@ export default class Collapse extends React.Component {
   state = {
     collapseState: this.props.isOpen ? EXPANDED : COLLAPSED,
     collapseStyle: {
-      height: getCollapseHeight(this.props),
-      visibility: getCollapseVisibility(this.props)
+      height: this.props.isOpen ? null : getCollapseHeight(this.props),
+      visibility: this.props.isOpen ? null : getCollapseVisibility(this.props)
     },
     hasReversed: false
   };
@@ -88,9 +88,6 @@ export default class Collapse extends React.Component {
   }
 
   componentDidMount() {
-    if (this.state.collapseState === EXPANDED) {
-      this.setExpanded();
-    }
     this.onCallback(this.props.onInit);
   }
 
