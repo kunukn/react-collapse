@@ -1,1 +1,1 @@
-export { default } from './Collapse';
+export { default } from './Collapse.hooks';
