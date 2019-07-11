@@ -116,7 +116,8 @@ export default {
     }),
     copy({
       targets: [
-        { src: "types/index.d.ts", dest: "dist", rename: "Collapse.d.ts" }
+        { src: "types/index.d.ts", dest: "dist", rename: "Collapse.umd.d.ts" },
+        { src: "types/index.d.ts", dest: ".", rename: "index.d.ts" }
       ]
     })
   ].filter(Boolean)
