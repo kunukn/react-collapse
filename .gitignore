@@ -68,3 +68,4 @@ dist/
 
 # typescript
 .dtslint/
+index.d.ts
