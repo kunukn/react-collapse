@@ -1,5 +1,8 @@
 {
   "extends": "dtslint/dtslint.json",
+  "linterOptions": {
+    "exclude": ["**/*.css", "**/*.scss"]
+  },
   "rules": {
     "array-type": false,
     "semicolon": false,
@@ -16,7 +19,6 @@
       "check-preblock"
     ],
     "no-unnecessary-generics": false,
-    "no-unnecessary-class": false,
-    "file-name-casing": false
+    "no-unnecessary-class": false
   }
 }
