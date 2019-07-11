@@ -15,6 +15,7 @@ interface CollapseProps {
   className?: string;
   elementType?: string;
   collapseHeight?: string;
+  layoutEffect?: boolean;
   onChange?: (props: callbackProps) => void;
   onInit?: (props: callbackProps) => void;
 }

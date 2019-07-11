@@ -9,15 +9,16 @@ import Collapse from "@kunukn/react-collapse";
   className="CSS-class-name"
   elementType="article"
   collapseHeight="20px"
+  layoutEffect={false}
 >
-  <div>this is some content</div>
+  <div>this is some content</div>{" "}
 </Collapse>;
 
 <Collapse
   onInit={({ collapseState, isMoving, hasReversed, collapseStyle }) => {}}
   onChange={({ collapseState, isMoving, hasReversed, collapseStyle }) => {}}
 >
-  <div>this is some content</div>
+  <div>this is some content</div>{" "}
 </Collapse>;
 
 <Collapse

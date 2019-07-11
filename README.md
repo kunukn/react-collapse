@@ -42,7 +42,6 @@ or
 
 (UMD minified 3.6kb, gzipped 1.6kb)
 
-
 `npm i -S @kunukn/react-collapse`<br>
 _or_<br>
 `yarn add @kunukn/react-collapse`
@@ -170,6 +169,11 @@ Similar to onChange but only invoked on mount.
 </Collapse>
 ```
 
+#### `layoutEffect`: PropType.boolean
+
+Use the `useLayoutEffect` side-effect instead of `useEffect` for the DOM element CSS transition side-effect.
+This is for applying CSS style updates before the DOM is mutated. I am unsure if this has value as a feature, but I have included it as an experiment.
+
 ## Development and testing
 
 To run development
@@ -229,16 +233,17 @@ IE11 + Modern browsers
 
 # Used React 16.3 life-cycles
 
-- render // uses the style states to invoke CSS transition
-- componentDidMount // initial expanded or collapsed state
-- getDerivedStateFromProps // detect if isOpen props has changed and apply a new collapse state
-- componentDidUpdate // update style states from the four possible collapse states
+- **render** (uses the style states to invoke CSS transition)
+- **componentDidMount** (initial expanded or collapsed state)
+- **getDerivedStateFromProps** (detect if isOpen props has changed and apply a new collapse state)
+- **componentDidUpdate** (update style states from the four possible collapse states)
 
 # Used React 16.8 life-cycles
 
-- render
-- useState
-- useEffect
+- **render**
+- **useState**
+- **useEffect**
+- **useLayoutEffect**
 
 # Design goals
 
