@@ -115,8 +115,9 @@ export default {
       }
     }),
     copy({
-      targets:
-        false && isEs5 ? [{ src: "src/Collapse/*.css", dest: "dist" }] : []
+      targets: [
+        { src: "types/index.d.ts", dest: "dist", rename: "Collapse.d.ts" }
+      ]
     })
   ].filter(Boolean)
 };

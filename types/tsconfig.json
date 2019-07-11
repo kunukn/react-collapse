@@ -1,5 +1,5 @@
 {
-  "exclude": ["**/*.css", "**/*.scss"],
+  "exclude": ["node_modules", "**/*.css", "**/*.scss"],
   "compilerOptions": {
     "moduleResolution": "node",
     "allowJs": true,
