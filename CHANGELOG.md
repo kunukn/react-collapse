@@ -1,5 +1,9 @@
 # react-collapse changelog
 
+## 2.1.2
+
+Add typescript definition file.
+
 ## 2.0.0
 
 _2019_
