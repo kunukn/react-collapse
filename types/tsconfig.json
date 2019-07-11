@@ -3,7 +3,7 @@
     "baseUrl": "../",
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",
-    "lib": ["dom", "es2015"],
+    "lib": ["dom", "es2016"],
     "module": "commonjs",
     "noEmit": true,
     "noImplicitAny": true,

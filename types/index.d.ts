@@ -12,6 +12,7 @@ interface CollapseProps {
   onInit?: () => void;
 }
 
-declare class Collapse<CollapseProps> {}
+//declare function Collapse(props: CollapseProps): void;
+declare const Collapse: React.FunctionComponent<CollapseProps>;
 
 export default Collapse;
