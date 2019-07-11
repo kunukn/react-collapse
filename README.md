@@ -238,12 +238,12 @@ IE11 + Modern browsers
 - **getDerivedStateFromProps** (detect if isOpen props has changed and apply a new collapse state)
 - **componentDidUpdate** (update style states from the four possible collapse states)
 
-# Used React 16.8 life-cycles
+# Used React 16.8 hooks
 
-- **render**
 - **useState**
 - **useEffect**
 - **useLayoutEffect**
+- **useRef**
 
 # Design goals
 
