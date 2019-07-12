@@ -14,8 +14,8 @@ let EXPANDING = "expanding";
 let EXPANDED = "expanded";
 
 let nextFrame = callback => {
-  requestAnimationFrame(() => requestAnimationFrame(callback));
-  //requestAnimationFrame(() => setTimeout(callback), 0);
+  //requestAnimationFrame(() => requestAnimationFrame(callback));
+  requestAnimationFrame(() => setTimeout(callback), 0);
 };
 
 let isMoving = collapseState =>

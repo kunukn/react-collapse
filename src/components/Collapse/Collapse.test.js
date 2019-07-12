@@ -3,7 +3,8 @@ import {
   render,
   fireEvent,
   cleanup,
-  waitForElement
+  waitForElement,
+  act
 } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 jest.mock("./debugLog");
@@ -13,10 +14,12 @@ jest.useFakeTimers();
 
 beforeEach(() => {
   jest.spyOn(global, "requestAnimationFrame").mockImplementation(cb => cb());
+  //jest.spyOn(global, "setTimeout").mockImplementation(cb => cb());
 });
 
 afterEach(() => {
   global.requestAnimationFrame.mockRestore();
+  //global.setTimeout.mockRestore();
   cleanup();
 });
 
@@ -93,11 +96,14 @@ describe("<Collapse />", () => {
 
     rerender(<Collapse {...props} isOpen={true} />);
 
+    jest.advanceTimersByTime(1);
+
     expect(props.onChange.mock.calls.length).toBe(1);
-    
-    //let callbackProps = props.onChange.mock.calls[0][0];
-    //expect(callbackProps.collapseState).toBe("expanding");
-    //expect(requestAnimationFrame).toHaveBeenCalledTimes(2);
+
+    let callbackProps = props.onChange.mock.calls[0][0];
+    expect(callbackProps.collapseState).toBe("expanding");
+    expect(requestAnimationFrame).toHaveBeenCalledTimes(1);
+    //expect(setTimeout).toHaveBeenCalledTimes(1);
   });
 
   it("should call onChange on isOpen change where isOpen is true", () => {
@@ -110,11 +116,14 @@ describe("<Collapse />", () => {
 
     rerender(<Collapse {...props} isOpen={false} />);
 
+    jest.advanceTimersByTime(1);
+
     expect(props.onChange.mock.calls.length).toBe(1);
-    
-    //let callbackProps = props.onChange.mock.calls[0][0];
-    //expect(callbackProps.collapseState).toBe("collapsing");
-    //expect(requestAnimationFrame).toHaveBeenCalledTimes(2);
+
+    let callbackProps = props.onChange.mock.calls[0][0];
+    expect(callbackProps.collapseState).toBe("collapsing");
+    expect(requestAnimationFrame).toHaveBeenCalledTimes(1);
+    //expect(setTimeout).toHaveBeenCalledTimes(1);
   });
 
   it("should call onInit where isOpen is false", () => {
@@ -123,7 +132,7 @@ describe("<Collapse />", () => {
     };
 
     render(<Collapse {...props} />);
-    
+
     let callbackProps = props.onInit.mock.calls[0][0];
     expect(callbackProps.collapseState).toBe("collapsed");
     expect(props.onInit.mock.calls.length).toBe(1);
