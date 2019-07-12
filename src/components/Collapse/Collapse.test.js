@@ -7,10 +7,12 @@ import {
 } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 jest.mock("./debugLog");
-const Collapse = require("./Collapse.hooks").default;
+import Collapse from "./Collapse.hooks";
+
+jest.useFakeTimers();
 
 beforeEach(() => {
-  jest.spyOn(global, 'requestAnimationFrame').mockImplementation(cb => cb());
+  jest.spyOn(global, "requestAnimationFrame").mockImplementation(cb => cb());
 });
 
 afterEach(() => {
@@ -81,7 +83,7 @@ describe("<Collapse />", () => {
     expect(collapse.className.indexOf(" -c-is--collapsed") >= 0).toBe(true);
   });
 
-  it("should call onChange on isOpen change", () => {
+  it("should call onChange on isOpen change where isOpen is false", () => {
     const props = {
       isOpen: false,
       onChange: jest.fn()
@@ -91,16 +93,52 @@ describe("<Collapse />", () => {
 
     rerender(<Collapse {...props} isOpen={true} />);
 
+    let callbackProps = props.onChange.mock.calls[0][0];
+
+    expect(callbackProps.collapseState).toBe("expanding");
+    expect(requestAnimationFrame).toHaveBeenCalledTimes(2);
     expect(props.onChange.mock.calls.length).toBe(1);
   });
 
-  it("should call onInit", () => {
+  it("should call onChange on isOpen change where isOpen is true", () => {
+    const props = {
+      isOpen: true,
+      onChange: jest.fn()
+    };
+
+    const { rerender } = render(<Collapse {...props} />);
+
+    rerender(<Collapse {...props} isOpen={false} />);
+
+    let callbackProps = props.onChange.mock.calls[0][0];
+
+    expect(callbackProps.collapseState).toBe("collapsing");
+    expect(requestAnimationFrame).toHaveBeenCalledTimes(2);
+    expect(props.onChange.mock.calls.length).toBe(1);
+  });
+
+  it("should call onInit where isOpen is false", () => {
     const props = {
       onInit: jest.fn()
     };
 
     render(<Collapse {...props} />);
 
+    let callbackProps = props.onInit.mock.calls[0][0];
+    expect(callbackProps.collapseState).toBe("collapsed");
+    expect(props.onInit.mock.calls.length).toBe(1);
+  });
+
+  it("should call onInit where isOpen is true", () => {
+    const props = {
+      onInit: jest.fn(),
+      isOpen: true
+    };
+
+    render(<Collapse {...props} />);
+
+    let callbackProps = props.onInit.mock.calls[0][0];
+    expect(callbackProps.collapseState).toBe("expanded");
     expect(props.onInit.mock.calls.length).toBe(1);
   });
 
