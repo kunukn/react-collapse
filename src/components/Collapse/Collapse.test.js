@@ -9,9 +9,14 @@ import "@testing-library/jest-dom/extend-expect";
 jest.mock("./debugLog");
 const Collapse = require("./Collapse.hooks").default;
 
-global.requestAnimationFrame = cb => void cb();
+beforeEach(() => {
+  jest.spyOn(global, 'requestAnimationFrame').mockImplementation(cb => cb());
+});
 
-afterEach(cleanup);
+afterEach(() => {
+  global.requestAnimationFrame.mockRestore();
+  cleanup();
+});
 
 describe("<Collapse />", () => {
   it("should render without errors", () => {
