@@ -83,7 +83,7 @@ export default {
 
     strip({
       debugger: true,
-      functions: ["console.log", "debugLog", "debug.trace"],
+      functions: ["console.log", "console.warn", "debugLog", "debug.trace"],
       sourceMap: true
     }),
     url({}),

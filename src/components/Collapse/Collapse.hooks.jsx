@@ -36,6 +36,9 @@ let Collapse = ({
   onChange,
   ...rest
 }) => {
+  let getCollapseHeight = () => collapseHeight || "0px";
+  let getCollapsedVisibility = () => (collapseHeight ? "" : "hidden");
+
   let contentRef = useRef();
   let [collapseState, setCollapseState] = useState(
     isOpen ? EXPANDED : COLLAPSED
@@ -48,6 +51,7 @@ let Collapse = ({
   let firstUpdate = useRef(true);
 
   let effect = layoutEffect ? useLayoutEffect : useEffect;
+
   effect(() => {
     if (!contentRef.current) return;
 
@@ -90,14 +94,6 @@ let Collapse = ({
       });
     }
   };
-
-  function getCollapseHeight() {
-    return collapseHeight || "0px";
-  }
-
-  function getCollapsedVisibility() {
-    return collapseHeight ? "" : "hidden";
-  }
 
   function setCollapsed() {
     debugLog("setCollapsed");
@@ -165,9 +161,9 @@ let Collapse = ({
   }
 
   function onTransitionEnd({ target, propertyName }) {
-    debugLog("onTransitionEnd", collapseState, propertyName);
-
     if (target === contentRef.current && propertyName === "height") {
+      debugLog("onTransitionEnd", collapseState, propertyName);
+
       switch (collapseState) {
         case EXPANDING:
           setCollapseState(EXPANDED);
@@ -175,7 +171,8 @@ let Collapse = ({
         case COLLAPSING:
           setCollapseState(COLLAPSED);
           break;
-        // no default
+        default:
+          console.warn("Ignored in onTransitionEnd", collapseState);
       }
     }
   }
