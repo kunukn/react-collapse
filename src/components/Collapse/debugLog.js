@@ -1,1 +1,3 @@
-export default args => console.log(args);
+export default function() {
+  console.log(...arguments);
+}

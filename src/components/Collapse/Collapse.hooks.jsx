@@ -14,8 +14,8 @@ let EXPANDING = "expanding";
 let EXPANDED = "expanded";
 
 let nextFrame = callback => {
-  // Ensure it is always visible on collapsing, afterFrame didn't work
-  requestAnimationFrame(() => requestAnimationFrame(callback));
+  //requestAnimationFrame(() => requestAnimationFrame(callback));
+  requestAnimationFrame(() => setTimeout(callback), 0);
 };
 
 let isMoving = collapseState =>
