@@ -256,4 +256,17 @@ describe("<Collapse />", () => {
 
     expect(getByText("expanded")).toBeTruthy();
   });
+
+
+  it("should apply render-prop pattern on children if children is a function", () => {
+    const props = {
+      children: collapseState => <div>{collapseState}</div>
+    };
+
+    const { getByText } = render(<Collapse {...props} />);
+
+    expect(getByText("collapsed")).toBeTruthy();
+  });
+
+
 });

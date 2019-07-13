@@ -60,18 +60,18 @@ const Collapse = require("@kunukn/react-collapse");
 
 ## Properties
 
-| property        | type     |
-| --------------- | -------- |
-| isOpen          | boolean  |
-| children        | node     |
-| render          | function |
-| className       | string   |
-| transition      | string   |
-| elementType     | string   |
-| collapseHeight  | string   |
-| onChange        | function |
-| onInit          | function |
-| excludeStateCSS | boolean  |
+| property        | type             |
+| --------------- | ---------------- |
+| isOpen          | boolean          |
+| children        | node \| function |
+| render          | function         |
+| className       | string           |
+| transition      | string           |
+| elementType     | string           |
+| collapseHeight  | string           |
+| onChange        | function         |
+| onInit          | function         |
+| excludeStateCSS | boolean          |
 
 <br>
 
@@ -79,9 +79,9 @@ const Collapse = require("@kunukn/react-collapse");
 
 Expands or collapses content.
 
-#### `children` : node
+#### `children` : node | function
 
-Render the children. Either use this or the `render` prop to render the content.
+Render the children.
 
 ```js
 <Collapse isOpen={true || false}>
@@ -92,10 +92,23 @@ Render the children. Either use this or the `render` prop to render the content.
 </Collapse>
 ```
 
+Render content using the [render-props pattern](https://reactjs.org/docs/render-props.html).
+
+```js
+<Collapse
+  isOpen={ true || false }
+>
+  {collapseState => (
+    <div className="using-collapse-state-to-add-css-class " + collapseState>
+      <p>I know the collapse state: {collapseState}</p>
+    </div>
+  )}
+</Collapse>
+```
+
 #### `render` : function
 
-Render content using the [render-props pattern](https://reactjs.org/docs/render-props.html).
-If this is applied, then the children prop is ignored.
+Render content using the render-props pattern.
 
 ```js
 <Collapse
@@ -103,9 +116,6 @@ If this is applied, then the children prop is ignored.
   render={collapseState => (
     <div className="using-collapse-state-to-add-css-class " + collapseState>
       <p>I know the collapse state: {collapseState}</p>
-      <p>Another paragraph is also OK</p>
-      <p>Images and any other content are ok too</p>
-      <img src="cutecat.gif" />
     </div>
   )}
 />

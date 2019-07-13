@@ -60,7 +60,9 @@ export default class Collapse extends React.Component {
         onTransitionEnd={this.onTransitionEnd}
         {...rest}
       >
-        {typeof render === "function"
+        {typeof children === "function"
+          ? children(this.state.collapseState)
+          : typeof render === "function"
           ? render(this.state.collapseState)
           : children}
       </ElementType>

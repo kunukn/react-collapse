@@ -227,7 +227,11 @@ function Collapse({
       onTransitionEnd={onTransitionEnd}
       {...rest}
     >
-      {typeof render === "function" ? render(collapseState) : children}
+      {typeof children === "function"
+        ? children(collapseState)
+        : typeof render === "function"
+        ? render(collapseState)
+        : children}
     </ElementType>
   );
 }

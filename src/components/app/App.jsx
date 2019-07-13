@@ -99,7 +99,7 @@ let App = props => {
         onChange={data => console.log("onChange", data)}
         elementType="article"
         excludeStateCSS
-        render={collapseState => (
+        children={collapseState => (
           <div className="app__content">
             <div>{collapseState}</div>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
