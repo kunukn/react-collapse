@@ -175,7 +175,11 @@ function CollapseAll() {
         isOpen={state[0]}
         onToggle={() => dispatch({ type: "toggle", index: 0 })}
       >
-        <div className="content">
+        <div
+          css={{
+            padding: "10px 10px 30px"
+          }}
+        >
           <p>Paragraph of text.</p>
           <p>Another paragraph.</p>
           <p>Other content.</p>
@@ -203,7 +207,11 @@ function CollapseAll() {
         isOpen={state[2]}
         onToggle={() => dispatch({ type: "toggle", index: 2 })}
       >
-        <div className="content">
+        <div
+          css={{
+            padding: "10px 10px 30px"
+          }}
+        >
           <p>Paragraph of text.</p>
           <p>Another paragraph.</p>
           <p>Other content.</p>
