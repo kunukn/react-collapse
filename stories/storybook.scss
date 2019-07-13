@@ -1,42 +1,8 @@
-.text {
-  padding: 1rem;
-  margin: 0;
-}
-
-.block {
-  border: 1px solid #ccc;
-  margin-bottom: 10px;
-}
-
-header {
-  margin-bottom: 40px;
-
-  button {
-    font-size: 100%;
-    background: none;
-    padding: 10px;
-
-    + button {
-      margin-left: 10px;
-    }
-  }
-}
-
-.content {
-  padding: 10px 10px 30px;
-}
-
 button {
   transition: color 250ms;
 }
 button[disabled] {
   color: #aaa;
-}
-
-.collapse-all {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 10px;
 }
 
 .icon-down {

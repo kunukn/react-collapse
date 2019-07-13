@@ -9,14 +9,14 @@ import "components/base/base.scss";
 import "~/stories/storybook.scss";
 import Down from "components/icons/Down";
 
+const Text = styled.p`
+  padding: 1rem;
+  margin: 0;
+`;
+
 const Container = styled.div`
   max-width: 500px;
   padding: 1rem;
-`;
-
-const BlockStyle = styled.div`
-  border: 1px solid #ccc;
-  margin-bottom: 10px;
 `;
 
 const Toggle = styled.button`
@@ -45,12 +45,12 @@ export default function CollapseStory() {
               toggle
             </Toggle>
             <Collapse isOpen={state.isOpen}>
-              <p className="text">
+              <Text>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
                 enim ad minim veniam, quis nostrud exercitation ullamco laboris
                 nisi ut aliquip ex ea commodo consequat.
-              </p>
+              </Text>
             </Collapse>
             <p className="text">below content</p>
           </Container>
@@ -67,12 +67,12 @@ export default function CollapseStory() {
                 toggle
               </Toggle>
               <Collapse isOpen={state.isOpen1}>
-                <p className="text">
+                <Text>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                   Ut enim ad minim veniam, quis nostrud exercitation ullamco
                   laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
+                </Text>
               </Collapse>
             </Container>
             <Container>
@@ -80,12 +80,12 @@ export default function CollapseStory() {
                 Toggle
               </Toggle>
               <Collapse isOpen={state.isOpen2}>
-                <p className="text">
+                <Text>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                   Ut enim ad minim veniam, quis nostrud exercitation ullamco
                   laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
+                </Text>
               </Collapse>
             </Container>
           </>
@@ -97,8 +97,13 @@ export default function CollapseStory() {
 }
 
 function Block({ isOpen, title, onToggle, children }) {
+  const style = css`
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+  `;
+
   return (
-    <div className="block">
+    <div css={style}>
       <Toggle onClick={onToggle}>
         <span>{title}</span>
         <Down isOpen={isOpen} />
@@ -128,9 +133,29 @@ function reducer(state, { type, index }) {
 function CollapseAll() {
   const [state, dispatch] = React.useReducer(reducer, [false, false, false]);
 
+  const style = css`
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 10px;
+  `;
+
+  const headerStyle = css`
+    margin-bottom: 40px;
+
+    button {
+      font-size: 100%;
+      background: none;
+      padding: 10px;
+
+      + button {
+        margin-left: 10px;
+      }
+    }
+  `;
+
   return (
-    <div className="collapse-all">
-      <header>
+    <div className="collapse-all" css={style}>
+      <header css={headerStyle}>
         <button
           onClick={() => dispatch({ type: "expand-all" })}
           disabled={state.every(s => s === true)}
@@ -162,7 +187,11 @@ function CollapseAll() {
         isOpen={state[1]}
         onToggle={() => dispatch({ type: "toggle", index: 1 })}
       >
-        <div className="content">
+        <div
+          css={{
+            padding: "10px 10px 30px"
+          }}
+        >
           <p>Paragraph of text.</p>
           <p>Another paragraph.</p>
           <p>Other content.</p>
