@@ -1,5 +1,8 @@
 import "./collapse.css";
 import React from "react";
+import debugLog from "./debugLog";
+
+debugLog("*** Collapse class component *** ");
 
 const COLLAPSED = "collapsed";
 const COLLAPSING = "collapsing";
@@ -37,12 +40,12 @@ export default class Collapse extends React.Component {
 
     let computedStyle = {
       overflow: "hidden",
-      transition,
+      transition
       //...style,
       //...this.state.collapseStyle
     };
-    Object.assign(computedStyle, style)
-    Object.assign(computedStyle, this.state.collapseStyle)
+    Object.assign(computedStyle, style);
+    Object.assign(computedStyle, this.state.collapseStyle);
 
     const ElementType = elementType || "div";
     let collapseClassName = className;
@@ -114,16 +117,35 @@ export default class Collapse extends React.Component {
   }
 
   onTransitionEnd = ({ target, propertyName }) => {
-
     if (target === this.content && propertyName === "height") {
+      debugLog(
+        "onTransitionEnd",
+        this.state.collapseState,
+        propertyName,
+        target.style.height
+      );
+
       switch (this.state.collapseState) {
         case EXPANDING:
-          this.setState({ collapseState: EXPANDED });
+          if (target.style.height === "0px")
+            // This is stale, a newer event has happened before this could execute
+            debugLog(
+              "onTransitionEnd height unexpected 0px",
+              "ignore setExpanded"
+            );
+          else this.setState({ collapseState: EXPANDED });
           break;
         case COLLAPSING:
-          this.setState({ collapseState: COLLAPSED });
+          if (target.style.height !== "0px")
+            // This is stale, a newer event has happened before this could execute
+            debugLog(
+              `onTransitionEnd height unexpected ${target.style.height}`,
+              "ignore setCollapsed"
+            );
+          else this.setState({ collapseState: COLLAPSED });
           break;
-        // no default
+        default:
+          debugLog("Ignored in onTransitionEnd", this.state.collapseState);
       }
     }
   };
@@ -139,7 +161,6 @@ export default class Collapse extends React.Component {
   };
 
   setCollapsed = () => {
-
     if (!this.content) return;
 
     this.setState(
@@ -154,7 +175,6 @@ export default class Collapse extends React.Component {
   };
 
   setCollapsing = () => {
-
     if (!this.content) return;
 
     const height = this.getHeight();
@@ -180,7 +200,6 @@ export default class Collapse extends React.Component {
   };
 
   setExpanding = () => {
-
     nextFrame(() => {
       if (this.content) {
         const height = this.getHeight();
@@ -199,7 +218,6 @@ export default class Collapse extends React.Component {
   };
 
   setExpanded = () => {
-
     if (!this.content) return;
 
     this.setState(

@@ -28,16 +28,6 @@ Collapse component with CSS transition for elements with variable and dynamic he
 
 Alternatively you can add it using the `transition` prop.
 
-## Installation for React 16.3+
-
-(UMD minified 5.2kb, gzipped 1.9kb)
-
-`npm i @kunukn/react-collapse@^1`
-
-or
-
-`yarn add @kunukn/react-collapse@^1`
-
 ## Installation for React 16.8+
 
 (UMD minified 3.8kb, gzipped 1.7kb)
@@ -45,6 +35,16 @@ or
 `npm i -S @kunukn/react-collapse`<br>
 _or_<br>
 `yarn add @kunukn/react-collapse`
+
+## Installation for React 16.3+
+
+(UMD minified 5.7kb, gzipped 2.1kb)
+
+`npm i @kunukn/react-collapse@^1`
+
+or
+
+`yarn add @kunukn/react-collapse@^1`
 
 ```js
 import Collapse from "@kunukn/react-collapse";

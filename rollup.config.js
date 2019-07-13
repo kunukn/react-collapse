@@ -14,8 +14,8 @@ import copy from "rollup-plugin-copy";
 import pkg from "./package.json";
 import sizes from "./rollup-plugins/sizes-plugin";
 
-//const input = 'components/collapse/Collapse.class.jsx'; // React 16.3+
-const input = "components/collapse/Collapse.jsx"; // React 16.8+
+const input = 'components/collapse/Collapse.class.jsx'; // React 16.3+
+//const input = "components/collapse/Collapse.jsx"; // React 16.8+
 const name = "Collapse";
 
 let includePathOptions = {
