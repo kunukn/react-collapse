@@ -73,6 +73,8 @@ const Collapse = require("@kunukn/react-collapse");
 | onInit          | function |
 | excludeStateCSS | boolean  |
 
+<br>
+
 #### `isOpen` : boolean
 
 Expands or collapses content.
