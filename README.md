@@ -40,7 +40,7 @@ or
 
 ## Installation for React 16.8+
 
-(UMD minified 3.6kb, gzipped 1.6kb)
+(UMD minified 3.8kb, gzipped 1.7kb)
 
 `npm i -S @kunukn/react-collapse`<br>
 _or_<br>
