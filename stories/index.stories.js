@@ -1,4 +1,3 @@
-import 'components/Base/base.scss';
-import CollapseStory from 'components/Collapse/Collapse.story.js';
+import CollapseStory from "components/collapse/Collapse.story.js";
 
 CollapseStory();

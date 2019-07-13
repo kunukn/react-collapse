@@ -1,6 +1,14 @@
 .btn {
   font-size: inherit;
   width: 100%;
+  font-size: 100%;
+  background: transparent;
+  box-shadow: none;
+  width: 100%;
+  margin: 0;
+  padding: 10px;
+  text-align: left;
+  cursor: pointer;
 }
 
 .box {
@@ -11,4 +19,54 @@
 .text {
   padding: 1rem;
   margin: 0;
+}
+
+.block {
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+.toggle {
+  display: flex;
+  justify-content: space-between;
+  color: purple;
+}
+
+header {
+  margin-bottom: 40px;
+
+  button {
+    font-size: 100%;
+    background: none;
+    padding: 10px;
+
+    + button {
+      margin-left: 10px;
+    }
+  }
+}
+
+.content {
+  padding: 10px 10px 30px;
+}
+
+button {
+  transition: color 250ms;
+}
+button[disabled] {
+  color: #aaa;
+}
+
+.collapse-all {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.icon-down {
+  fill: purple;
+  transition: transform 200ms;
+  &.is-open {
+    transform: rotate(0.5turn);
+  }
 }
