@@ -8,6 +8,7 @@ button[disabled] {
 .icon-down {
   fill: purple;
   transition: transform 200ms;
+  pointer-events: none;
   &.is-open {
     transform: rotate(0.5turn);
   }

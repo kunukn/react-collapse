@@ -66,12 +66,6 @@ Expands or collapses content.
 
 #### `children`: node
 
-#### `render`: function
-
-Renders content
-
-One or multiple children with static, variable or dynamic height.
-
 ```js
 <Collapse isOpen={true || false}>
   <p>Paragraph of text</p>
@@ -81,7 +75,9 @@ One or multiple children with static, variable or dynamic height.
 </Collapse>
 ```
 
-or
+#### `render`: function
+
+Renders content using the [render-props pattern](https://reactjs.org/docs/render-props.html).
 
 ```js
 <Collapse
@@ -101,24 +97,26 @@ There are four possible collapse states: `collapsed`, `collapsing`, `expanded`, 
 
 #### `className`: string
 
-You can specify a custom className. The default value is `collapse-css-transition`.
+You can specify a custom className. The default value is `collapse-css-transition`. Remember to add CSS transition if a className is provided.
 
 #### `excludeStateCSS`: boolean
 
 Exclude the applied CSS collapse state.
-By default one of the class names are applied:
+By default one of the class names are applied depending on the collapsed state:
 
-- `-c-is--collapsed`
-- `-c-is--collapsing`
-- `-c-is--expanded`
-- `-c-is--expanding`
+```
+-c-is--collapsed
+-c-is--collapsing
+-c-is--expanded
+-c-is--expanding
+```
 
 #### `transition`: string
 
 You can also specify a CSS transition in line by using the `transition` prop.
 
 ```js
-<Collapse transition="height 300ms cubic-bezier(.4, 0, .2, 1)">
+<Collapse transition="height 290ms cubic-bezier(.4, 0, .2, 1)">
   <p>Paragraph of text</p>
 </Collapse>
 ```

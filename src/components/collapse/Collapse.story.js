@@ -52,7 +52,7 @@ export default function CollapseStory() {
                 nisi ut aliquip ex ea commodo consequat.
               </Text>
             </Collapse>
-            <p className="text">below content</p>
+            <Text>below content</Text>
           </Container>
         )}
       </Component>
@@ -87,13 +87,15 @@ export default function CollapseStory() {
                   laboris nisi ut aliquip ex ea commodo consequat.
                 </Text>
               </Collapse>
+              <Text>below content</Text>
             </Container>
           </>
         )}
       </Component>
     ))
 
-    .add("collapse-all", () => <CollapseAll />);
+    .add("collapse-all", () => <CollapseAll />)
+    .add("accordion", () => <Accordion />);
 }
 
 function Block({ isOpen, title, onToggle, children }) {
@@ -104,26 +106,37 @@ function Block({ isOpen, title, onToggle, children }) {
 
   return (
     <div css={style}>
-      <Toggle onClick={onToggle}>
-        <span>{title}</span>
+      <Toggle
+        onClick={e => {
+          console.log(e.target);
+          onToggle();
+        }}
+      >
+        <span
+          css={{
+            pointerEvents: "none"
+          }}
+        >
+          {title}
+        </span>
         <Down isOpen={isOpen} />
       </Toggle>
-      <Collapse layoutEffect isOpen={isOpen}>
-        {children}
-      </Collapse>
+      <Collapse isOpen={isOpen}>{children}</Collapse>
     </div>
   );
 }
-
-function reducer(state, { type, index }) {
+function collapseAllReducer(state, { type, index }) {
   switch (type) {
     case "expand-all":
-      return [true, true, true];
+      console.log("expand-all");
+      return { ...state, flags: [true, true, true] };
     case "collapse-all":
-      return [false, false, false];
+      console.log("collapse-all");
+      return { ...state, flags: [false, false, false] };
     case "toggle":
-      state[index] = !state[index];
-      return [...state];
+      console.log(index);
+      state.flags[index] = !state.flags[index];
+      return { ...state };
 
     default:
       throw new Error();
@@ -131,7 +144,9 @@ function reducer(state, { type, index }) {
 }
 
 function CollapseAll() {
-  const [state, dispatch] = React.useReducer(reducer, [false, false, false]);
+  const [state, dispatch] = React.useReducer(collapseAllReducer, {
+    flags: [false, false, false]
+  });
 
   const style = css`
     max-width: 600px;
@@ -154,17 +169,17 @@ function CollapseAll() {
   `;
 
   return (
-    <div className="collapse-all" css={style}>
+    <div css={style}>
       <header css={headerStyle}>
         <button
           onClick={() => dispatch({ type: "expand-all" })}
-          disabled={state.every(s => s === true)}
+          disabled={state.flags.every(s => s === true)}
         >
           Expand all
         </button>
         <button
           onClick={() => dispatch({ type: "collapse-all" })}
-          disabled={state.every(s => s === false)}
+          disabled={state.flags.every(s => s === false)}
         >
           Collapse all
         </button>
@@ -172,7 +187,7 @@ function CollapseAll() {
 
       <Block
         title="Cargo details"
-        isOpen={state[0]}
+        isOpen={state.flags[0]}
         onToggle={() => dispatch({ type: "toggle", index: 0 })}
       >
         <div
@@ -188,7 +203,7 @@ function CollapseAll() {
 
       <Block
         title="Your details"
-        isOpen={state[1]}
+        isOpen={state.flags[1]}
         onToggle={() => dispatch({ type: "toggle", index: 1 })}
       >
         <div
@@ -204,7 +219,94 @@ function CollapseAll() {
 
       <Block
         title="Handling instructions"
-        isOpen={state[2]}
+        isOpen={state.flags[2]}
+        onToggle={() => dispatch({ type: "toggle", index: 2 })}
+      >
+        <div
+          css={{
+            padding: "10px 10px 30px"
+          }}
+        >
+          <p>Paragraph of text.</p>
+          <p>Another paragraph.</p>
+          <p>Other content.</p>
+        </div>
+      </Block>
+
+      <Text>Some content below the collapsibles.</Text>
+    </div>
+  );
+}
+
+function accordionReducer(state, { type, index }) {
+  switch (type) {
+    case "toggle":
+      if (
+        state.prev !== index &&
+        state.prev !== null &&
+        state.flags[state.prev]
+      ) {
+        state.flags[state.prev] = false;
+      }
+
+      state.flags[index] = !state.flags[index];
+      state.prev = index;
+      return { ...state };
+
+    default:
+      throw new Error();
+  }
+}
+
+function Accordion() {
+  const [state, dispatch] = React.useReducer(accordionReducer, {
+    prev: null,
+    flags: [false, true, false]
+  });
+
+  const style = css`
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 10px;
+  `;
+
+  return (
+    <div css={style}>
+      <Block
+        title="Cargo details"
+        isOpen={state.flags[0]}
+        onToggle={() => dispatch({ type: "toggle", index: 0 })}
+      >
+        <div
+          css={{
+            padding: "10px 10px 30px"
+          }}
+        >
+          <p>Paragraph of text.</p>
+          <p>Another paragraph.</p>
+          <p>Other content.</p>
+        </div>
+      </Block>
+
+      <Block
+        title="Your details"
+        isOpen={state.flags[1]}
+        onToggle={() => dispatch({ type: "toggle", index: 1 })}
+      >
+        <div
+          css={{
+            padding: "10px 10px 30px"
+          }}
+        >
+          <p>Paragraph of text.</p>
+          <p>Another paragraph.</p>
+          <p>Other content.</p>
+        </div>
+      </Block>
+
+      <Block
+        title="Handling instructions"
+        isOpen={state.flags[2]}
         onToggle={() => dispatch({ type: "toggle", index: 2 })}
       >
         <div

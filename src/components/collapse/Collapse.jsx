@@ -215,7 +215,7 @@ function Collapse({
     ...style,
     ...collapseStyle
   };
-  let ElementType = elementType || "div";
+  let ElementType = elementType;
   let collapseClassName = className;
   if (!excludeStateCSS) collapseClassName += ` -c-is--${collapseState}`;
 
@@ -234,6 +234,7 @@ function Collapse({
 
 Collapse.defaultProps = {
   className: "collapse-css-transition",
+  elementType: "div",
   style: {}
 };
 
