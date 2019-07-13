@@ -13,15 +13,17 @@ let COLLAPSING = "collapsing";
 let EXPANDING = "expanding";
 let EXPANDED = "expanded";
 
-let nextFrame = callback => {
-  //requestAnimationFrame(() => requestAnimationFrame(callback));
-  requestAnimationFrame(() => setTimeout(callback), 0);
-};
+function nextFrame(callback) {
+  requestAnimationFrame(function() {
+    setTimeout(callback, 0);
+  });
+}
 
-let isMoving = collapseState =>
-  collapseState === EXPANDING || collapseState === COLLAPSING;
+function isMoving(collapseState) {
+  return collapseState === EXPANDING || collapseState === COLLAPSING;
+}
 
-let Collapse = ({
+function Collapse({
   className,
   excludeStateCSS,
   children,
@@ -35,7 +37,7 @@ let Collapse = ({
   onInit,
   onChange,
   ...rest
-}) => {
+}) {
   let getCollapseHeight = () => collapseHeight || "0px";
   let getCollapsedVisibility = () => (collapseHeight ? "" : "hidden");
 
@@ -172,7 +174,8 @@ let Collapse = ({
       switch (collapseState) {
         case EXPANDING:
           if (target.style.height === "0px")
-            console.warn(
+            // This is stale, a newer event has happened before this could execute
+            debugLog(
               "onTransitionEnd height unexpected 0px",
               "ignore setExpanded"
             );
@@ -180,14 +183,15 @@ let Collapse = ({
           break;
         case COLLAPSING:
           if (target.style.height !== "0px")
-            console.warn(
+            // This is stale, a newer event has happened before this could execute
+            debugLog(
               `onTransitionEnd height unexpected ${target.style.height}`,
               "ignore setCollapsed"
             );
           else setCollapseState(COLLAPSED);
           break;
         default:
-          console.warn("Ignored in onTransitionEnd", collapseState);
+          debugLog("Ignored in onTransitionEnd", collapseState);
       }
     }
   }
@@ -205,13 +209,13 @@ let Collapse = ({
   }
   // END getDerivedStateFromProps
 
-  const computedStyle = {
+  let computedStyle = {
     overflow: "hidden",
     transition,
     ...style,
     ...collapseStyle
   };
-  const ElementType = elementType || "div";
+  let ElementType = elementType || "div";
   let collapseClassName = className;
   if (!excludeStateCSS) collapseClassName += ` -c-is--${collapseState}`;
 
@@ -226,7 +230,7 @@ let Collapse = ({
       {typeof render === "function" ? render(collapseState) : children}
     </ElementType>
   );
-};
+}
 
 Collapse.defaultProps = {
   className: "collapse-css-transition",
