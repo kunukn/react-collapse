@@ -60,11 +60,26 @@ const Collapse = require("@kunukn/react-collapse");
 
 ## Properties
 
-#### `isOpen`: boolean
+| property        | type     |
+| --------------- | -------- |
+| isOpen          | boolean  |
+| children        | node     |
+| render          | function |
+| className       | string   |
+| transition      | string   |
+| elementType     | string   |
+| collapseHeight  | string   |
+| onChange        | function |
+| onInit          | function |
+| excludeStateCSS | boolean  |
+
+#### `isOpen` : boolean
 
 Expands or collapses content.
 
-#### `children`: node
+#### `children` : node
+
+Render the children. Either use this or the `render` prop to render the content.
 
 ```js
 <Collapse isOpen={true || false}>
@@ -75,9 +90,10 @@ Expands or collapses content.
 </Collapse>
 ```
 
-#### `render`: function
+#### `render` : function
 
-Renders content using the [render-props pattern](https://reactjs.org/docs/render-props.html).
+Render content using the [render-props pattern](https://reactjs.org/docs/render-props.html).
+If this is applied, then the children prop is ignored.
 
 ```js
 <Collapse
@@ -95,23 +111,11 @@ Renders content using the [render-props pattern](https://reactjs.org/docs/render
 
 There are four possible collapse states: `collapsed`, `collapsing`, `expanded`, `expanding`.
 
-#### `className`: string
+#### `className` : string
 
 You can specify a custom className. The default value is `collapse-css-transition`. Remember to add CSS transition if a className is provided.
 
-#### `excludeStateCSS`: boolean
-
-Exclude the applied CSS collapse state.
-By default one of the class names are applied depending on the collapsed state:
-
-```
--c-is--collapsed
--c-is--collapsing
--c-is--expanded
--c-is--expanding
-```
-
-#### `transition`: string
+#### `transition` : string
 
 You can also specify a CSS transition in line by using the `transition` prop.
 
@@ -121,7 +125,7 @@ You can also specify a CSS transition in line by using the `transition` prop.
 </Collapse>
 ```
 
-#### `elementType`: string
+#### `elementType` : string
 
 You can specify the HTML element type for the collapse component. By default the element type is a `div` element.
 
@@ -131,7 +135,7 @@ You can specify the HTML element type for the collapse component. By default the
 </Collapse>
 ```
 
-#### `collapseHeight`: string
+#### `collapseHeight` : string
 
 You can specify the collapse height in CSS unit to partially show some content.
 
@@ -158,6 +162,18 @@ let myCallback = ({ collapseState, isMoving, hasReversed, collapseStyle }) => {
 #### `onInit` : function
 
 Similar to onChange but only invoked on mount.
+
+#### `excludeStateCSS` : boolean
+
+Exclude the applied CSS collapse state.
+By default one of the class names are applied depending on the collapsed state:
+
+```
+-c-is--collapsed
+-c-is--collapsing
+-c-is--expanded
+-c-is--expanding
+```
 
 ### ARIA and data attributes
 
