@@ -2,8 +2,6 @@ import "./collapse.css";
 import React from "react";
 import debugLog from "./debugLog";
 
-debugLog("*** Collapse class component *** ");
-
 const COLLAPSED = "collapsed";
 const COLLAPSING = "collapsing";
 const EXPANDING = "expanding";
@@ -31,7 +29,7 @@ export default class Collapse extends React.Component {
       style,
       render,
       elementType,
-      collapseHeight,
+      collapseHeight, // exclude from ...rest
       onInit,
       onChange,
       isOpen,

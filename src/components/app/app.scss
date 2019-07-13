@@ -37,6 +37,10 @@
   max-width: 500px;
   padding: 3rem 1rem 1rem;
 
+  &.is-class-component {
+    background: pink;
+  }
+
   &--transition-enabled {
     .icon {
       transition: transform 250ms ease-in-out;
@@ -63,7 +67,7 @@
         transition: opacity 300ms;
         will-change: opacity;
         opacity: 1;
-        content: '';
+        content: "";
         display: block;
         position: absolute;
         top: 0;

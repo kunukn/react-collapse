@@ -30,9 +30,13 @@ let App = props => {
 
   return (
     <div
-      className={cx("app", {
-        "app--transition-enabled": state.transitionEnabled
-      })}
+      className={cx(
+        "app",
+        {
+          "app--transition-enabled": state.transitionEnabled
+        },
+        props.className
+      )}
     >
       <button
         className={cx("app__toggle", { "app__toggle--active": state.isOpen1 })}
