@@ -19,7 +19,7 @@ beforeEach(() => {
 
 afterEach(() => {
   global.requestAnimationFrame.mockRestore();
-  //global.setTimeout.mockRestore();
+ // global.setTimeout.mockRestore();
   cleanup();
 });
 
@@ -96,7 +96,10 @@ describe("<Collapse />", () => {
 
     rerender(<Collapse {...props} isOpen={true} />);
 
-    jest.advanceTimersByTime(1);
+    act(() => {
+      /* fire events that update state */
+      jest.advanceTimersByTime(1);
+    });
 
     expect(props.onChange.mock.calls.length).toBe(1);
 
@@ -116,7 +119,10 @@ describe("<Collapse />", () => {
 
     rerender(<Collapse {...props} isOpen={false} />);
 
-    jest.advanceTimersByTime(1);
+    act(() => {
+      /* fire events that update state */
+      jest.advanceTimersByTime(1);
+    });
 
     expect(props.onChange.mock.calls.length).toBe(1);
 
