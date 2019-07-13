@@ -162,14 +162,29 @@ let Collapse = ({
 
   function onTransitionEnd({ target, propertyName }) {
     if (target === contentRef.current && propertyName === "height") {
-      debugLog("onTransitionEnd", collapseState, propertyName);
+      debugLog(
+        "onTransitionEnd",
+        collapseState,
+        propertyName,
+        target.style.height
+      );
 
       switch (collapseState) {
         case EXPANDING:
-          setCollapseState(EXPANDED);
+          if (target.style.height === "0px")
+            console.warn(
+              "onTransitionEnd height unexpected 0px",
+              "ignore setExpanded"
+            );
+          else setCollapseState(EXPANDED);
           break;
         case COLLAPSING:
-          setCollapseState(COLLAPSED);
+          if (target.style.height !== "0px")
+            console.warn(
+              `onTransitionEnd height unexpected ${target.style.height}`,
+              "ignore setCollapsed"
+            );
+          else setCollapseState(COLLAPSED);
           break;
         default:
           console.warn("Ignored in onTransitionEnd", collapseState);
