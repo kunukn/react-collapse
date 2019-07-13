@@ -14,8 +14,11 @@ import copy from "rollup-plugin-copy";
 import pkg from "./package.json";
 import sizes from "./rollup-plugins/sizes-plugin";
 
-const input = 'components/collapse/Collapse.class.jsx'; // React 16.3+
-//const input = "components/collapse/Collapse.jsx"; // React 16.8+
+let isClassComponent = process.env.classComponent === "true";
+
+const input = isClassComponent
+  ? "components/collapse/Collapse.class.jsx" // React 16.3+
+  : "components/collapse/Collapse.jsx"; // React 16.8+
 const name = "Collapse";
 
 let includePathOptions = {
@@ -29,6 +32,8 @@ let isEs5 = process.env.ES5 === "true";
 let isEs6 = process.env.ES6 === "true";
 isEs5 && console.log("*** ES5 ***");
 isEs6 && console.log("*** ES2015 ***");
+isClassComponent && console.log("*** CLASS COMPONENT ***");
+!isClassComponent && console.log("*** FUNCTION COMPONENT ***");
 
 export default {
   external: ["react", "react-dom"],
