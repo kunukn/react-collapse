@@ -21,7 +21,7 @@ module.exports = (env = {}, argv = {}) => {
   const VALIDATE = 'validate';
 
   const entries = {
-    [PRODUCTION]: './src/components/Collapse/Collapse.jsx',
+    [PRODUCTION]: './src/components/collapse/Collapse.jsx',
     [DEVELOPMENT]: './src/development-entry',
     [VALIDATE]: './src/validate-entry',
   };
