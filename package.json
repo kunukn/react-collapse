@@ -40,7 +40,7 @@
     "deploy-storybook-from-out": "npm run deploy-storybook -- --existing-output-dir=.out",
     "build-deploy-storybook": "npm run build-storybook-to-out && npm run deploy-storybook-from-out",
     "rebuild-node-sass": "npm rebuild node-sass",
-    "lint": "eslint src/components/Collapse/Collapse.hooks.jsx",
+    "lint": "eslint src/components/Collapse/Collapse.jsx",
     "lint-all": "eslint src/**/*.jsx src/**/*.js",
     "dtslint": "dtslint types",
     "__prepublish": "yarn lint && yarn test && yarn build"

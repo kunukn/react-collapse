@@ -1,5 +1,5 @@
 import React from "react";
-import Collapse from "./Collapse.hooks";
+import Collapse from "./Collapse";
 import { storiesOf } from "@storybook/react";
 import Component from "@reach/component-component";
 import "components/Base/base.scss";
