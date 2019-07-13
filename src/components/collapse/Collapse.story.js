@@ -1,3 +1,6 @@
+/** @jsx jsx */
+import { css, jsx } from "@emotion/core";
+import styled from "@emotion/styled";
 import React from "react";
 import Collapse from "./Collapse";
 import { storiesOf } from "@storybook/react";
@@ -6,18 +9,41 @@ import "components/base/base.scss";
 import "~/stories/storybook.scss";
 import Down from "components/icons/Down";
 
+const Container = styled.div`
+  max-width: 500px;
+  padding: 1rem;
+`;
+
+const BlockStyle = styled.div`
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+`;
+
+const Toggle = styled.button`
+  font-size: inherit;
+  width: 100%;
+  font-size: 100%;
+  background: transparent;
+  box-shadow: none;
+  width: 100%;
+  margin: 0;
+  padding: 10px;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  color: purple;
+`;
+
 export default function CollapseStory() {
   storiesOf("Collapses", module)
     .add("default", () => (
       <Component initialState={{ isOpen: false }}>
         {({ state, setState }) => (
-          <div className="box">
-            <button
-              className="btn"
-              onClick={() => setState({ isOpen: !state.isOpen })}
-            >
+          <Container>
+            <Toggle onClick={() => setState({ isOpen: !state.isOpen })}>
               toggle
-            </button>
+            </Toggle>
             <Collapse isOpen={state.isOpen}>
               <p className="text">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -27,7 +53,7 @@ export default function CollapseStory() {
               </p>
             </Collapse>
             <p className="text">below content</p>
-          </div>
+          </Container>
         )}
       </Component>
     ))
@@ -36,13 +62,10 @@ export default function CollapseStory() {
       <Component initialState={{ isOpen1: false, isOpen2: false }}>
         {({ state, setState }) => (
           <>
-            <div className="box">
-              <button
-                className="btn"
-                onClick={() => setState({ isOpen1: !state.isOpen1 })}
-              >
+            <Container>
+              <Toggle onClick={() => setState({ isOpen1: !state.isOpen1 })}>
                 toggle
-              </button>
+              </Toggle>
               <Collapse isOpen={state.isOpen1}>
                 <p className="text">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -51,14 +74,11 @@ export default function CollapseStory() {
                   laboris nisi ut aliquip ex ea commodo consequat.
                 </p>
               </Collapse>
-            </div>
-            <div className="box">
-              <button
-                className="btn"
-                onClick={() => setState({ isOpen2: !state.isOpen2 })}
-              >
-                toggle
-              </button>
+            </Container>
+            <Container>
+              <Toggle onClick={() => setState({ isOpen2: !state.isOpen2 })}>
+                Toggle
+              </Toggle>
               <Collapse isOpen={state.isOpen2}>
                 <p className="text">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -67,22 +87,22 @@ export default function CollapseStory() {
                   laboris nisi ut aliquip ex ea commodo consequat.
                 </p>
               </Collapse>
-            </div>
+            </Container>
           </>
         )}
       </Component>
     ))
 
-    .add("collapse-all", () => <CollapseAll/>);
+    .add("collapse-all", () => <CollapseAll />);
 }
 
 function Block({ isOpen, title, onToggle, children }) {
   return (
     <div className="block">
-      <button className="btn toggle" onClick={onToggle}>
+      <Toggle onClick={onToggle}>
         <span>{title}</span>
         <Down isOpen={isOpen} />
-      </button>
+      </Toggle>
       <Collapse layoutEffect isOpen={isOpen}>
         {children}
       </Collapse>
