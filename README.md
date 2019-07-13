@@ -142,7 +142,7 @@ You can specify the HTML element type for the collapse component. By default the
 You can specify the collapse height in CSS unit to partially show some content.
 
 ```js
-<Collapse collapseHeight="4rem">
+<Collapse collapseHeight="40px">
   <p>A long paragraph of text inside an article element</p>
 </Collapse>
 ```
