@@ -10,14 +10,13 @@ type callbackProps = {
 interface CollapseProps {
   isOpen?: boolean;
   render?: (collapseState: string) => void;
-  excludeStateCSS?: boolean;
-  transition?: string;
   className?: string;
-  elementType?: string;
+  transition?: string;
   collapseHeight?: string;
-  layoutEffect?: boolean;
   onChange?: (props: callbackProps) => void;
   onInit?: (props: callbackProps) => void;
+  elementType?: string;
+  excludeStateCSS?: boolean;
 }
 
 declare const Collapse: React.FunctionComponent<CollapseProps>;

@@ -32,19 +32,21 @@ Alternatively you can add it using the `transition` prop.
 
 (UMD minified 3.8kb, gzipped 1.7kb)
 
-`npm i -S @kunukn/react-collapse`<br>
-_or_<br>
-`yarn add @kunukn/react-collapse`
+```bash
+npm i @kunukn/react-collapse
+# or
+yarn add @kunukn/react-collapse
+```
 
 ## Installation for React 16.3+
 
 (UMD minified 5.7kb, gzipped 2.1kb)
 
-`npm i @kunukn/react-collapse@^1`
-
-or
-
-`yarn add @kunukn/react-collapse@^1`
+```bash
+npm i @kunukn/react-collapse@^1
+# or
+yarn add @kunukn/react-collapse@^1
+```
 
 ```js
 import Collapse from "@kunukn/react-collapse";
@@ -58,13 +60,13 @@ const Collapse = require("@kunukn/react-collapse");
 
 ## Properties
 
-#### `isOpen`: PropTypes.boolean
+#### `isOpen`: boolean
 
 Expands or collapses content.
 
-#### `children`: PropTypes.node
+#### `children`: node
 
-#### `render`: PropTypes.func
+#### `render`: function
 
 Renders content
 
@@ -97,11 +99,11 @@ or
 
 There are four possible collapse states: `collapsed`, `collapsing`, `expanded`, `expanding`.
 
-#### `className`: PropType.string
+#### `className`: string
 
 You can specify a custom className. The default value is `collapse-css-transition`.
 
-#### `excludeStateCSS`: PropType.boolean
+#### `excludeStateCSS`: boolean
 
 Exclude the applied CSS collapse state.
 By default one of the class names are applied:
@@ -111,7 +113,7 @@ By default one of the class names are applied:
 - `-c-is--expanded`
 - `-c-is--expanding`
 
-#### `transition`: PropType.string
+#### `transition`: string
 
 You can also specify a CSS transition in line by using the `transition` prop.
 
@@ -121,7 +123,7 @@ You can also specify a CSS transition in line by using the `transition` prop.
 </Collapse>
 ```
 
-#### `elementType`: PropType.string
+#### `elementType`: string
 
 You can specify the HTML element type for the collapse component. By default the element type is a `div` element.
 
@@ -131,17 +133,17 @@ You can specify the HTML element type for the collapse component. By default the
 </Collapse>
 ```
 
-#### `collapseHeight`: PropType.string
+#### `collapseHeight`: string
 
 You can specify the collapse height in CSS unit to partially show some content.
 
 ```js
-<Collapse collapseHeight="50px">
+<Collapse collapseHeight="4rem">
   <p>A long paragraph of text inside an article element</p>
 </Collapse>
 ```
 
-#### `onChange` : PropTypes.func
+#### `onChange` : function
 
 Callback function for when the transition changes.
 
@@ -155,7 +157,7 @@ let myCallback = ({ collapseState, isMoving, hasReversed, collapseStyle }) => {
 </Collapse>;
 ```
 
-#### `onInit` : PropTypes.func
+#### `onInit` : function
 
 Similar to onChange but only invoked on mount.
 
@@ -168,11 +170,6 @@ Similar to onChange but only invoked on mount.
   <p>Paragraph of text</p>
 </Collapse>
 ```
-
-#### `layoutEffect`: PropType.boolean
-
-Use the `useLayoutEffect` side-effect instead of `useEffect` for the DOM element CSS transition side-effect.
-This is for applying CSS style updates before the DOM is mutated. I am unsure if this has value as a feature, but I have included it as an experiment.
 
 ## Development and testing
 
@@ -200,11 +197,11 @@ open http://localhost:6007
 yarn test
 ```
 
-To run example covering all features, use `npm run storybook` or `yarn storybook`.
-
 - To develop and play around: `yarn start`
 - To build the bundle: `yarn build`
 - To validate the bundle: `yarn validate`
+
+To run example covering all features, use `npm run storybook` or `yarn storybook`.
 
 # CDN
 
