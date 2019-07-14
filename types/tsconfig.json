@@ -3,6 +3,7 @@
   "compilerOptions": {
     "moduleResolution": "node",
     "allowJs": true,
+    "checkJs": true,
     "baseUrl": "../",
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",

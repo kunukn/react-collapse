@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "es2016"],
+    "target": "es5",
+    "checkJs": true,
+    "jsx": "react",
+    "module": "commonjs",
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["*"],
+      "src/*": ["./src/*"],
+      "components/*": ["./components/*"]
+    }
+  },
+  "exclude": ["node_modules", "**/*.css", "**/*.scss"],
+  "include": ["src/**/*"]
+}

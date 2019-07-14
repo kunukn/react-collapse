@@ -13,12 +13,20 @@ let COLLAPSING = "collapsing";
 let EXPANDING = "expanding";
 let EXPANDED = "expanded";
 
+/**
+ *
+ * @param {function} callback
+ */
 function nextFrame(callback) {
   requestAnimationFrame(function() {
     setTimeout(callback, 0);
   });
 }
 
+/**
+ *
+ * @param {string} collapseState
+ */
 function isMoving(collapseState) {
   return collapseState === EXPANDING || collapseState === COLLAPSING;
 }
@@ -85,6 +93,10 @@ function Collapse({
     }
   }, [collapseState]);
 
+  /**
+   *
+   * @param {function} callback
+   */
   let onCallback = callback => {
     if (callback) {
       debugLog("onCallback " + callback.name);
@@ -159,6 +171,7 @@ function Collapse({
   }
 
   function getContentHeight() {
+    // @ts-ignore
     return `${contentRef.current.scrollHeight}px`;
   }
 

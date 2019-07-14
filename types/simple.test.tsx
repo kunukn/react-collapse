@@ -17,7 +17,7 @@ import Collapse from "@kunukn/react-collapse";
   onInit={({ collapseState, isMoving, hasReversed, collapseStyle }) => {}}
   onChange={({ collapseState, isMoving, hasReversed, collapseStyle }) => {}}
 >
-  <div>this is some content</div>{" "}
+  <div>this is some content</div>
 </Collapse>;
 
 <Collapse
