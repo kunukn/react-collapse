@@ -10,6 +10,7 @@ import url from "rollup-plugin-url";
 import { terser } from "rollup-plugin-terser";
 import strip from "rollup-plugin-strip";
 import copy from "rollup-plugin-copy";
+import ignore from 'rollup-plugin-ignore';
 
 import pkg from "./package.json";
 import sizes from "./rollup-plugins/sizes-plugin";
@@ -74,6 +75,7 @@ export default {
   ].filter(Boolean),
   plugins: [
     includePaths(includePathOptions),
+    ignore([]),
     //scss(),
     postcss({
       inject: false,
