@@ -129,7 +129,7 @@ You can specify a custom className. The default value is `collapse-css-transitio
 
 #### `transition` : string
 
-You can also specify a CSS transition in line by using the `transition` prop.
+You can also specify a CSS transition inline by using the `transition` prop.
 
 ```js
 <Collapse transition="height 290ms cubic-bezier(.4, 0, .2, 1)">

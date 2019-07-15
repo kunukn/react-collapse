@@ -19,7 +19,10 @@
     "typeRoots": ["../"],
     "types": [],
     "paths": {
-      "@kunukn/react-collapse": ["types/index.d.ts"]
+      "@kunukn/react-collapse": ["types/index.d.ts"],
+      "~/*": ["*"],
+      "src/*": ["./src/*"],
+      "components/*": ["./components/*"]
     }
   }
 }

@@ -39,7 +39,7 @@ function Collapse({
   style,
   render,
   elementType,
-  layoutEffect,
+  lazyEffect,
   isOpen,
   collapseHeight,
   onInit,
@@ -60,7 +60,7 @@ function Collapse({
   let [hasReversed, setHasReversed] = useState(false);
   let firstUpdate = useRef(true);
 
-  let effect = layoutEffect ? useLayoutEffect : useEffect;
+  let effect = lazyEffect ? useEffect : useLayoutEffect;
 
   effect(() => {
     if (!contentRef.current) return;

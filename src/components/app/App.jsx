@@ -90,15 +90,14 @@ let App = props => {
 
       <C2
         isOpen={state.isOpen2}
+        lazyEffect
         className={
           "collapse-css-transition app__collapse app__collapse--gradient " +
           (state.isOpen2 ? "app__collapse--active" : "")
         }
-        transition="height 800ms cubic-bezier(0.4, 0, 0.2, 1)"
         aria-hidden={state.isOpen2 ? "false" : "true"}
         onChange={data => console.log("onChange", data)}
         elementType="article"
-        excludeStateCSS
         children={collapseState => (
           <div className="app__content">
             <div>{collapseState}</div>
@@ -131,7 +130,9 @@ let App = props => {
         {JSON.stringify(state.spy3, null, 1)}
       </pre>
       <C3
+        excludeStateCSS
         isOpen={state.isOpen3}
+        transition="height 800ms cubic-bezier(0.4, 0, 0.2, 1)"
         collapseHeight="60px"
         className={
           "collapse-css-transition app__collapse app__collapse--gradient " +
