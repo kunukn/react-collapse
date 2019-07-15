@@ -1,5 +1,5 @@
 button {
-  transition: color 250ms;
+  transition: color 280ms;
 }
 button[disabled] {
   color: #aaa;
@@ -7,7 +7,7 @@ button[disabled] {
 
 .icon-down {
   fill: purple;
-  transition: transform 200ms;
+  transition: transform 280ms cubic-bezier(0, 1, 0, 1);
   pointer-events: none;
   &.is-open {
     transform: rotate(0.5turn);
