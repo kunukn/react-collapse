@@ -173,7 +173,7 @@ let myCallback = ({ collapseState, isMoving, hasReversed, collapseStyle }) => {
 
 #### `onInit` : function
 
-Similar to onChange but only invoked on mount.
+Similar to onChange but only invoked on first render.
 
 #### `excludeStateCSS` : boolean
 
