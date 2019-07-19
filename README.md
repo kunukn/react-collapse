@@ -264,7 +264,6 @@ IE11 + Modern browsers
 # Used React 16.8 hooks
 
 - **useState**
-- **useEffect**
 - **useLayoutEffect**
 - **useRef**
 
