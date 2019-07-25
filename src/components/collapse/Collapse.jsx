@@ -5,7 +5,13 @@
  */
 
 import "./collapse.css";
-import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
+import React, {
+  useState,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useCallback
+} from "react";
 import debugLog from "./debugLog";
 
 let COLLAPSED = "collapsed";
@@ -66,8 +72,6 @@ function Collapse({
     if (!contentRef.current) return;
 
     if (firstUpdate.current) {
-      onCallback(onInit);
-
       // Don't run effect on first render, the DOM styles are already correctly set
       firstUpdate.current = false;
       debugLog("skip effect first render");
@@ -229,9 +233,16 @@ function Collapse({
   let collapseClassName = className;
   if (!excludeStateCSS) collapseClassName += ` -c-is--${collapseState}`;
 
+  let callbackRef = useCallback(node => {
+    if (node !== null) {
+      contentRef.current = node;
+      onCallback(onInit);
+    }
+  }, []);
+
   return (
     <ElementType
-      ref={contentRef}
+      ref={callbackRef}
       style={computedStyle}
       className={collapseClassName}
       onTransitionEnd={onTransitionEnd}
