@@ -173,7 +173,7 @@ let myCallback = ({ collapseState, isMoving, hasReversed, collapseStyle }) => {
 
 #### `onInit` : function
 
-Similar to onChange but only invoked on first render.
+Similar to onChange but only invoked on DOM mounted.
 
 #### `excludeStateCSS` : boolean
 
@@ -264,8 +264,10 @@ IE11 + Modern browsers
 # Used React 16.8 hooks
 
 - **useState**
+- **useEffect**
 - **useLayoutEffect**
 - **useRef**
+- **useCallback**
 
 # Design goals
 

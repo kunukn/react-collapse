@@ -55,7 +55,7 @@ function Collapse({
   let getCollapseHeight = () => collapseHeight || "0px";
   let getCollapsedVisibility = () => (collapseHeight ? "" : "hidden");
 
-  let contentRef = useRef();
+  let elementRef = useRef();
   let [collapseState, setCollapseState] = useState(
     isOpen ? EXPANDED : COLLAPSED
   );
@@ -69,7 +69,7 @@ function Collapse({
   let effect = lazyEffect ? useEffect : useLayoutEffect;
 
   effect(() => {
-    if (!contentRef.current) return;
+    if (!elementRef.current) return;
 
     if (firstUpdate.current) {
       // Don't run effect on first render, the DOM styles are already correctly set
@@ -116,7 +116,7 @@ function Collapse({
   function setCollapsed() {
     debugLog("setCollapsed");
 
-    if (!contentRef.current) return;
+    if (!elementRef.current) return;
 
     setCollapseStyle({
       height: getCollapseHeight(),
@@ -128,9 +128,9 @@ function Collapse({
   function setCollapsing() {
     debugLog("setCollapsing");
 
-    if (!contentRef.current) return;
+    if (!elementRef.current) return;
 
-    let height = getContentHeight(); // capture height before setting it to async setState method
+    let height = getElementHeight(); // capture height before setting it to async setState method
 
     setCollapseStyle({
       height,
@@ -150,8 +150,8 @@ function Collapse({
     debugLog("setExpanding");
 
     nextFrame(() => {
-      if (contentRef.current) {
-        let height = getContentHeight(); // capture height before setting it to async setState method
+      if (elementRef.current) {
+        let height = getElementHeight(); // capture height before setting it to async setState method
 
         setCollapseStyle({
           height,
@@ -165,7 +165,7 @@ function Collapse({
   function setExpanded() {
     debugLog("setExpanded");
 
-    if (!contentRef.current) return;
+    if (!elementRef.current) return;
 
     setCollapseStyle({
       height: "",
@@ -174,13 +174,13 @@ function Collapse({
     onCallback(onChange);
   }
 
-  function getContentHeight() {
+  function getElementHeight() {
     // @ts-ignore
-    return `${contentRef.current.scrollHeight}px`;
+    return `${elementRef.current.scrollHeight}px`;
   }
 
   function onTransitionEnd({ target, propertyName }) {
-    if (target === contentRef.current && propertyName === "height") {
+    if (target === elementRef.current && propertyName === "height") {
       let styleHeight = target.style.height;
 
       debugLog("onTransitionEnd", collapseState, propertyName, styleHeight);
@@ -234,9 +234,10 @@ function Collapse({
   if (!excludeStateCSS) collapseClassName += ` -c-is--${collapseState}`;
 
   let callbackRef = useCallback(node => {
-    if (node !== null) {
-      contentRef.current = node;
+    if (node) {
+      elementRef.current = node;
       onCallback(onInit);
+      debugLog("callback ref");
     }
   }, []);
 
