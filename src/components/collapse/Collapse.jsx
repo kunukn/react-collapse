@@ -14,6 +14,8 @@ import React, {
 } from "react";
 import debugLog from "./debugLog";
 
+// using let instead of const,
+// experimenting with ES2015 bundle which gets a bit smaller when using let over const.
 let COLLAPSED = "collapsed";
 let COLLAPSING = "collapsing";
 let EXPANDING = "expanding";

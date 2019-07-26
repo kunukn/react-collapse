@@ -44,7 +44,7 @@ export default function CollapseStory() {
             <Toggle onClick={() => setState({ isOpen: !state.isOpen })}>
               toggle
             </Toggle>
-            <Collapse isOpen={state.isOpen}>
+            <Collapse isOpen={state.isOpen} excludeStateCSS>
               <Text>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
