@@ -19,7 +19,7 @@ beforeEach(() => {
 
 afterEach(() => {
   global.requestAnimationFrame.mockRestore();
- // global.setTimeout.mockRestore();
+  // global.setTimeout.mockRestore();
   cleanup();
 });
 
@@ -134,14 +134,22 @@ describe("<Collapse />", () => {
 
   it("should call onInit where isOpen is false", () => {
     const props = {
+      isOpen: false,
       onInit: jest.fn()
     };
 
-    render(<Collapse {...props} />);
+    const { rerender } = render(<Collapse {...props} />);
+    rerender(<Collapse {...props} isOpen={true} />);
+
+    act(() => {
+      /* fire events that update state */
+      jest.advanceTimersByTime(1);
+    });
+
+    expect(props.onInit.mock.calls.length).toBe(1);
 
     let callbackProps = props.onInit.mock.calls[0][0];
     expect(callbackProps.collapseState).toBe("collapsed");
-    expect(props.onInit.mock.calls.length).toBe(1);
   });
 
   it("should call onInit where isOpen is true", () => {
@@ -150,11 +158,18 @@ describe("<Collapse />", () => {
       isOpen: true
     };
 
-    render(<Collapse {...props} />);
+    const { rerender } = render(<Collapse {...props} />);
+    rerender(<Collapse {...props} isOpen={true} />);
+
+    act(() => {
+      /* fire events that update state */
+      jest.advanceTimersByTime(1);
+    });
+
+    expect(props.onInit.mock.calls.length).toBe(1);
 
     let callbackProps = props.onInit.mock.calls[0][0];
     expect(callbackProps.collapseState).toBe("expanded");
-    expect(props.onInit.mock.calls.length).toBe(1);
   });
 
   it("should apply transition prop", () => {
@@ -257,7 +272,6 @@ describe("<Collapse />", () => {
     expect(getByText("expanded")).toBeTruthy();
   });
 
-
   it("should apply render-prop pattern on children if children is a function", () => {
     const props = {
       children: collapseState => <div>{collapseState}</div>
@@ -268,5 +282,34 @@ describe("<Collapse />", () => {
     expect(getByText("collapsed")).toBeTruthy();
   });
 
+  it("should call onInit again if elementType is changed", () => {
+    const props = {
+      isOpen: false,
+      onInit: jest.fn()
+    };
 
+    const { rerender, container } = render(<Collapse {...props} />);
+
+    const collapse1 = container.firstChild;
+
+    rerender(<Collapse {...props} elementType="article" />);
+
+    act(() => {
+      /* fire events that update state */
+      jest.advanceTimersByTime(1);
+    });
+
+    const collapse2 = container.firstChild;
+
+    expect(props.onInit.mock.calls.length).toBe(2);
+
+    expect(collapse1.nodeName).toBe("DIV");
+    expect(collapse2.nodeName).toBe("ARTICLE");
+
+    let callbackProps1 = props.onInit.mock.calls[0][0];
+    let callbackProps2 = props.onInit.mock.calls[1][0];
+
+    expect(callbackProps1.collapseState).toBe("collapsed");
+    expect(callbackProps2.collapseState).toBe("collapsed");
+  });
 });

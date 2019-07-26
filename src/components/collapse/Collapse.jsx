@@ -233,13 +233,16 @@ function Collapse({
   let collapseClassName = className;
   if (!excludeStateCSS) collapseClassName += ` -c-is--${collapseState}`;
 
-  let callbackRef = useCallback(node => {
-    if (node) {
-      elementRef.current = node;
-      onCallback(onInit);
-      debugLog("callback ref");
-    }
-  }, []);
+  let callbackRef = useCallback(
+    node => {
+      if (node) {
+        elementRef.current = node;
+        onCallback(onInit);
+        debugLog("callback ref");
+      }
+    },
+    [elementType]
+  );
 
   return (
     <ElementType
