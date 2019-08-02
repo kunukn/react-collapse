@@ -17,6 +17,7 @@ interface CollapseProps {
   onInit?: (props: callbackProps) => void;
   elementType?: string;
   excludeStateCSS?: boolean;
+  style?: Object;
 }
 
 declare const Collapse: React.FunctionComponent<CollapseProps>;
