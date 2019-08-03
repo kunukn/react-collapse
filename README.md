@@ -194,7 +194,7 @@ By default one of the class names are applied depending on the collapsed state:
 
 ### Custom props
 
-`Collapse` applies custom props such as transfers `aria-` and `data-` attributes to the component's rendered DOM element. For example this can be used to set the `aria-hidden` attribute:
+`Collapse` applies custom props such as `aria-` and `data-` attributes to the component's rendered DOM element. For example this can be used to set the `aria-hidden` attribute:
 
 ```js
 <Collapse aria-hidden={isOpenState ? "false" : "true"} isOpen={isOpenState}>
