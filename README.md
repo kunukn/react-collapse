@@ -64,7 +64,7 @@ const Collapse = require("@kunukn/react-collapse");
 | Prop            	| Type            	| Default                 	|
 |-----------------	|-----------------	|-------------------------	|
 | isOpen          	| boolean         	| false                   	|
-| children        	| node | function 	|                         	|
+| children        	| node \| function 	|                         	|
 | render          	| function        	|                         	|
 | className       	| string          	| collapse-css-transition 	|
 | transition      	| string          	|                         	|
