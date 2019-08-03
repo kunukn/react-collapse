@@ -18,6 +18,7 @@ interface CollapseProps {
   elementType?: string;
   excludeStateCSS?: boolean;
   style?: Object;
+  lazyEffect?: boolean;
 }
 
 declare const Collapse: React.FunctionComponent<CollapseProps>;
