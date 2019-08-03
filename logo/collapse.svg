@@ -1,7 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" 
-    xmlns:xlink="http://www.w3.org/1999/xlink" width="80" height="38" viewBox="0 0 80 38">
-    <rect fill="dodgerblue" x="0" y="0" width="80" height="2"/>
-    <rect fill="dodgerblue" x="0" y="6" width="80" height="20"/>
-    <rect fill="dodgerblue"x="0" y="30" width="80" height="2"/>
-    <rect fill="dodgerblue" x="0" y="36" width="80" height="2"/>
+    xmlns:xlink="http://www.w3.org/1999/xlink" width="62" height="62" viewBox="0 0 62 62">
+    <rect fill="dodgerblue" x="0" y="0" width="62" height="2"/>
+    <rect fill="dodgerblue" x="0" y="6" width="62" height="20"/>
+    <rect fill="dodgerblue" x="0" y="30" width="62" height="2"/>
+    <rect fill="dodgerblue" x="0" y="36" width="62" height="20"/>
+    <rect fill="dodgerblue" x="0" y="60" width="62" height="2"/>
 </svg>
