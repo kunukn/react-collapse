@@ -1,11 +1,13 @@
-# react-collapse ![logo](logo/collapse.svg "logo")
+# react-collapse
 
 Collapse component with CSS transition for elements with variable and dynamic height.
 
 [![npm version](https://img.shields.io/npm/v/@kunukn/react-collapse.svg?style=flat-square)](https://www.npmjs.com/package/@kunukn/react-collapse)
 [![npm downloads](https://img.shields.io/npm/dm/@kunukn/react-collapse.svg?style=flat-square)](https://www.npmjs.com/package/@kunukn/react-collapse)
 
+react-collapse
 
+![logo](logo/collapse.svg "logo")
 
 # Demo
 
@@ -63,18 +65,18 @@ const Collapse = require("@kunukn/react-collapse");
 
 ## Properties
 
-| Prop            	| Type            	| Default                 	|
-|-----------------	|-----------------	|-------------------------	|
-| isOpen          	| boolean         	| false                   	|
-| children        	| node \| function 	|                         	|
-| render          	| function        	|                         	|
-| className       	| string          	| collapse-css-transition 	|
-| transition      	| string          	|                         	|
-| elementType     	| string          	| div                     	|
-| collapseHeight  	| string          	| 0px                     	|
-| onChange        	| function        	|                         	|
-| onInit          	| function        	|                         	|
-| excludeStateCSS 	| boolean         	| false                   	|
+| Prop            | Type             | Default                 |
+| --------------- | ---------------- | ----------------------- |
+| isOpen          | boolean          | false                   |
+| children        | node \| function |                         |
+| render          | function         |                         |
+| className       | string           | collapse-css-transition |
+| transition      | string           |                         |
+| elementType     | string           | div                     |
+| collapseHeight  | string           | 0px                     |
+| onChange        | function         |                         |
+| onInit          | function         |                         |
+| excludeStateCSS | boolean          | false                   |
 
 <br>
 
@@ -203,7 +205,7 @@ By default one of the class names are applied depending on the collapsed state:
 Or you could specify a specific transitionDuration.
 
 ```js
-<Collapse style={{ transitionDuration: '270ms' }} isOpen={isOpenState}>
+<Collapse style={{ transitionDuration: "270ms" }} isOpen={isOpenState}>
   <p>Paragraph of text</p>
 </Collapse>
 ```
