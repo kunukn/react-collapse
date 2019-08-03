@@ -22,7 +22,7 @@ Collapse component with CSS transition for elements with variable and dynamic he
 ```html
 <style>
   .collapse-css-transition {
-    transition: height 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: height 280ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 </style>
 ```
@@ -61,18 +61,18 @@ const Collapse = require("@kunukn/react-collapse");
 
 ## Properties
 
-| property        | type             |
-| --------------- | ---------------- |
-| isOpen          | boolean          |
-| children        | node \| function |
-| render          | function         |
-| className       | string           |
-| transition      | string           |
-| elementType     | string           |
-| collapseHeight  | string           |
-| onChange        | function         |
-| onInit          | function         |
-| excludeStateCSS | boolean          |
+| Prop            	| Type            	| Default                 	|
+|-----------------	|-----------------	|-------------------------	|
+| isOpen          	| boolean         	| false                   	|
+| children        	| node | function 	|                         	|
+| render          	| function        	|                         	|
+| className       	| string          	| collapse-css-transition 	|
+| transition      	| string          	|                         	|
+| elementType     	| string          	| div                     	|
+| collapseHeight  	| string          	| 0px                     	|
+| onChange        	| function        	|                         	|
+| onInit          	| function        	|                         	|
+| excludeStateCSS 	| boolean         	| false                   	|
 
 <br>
 
