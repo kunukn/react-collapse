@@ -188,12 +188,20 @@ By default one of the class names are applied depending on the collapsed state:
 -c-is--expanding
 ```
 
-### ARIA and data attributes
+### Custom props
 
-`Collapse` transfers `aria-` and `data-` attributes to the component's rendered DOM element. For example this can be used to set the `aria-hidden` attribute:
+`Collapse` applies custom props such as transfers `aria-` and `data-` attributes to the component's rendered DOM element. For example this can be used to set the `aria-hidden` attribute:
 
 ```js
 <Collapse aria-hidden={isOpenState ? "false" : "true"} isOpen={isOpenState}>
+  <p>Paragraph of text</p>
+</Collapse>
+```
+
+Or you could specify a specific transitionDuration.
+
+```js
+<Collapse style={{ transitionDuration: '270ms' }} isOpen={isOpenState}>
   <p>Paragraph of text</p>
 </Collapse>
 ```
