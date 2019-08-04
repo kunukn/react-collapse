@@ -30,12 +30,12 @@ describe("<Collapse />", () => {
 
   it("should render child", () => {
     let text = "Some content";
-    let Child = () => text;
-    const { getByText } = render(
-      <Collapse>
-        <Child />
-      </Collapse>
-    );
+
+    const props = {
+      children: () => text
+    };
+
+    const { getByText } = render(<Collapse {...props} />);
 
     expect(getByText(text)).toBeTruthy();
   });
@@ -85,6 +85,20 @@ describe("<Collapse />", () => {
     );
   });
 
+  it("should call onInit but not onChange on first render", () => {
+    const props = {
+      isOpen: false,
+      onChange: jest.fn(),
+      onInit: jest.fn(),
+      children: <div>some content.</div>
+    };
+
+    render(<Collapse {...props} />);
+
+    expect(props.onInit.mock.calls.length).toBe(1);
+    expect(props.onChange.mock.calls.length).toBe(0);
+  });
+
   it("should call onChange on isOpen change where isOpen is false", () => {
     const props = {
       isOpen: false,
@@ -93,12 +107,7 @@ describe("<Collapse />", () => {
       children: <div>some content.</div>
     };
 
-    const { rerender } = render(
-      <Collapse {...props}>
-        <div>content</div>
-        <div>content</div>
-      </Collapse>
-    );
+    const { rerender } = render(<Collapse {...props} />);
 
     expect(props.onInit.mock.calls.length).toBe(1);
 
@@ -113,7 +122,7 @@ describe("<Collapse />", () => {
 
     let callbackProps = props.onChange.mock.calls[0][0];
     expect(callbackProps.state).toBe("expanding");
-    //expect(callbackProps.style.height).toBe("");
+    //expect(callbackProps.style.height).toBe(""); // Maybe can't use DOM in TEST to calc height
     expect(callbackProps.style.visibility).toBeFalsy();
     expect(requestAnimationFrame).toHaveBeenCalledTimes(1);
   });
