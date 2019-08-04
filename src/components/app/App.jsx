@@ -45,9 +45,7 @@ let App = props => {
         className={cx("app__toggle", { "app__toggle--active": state.isOpen1 })}
         onClick={() => toggle(1)}
       >
-        <span className="app__toggle-text">
-          toggle {state.spy1.collapseState}
-        </span>
+        <span className="app__toggle-text">toggle {state.spy1.state}</span>
         <div className="rotate90">
           <svg
             className={cx("icon", { "icon--expanded": state.isOpen1 })}
