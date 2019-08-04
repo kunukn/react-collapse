@@ -19,7 +19,7 @@
     "clean": "rimraf dist/*.*",
     "start": "webpack-dev-server --color --inline --mode development --env.PORT=6007",
     "start-class": "webpack-dev-server --color --inline --mode development --env.PORT=6007 --env.CLASS=true",
-    "validate": "webpack-dev-server --color --mode development --env.VALIDATE=1 --env.PORT=6008",
+    "validate": "webpack-dev-server --color --inline --mode development --env.VALIDATE=1 --env.PORT=6008",
     "build-es5": "rollup -c rollup.config.js --environment ES5",
     "build-es6": "rollup -c rollup.config.js --environment ES6",
     "build-es5-class": "rollup -c rollup.config.js --environment ES5,classComponent",
