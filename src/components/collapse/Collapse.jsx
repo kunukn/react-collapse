@@ -40,8 +40,6 @@ function isMoving(collapseState) {
 }
 
 function Collapse({
-  className,
-  excludeStateCSS,
   children,
   transition,
   style,
@@ -65,7 +63,6 @@ function Collapse({
     height: isOpen ? null : getCollapseHeight(),
     visibility: isOpen ? null : getCollapsedVisibility()
   });
-  let [hasReversed, setHasReversed] = useState(false);
   let firstUpdate = useRef(true);
 
   let effect = lazyEffect ? useEffect : useLayoutEffect;
@@ -108,8 +105,6 @@ function Collapse({
       debugLog("onCallback " + callback.name);
       callback({
         collapseState,
-        collapseStyle,
-        hasReversed,
         isMoving: isMoving(collapseState)
       });
     }
@@ -216,11 +211,9 @@ function Collapse({
   let didOpen = collapseState === EXPANDED || collapseState === EXPANDING;
 
   if (!didOpen && isOpen) {
-    setHasReversed(collapseState === COLLAPSING);
     setCollapseState(EXPANDING);
   }
   if (didOpen && !isOpen) {
-    setHasReversed(collapseState === EXPANDING);
     setCollapseState(COLLAPSING);
   }
   // END getDerivedStateFromProps
@@ -232,8 +225,6 @@ function Collapse({
     ...collapseStyle
   };
   let ElementType = elementType;
-  let collapseClassName = className;
-  if (!excludeStateCSS) collapseClassName += ` -c-is--${collapseState}`;
 
   let callbackRef = useCallback(
     node => {
@@ -250,7 +241,6 @@ function Collapse({
     <ElementType
       ref={callbackRef}
       style={computedStyle}
-      className={collapseClassName}
       onTransitionEnd={onTransitionEnd}
       {...rest}
     >

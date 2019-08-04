@@ -3,8 +3,6 @@ import * as React from "react";
 type callbackProps = {
   collapseState: string;
   isMoving: boolean;
-  hasReversed: boolean;
-  collapseStyle: Object;
 };
 
 interface CollapseProps {
@@ -16,9 +14,9 @@ interface CollapseProps {
   onChange?: (props: callbackProps) => void;
   onInit?: (props: callbackProps) => void;
   elementType?: string;
-  excludeStateCSS?: boolean;
   style?: Object;
   lazyEffect?: boolean;
+  children?: React.ReactNode | ((collapseState: string) => void);
 }
 
 declare const Collapse: React.FunctionComponent<CollapseProps>;

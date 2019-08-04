@@ -1,23 +1,3 @@
 .collapse-css-transition {
-  transition: height 300ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-.collapse-css-transition > * {
-  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: transform;
-}
-
-.-c-is--collapsing > * {
-  transform: translateY(-6px);
-}
-
-.-c-is--collapsed > * {
-  transform: translateY(-6px);
-}
-
-.-c-is--expanding > * {
-  transform: translateX(0);
-}
-
-.-c-is--expanded > * {
-  transform: translateX(0);
+  transition: height 280ms cubic-bezier(0.4, 0, 0.2, 1);
 }

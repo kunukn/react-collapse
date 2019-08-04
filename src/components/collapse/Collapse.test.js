@@ -83,7 +83,6 @@ describe("<Collapse />", () => {
     expect(collapse.className.indexOf("collapse-css-transition") >= 0).toBe(
       true
     );
-    expect(collapse.className.indexOf(" -c-is--collapsed") >= 0).toBe(true);
   });
 
   it("should call onChange on isOpen change where isOpen is false", () => {
@@ -218,25 +217,8 @@ describe("<Collapse />", () => {
     expect(collapse.getAttribute("aria-hidden")).toBe("true");
   });
 
-  it("should render excludeStateCSS correctly", () => {
-    const props = {
-      excludeStateCSS: true
-    };
-
-    const { container } = render(<Collapse {...props} />);
-
-    const collapse = container.firstChild;
-
-    expect(collapse.className.indexOf("collapse-css-transition") >= 0).toBe(
-      true
-    );
-
-    expect(collapse.className.indexOf(" -c-is--collapsed") >= 0).toBe(false);
-  });
-
   it("should render exclude all class names correctly", () => {
     const props = {
-      excludeStateCSS: true,
       className: ""
     };
 
@@ -247,8 +229,6 @@ describe("<Collapse />", () => {
     expect(collapse.className.indexOf("collapse-css-transition") >= 0).toBe(
       false
     );
-
-    expect(collapse.className.indexOf(" -c-is--collapsed") >= 0).toBe(false);
   });
 
   it("should call render prop collapsed", () => {

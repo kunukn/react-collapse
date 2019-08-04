@@ -4,7 +4,6 @@ import Collapse from "@kunukn/react-collapse";
 
 <Collapse
   isOpen
-  excludeStateCSS
   transition="height 260ms cubic-bezier(0.4, 0, 0.2, 1)"
   className="CSS-class-name"
   elementType="article"
@@ -16,12 +15,16 @@ import Collapse from "@kunukn/react-collapse";
 </Collapse>;
 
 <Collapse
-  onInit={({ collapseState, isMoving, hasReversed, collapseStyle }) => {}}
-  onChange={({ collapseState, isMoving, hasReversed, collapseStyle }) => {}}
+  onInit={({ collapseState, isMoving }) => {}}
+  onChange={({ collapseState, isMoving }) => {}}
 >
   <div>this is some content</div>
 </Collapse>;
 
 <Collapse
   render={collapseState => <div>this is the state {collapseState}</div>}
-></Collapse>;
+/>;
+
+<Collapse>
+  {collapseState => <div>this is the state {collapseState}</div>}
+</Collapse>;
