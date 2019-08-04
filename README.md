@@ -35,7 +35,7 @@ Alternatively you can add it using the `transition` prop.
 
 ## Installation for React 16.8+
 
-(UMD minified 3.8kb, gzipped 1.7kb)
+(UMD minified 3.8kb, gzipped 1.6kb)
 
 ```bash
 npm i @kunukn/react-collapse
@@ -65,18 +65,17 @@ const Collapse = require("@kunukn/react-collapse");
 
 ## Properties
 
-| Prop            | Type             | Default                 |
-| --------------- | ---------------- | ----------------------- |
-| isOpen          | boolean          | false                   |
-| children        | node \| function |                         |
-| render          | function         |                         |
-| className       | string           | collapse-css-transition |
-| transition      | string           |                         |
-| elementType     | string           | div                     |
-| collapseHeight  | string           | 0px                     |
-| onChange        | function         |                         |
-| onInit          | function         |                         |
-| excludeStateCSS | boolean          | false                   |
+| Prop           | Type             | Default                 |
+| -------------- | ---------------- | ----------------------- |
+| isOpen         | boolean          | false                   |
+| children       | node \| function |                         |
+| render         | function         |                         |
+| className      | string           | collapse-css-transition |
+| transition     | string           |                         |
+| elementType    | string           | div                     |
+| collapseHeight | string           | 0px                     |
+| onChange       | function         |                         |
+| onInit         | function         |                         |
 
 <br>
 
@@ -179,18 +178,6 @@ let myCallback = ({ collapseState, isMoving, hasReversed, collapseStyle }) => {
 #### `onInit` : function
 
 Similar to onChange but only invoked on DOM mounted.
-
-#### `excludeStateCSS` : boolean
-
-Exclude the applied CSS collapse state.
-By default one of the class names are applied depending on the collapsed state:
-
-```
--c-is--collapsed
--c-is--collapsing
--c-is--expanded
--c-is--expanding
-```
 
 ### Custom props
 
