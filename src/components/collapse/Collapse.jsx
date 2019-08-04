@@ -55,9 +55,15 @@ function Collapse({
     height: isOpen ? "" : getCollapseHeight(),
     visibility: isOpen ? "" : getCollapsedVisibility()
   });
+  let [callbackTick, invokeCallback] = useState(0);
   let firstUpdate = useRef(true);
 
   let effect = lazyEffect ? useEffect : useLayoutEffect;
+
+  useEffect(() => {
+    // Invoke callback when data are updated, use Effect to sync state.
+    callbackTick && onCallback(onChange);
+  }, [callbackTick]);
 
   effect(() => {
     if (!elementRef.current) return;
@@ -92,12 +98,12 @@ function Collapse({
    *
    * @param {function} callback
    */
-  let onCallback = (callback, params = {}) => {
+  let onCallback = callback => {
     if (callback) {
       debugLog("onCallback " + callback.name);
       callback({
-        state: params.state || collapseState,
-        style: params.style || collapseStyle
+        state: collapseState,
+        style: collapseStyle
       });
     }
   };
@@ -107,14 +113,11 @@ function Collapse({
 
     if (!elementRef.current) return;
 
-    let params = {
-      style: {
-        height: getCollapseHeight(),
-        visibility: getCollapsedVisibility()
-      }
-    };
-    setCollapseStyle(params.style);
-    onCallback(onChange, params);
+    setCollapseStyle({
+      height: getCollapseHeight(),
+      visibility: getCollapsedVisibility()
+    });
+    invokeCallback(Date.now());
   }
 
   function setCollapsing() {
@@ -137,7 +140,7 @@ function Collapse({
         }
       };
       setCollapseStyle(params.style);
-      onCallback(onChange, params);
+      invokeCallback(Date.now());
     });
   }
 
@@ -148,14 +151,11 @@ function Collapse({
       if (elementRef.current) {
         let height = getElementHeight(); // capture height before setting it to async setState method
 
-        let params = {
-          style: {
-            height,
-            visibility: ""
-          }
-        };
-        setCollapseStyle(params.style);
-        onCallback(onChange, params);
+        setCollapseStyle({
+          height,
+          visibility: ""
+        });
+        invokeCallback(Date.now());
       }
     });
   }
@@ -171,9 +171,11 @@ function Collapse({
         visibility: ""
       }
     };
-    setCollapseStyle(params.style);
-
-    onCallback(onChange, params);
+    setCollapseStyle({
+      height: "",
+      visibility: ""
+    });
+    invokeCallback(Date.now());
   }
 
   function getElementHeight() {
