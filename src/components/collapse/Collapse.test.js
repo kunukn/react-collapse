@@ -88,10 +88,19 @@ describe("<Collapse />", () => {
   it("should call onChange on isOpen change where isOpen is false", () => {
     const props = {
       isOpen: false,
-      onChange: jest.fn()
+      onChange: jest.fn(),
+      onInit: jest.fn(),
+      children: <div>some content.</div>
     };
 
-    const { rerender } = render(<Collapse {...props} />);
+    const { rerender } = render(
+      <Collapse {...props}>
+        <div>content</div>
+        <div>content</div>
+      </Collapse>
+    );
+
+    expect(props.onInit.mock.calls.length).toBe(1);
 
     rerender(<Collapse {...props} isOpen={true} />);
 
@@ -103,14 +112,16 @@ describe("<Collapse />", () => {
     expect(props.onChange.mock.calls.length).toBe(1);
 
     let callbackProps = props.onChange.mock.calls[0][0];
-    expect(callbackProps.collapseState).toBe("expanding");
+    expect(callbackProps.state).toBe("expanding");
+    //expect(callbackProps.style.height).toBe("");
+    expect(callbackProps.style.visibility).toBeFalsy();
     expect(requestAnimationFrame).toHaveBeenCalledTimes(1);
-    //expect(setTimeout).toHaveBeenCalledTimes(1);
   });
 
   it("should call onChange on isOpen change where isOpen is true", () => {
     const props = {
       isOpen: true,
+      onInit: jest.fn(),
       onChange: jest.fn()
     };
 
@@ -126,9 +137,9 @@ describe("<Collapse />", () => {
     expect(props.onChange.mock.calls.length).toBe(1);
 
     let callbackProps = props.onChange.mock.calls[0][0];
-    expect(callbackProps.collapseState).toBe("collapsing");
+    expect(callbackProps.state).toBe("collapsing");
+    expect(callbackProps.style).toBeTruthy();
     expect(requestAnimationFrame).toHaveBeenCalledTimes(1);
-    //expect(setTimeout).toHaveBeenCalledTimes(1);
   });
 
   it("should call onInit where isOpen is false", () => {
@@ -148,16 +159,20 @@ describe("<Collapse />", () => {
     expect(props.onInit.mock.calls.length).toBe(1);
 
     let callbackProps = props.onInit.mock.calls[0][0];
-    expect(callbackProps.collapseState).toBe("collapsed");
+    expect(callbackProps.state).toBe("collapsed");
+    expect(callbackProps.style.height).toBe("0px");
+    expect(callbackProps.style.visibility).toBe("hidden");
   });
 
   it("should call onInit where isOpen is true", () => {
     const props = {
       onInit: jest.fn(),
-      isOpen: true
+      isOpen: true,
+      children: <div>some content.</div>
     };
 
     const { rerender } = render(<Collapse {...props} />);
+
     rerender(<Collapse {...props} isOpen={true} />);
 
     act(() => {
@@ -168,7 +183,9 @@ describe("<Collapse />", () => {
     expect(props.onInit.mock.calls.length).toBe(1);
 
     let callbackProps = props.onInit.mock.calls[0][0];
-    expect(callbackProps.collapseState).toBe("expanded");
+    expect(callbackProps.state).toBe("expanded");
+    expect(callbackProps.style.height).toBe("");
+    expect(callbackProps.style.visibility).toBe("");
   });
 
   it("should apply transition prop", () => {
@@ -289,7 +306,7 @@ describe("<Collapse />", () => {
     let callbackProps1 = props.onInit.mock.calls[0][0];
     let callbackProps2 = props.onInit.mock.calls[1][0];
 
-    expect(callbackProps1.collapseState).toBe("collapsed");
-    expect(callbackProps2.collapseState).toBe("collapsed");
+    expect(callbackProps1.state).toBe("collapsed");
+    expect(callbackProps2.state).toBe("collapsed");
   });
 });

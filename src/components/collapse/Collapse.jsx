@@ -52,8 +52,8 @@ function Collapse({
     isOpen ? EXPANDED : COLLAPSED
   );
   let [collapseStyle, setCollapseStyle] = useState({
-    height: isOpen ? null : getCollapseHeight(),
-    visibility: isOpen ? null : getCollapsedVisibility()
+    height: isOpen ? "" : getCollapseHeight(),
+    visibility: isOpen ? "" : getCollapsedVisibility()
   });
   let firstUpdate = useRef(true);
 
@@ -92,12 +92,13 @@ function Collapse({
    *
    * @param {function} callback
    */
-  let onCallback = callback => {
+  let onCallback = (callback, params = {}) => {
     if (callback) {
       debugLog("onCallback " + callback.name);
       callback({
-        collapseState,
-        collapseStyle
+        state: params.state || collapseState,
+        style: params.style || collapseStyle
+        //node: elementRef.current
       });
     }
   };
@@ -107,11 +108,14 @@ function Collapse({
 
     if (!elementRef.current) return;
 
-    setCollapseStyle({
-      height: getCollapseHeight(),
-      visibility: getCollapsedVisibility()
-    });
-    onCallback(onChange);
+    let params = {
+      style: {
+        height: getCollapseHeight(),
+        visibility: getCollapsedVisibility()
+      }
+    };
+    setCollapseStyle(params.style);
+    onCallback(onChange, params);
   }
 
   function setCollapsing() {
@@ -127,11 +131,14 @@ function Collapse({
     });
 
     nextFrame(() => {
-      setCollapseStyle({
-        height: getCollapseHeight(),
-        visibility: ""
-      });
-      onCallback(onChange);
+      let params = {
+        style: {
+          height: getCollapseHeight(),
+          visibility: ""
+        }
+      };
+      setCollapseStyle(params.style);
+      onCallback(onChange, params);
     });
   }
 
@@ -142,11 +149,14 @@ function Collapse({
       if (elementRef.current) {
         let height = getElementHeight(); // capture height before setting it to async setState method
 
-        setCollapseStyle({
-          height,
-          visibility: ""
-        });
-        onCallback(onChange);
+        let params = {
+          style: {
+            height,
+            visibility: ""
+          }
+        };
+        setCollapseStyle(params.style);
+        onCallback(onChange, params);
       }
     });
   }
@@ -156,11 +166,15 @@ function Collapse({
 
     if (!elementRef.current) return;
 
-    setCollapseStyle({
-      height: "",
-      visibility: ""
-    });
-    onCallback(onChange);
+    let params = {
+      style: {
+        height: "",
+        visibility: ""
+      }
+    };
+    setCollapseStyle(params.style);
+
+    onCallback(onChange, params);
   }
 
   function getElementHeight() {

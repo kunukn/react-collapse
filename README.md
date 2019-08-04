@@ -166,7 +166,7 @@ You can specify the collapse height in CSS unit to partially show some content.
 Callback function for when the transition changes.
 
 ```jsx
-let myCallback = ({ collapseState, isMoving, hasReversed, collapseStyle }) => {
+let myCallback = ({ state, style }) => {
   /* your implementation */
 };
 

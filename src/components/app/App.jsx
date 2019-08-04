@@ -7,7 +7,7 @@ let App = props => {
     isOpen1: true,
     isOpen2: false,
     isOpen3: false,
-    isOpen4: false,
+    isOpen4: true,
     spy1: {},
     spy2: {},
     spy3: {},
@@ -174,6 +174,7 @@ let App = props => {
       </pre>
       <C4
         isOpen={state.isOpen4}
+        style={{ transitionDuration: "1000ms" }}
         className={cx(
           "collapse-css-transition ",
           "app__collapse",

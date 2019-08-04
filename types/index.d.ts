@@ -1,8 +1,8 @@
 import * as React from "react";
 
 type callbackProps = {
-  collapseState: string;
-  collapseStyle: Object;
+  state: string;
+  style: Object;
 };
 
 interface CollapseProps {
