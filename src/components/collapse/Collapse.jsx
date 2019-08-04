@@ -52,8 +52,8 @@ function Collapse({
   onChange,
   ...rest
 }) {
-  let getCollapseHeight = () => collapseHeight || "0px";
-  let getCollapsedVisibility = () => (collapseHeight ? "" : "hidden");
+  let getCollapseHeight = () => collapseHeight;
+  let getCollapsedVisibility = () => (collapseHeight === "0px" ? "hidden" : "");
 
   let elementRef = useRef();
   let [collapseState, setCollapseState] = useState(
@@ -184,7 +184,7 @@ function Collapse({
 
       switch (collapseState) {
         case EXPANDING:
-          if (styleHeight === "" || styleHeight === "0px")
+          if (styleHeight === "" || styleHeight === collapseHeight)
             // This is stale, a newer event has happened before this could execute
             console.warn(
               `onTransitionEnd height unexpected ${styleHeight}`,
@@ -193,7 +193,7 @@ function Collapse({
           else setCollapseState(EXPANDED);
           break;
         case COLLAPSING:
-          if (styleHeight === "" || styleHeight !== "0px")
+          if (styleHeight === "" || styleHeight !== collapseHeight)
             // This is stale, a newer event has happened before this could execute
             console.warn(
               `onTransitionEnd height unexpected ${styleHeight}`,
@@ -256,7 +256,8 @@ function Collapse({
 Collapse.defaultProps = {
   className: "collapse-css-transition",
   elementType: "div",
-  style: {}
+  style: {},
+  collapseHeight: "0px"
 };
 
 export default Collapse;

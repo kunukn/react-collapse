@@ -8,6 +8,7 @@ let App = props => {
     isOpen2: false,
     isOpen3: false,
     isOpen4: false,
+    spy1: {},
     spy3: {}
   });
 
@@ -42,7 +43,9 @@ let App = props => {
         className={cx("app__toggle", { "app__toggle--active": state.isOpen1 })}
         onClick={() => toggle(1)}
       >
-        <span className="app__toggle-text">toggle</span>
+        <span className="app__toggle-text">
+          toggle {state.spy1.collapseState}
+        </span>
         <div className="rotate90">
           <svg
             className={cx("icon", { "icon--expanded": state.isOpen1 })}
@@ -55,7 +58,12 @@ let App = props => {
       <C
         style={{ outline: "1px dashed lightblue" }}
         isOpen={state.isOpen1}
-        onInit={data => console.log("onInit", data)}
+        onChange={({ collapseState }) => {
+          setState({ spy1: { collapseState } });
+        }}
+        onInit={({ collapseState }) => {
+          setState({ spy1: { collapseState } });
+        }}
         elementType="article"
         transition="height 280ms ease-in-out"
         className={
@@ -101,7 +109,7 @@ let App = props => {
         children={collapseState => (
           <div className="app__content">
             <div>{collapseState}</div>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do $
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
             aliquip ex ea commodo consequat.
@@ -127,20 +135,18 @@ let App = props => {
       </button>
 
       <pre style={{ fontSize: "10px", width: "100%" }}>
-        {JSON.stringify(state.spy3, null, 1)}
+        {JSON.stringify(state.spy3 || {}, null, 1)}
       </pre>
       <C3
-        excludeStateCSS
         isOpen={state.isOpen3}
-        transition="height 800ms cubic-bezier(0.4, 0, 0.2, 1)"
         collapseHeight="60px"
+        style={{ transitionDuration: "800ms" }}
         className={
           "collapse-css-transition app__collapse app__collapse--gradient " +
           (state.isOpen3 ? "app__collapse--active" : "")
         }
         onInit={state => setState({ spy3: state })}
         onChange={state => setState({ spy3: state })}
-        excludeStateCSS
         render={collapseState => (
           <div className="app__content">
             <div>{collapseState}</div>
