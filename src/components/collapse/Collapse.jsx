@@ -31,14 +31,6 @@ function nextFrame(callback) {
   });
 }
 
-/**
- *
- * @param {string} collapseState
- */
-function isMoving(collapseState) {
-  return collapseState === EXPANDING || collapseState === COLLAPSING;
-}
-
 function Collapse({
   children,
   transition,
@@ -105,7 +97,7 @@ function Collapse({
       debugLog("onCallback " + callback.name);
       callback({
         collapseState,
-        isMoving: isMoving(collapseState)
+        collapseStyle
       });
     }
   };

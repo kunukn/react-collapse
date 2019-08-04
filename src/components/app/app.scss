@@ -27,6 +27,22 @@
   }
 }
 
+.app__content {
+  transition: transform 280ms;
+  &.collapsing {
+    transform: translateY(-6px);
+  }
+  &.collapsed {
+    transform: translateY(-6px);
+  }
+  &.expanding {
+    transform: translateY(0px);
+  }
+  &.expanded {
+    transform: translateY(0px);
+  }
+}
+
 .app {
   margin: 0 auto;
   font-size: 1.6rem;

@@ -98,7 +98,7 @@ module.exports = (env = {}, argv = {}) => {
     },
     performance: {
       maxEntrypointSize: 8000,
-      hints: "warning"
+      hints: false,
     },
     module: {
       rules: [

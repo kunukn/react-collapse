@@ -2,7 +2,7 @@ import * as React from "react";
 
 type callbackProps = {
   collapseState: string;
-  isMoving: boolean;
+  collapseStyle: Object;
 };
 
 interface CollapseProps {

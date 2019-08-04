@@ -15,8 +15,8 @@ import Collapse from "@kunukn/react-collapse";
 </Collapse>;
 
 <Collapse
-  onInit={({ collapseState, isMoving }) => {}}
-  onChange={({ collapseState, isMoving }) => {}}
+  onInit={({ collapseState, collapseStyle }) => {}}
+  onChange={({ collapseState, collapseStyle }) => {}}
 >
   <div>this is some content</div>
 </Collapse>;

@@ -9,7 +9,9 @@ let App = props => {
     isOpen3: false,
     isOpen4: false,
     spy1: {},
-    spy3: {}
+    spy2: {},
+    spy3: {},
+    spy4: {}
   });
 
   let setState = data => updateState(s => ({ ...s, ...data }));
@@ -58,35 +60,35 @@ let App = props => {
       <C
         style={{ outline: "1px dashed lightblue" }}
         isOpen={state.isOpen1}
-        onChange={({ collapseState }) => {
-          setState({ spy1: { collapseState } });
-        }}
-        onInit={({ collapseState }) => {
-          setState({ spy1: { collapseState } });
-        }}
+        onChange={props => setState({ spy1: props })}
+        onInit={props => setState({ spy1: props })}
         elementType="article"
         transition="height 280ms ease-in-out"
-        className={
-          "collapse-css-transition app__collapse app__collapse--gradient" +
-          (state.isOpen1 ? " app__collapse--active" : "")
-        }
+        className={cx(
+          "collapse-css-transition",
+          " app__collapse",
+          " app__collapse--gradient",
+          { "app__collapse--active": state.isOpen1 }
+        )}
       >
-        <div className="app__content">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
-          <div className="image-wrapper">
-            <img
-              className="image-wrapper__img"
-              alt="random"
-              src="https://source.unsplash.com/user/erondu/500x200"
-            />
+        {collapseState => (
+          <div className={cx("app__content", collapseState)}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat.
+            <div className="image-wrapper">
+              <img
+                className="image-wrapper__img"
+                alt="random"
+                src="https://source.unsplash.com/user/erondu/500x200"
+              />
+            </div>
+            <button onClick={() => toggle(1)} className="app__button">
+              close
+            </button>
           </div>
-          <button onClick={() => toggle(1)} className="app__button">
-            close
-          </button>
-        </div>
+        )}
       </C>
 
       <button
@@ -99,15 +101,18 @@ let App = props => {
       <C2
         isOpen={state.isOpen2}
         lazyEffect
-        className={
-          "collapse-css-transition app__collapse app__collapse--gradient " +
-          (state.isOpen2 ? "app__collapse--active" : "")
-        }
+        className={cx(
+          "collapse-css-transition",
+          "app__collapse",
+          "app__collapse--gradient ",
+          { "app__collapse--active": state.isOpen2 }
+        )}
         aria-hidden={state.isOpen2 ? "false" : "true"}
         onChange={data => console.log("onChange", data)}
         elementType="article"
-        children={collapseState => (
-          <div className="app__content">
+      >
+        {collapseState => (
+          <div className={cx("app__content", collapseState)}>
             <div>{collapseState}</div>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do $
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
@@ -125,7 +130,7 @@ let App = props => {
             </button>
           </div>
         )}
-      />
+      </C2>
 
       <button
         className={cx("app__toggle", { "app__toggle--active": state.isOpen3 })}
@@ -141,12 +146,12 @@ let App = props => {
         isOpen={state.isOpen3}
         collapseHeight="60px"
         style={{ transitionDuration: "800ms" }}
-        className={
+        className={cx(
           "collapse-css-transition app__collapse app__collapse--gradient " +
-          (state.isOpen3 ? "app__collapse--active" : "")
-        }
-        onInit={state => setState({ spy3: state })}
-        onChange={state => setState({ spy3: state })}
+            (state.isOpen3 ? "app__collapse--active" : "")
+        )}
+        onInit={params => setState({ spy3: params })}
+        onChange={params => setState({ spy3: params })}
         render={collapseState => (
           <div className="app__content">
             <div>{collapseState}</div>
@@ -164,13 +169,21 @@ let App = props => {
       >
         toggle
       </button>
-
+      <pre style={{ fontSize: "10px", width: "100%" }}>
+        {JSON.stringify(state.spy4 || {}, null, 1)}
+      </pre>
       <C4
         isOpen={state.isOpen4}
-        className={
-          "collapse-css-transition app__collapse app__collapse--gradient " +
-          (state.isOpen4 ? "app__collapse--active" : "")
-        }
+        className={cx(
+          "collapse-css-transition ",
+          "app__collapse",
+          "app__collapse--gradient ",
+          {
+            "app__collapse--active": state.isOpen4
+          }
+        )}
+        onInit={params => setState({ spy4: params })}
+        onChange={params => setState({ spy4: params })}
         render={collapseState => (
           <div className="app__content">
             <div>{collapseState}</div>
