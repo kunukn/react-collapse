@@ -190,7 +190,7 @@ describe("<Collapse />", () => {
 
   it("should apply transition prop", () => {
     const props = {
-      transition: "height 300ms cubic-bezier(.4, 0, .2, 1)"
+      transition: "height 280ms cubic-bezier(.4, 0, .2, 1)"
     };
 
     const { container } = render(<Collapse {...props} />);
@@ -198,7 +198,7 @@ describe("<Collapse />", () => {
     const collapse = container.firstChild;
 
     expect(collapse.style.transition).toBe(
-      "height 300ms cubic-bezier(.4, 0, .2, 1)"
+      "height 280ms cubic-bezier(.4, 0, .2, 1)"
     );
   });
 

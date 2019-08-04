@@ -98,7 +98,6 @@ function Collapse({
       callback({
         state: params.state || collapseState,
         style: params.style || collapseStyle
-        //node: elementRef.current
       });
     }
   };
