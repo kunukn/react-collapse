@@ -213,7 +213,7 @@ Or you could specify a specific transitionDuration.
 </Collapse>
 ```
 
-### lazyEffect : boolean
+### `lazyEffect` : boolean
 
 `useEffect` is used instead of `useLayoutEffect` for DOM updates.
 
