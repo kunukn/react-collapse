@@ -185,9 +185,7 @@ Similar to onChange but only invoked on DOM mounted.
 ```jsx
 let onInit = ({ state, style, node }) => {
   /* 
-    state: the collapseState
     node: the HTML element for the component.
-    style: an object containing style applied to the component.
   */
 };
 
