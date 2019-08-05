@@ -59,7 +59,10 @@ let App = props => {
         style={{ outline: "1px dashed lightblue" }}
         isOpen={state.isOpen1}
         onChange={props => setState({ spy1: props })}
-        onInit={props => setState({ spy1: props })}
+        onInit={({ state, style, node = {} }) => {
+          console.log("*** node onInit ***", node.className);
+          setState({ spy1: { state, style } });
+        }}
         elementType="article"
         transition="height 280ms ease-in-out"
         className={cx(
@@ -148,7 +151,9 @@ let App = props => {
           "collapse-css-transition app__collapse app__collapse--gradient " +
             (state.isOpen3 ? "app__collapse--active" : "")
         )}
-        onInit={params => setState({ spy3: params })}
+        onInit={({ state, style }) => {
+          setState({ spy3: { state, style } });
+        }}
         onChange={params => setState({ spy3: params })}
         render={collapseState => (
           <div className="app__content">
@@ -181,7 +186,7 @@ let App = props => {
             "app__collapse--active": state.isOpen4
           }
         )}
-        onInit={params => setState({ spy4: params })}
+        onInit={({ state, style }) => setState({ spy4: { state, style } })}
         onChange={params => setState({ spy4: params })}
         render={collapseState => (
           <div className="app__content">

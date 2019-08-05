@@ -166,11 +166,14 @@ You can specify the collapse height in CSS unit to partially show some content.
 Callback function for when the transition changes.
 
 ```jsx
-let myCallback = ({ state, style }) => {
-  /* your implementation */
+let onChange = ({ state, style }) => {
+  /*
+    state: the collapseState
+    style: an object containing style applied to the component.
+  */
 };
 
-<Collapse onChange={myCallback} isOpen={true || false}>
+<Collapse onChange={onChange} isOpen={true || false}>
   <p>A long paragraph of text inside an article element</p>
 </Collapse>;
 ```
@@ -178,6 +181,20 @@ let myCallback = ({ state, style }) => {
 #### `onInit` : function
 
 Similar to onChange but only invoked on DOM mounted.
+
+```jsx
+let onInit = ({ state, style, node }) => {
+  /* 
+    state: the collapseState
+    node: the HTML element for the component.
+    style: an object containing style applied to the component.
+  */
+};
+
+<Collapse onInit={onInit} isOpen={true || false}>
+  <p>A long paragraph of text inside an article element</p>
+</Collapse>;
+```
 
 ### Custom props
 
