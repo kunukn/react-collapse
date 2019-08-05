@@ -2893,7 +2893,7 @@
   version "11.9.0"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-11.9.0.tgz#35fea17653490dab82e1d5e69731abfdbf13160d"
 
-"@types/node@^12.6.3":
+"@types/node@^12.6.9":
   version "12.6.9"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.6.9.tgz#ffeee23afdc19ab16e979338e7b536fdebbbaeaf"
   integrity sha512-+YB9FtyxXGyD54p8rXwWaN1EWEyar5L58GlGWgtH2I9rGmLGBQcw63+0jw+ujqVavNuO47S1ByAjm9zdHMnskw==
@@ -3176,11 +3176,6 @@ acorn@^6.0.1, acorn@^6.0.5, acorn@^6.0.7:
 acorn@^6.1.1:
   version "6.1.1"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-6.1.1.tgz#7d25ae05bb8ad1f9b699108e1094ecd7884adc1f"
-
-acorn@^6.2.0:
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-6.2.0.tgz#67f0da2fc339d6cfb5d6fb244fd449f33cd8bbe3"
-  integrity sha512-8oe72N3WPMjA+2zVG71Ia0nXZ8DpQH+QyyHO+p06jT8eg8FGG3FbcUIi8KziHlAfheJQZeoqbvq1mQSQHXKYLw==
 
 acorn@^6.2.1:
   version "6.2.1"
@@ -12204,14 +12199,14 @@ rollup-pluginutils@^2.8.1:
   dependencies:
     estree-walker "^0.6.1"
 
-rollup@^1.18.0:
-  version "1.18.0"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.18.0.tgz#98ea36472523ed712e20c0e996fd051882f787e6"
-  integrity sha512-MBAWr6ectF948gW/bs/yfi0jW7DzwI8n0tEYG/ZMQutmK+blF/Oazyhg3oPqtScCGV8bzCtL9KzlzPtTriEOJA==
+rollup@^1.19.0:
+  version "1.19.0"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.19.0.tgz#2991f7fd20e40ab0b08aacbb6af4393d9ff9ac31"
+  integrity sha512-7t55bi+fI3aqqJfjKWxhZirawAVByofP9xlou0NtM9/h2QyUfi1JwAsQF0TPqN3SRJACDPH+2WqpqcF7yPWRTQ==
   dependencies:
     "@types/estree" "0.0.39"
-    "@types/node" "^12.6.3"
-    acorn "^6.2.0"
+    "@types/node" "^12.6.9"
+    acorn "^6.2.1"
 
 rsvp@^4.8.4:
   version "4.8.4"

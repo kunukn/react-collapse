@@ -106,9 +106,10 @@ function Collapse({
   };
 
   function setCollapsed() {
-    debugLog("setCollapsed");
-
     if (!elementRef.current) return;
+    if (collapseState !== COLLAPSED) return;
+
+    debugLog("setCollapsed");
 
     setCollapseStyle({
       height: getCollapseHeight(),
@@ -118,9 +119,10 @@ function Collapse({
   }
 
   function setCollapsing() {
-    debugLog("setCollapsing");
-
     if (!elementRef.current) return;
+    if (collapseState !== COLLAPSING) return;
+
+    debugLog("setCollapsing");
 
     let height = getElementHeight(); // capture height before setting it to async setState method
 
@@ -130,44 +132,43 @@ function Collapse({
     });
 
     nextFrame(() => {
-      let params = {
-        style: {
-          height: getCollapseHeight(),
-          visibility: ""
-        }
-      };
-      setCollapseStyle(params.style);
+      if (!elementRef.current) return;
+      if (collapseState !== COLLAPSING) return;
+
+      setCollapseStyle({
+        height: getCollapseHeight(),
+        visibility: ""
+      });
       invokeCallback(Date.now());
     });
   }
 
   function setExpanding() {
+    if (!elementRef.current) return;
+    if (collapseState !== EXPANDING) return;
+
     debugLog("setExpanding");
 
     nextFrame(() => {
-      if (elementRef.current) {
-        let height = getElementHeight(); // capture height before setting it to async setState method
+      if (!elementRef.current) return;
+      if (collapseState !== EXPANDING) return;
 
-        setCollapseStyle({
-          height,
-          visibility: ""
-        });
-        invokeCallback(Date.now());
-      }
+      let height = getElementHeight(); // capture height before setting it to async setState method
+
+      setCollapseStyle({
+        height,
+        visibility: ""
+      });
+      invokeCallback(Date.now());
     });
   }
 
   function setExpanded() {
+    if (!elementRef.current) return;
+    if (collapseState !== EXPANDED) return;
+
     debugLog("setExpanded");
 
-    if (!elementRef.current) return;
-
-    let params = {
-      style: {
-        height: "",
-        visibility: ""
-      }
-    };
     setCollapseStyle({
       height: "",
       visibility: ""
