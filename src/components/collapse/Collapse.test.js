@@ -122,8 +122,8 @@ describe("<Collapse />", () => {
 
     let callbackProps = props.onChange.mock.calls[0][0];
     expect(callbackProps.state).toBe("expanding");
-    //expect(callbackProps.style.height).toBe(""); // Maybe can't use DOM in TEST to calc height
     expect(callbackProps.style.visibility).toBeFalsy();
+    expect(callbackProps.node).toBeFalsy();
     expect(requestAnimationFrame).toHaveBeenCalledTimes(1);
   });
 
@@ -154,6 +154,7 @@ describe("<Collapse />", () => {
   it("should call onInit where isOpen is false", () => {
     const props = {
       isOpen: false,
+      elementType: 'section',
       onInit: jest.fn()
     };
 
@@ -171,6 +172,7 @@ describe("<Collapse />", () => {
     expect(callbackProps.state).toBe("collapsed");
     expect(callbackProps.style.height).toBe("0px");
     expect(callbackProps.style.visibility).toBe("hidden");
+    expect(callbackProps.node.nodeName).toBe('SECTION');
   });
 
   it("should call onInit where isOpen is true", () => {

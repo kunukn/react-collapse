@@ -1,8 +1,13 @@
 import * as React from "react";
 
-type callbackProps = {
+type onChangeProps = {
   state: string;
   style: Object;
+};
+type onInitProps = {
+  state: string;
+  style: Object;
+  node: HTMLElement;
 };
 
 interface CollapseProps {
@@ -11,8 +16,8 @@ interface CollapseProps {
   className?: string;
   transition?: string;
   collapseHeight?: string;
-  onChange?: (props: callbackProps) => void;
-  onInit?: (props: callbackProps) => void;
+  onChange?: (props: onChangeProps) => void;
+  onInit?: (props: onInitProps) => void;
   elementType?: string;
   style?: Object;
   lazyEffect?: boolean;

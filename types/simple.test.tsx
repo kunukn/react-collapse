@@ -14,7 +14,10 @@ import Collapse from "@kunukn/react-collapse";
   <div>this is some content</div>{" "}
 </Collapse>;
 
-<Collapse onInit={({ state, style }) => {}} onChange={({ state, style }) => {}}>
+<Collapse
+  onInit={({ state, style, node }) => {}}
+  onChange={({ state, style }) => {}}
+>
   <div>this is some content</div>
 </Collapse>;
 

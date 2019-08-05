@@ -98,13 +98,10 @@ function Collapse({
    *
    * @param {function} callback
    */
-  let onCallback = callback => {
+  let onCallback = (callback, params = {}) => {
     if (callback) {
       debugLog("onCallback " + callback.name);
-      callback({
-        state: collapseState,
-        style: collapseStyle
-      });
+      callback({ state: collapseState, style: collapseStyle, ...params });
     }
   };
 
@@ -237,7 +234,7 @@ function Collapse({
     node => {
       if (node) {
         elementRef.current = node;
-        onCallback(onInit);
+        onCallback(onInit, { node });
         debugLog("callback ref");
       }
     },
