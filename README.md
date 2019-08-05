@@ -35,7 +35,7 @@ Alternatively you can add it using the `transition` prop.
 
 ## Installation for React 16.8+
 
-( UMD minified 3.8kb, gzipped 1.7kb )
+UMD minified 3.8kb, gzipped 1.7kb
 
 ```bash
 npm i @kunukn/react-collapse
@@ -45,7 +45,7 @@ yarn add @kunukn/react-collapse
 
 ## Installation for React 16.3+
 
-( UMD minified 5.8kb, gzipped 2.1kb )
+UMD minified 5.8kb, gzipped 2.1kb
 
 ```bash
 npm i @kunukn/react-collapse@^1
