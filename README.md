@@ -195,7 +195,7 @@ let onInit = ({ state, style, node }) => {
 </Collapse>;
 ```
 
-### Custom props
+#### Custom props
 
 `Collapse` applies custom props such as `aria-` and `data-` attributes to the component's rendered DOM element. For example this can be used to set the `aria-hidden` attribute:
 
@@ -213,7 +213,7 @@ Or you could specify a specific transitionDuration.
 </Collapse>
 ```
 
-### `lazyEffect` : boolean
+#### `lazyEffect` : boolean
 
 `useEffect` is used instead of `useLayoutEffect` for DOM updates.
 
