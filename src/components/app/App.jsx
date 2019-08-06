@@ -3,10 +3,8 @@ import React from "react";
 import cx from "classnames";
 
 let App = props => {
-  console.log(props.display);
-
   let [state, updateState] = React.useState({
-    isOpen1: true,
+    isOpen1: false,
     isOpen2: false,
     isOpen3: false,
     isOpen4: true,

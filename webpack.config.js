@@ -46,8 +46,8 @@ module.exports = (env = {}, argv = {}) => {
   console.log("isClassComponent", isClassComponent);
 
   let config = {
-    //devtool: isProd ? "source-map" : "cheap-module-source-map",
-    mode: true || isProd ? PRODUCTION : DEVELOPMENT,
+    devtool: isProd ? "source-map" : "cheap-module-source-map",
+    mode: isProd ? PRODUCTION : DEVELOPMENT,
     optimization: {
       minimizer: [
         isProd &&
