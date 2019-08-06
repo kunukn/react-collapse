@@ -12,20 +12,20 @@ console.log("WEBPPACK_IS_CLASS_COMPONENT", WEBPPACK_IS_CLASS_COMPONENT);
 
 let App = props => {
   let [state, updateState] = React.useState({
-    isOpen1: false,
+    isOpen1: true,
     spy1: {}
   });
 
-  let setState = data => updateState(s => ({ ...s, ...data }));
+  let mergeState = data => updateState(s => ({ ...s, ...data }));
 
   React.useEffect(() => {
-    setTimeout(() => setState({ transitionEnabled: true }), 50);
+    setTimeout(() => mergeState({ transitionEnabled: true }), 100);
   }, []);
 
   let toggle = index => {
     const collapse = `isOpen${index}`;
 
-    setState({ [collapse]: !state[collapse] });
+    mergeState({ [collapse]: !state[collapse] });
   };
 
   let C = props.Collapse;
@@ -62,13 +62,12 @@ let App = props => {
           {JSON.stringify(state.spy1 || {}, null, 1)}
         </pre>
         <C
-          lazyEffect={false}
           style={{ outline: "1px dashed lightblue" }}
           isOpen={state.isOpen1}
-          onChange={props => setState({ spy1: props })}
+          onChange={props => mergeState({ spy1: props })}
           onInit={({ state, style, node = {} }) => {
             console.log("*** node onInit ***", node.className);
-            setState({ spy1: { state, style } });
+            mergeState({ spy1: { state, style } });
           }}
           elementType="article"
           transition="height 280ms ease-in-out"
