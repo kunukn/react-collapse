@@ -44,6 +44,8 @@ function Collapse({
   collapseHeight,
   onInit,
   onChange,
+  className,
+  includeStateCSS,
   ...rest
 }) {
   let getCollapsedVisibility = () => (collapseHeight === "0px" ? "hidden" : "");
@@ -226,11 +228,16 @@ function Collapse({
     [elementType]
   );
 
+  let collapseClassName = includeStateCSS
+    ? `${className} --c-${state.collapseState}`
+    : className;
+
   return (
     <ElementType
       ref={callbackRef}
       style={computedStyle}
       onTransitionEnd={onTransitionEnd}
+      className={collapseClassName}
       {...rest}
     >
       {typeof children === "function"

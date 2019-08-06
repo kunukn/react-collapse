@@ -83,6 +83,32 @@ describe("<Collapse />", () => {
     expect(collapse.className.indexOf("collapse-css-transition") >= 0).toBe(
       true
     );
+    expect(collapse.className.indexOf("--c-collapsed") >= 0).toBe(false);
+  });
+
+  it("should render includeStateCSS collapsed className", () => {
+    const { container } = render(<Collapse includeStateCSS />);
+
+    const collapse = container.firstChild;
+
+    expect(collapse.className.indexOf("collapse-css-transition") >= 0).toBe(
+      true
+    );
+    expect(collapse.className.indexOf("--c-collapsed") >= 0).toBe(true);
+    expect(collapse.className.indexOf("--c-expanded") >= 0).toBe(false);
+  });
+
+  it("should render includeStateCSS expanded className", () => {
+    const { container } = render(<Collapse isOpen includeStateCSS />);
+
+    const collapse = container.firstChild;
+
+    expect(collapse.className.indexOf("collapse-css-transition") >= 0).toBe(
+      true
+    );
+
+    expect(collapse.className.indexOf("--c-expanded") >= 0).toBe(true);
+    expect(collapse.className.indexOf("--c-collapsed") >= 0).toBe(false);
   });
 
   it("should call onInit but not onChange on first render", () => {
@@ -154,7 +180,7 @@ describe("<Collapse />", () => {
   it("should call onInit where isOpen is false", () => {
     const props = {
       isOpen: false,
-      elementType: 'section',
+      elementType: "section",
       onInit: jest.fn()
     };
 
@@ -172,7 +198,7 @@ describe("<Collapse />", () => {
     expect(callbackProps.state).toBe("collapsed");
     expect(callbackProps.style.height).toBe("0px");
     expect(callbackProps.style.visibility).toBe("hidden");
-    expect(callbackProps.node.nodeName).toBe('SECTION');
+    expect(callbackProps.node.nodeName).toBe("SECTION");
   });
 
   it("should call onInit where isOpen is true", () => {

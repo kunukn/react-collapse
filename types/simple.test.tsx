@@ -8,6 +8,7 @@ import Collapse from "@kunukn/react-collapse";
   className="CSS-class-name"
   elementType="article"
   collapseHeight="4rem"
+  includeStateCSS
   style={{ transitionDuration: "260ms" }}
 >
   <div>this is some content</div>{" "}

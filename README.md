@@ -35,7 +35,7 @@ Alternatively you can add it using the `transition` prop.
 
 ## Installation for React 16.8+
 
-UMD minified 3.8kb, gzipped 1.6kb
+UMD minified 3.8kb, gzipped 1.7kb
 
 ```bash
 npm i @kunukn/react-collapse
@@ -65,17 +65,18 @@ const Collapse = require("@kunukn/react-collapse");
 
 ## Properties
 
-| Prop           | Type             | Default                 |
-| -------------- | ---------------- | ----------------------- |
-| isOpen         | boolean          | false                   |
-| children       | node \| function |                         |
-| render         | function         |                         |
-| className      | string           | collapse-css-transition |
-| transition     | string           |                         |
-| elementType    | string           | div                     |
-| collapseHeight | string           | 0px                     |
-| onChange       | function         |                         |
-| onInit         | function         |                         |
+| Prop            | Type             | Default                 |
+| --------------- | ---------------- | ----------------------- |
+| isOpen          | boolean          | false                   |
+| children        | node \| function |                         |
+| render          | function         |                         |
+| className       | string           | collapse-css-transition |
+| transition      | string           |                         |
+| elementType     | string           | div                     |
+| collapseHeight  | string           | 0px                     |
+| onChange        | function         |                         |
+| onInit          | function         |                         |
+| includeStateCSS | boolean          | false                   |
 
 <br>
 
@@ -192,6 +193,17 @@ let onInit = ({ state, style, node }) => {
 <Collapse onInit={onInit} isOpen={true || false}>
   <p>A long paragraph of text inside an article element</p>
 </Collapse>;
+```
+
+#### `includeStateCSS` : boolean
+
+If added, then one of the class names will be appended to the component depending on the state.
+
+```
+--c-collapsed
+--c-collapsing
+--c-expanded
+--c-expanding
 ```
 
 #### Custom props
