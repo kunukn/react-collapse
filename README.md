@@ -35,7 +35,7 @@ Alternatively you can add it using the `transition` prop.
 
 ## Installation for React 16.8+
 
-UMD minified 3.8kb, gzipped 1.7kb
+UMD minified 3.8kb, gzipped 1.6kb
 
 ```bash
 npm i @kunukn/react-collapse
@@ -168,7 +168,7 @@ Callback function for when the transition changes.
 ```jsx
 let onChange = ({ state, style }) => {
   /*
-    state: the collapseState
+    state: the collapseState string
     style: an object containing style applied to the component.
   */
 };
@@ -184,7 +184,7 @@ Similar to onChange but only invoked on DOM mounted.
 
 ```jsx
 let onInit = ({ state, style, node }) => {
-  /* 
+  /*
     node: the HTML element for the component.
   */
 };
@@ -280,9 +280,9 @@ IE11 + Modern browsers
 
 - **useState**
 - **useEffect**
-- **useLayoutEffect**
 - **useRef**
 - **useCallback**
+- **useReducer**
 
 # Design goals
 

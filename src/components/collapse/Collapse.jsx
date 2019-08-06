@@ -48,7 +48,7 @@ function Collapse({
 }) {
   let getCollapsedVisibility = () => (collapseHeight === "0px" ? "hidden" : "");
 
-  const [_, forceUpdate] = useReducer(x => x + 1, 0);
+  const [__, forceUpdate] = useReducer(x => x + 1, 0);
 
   let elementRef = useRef();
   let [callbackTick, invokeCallback] = useState(0);
