@@ -124,7 +124,7 @@ describe("<Collapse />", () => {
     expect(callbackProps.state).toBe("expanding");
     expect(callbackProps.style.visibility).toBeFalsy();
     expect(callbackProps.node).toBeFalsy();
-    expect(requestAnimationFrame).toHaveBeenCalledTimes(1);
+    expect(requestAnimationFrame).toHaveBeenCalledTimes(2);
   });
 
   it("should call onChange on isOpen change where isOpen is true", () => {
@@ -148,7 +148,7 @@ describe("<Collapse />", () => {
     let callbackProps = props.onChange.mock.calls[0][0];
     expect(callbackProps.state).toBe("collapsing");
     expect(callbackProps.style).toBeTruthy();
-    expect(requestAnimationFrame).toHaveBeenCalledTimes(1);
+    expect(requestAnimationFrame).toHaveBeenCalledTimes(2);
   });
 
   it("should call onInit where isOpen is false", () => {

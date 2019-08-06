@@ -7,7 +7,6 @@ import "components/app/app.scss";
 import "components/collapse/collapse.css";
 import CollapseClass from "components/collapse/Collapse.class";
 import Collapse from "components/collapse/Collapse";
-//import App from "components/App/App";
 
 console.log("WEBPPACK_IS_CLASS_COMPONENT", WEBPPACK_IS_CLASS_COMPONENT);
 
@@ -63,6 +62,7 @@ let App = props => {
           {JSON.stringify(state.spy1 || {}, null, 1)}
         </pre>
         <C
+          lazyEffect={false}
           style={{ outline: "1px dashed lightblue" }}
           isOpen={state.isOpen1}
           onChange={props => setState({ spy1: props })}

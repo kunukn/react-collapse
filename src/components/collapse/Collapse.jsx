@@ -41,7 +41,8 @@ function usePrevious(value) {
  */
 function nextFrame(callback) {
   requestAnimationFrame(function() {
-    setTimeout(callback, 0);
+    //setTimeout(callback, 0); // can be jumpy if click-spamming
+    requestAnimationFrame(callback);
   });
 }
 
