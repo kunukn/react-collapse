@@ -21,6 +21,20 @@ let COLLAPSING = "collapsing";
 let EXPANDING = "expanding";
 let EXPANDED = "expanded";
 
+function usePrevious(value) {
+  // The ref object is a generic container whose current property is mutable ...
+  // ... and can hold any value, similar to an instance property on a class
+  const ref = useRef();
+
+  // Store current value in ref
+  useEffect(() => {
+    ref.current = value;
+  }, [value]); // Only re-run if value changes
+
+  // Return previous value (happens before update in useEffect above)
+  return ref.current;
+}
+
 /**
  *
  * @param {function} callback
@@ -55,6 +69,21 @@ function Collapse({
   let [collapseState, setCollapseState] = useState(
     isOpen ? EXPANDED : COLLAPSED
   );
+  const prevCollapseState = usePrevious(collapseState);
+
+  if (
+    collapseState === COLLAPSED &&
+    (prevCollapseState === EXPANDED || prevCollapseState === EXPANDING)
+  ) {
+    console.error(collapseState, prevCollapseState);
+  }
+  if (
+    collapseState === EXPANDED &&
+    (prevCollapseState === COLLAPSED || prevCollapseState === COLLAPSING)
+  ) {
+    console.error(collapseState, prevCollapseState);
+  }
+
   let [collapseStyle, setCollapseStyle] = useState({
     height: isOpen ? "" : getCollapseHeight(),
     visibility: isOpen ? "" : getCollapsedVisibility()
