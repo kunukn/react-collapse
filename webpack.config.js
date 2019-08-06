@@ -46,8 +46,8 @@ module.exports = (env = {}, argv = {}) => {
   console.log("isClassComponent", isClassComponent);
 
   let config = {
-    devtool: isProd ? "source-map" : "cheap-module-source-map",
-    mode: isProd ? PRODUCTION : DEVELOPMENT,
+    //devtool: isProd ? "source-map" : "cheap-module-source-map",
+    mode: true || isProd ? PRODUCTION : DEVELOPMENT,
     optimization: {
       minimizer: [
         isProd &&
@@ -91,9 +91,9 @@ module.exports = (env = {}, argv = {}) => {
       contentBase: path.join(__dirname, ""),
       publicPath: "/",
       open: true,
-      //hot: true,
+      hot: true,
       disableHostCheck: true,
-      //watchContentBase: true,
+      watchContentBase: true,
       historyApiFallback: true
     },
     performance: {
@@ -205,7 +205,7 @@ module.exports = (env = {}, argv = {}) => {
       new WebpackMd5Hash()
     ].filter(Boolean),
     resolve: {
-      //modules: [path.resolve(__dirname), 'node_modules'],
+      modules: [path.resolve(__dirname), 'node_modules'],
       extensions: [".js", ".jsx", ".scss"],
       alias: {
         "~": __dirname,

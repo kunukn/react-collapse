@@ -1,4 +1,4 @@
-import React, { StrictMode } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 
 import "components/base/base.scss";
@@ -11,7 +11,7 @@ import Collapse from "components/collapse/Collapse";
 console.log("WEBPPACK_IS_CLASS_COMPONENT", WEBPPACK_IS_CLASS_COMPONENT);
 
 ReactDOM.render(
-  <>
+  <React.StrictMode>
     <App
       display="development"
       className={
@@ -21,6 +21,6 @@ ReactDOM.render(
       }
       Collapse={WEBPPACK_IS_CLASS_COMPONENT ? CollapseClass : Collapse}
     />
-  </>,
+  </React.StrictMode>,
   document.getElementById("root")
 );
