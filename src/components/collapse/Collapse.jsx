@@ -31,6 +31,10 @@ function nextFrame(callback) {
   });
 }
 
+function useInstance(object) {
+  return useRef(object).current;
+}
+
 function Collapse({
   children,
   transition,
@@ -57,6 +61,14 @@ function Collapse({
   });
   let [callbackTick, invokeCallback] = useState(0);
   let firstUpdate = useRef(true);
+
+  let state = useInstance({
+    collapseState: isOpen ? EXPANDED : COLLAPSED,
+    style: {
+      height: isOpen ? "" : getCollapseHeight(),
+      visibility: isOpen ? "" : getCollapsedVisibility()
+    }
+  });
 
   let effect = lazyEffect ? useEffect : useLayoutEffect;
 
@@ -109,6 +121,8 @@ function Collapse({
     if (!elementRef.current) return;
     if (collapseState !== COLLAPSED) return;
 
+    state.collapseState = COLLAPSED;
+
     debugLog("setCollapsed");
 
     setCollapseStyle({
@@ -121,6 +135,8 @@ function Collapse({
   function setCollapsing() {
     if (!elementRef.current) return;
     if (collapseState !== COLLAPSING) return;
+
+    state.collapseState = COLLAPSING;
 
     debugLog("setCollapsing");
 
@@ -149,6 +165,8 @@ function Collapse({
 
     debugLog("setExpanding");
 
+    state.collapseState = EXPANDING;
+
     nextFrame(() => {
       if (!elementRef.current) return;
       if (collapseState !== EXPANDING) return;
@@ -159,6 +177,10 @@ function Collapse({
         height,
         visibility: ""
       });
+
+      state.style.height = height;
+      state.style.visibility = "";
+
       invokeCallback(Date.now());
     });
   }
@@ -167,12 +189,18 @@ function Collapse({
     if (!elementRef.current) return;
     if (collapseState !== EXPANDED) return;
 
+    state.collapseState = EXPANDED;
+
     debugLog("setExpanded");
 
     setCollapseStyle({
       height: "",
       visibility: ""
     });
+
+    state.style.height = "";
+    state.style.visibility = "";
+
     invokeCallback(Date.now());
   }
 
