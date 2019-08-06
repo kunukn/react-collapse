@@ -14,7 +14,7 @@ react-collapse
 - <a href="https://codepen.io/kunukn/full/ebMryW" target="_blank">simple - codepen</a>
 - <a href="https://codepen.io/kunukn/full/xmjRNo" target="_blank">accordion - codepen</a>
 - <a href="https://codepen.io/kunukn/full/JwmEYL" target="_blank">read more - codepen</a>
-- <a href="https://codesandbox.io/s/k1439yw2v5" target="_blank">codesandbox</a>
+- <a href="https://codesandbox.io/s/k1439yw2v5" target="_blank">codesandbox - collapsibles</a>
 - <a href="https://codesandbox.io/s/react-collapse-expand-all-collapse-all-0h4mc">codesandbox expand-all</a>
 - <a href="https://codesandbox.io/s/collapse-with-emotion-css-prototype-euqy2">codesandbox CSS-in-JS integration example</a>
 - <a href="https://kunukn.github.io/react-collapse" target="_blank">view storybook</a>
