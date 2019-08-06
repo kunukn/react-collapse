@@ -22,16 +22,10 @@ let EXPANDING = "expanding";
 let EXPANDED = "expanded";
 
 function usePrevious(value) {
-  // The ref object is a generic container whose current property is mutable ...
-  // ... and can hold any value, similar to an instance property on a class
   const ref = useRef();
-
-  // Store current value in ref
   useEffect(() => {
     ref.current = value;
-  }, [value]); // Only re-run if value changes
-
-  // Return previous value (happens before update in useEffect above)
+  }, [value]);
   return ref.current;
 }
 
@@ -65,6 +59,8 @@ function Collapse({
 }) {
   let getCollapseHeight = () => collapseHeight;
   let getCollapsedVisibility = () => (collapseHeight === "0px" ? "hidden" : "");
+
+  const [___, forceUpdate] = React.useReducer(x => x + 1, 0);
 
   let elementRef = useRef();
   let [collapseState, setCollapseState] = useState(
