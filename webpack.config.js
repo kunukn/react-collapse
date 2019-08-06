@@ -91,9 +91,9 @@ module.exports = (env = {}, argv = {}) => {
       contentBase: path.join(__dirname, ""),
       publicPath: "/",
       open: true,
-      hot: true,
+      //hot: true,
       disableHostCheck: true,
-      watchContentBase: true,
+      //watchContentBase: true,
       historyApiFallback: true
     },
     performance: {
@@ -201,7 +201,7 @@ module.exports = (env = {}, argv = {}) => {
         filename: "index.html"
       }),
       // This is necessary to emit hot updates (currently CSS only):
-      !isProd && new webpack.HotModuleReplacementPlugin(),
+      //!isProd && new webpack.HotModuleReplacementPlugin(),
       new WebpackMd5Hash()
     ].filter(Boolean),
     resolve: {

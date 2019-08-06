@@ -11,13 +11,16 @@ import Collapse from "components/collapse/Collapse";
 console.log("WEBPPACK_IS_CLASS_COMPONENT", WEBPPACK_IS_CLASS_COMPONENT);
 
 ReactDOM.render(
-  <StrictMode>
-    <>
-      <App
-        className={WEBPPACK_IS_CLASS_COMPONENT ? "is-class-component" : null}
-        Collapse={WEBPPACK_IS_CLASS_COMPONENT ? CollapseClass : Collapse}
-      />
-    </>
-  </StrictMode>,
+  <>
+    <App
+      display="development"
+      className={
+        WEBPPACK_IS_CLASS_COMPONENT
+          ? "collapse-css-transition is-class-component"
+          : null
+      }
+      Collapse={WEBPPACK_IS_CLASS_COMPONENT ? CollapseClass : Collapse}
+    />
+  </>,
   document.getElementById("root")
 );
