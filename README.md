@@ -76,7 +76,6 @@ const Collapse = require("@kunukn/react-collapse");
 | collapseHeight | string           | 0px                     |
 | onChange       | function         |                         |
 | onInit         | function         |                         |
-| lazyEffect     | boolean          | false                   |
 
 <br>
 
@@ -212,11 +211,6 @@ Or you could specify a specific transitionDuration.
   <p>Paragraph of text</p>
 </Collapse>
 ```
-
-#### `lazyEffect` : boolean
-
-`useEffect` is used instead of `useLayoutEffect` for DOM updates.
-
 
 ## Development and testing
 

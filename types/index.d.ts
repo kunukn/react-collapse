@@ -20,7 +20,6 @@ interface CollapseProps {
   onInit?: (props: onInitProps) => void;
   elementType?: string;
   style?: Object;
-  lazyEffect?: boolean;
   children?: React.ReactNode | ((collapseState: string) => void);
 }
 

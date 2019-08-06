@@ -9,7 +9,6 @@ import Collapse from "@kunukn/react-collapse";
   elementType="article"
   collapseHeight="4rem"
   style={{ transitionDuration: "260ms" }}
-  lazyEffect
 >
   <div>this is some content</div>{" "}
 </Collapse>;

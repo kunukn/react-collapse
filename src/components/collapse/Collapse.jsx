@@ -8,9 +8,9 @@ import "./collapse.css";
 import React, {
   useState,
   useEffect,
-  useLayoutEffect,
   useRef,
-  useCallback
+  useCallback,
+  useReducer
 } from "react";
 import debugLog from "./debugLog";
 
@@ -20,14 +20,6 @@ let COLLAPSED = "collapsed";
 let COLLAPSING = "collapsing";
 let EXPANDING = "expanding";
 let EXPANDED = "expanded";
-
-function usePrevious(value) {
-  const ref = useRef();
-  useEffect(() => {
-    ref.current = value;
-  }, [value]);
-  return ref.current;
-}
 
 /**
  *
@@ -40,9 +32,7 @@ function nextFrame(callback) {
   });
 }
 
-function useInstance(object) {
-  return useRef(object).current;
-}
+let useInstance = object => useRef(object).current;
 
 function Collapse({
   children,
@@ -50,87 +40,31 @@ function Collapse({
   style,
   render,
   elementType,
-  lazyEffect,
   isOpen,
   collapseHeight,
   onInit,
   onChange,
   ...rest
 }) {
-  let getCollapseHeight = () => collapseHeight;
   let getCollapsedVisibility = () => (collapseHeight === "0px" ? "hidden" : "");
 
-  const [___, forceUpdate] = React.useReducer(x => x + 1, 0);
+  const [_, forceUpdate] = useReducer(x => x + 1, 0);
 
   let elementRef = useRef();
-  let [collapseState, setCollapseState] = useState(
-    isOpen ? EXPANDED : COLLAPSED
-  );
-  const prevCollapseState = usePrevious(collapseState);
-
-  if (
-    collapseState === COLLAPSED &&
-    (prevCollapseState === EXPANDED || prevCollapseState === EXPANDING)
-  ) {
-    console.error(collapseState, prevCollapseState);
-  }
-  if (
-    collapseState === EXPANDED &&
-    (prevCollapseState === COLLAPSED || prevCollapseState === COLLAPSING)
-  ) {
-    console.error(collapseState, prevCollapseState);
-  }
-
-  let [collapseStyle, setCollapseStyle] = useState({
-    height: isOpen ? "" : getCollapseHeight(),
-    visibility: isOpen ? "" : getCollapsedVisibility()
-  });
   let [callbackTick, invokeCallback] = useState(0);
-  let firstUpdate = useRef(true);
 
   let state = useInstance({
     collapseState: isOpen ? EXPANDED : COLLAPSED,
     style: {
-      height: isOpen ? "" : getCollapseHeight(),
+      height: isOpen ? "" : collapseHeight,
       visibility: isOpen ? "" : getCollapsedVisibility()
     }
   });
-
-  let effect = lazyEffect ? useEffect : useLayoutEffect;
 
   useEffect(() => {
     // Invoke callback when data are updated, use Effect to sync state.
     callbackTick && onCallback(onChange);
   }, [callbackTick]);
-
-  effect(() => {
-    if (!elementRef.current) return;
-
-    if (firstUpdate.current) {
-      // Don't run effect on first render, the DOM styles are already correctly set
-      firstUpdate.current = false;
-      debugLog("skip effect first render");
-      return;
-    }
-
-    debugLog("effect after collapseState update");
-
-    switch (collapseState) {
-      case EXPANDING:
-        setExpanding();
-        break;
-      case COLLAPSING:
-        setCollapsing();
-        break;
-      case EXPANDED:
-        setExpanded();
-        break;
-      case COLLAPSED:
-        setCollapsed();
-        break;
-      // no default
-    }
-  }, [collapseState]);
 
   /**
    *
@@ -139,55 +73,55 @@ function Collapse({
   let onCallback = (callback, params = {}) => {
     if (callback) {
       debugLog("onCallback " + callback.name);
-      callback({ state: collapseState, style: collapseStyle, ...params });
+      callback({ state: state.collapseState, style: state.style, ...params });
     }
   };
 
   function setCollapsed() {
     if (!elementRef.current) return;
-    if (collapseState !== COLLAPSED) return;
 
     state.collapseState = COLLAPSED;
 
     debugLog("setCollapsed");
 
-    setCollapseStyle({
-      height: getCollapseHeight(),
+    state.style = {
+      height: collapseHeight,
       visibility: getCollapsedVisibility()
-    });
+    };
+    forceUpdate();
+
     invokeCallback(Date.now());
   }
 
   function setCollapsing() {
     if (!elementRef.current) return;
-    if (collapseState !== COLLAPSING) return;
 
     state.collapseState = COLLAPSING;
 
     debugLog("setCollapsing");
 
-    let height = getElementHeight(); // capture height before setting it to async setState method
-
-    setCollapseStyle({
-      height,
+    state.style = {
+      height: getElementHeight(),
       visibility: ""
-    });
+    };
+    forceUpdate();
 
     nextFrame(() => {
       if (!elementRef.current) return;
-      if (collapseState !== COLLAPSING) return;
+      if (state.collapseState !== COLLAPSING) return;
 
-      setCollapseStyle({
-        height: getCollapseHeight(),
+      state.style = {
+        height: collapseHeight,
         visibility: ""
-      });
+      };
+      forceUpdate();
+
       invokeCallback(Date.now());
     });
   }
 
   function setExpanding() {
     if (!elementRef.current) return;
-    if (collapseState !== EXPANDING) return;
 
     debugLog("setExpanding");
 
@@ -195,17 +129,13 @@ function Collapse({
 
     nextFrame(() => {
       if (!elementRef.current) return;
-      if (collapseState !== EXPANDING) return;
+      if (state.collapseState !== EXPANDING) return;
 
-      let height = getElementHeight(); // capture height before setting it to async setState method
-
-      setCollapseStyle({
-        height,
+      state.style = {
+        height: getElementHeight(),
         visibility: ""
-      });
-
-      state.style.height = height;
-      state.style.visibility = "";
+      };
+      forceUpdate();
 
       invokeCallback(Date.now());
     });
@@ -213,19 +143,16 @@ function Collapse({
 
   function setExpanded() {
     if (!elementRef.current) return;
-    if (collapseState !== EXPANDED) return;
 
     state.collapseState = EXPANDED;
 
     debugLog("setExpanded");
 
-    setCollapseStyle({
+    state.style = {
       height: "",
       visibility: ""
-    });
-
-    state.style.height = "";
-    state.style.visibility = "";
+    };
+    forceUpdate();
 
     invokeCallback(Date.now());
   }
@@ -239,9 +166,14 @@ function Collapse({
     if (target === elementRef.current && propertyName === "height") {
       let styleHeight = target.style.height;
 
-      debugLog("onTransitionEnd", collapseState, propertyName, styleHeight);
+      debugLog(
+        "onTransitionEnd",
+        state.collapseState,
+        propertyName,
+        styleHeight
+      );
 
-      switch (collapseState) {
+      switch (state.collapseState) {
         case EXPANDING:
           if (styleHeight === "" || styleHeight === collapseHeight)
             // This is stale, a newer event has happened before this could execute
@@ -249,7 +181,7 @@ function Collapse({
               `onTransitionEnd height unexpected ${styleHeight}`,
               "ignore setExpanded"
             );
-          else setCollapseState(EXPANDED);
+          else setExpanded();
           break;
         case COLLAPSING:
           if (styleHeight === "" || styleHeight !== collapseHeight)
@@ -258,30 +190,28 @@ function Collapse({
               `onTransitionEnd height unexpected ${styleHeight}`,
               "ignore setCollapsed"
             );
-          else setCollapseState(COLLAPSED);
+          else setCollapsed();
           break;
         default:
-          console.warn("Ignored in onTransitionEnd", collapseState);
+          console.warn("Ignored in onTransitionEnd", state.collapseState);
       }
     }
   }
 
   // getDerivedStateFromProps
-  let didOpen = collapseState === EXPANDED || collapseState === EXPANDING;
+  let didOpen =
+    state.collapseState === EXPANDED || state.collapseState === EXPANDING;
 
-  if (!didOpen && isOpen) {
-    setCollapseState(EXPANDING);
-  }
-  if (didOpen && !isOpen) {
-    setCollapseState(COLLAPSING);
-  }
+  if (!didOpen && isOpen) setExpanding();
+
+  if (didOpen && !isOpen) setCollapsing();
   // END getDerivedStateFromProps
 
   let computedStyle = {
     overflow: "hidden",
     transition,
     ...style,
-    ...collapseStyle
+    ...state.style
   };
   let ElementType = elementType;
 
@@ -304,9 +234,9 @@ function Collapse({
       {...rest}
     >
       {typeof children === "function"
-        ? children(collapseState)
+        ? children(state.collapseState)
         : typeof render === "function"
-        ? render(collapseState)
+        ? render(state.collapseState)
         : children}
     </ElementType>
   );
