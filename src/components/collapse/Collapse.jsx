@@ -27,7 +27,8 @@ let EXPANDED = "expanded";
  */
 function nextFrame(callback) {
   requestAnimationFrame(function() {
-    setTimeout(callback, 0);
+    //setTimeout(callback, 0);
+    requestAnimationFrame(callback);
   });
 }
 
