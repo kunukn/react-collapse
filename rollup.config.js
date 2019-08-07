@@ -47,6 +47,7 @@ export default {
       format: "umd",
       name,
       sourcemap: true,
+      externalLiveBindings: false,
       globals: {
         react: "React",
         "react-dom": "ReactDOM"
