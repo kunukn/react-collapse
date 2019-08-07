@@ -14,14 +14,18 @@ jest.useFakeTimers();
 
 beforeEach(() => {
   jest.spyOn(global, "requestAnimationFrame").mockImplementation(cb => cb());
-  //jest.spyOn(global, "setTimeout").mockImplementation(cb => cb());
 });
 
 afterEach(() => {
   global.requestAnimationFrame.mockRestore();
-  // global.setTimeout.mockRestore();
   cleanup();
 });
+
+/**
+ * Testing implementation details on purpose.
+ * Ensure the library API are behaving correct.
+ *
+ */
 
 describe("<Collapse />", () => {
   it("should render without errors", () => {
@@ -32,12 +36,13 @@ describe("<Collapse />", () => {
     let text = "Some content";
 
     const props = {
-      children: () => text
+      children: () => text,
+      isOpen: true
     };
 
     const { getByText } = render(<Collapse {...props} />);
 
-    expect(getByText(text)).toBeTruthy();
+    expect(getByText(text)).toBeInTheDocument();
   });
 
   it("should render elementType", () => {
@@ -287,7 +292,7 @@ describe("<Collapse />", () => {
 
   it("should call render prop collapsed", () => {
     const props = {
-      render: collapseState => <div>{collapseState}</div>
+      render: state => <div>{state}</div>
     };
 
     const { getByText } = render(<Collapse {...props} />);
@@ -298,7 +303,7 @@ describe("<Collapse />", () => {
   it("should call render prop expanded", () => {
     const props = {
       isOpen: true,
-      render: collapseState => <div>{collapseState}</div>
+      render: state => <div>{state}</div>
     };
 
     const { getByText } = render(<Collapse {...props} />);
@@ -308,7 +313,7 @@ describe("<Collapse />", () => {
 
   it("should apply render-prop pattern on children if children is a function", () => {
     const props = {
-      children: collapseState => <div>{collapseState}</div>
+      children: state => <div>{state}</div>
     };
 
     const { getByText } = render(<Collapse {...props} />);
