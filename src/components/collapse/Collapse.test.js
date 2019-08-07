@@ -86,8 +86,8 @@ describe("<Collapse />", () => {
     expect(collapse.className.indexOf("--c-collapsed") >= 0).toBe(false);
   });
 
-  it("should render includeStateCSS collapsed className", () => {
-    const { container } = render(<Collapse includeStateCSS />);
+  it("should render addState collapsed className", () => {
+    const { container } = render(<Collapse addState />);
 
     const collapse = container.firstChild;
 
@@ -98,8 +98,8 @@ describe("<Collapse />", () => {
     expect(collapse.className.indexOf("--c-expanded") >= 0).toBe(false);
   });
 
-  it("should render includeStateCSS expanded className", () => {
-    const { container } = render(<Collapse isOpen includeStateCSS />);
+  it("should render addState expanded className", () => {
+    const { container } = render(<Collapse isOpen addState />);
 
     const collapse = container.firstChild;
 

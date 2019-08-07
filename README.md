@@ -65,18 +65,18 @@ const Collapse = require("@kunukn/react-collapse");
 
 ## Properties
 
-| Prop            | Type             | Default                 |
-| --------------- | ---------------- | ----------------------- |
-| isOpen          | boolean          | false                   |
-| children        | node \| function |                         |
-| render          | function         |                         |
-| className       | string           | collapse-css-transition |
-| transition      | string           |                         |
-| elementType     | string           | div                     |
-| collapseHeight  | string           | 0px                     |
-| onChange        | function         |                         |
-| onInit          | function         |                         |
-| includeStateCSS | boolean          | false                   |
+| Prop           | Type             | Default                 |
+| -------------- | ---------------- | ----------------------- |
+| isOpen         | boolean          | false                   |
+| children       | node \| function |                         |
+| render         | function         |                         |
+| className      | string           | collapse-css-transition |
+| transition     | string           |                         |
+| elementType    | string           | div                     |
+| collapseHeight | string           | 0px                     |
+| onChange       | function         |                         |
+| onInit         | function         |                         |
+| addState       | boolean          | false                   |
 
 <br>
 
@@ -195,7 +195,7 @@ let onInit = ({ state, style, node }) => {
 </Collapse>;
 ```
 
-#### `includeStateCSS` : boolean
+#### `addState` : boolean
 
 If added, then one of the class names will be appended to the component depending on the state.
 

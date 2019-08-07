@@ -45,7 +45,7 @@ function Collapse({
   onInit,
   onChange,
   className,
-  includeStateCSS,
+  addState,
   ...rest
 }) {
   let getCollapsedVisibility = () => (collapseHeight === "0px" ? "hidden" : "");
@@ -228,7 +228,7 @@ function Collapse({
     [elementType]
   );
 
-  let collapseClassName = includeStateCSS
+  let collapseClassName = addState
     ? `${className} --c-${state.collapseState}`
     : className;
 

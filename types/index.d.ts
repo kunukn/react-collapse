@@ -20,7 +20,7 @@ interface CollapseProps {
   onInit?: (props: onInitProps) => void;
   elementType?: string;
   style?: Object;
-  includeStateCSS?: boolean;
+  addState?: boolean;
   children?: React.ReactNode | ((collapseState: string) => void);
 }
 
