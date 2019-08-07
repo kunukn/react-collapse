@@ -1,6 +1,6 @@
 {
   "name": "@kunukn/react-collapse",
-  "version": "2.2.4",
+  "version": "2.2.5",
   "description": "Collapse library based on CSS transition for React",
   "main": "dist/Collapse.umd.js",
   "main-es2015": "dist/Collapse.umd.es2015.js",
@@ -96,7 +96,6 @@
     "@testing-library/react": "^8.0.7",
     "@types/react": "^16.8.24",
     "autoprefixer": "^9.6.1",
-    
     "babel-eslint": "^10.0.2",
     "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.6",

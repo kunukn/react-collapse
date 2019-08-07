@@ -50,13 +50,13 @@ function Collapse({
 }) {
   let getCollapsedVisibility = () => (collapseHeight === "0px" ? "hidden" : "");
 
-  const [__, forceUpdate] = useReducer(x => x + 1, 0);
+  const [_, forceUpdate] = useReducer(_ => _ + 1, 0);
 
   let elementRef = useRef();
   let [callbackTick, invokeCallback] = useState(0);
 
   let state = useInstance({
-    collapseState: isOpen ? EXPANDED : COLLAPSED,
+    collapse: isOpen ? EXPANDED : COLLAPSED,
     style: {
       height: isOpen ? "" : collapseHeight,
       visibility: isOpen ? "" : getCollapsedVisibility()
@@ -75,14 +75,15 @@ function Collapse({
   let onCallback = (callback, params = {}) => {
     if (callback) {
       debugLog("onCallback " + callback.name);
-      callback({ state: state.collapseState, style: state.style, ...params });
+      callback({ state: state.collapse, style: state.style, ...params });
     }
   };
 
   function setCollapsed() {
-    if (!elementRef.current) return;
+    if (!elementRef.current) return; // might be redundant
 
-    state.collapseState = COLLAPSED;
+    // Update state
+    state.collapse = COLLAPSED;
 
     debugLog("setCollapsed");
 
@@ -96,9 +97,10 @@ function Collapse({
   }
 
   function setCollapsing() {
-    if (!elementRef.current) return;
+    if (!elementRef.current) return; // might be redundant
 
-    state.collapseState = COLLAPSING;
+    // Update state
+    state.collapse = COLLAPSING;
 
     debugLog("setCollapsing");
 
@@ -110,7 +112,7 @@ function Collapse({
 
     nextFrame(() => {
       if (!elementRef.current) return;
-      if (state.collapseState !== COLLAPSING) return;
+      if (state.collapse !== COLLAPSING) return;
 
       state.style = {
         height: collapseHeight,
@@ -123,15 +125,16 @@ function Collapse({
   }
 
   function setExpanding() {
-    if (!elementRef.current) return;
+    if (!elementRef.current) return; // might be redundant
+
+    // Update state
+    state.collapse = EXPANDING;
 
     debugLog("setExpanding");
 
-    state.collapseState = EXPANDING;
-
     nextFrame(() => {
-      if (!elementRef.current) return;
-      if (state.collapseState !== EXPANDING) return;
+      if (!elementRef.current) return; // might be redundant
+      if (state.collapse !== EXPANDING) return;
 
       state.style = {
         height: getElementHeight(),
@@ -144,9 +147,10 @@ function Collapse({
   }
 
   function setExpanded() {
-    if (!elementRef.current) return;
+    if (!elementRef.current) return; // might be redundant
 
-    state.collapseState = EXPANDED;
+    // Update state
+    state.collapse = EXPANDED;
 
     debugLog("setExpanded");
 
@@ -168,14 +172,9 @@ function Collapse({
     if (target === elementRef.current && propertyName === "height") {
       let styleHeight = target.style.height;
 
-      debugLog(
-        "onTransitionEnd",
-        state.collapseState,
-        propertyName,
-        styleHeight
-      );
+      debugLog("onTransitionEnd", state.collapse, propertyName, styleHeight);
 
-      switch (state.collapseState) {
+      switch (state.collapse) {
         case EXPANDING:
           if (styleHeight === "" || styleHeight === collapseHeight)
             // This is stale, a newer event has happened before this could execute
@@ -195,14 +194,13 @@ function Collapse({
           else setCollapsed();
           break;
         default:
-          console.warn("Ignored in onTransitionEnd", state.collapseState);
+          console.warn("Ignored in onTransitionEnd", state.collapse);
       }
     }
   }
 
   // getDerivedStateFromProps
-  let didOpen =
-    state.collapseState === EXPANDED || state.collapseState === EXPANDING;
+  let didOpen = state.collapse === EXPANDED || state.collapse === EXPANDING;
 
   if (!didOpen && isOpen) setExpanding();
 
@@ -229,7 +227,7 @@ function Collapse({
   );
 
   let collapseClassName = addState
-    ? `${className} --c-${state.collapseState}`
+    ? `${className} --c-${state.collapse}`
     : className;
 
   return (
@@ -241,9 +239,9 @@ function Collapse({
       {...rest}
     >
       {typeof children === "function"
-        ? children(state.collapseState)
+        ? children(state.collapse)
         : typeof render === "function"
-        ? render(state.collapseState)
+        ? render(state.collapse)
         : children}
     </ElementType>
   );

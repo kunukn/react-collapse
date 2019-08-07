@@ -103,9 +103,9 @@ Render content using the [render-props pattern](https://reactjs.org/docs/render-
 <Collapse
   isOpen={ true || false }
 >
-  {collapseState => (
-    <div className="using-collapse-state-to-add-css-class " + collapseState>
-      <p>I know the collapse state: {collapseState}</p>
+  {state => (
+    <div className="using-collapse-state-to-add-css-class " + state>
+      <p>I know the collapse state: {state}</p>
     </div>
   )}
 </Collapse>
@@ -118,9 +118,9 @@ Render content using the render-props pattern.
 ```js
 <Collapse
   isOpen={ true || false }
-  render={collapseState => (
-    <div className="using-collapse-state-to-add-css-class " + collapseState>
-      <p>I know the collapse state: {collapseState}</p>
+  render={state => (
+    <div className="using-collapse-state-to-add-css-class " + state>
+      <p>I know the collapse state: {state}</p>
     </div>
   )}
 />
@@ -169,8 +169,8 @@ Callback function for when the transition changes.
 ```jsx
 let onChange = ({ state, style }) => {
   /*
-    state: the collapseState string
-    style: an object containing style applied to the component.
+    state: string = the state of the collapse component.
+    style: object = styles that applied to the component.
   */
 };
 
@@ -186,7 +186,7 @@ Similar to onChange but only invoked on DOM mounted.
 ```jsx
 let onInit = ({ state, style, node }) => {
   /*
-    node: the HTML element for the component.
+    node: HTMLElement = the DOM node of the component.
   */
 };
 
