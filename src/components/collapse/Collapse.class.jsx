@@ -23,7 +23,7 @@ export default class Collapse extends React.Component {
   render() {
     const {
       className,
-      excludeStateCSS,
+      addState,
       children,
       transition,
       style,
@@ -46,9 +46,9 @@ export default class Collapse extends React.Component {
     Object.assign(computedStyle, this.state.collapseStyle);
 
     const ElementType = elementType || "div";
-    let collapseClassName = className;
-    if (!excludeStateCSS)
-      collapseClassName += ` -c-is--${this.state.collapseState}`;
+    let collapseClassName = addState
+      ? `${className} --c-${this.state.collapseState}`
+      : className;
 
     return (
       <ElementType

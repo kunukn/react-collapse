@@ -62,6 +62,7 @@ let App = props => {
           {JSON.stringify(state.spy1 || {}, null, 1)}
         </pre>
         <C
+          addState
           style={{ outline: "1px dashed lightblue" }}
           isOpen={state.isOpen1}
           onChange={props => mergeState({ spy1: props })}
