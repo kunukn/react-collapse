@@ -170,7 +170,7 @@ Callback function for when the transition changes.
 let onChange = ({ state, style }) => {
   /*
     state: string = the state of the collapse component.
-    style: object = styles that applied to the component.
+    style: object = styles that are applied to the component.
   */
 };
 
