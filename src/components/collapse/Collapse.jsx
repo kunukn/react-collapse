@@ -97,13 +97,17 @@ function Collapse({
       height: collapseHeight,
       visibility: getCollapsedVisibility()
     };
-    //forceUpdate();
+    forceUpdate();
 
-    setCallbackTick(Date.now); // callback and re-render
+    setTimeout(() => setCallbackTick(Date.now), 0); // callback and re-render
   }
 
   function setCollapsing() {
     if (!elementRef.current) return; // might be redundant
+
+    if (style && +style.transitionDuration === 0) {
+      return setCollapsed();
+    }
 
     // Update state
     state.collapse = COLLAPSING;
@@ -133,7 +137,11 @@ function Collapse({
   function setExpanding() {
     if (!elementRef.current) return; // might be redundant
 
-    // Update state
+    if (style && +style.transitionDuration === 0) {
+      return setExpanded();
+    }
+
+    // Updatetate
     state.collapse = EXPANDING;
 
     debugLog("setExpanding");
@@ -146,7 +154,7 @@ function Collapse({
         height: getElementHeight(),
         visibility: ""
       };
-      //forceUpdate();
+      forceUpdate();
 
       setCallbackTick(Date.now); // callback and re-render
     });
@@ -164,9 +172,9 @@ function Collapse({
       height: "",
       visibility: ""
     };
-    //forceUpdate();
+    forceUpdate();
 
-    setCallbackTick(Date.now); // callback and re-render
+    setTimeout(() => setCallbackTick(Date.now), 0); // callback and re-render
   }
 
   function getElementHeight() {
