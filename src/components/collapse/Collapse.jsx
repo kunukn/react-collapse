@@ -21,6 +21,10 @@ let COLLAPSING = "collapsing";
 let EXPANDING = "expanding";
 let EXPANDED = "expanded";
 
+let defaultClassName = "collapse-css-transition";
+let defaultElementType = "div";
+let defaultCollapseHeight = "0px";
+
 /**
  *
  * @param {function} callback
@@ -39,12 +43,12 @@ function Collapse({
   transition,
   style,
   render,
-  elementType,
+  elementType = defaultElementType,
   isOpen,
-  collapseHeight,
+  collapseHeight = defaultCollapseHeight,
   onInit,
   onChange,
-  className,
+  className = defaultClassName,
   addState,
   ...rest
 }) {
@@ -250,11 +254,5 @@ function Collapse({
     </ElementType>
   );
 }
-
-Collapse.defaultProps = {
-  className: "collapse-css-transition",
-  elementType: "div",
-  collapseHeight: "0px"
-};
 
 export default Collapse;
