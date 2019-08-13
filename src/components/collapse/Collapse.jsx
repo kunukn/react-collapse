@@ -53,8 +53,10 @@ function Collapse({
   const [_, forceUpdate] = useReducer(_ => _ + 1, 0);
 
   let elementRef = useRef();
-  let [callbackTick, invokeCallback] = useState(0);
+  let [callbackTick, setCallbackTick] = useState(0);
 
+  // Avoiding setState to control when stuff are updated.
+  // Might not be needed.
   let state = useInstance({
     collapse: isOpen ? EXPANDED : COLLAPSED,
     style: {
@@ -91,9 +93,9 @@ function Collapse({
       height: collapseHeight,
       visibility: getCollapsedVisibility()
     };
-    forceUpdate();
+    //forceUpdate();
 
-    invokeCallback(Date.now());
+    setCallbackTick(Date.now); // callback and re-render
   }
 
   function setCollapsing() {
@@ -118,9 +120,9 @@ function Collapse({
         height: collapseHeight,
         visibility: ""
       };
-      forceUpdate();
+      //forceUpdate();
 
-      invokeCallback(Date.now());
+      setCallbackTick(Date.now); // callback and re-render
     });
   }
 
@@ -140,9 +142,9 @@ function Collapse({
         height: getElementHeight(),
         visibility: ""
       };
-      forceUpdate();
+      //forceUpdate();
 
-      invokeCallback(Date.now());
+      setCallbackTick(Date.now); // callback and re-render
     });
   }
 
@@ -158,9 +160,9 @@ function Collapse({
       height: "",
       visibility: ""
     };
-    forceUpdate();
+    //forceUpdate();
 
-    invokeCallback(Date.now());
+    setCallbackTick(Date.now); // callback and re-render
   }
 
   function getElementHeight() {
@@ -230,6 +232,8 @@ function Collapse({
     ? `${className} --c-${state.collapse}`
     : className;
 
+  debugLog("Render");
+
   return (
     <ElementType
       ref={callbackRef}
@@ -250,7 +254,6 @@ function Collapse({
 Collapse.defaultProps = {
   className: "collapse-css-transition",
   elementType: "div",
-  style: {},
   collapseHeight: "0px"
 };
 
