@@ -155,7 +155,7 @@ function Collapse({
         height: getElementHeight(),
         visibility: ""
       };
-      forceUpdate();
+      // forceUpdate();
 
       setCallbackTick(Date.now); // callback and re-render
     });
