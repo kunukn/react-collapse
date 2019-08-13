@@ -209,7 +209,7 @@ If added, then one of the class names will be appended to the component dependin
 
 #### `noAnim` : boolean
 
-There will be no collapse animation. State changes switch between `collapsed` and `expanded`.
+If added, then there will be no collapse animation. State changes between `collapsed` and `expanded`.
 
 #### Custom props
 
