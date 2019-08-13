@@ -9,6 +9,7 @@ import Collapse from "@kunukn/react-collapse";
   elementType="article"
   collapseHeight="4rem"
   addState
+  noAnim
   style={{ transitionDuration: "260ms" }}
 >
   <div>this is some content</div>{" "}

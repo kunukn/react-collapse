@@ -50,6 +50,7 @@ function Collapse({
   onChange,
   className = defaultClassName,
   addState,
+  noAnim,
   ...rest
 }) {
   let getCollapsedVisibility = () => (collapseHeight === "0px" ? "hidden" : "");
@@ -105,7 +106,7 @@ function Collapse({
   function setCollapsing() {
     if (!elementRef.current) return; // might be redundant
 
-    if (style && +style.transitionDuration === 0) {
+    if (noAnim) {
       return setCollapsed();
     }
 
@@ -137,7 +138,7 @@ function Collapse({
   function setExpanding() {
     if (!elementRef.current) return; // might be redundant
 
-    if (style && +style.transitionDuration === 0) {
+    if (noAnim) {
       return setExpanded();
     }
 
