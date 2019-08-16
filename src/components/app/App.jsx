@@ -7,7 +7,7 @@ let App = props => {
     isOpen1: false,
     isOpen2: false,
     isOpen3: false,
-    isOpen4: true,
+    isOpen4: false,
     spy1: {},
     spy2: {},
     spy3: {},
