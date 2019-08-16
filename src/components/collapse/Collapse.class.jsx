@@ -16,8 +16,7 @@ export default class Collapse extends React.Component {
     collapseStyle: {
       height: this.props.isOpen ? null : getCollapseHeight(this.props),
       visibility: this.props.isOpen ? null : getCollapseVisibility(this.props)
-    },
-    hasReversed: false
+    }
   };
 
   render() {
@@ -33,6 +32,7 @@ export default class Collapse extends React.Component {
       onInit,
       onChange,
       isOpen,
+      noAnim,
       ...rest
     } = this.props;
 
@@ -76,14 +76,12 @@ export default class Collapse extends React.Component {
 
     if (!isOpen && props.isOpen) {
       return {
-        hasReversed: state.collapseState === COLLAPSING,
-        collapseState: EXPANDING
+        collapseState: props.noAnim ? EXPANDED : EXPANDING
       };
     }
     if (isOpen && !props.isOpen) {
       return {
-        hasReversed: state.collapseState === EXPANDING,
-        collapseState: COLLAPSING
+        collapseState: props.noAnim ? COLLAPSED : COLLAPSING
       };
     }
 
@@ -233,7 +231,6 @@ export default class Collapse extends React.Component {
 }
 
 function nextFrame(callback) {
-  // Ensure it is always visible on collapsing, afterFrame didn't work
   requestAnimationFrame(() => requestAnimationFrame(callback));
 }
 
