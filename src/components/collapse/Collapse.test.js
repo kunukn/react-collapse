@@ -351,4 +351,50 @@ describe("<Collapse />", () => {
     expect(callbackProps1.state).toBe("collapsed");
     expect(callbackProps2.state).toBe("collapsed");
   });
+
+  it("should have expanded as next state from collapsed when using noAnim", () => {
+    // TODO: write better test. Should not use onChange to detect the state
+
+    const props = {
+      isOpen: false,
+      noAnim: true,
+      onChange: jest.fn(),
+      children: <div>some content.</div>
+    };
+
+    const { rerender } = render(<Collapse {...props} />);
+
+    rerender(<Collapse {...props} isOpen={true} />);
+
+    act(() => {
+      /* fire events that update state */
+      jest.advanceTimersByTime(1);
+    });
+
+    let callbackProps = props.onChange.mock.calls[0][0];
+    expect(callbackProps.state).toBe("expanded");
+  });
+
+  it("should have collapsed as next state from expanded when using noAnim", () => {
+    // TODO: write better test. Should not use onChange to detect the state
+
+    const props = {
+      isOpen: true,
+      noAnim: true,
+      onChange: jest.fn(),
+      children: <div>some content.</div>
+    };
+
+    const { rerender } = render(<Collapse {...props} />);
+
+    rerender(<Collapse {...props} isOpen={false} />);
+
+    act(() => {
+      /* fire events that update state */
+      jest.advanceTimersByTime(1);
+    });
+
+    let callbackProps = props.onChange.mock.calls[0][0];
+    expect(callbackProps.state).toBe("collapsed");
+  });
 });

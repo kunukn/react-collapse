@@ -12,18 +12,19 @@ type onInitProps = {
 
 interface CollapseProps {
   isOpen?: boolean;
-  render?: (collapseState: string) => void;
+  render?: (collapseState : string) => void;
   className?: string;
   transition?: string;
   collapseHeight?: string;
-  onChange?: (props: onChangeProps) => void;
-  onInit?: (props: onInitProps) => void;
+  onChange?: (props : onChangeProps) => void;
+  onInit?: (props : onInitProps) => void;
   elementType?: string;
   style?: Object;
   addState?: boolean;
-  children?: React.ReactNode | ((collapseState: string) => void);
+  noAnim?: boolean;
+  children?: React.ReactNode | ((collapseState : string) => void);
 }
 
-declare const Collapse: React.FunctionComponent<CollapseProps>;
+declare const Collapse : React.FunctionComponent < CollapseProps >;
 
 export default Collapse;

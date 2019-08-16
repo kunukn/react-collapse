@@ -21,6 +21,10 @@ let COLLAPSING = "collapsing";
 let EXPANDING = "expanding";
 let EXPANDED = "expanded";
 
+let defaultClassName = "collapse-css-transition";
+let defaultElementType = "div";
+let defaultCollapseHeight = "0px";
+
 /**
  *
  * @param {function} callback
@@ -39,13 +43,14 @@ function Collapse({
   transition,
   style,
   render,
-  elementType,
+  elementType = defaultElementType,
   isOpen,
-  collapseHeight,
+  collapseHeight = defaultCollapseHeight,
   onInit,
   onChange,
-  className,
+  className = defaultClassName,
   addState,
+  noAnim,
   ...rest
 }) {
   let getCollapsedVisibility = () => (collapseHeight === "0px" ? "hidden" : "");
@@ -53,8 +58,10 @@ function Collapse({
   const [_, forceUpdate] = useReducer(_ => _ + 1, 0);
 
   let elementRef = useRef();
-  let [callbackTick, invokeCallback] = useState(0);
+  let [callbackTick, setCallbackTick] = useState(0);
 
+  // Avoiding setState to control when stuff are updated.
+  // Might not be needed.
   let state = useInstance({
     collapse: isOpen ? EXPANDED : COLLAPSED,
     style: {
@@ -93,11 +100,15 @@ function Collapse({
     };
     forceUpdate();
 
-    invokeCallback(Date.now());
+    setTimeout(() => setCallbackTick(Date.now), 0); // callback and re-render
   }
 
   function setCollapsing() {
     if (!elementRef.current) return; // might be redundant
+
+    if (noAnim) {
+      return setCollapsed();
+    }
 
     // Update state
     state.collapse = COLLAPSING;
@@ -118,16 +129,20 @@ function Collapse({
         height: collapseHeight,
         visibility: ""
       };
-      forceUpdate();
+      //forceUpdate();
 
-      invokeCallback(Date.now());
+      setCallbackTick(Date.now); // callback and re-render
     });
   }
 
   function setExpanding() {
     if (!elementRef.current) return; // might be redundant
 
-    // Update state
+    if (noAnim) {
+      return setExpanded();
+    }
+
+    // Updatetate
     state.collapse = EXPANDING;
 
     debugLog("setExpanding");
@@ -140,9 +155,9 @@ function Collapse({
         height: getElementHeight(),
         visibility: ""
       };
-      forceUpdate();
+      // forceUpdate();
 
-      invokeCallback(Date.now());
+      setCallbackTick(Date.now); // callback and re-render
     });
   }
 
@@ -160,7 +175,7 @@ function Collapse({
     };
     forceUpdate();
 
-    invokeCallback(Date.now());
+    setTimeout(() => setCallbackTick(Date.now), 0); // callback and re-render
   }
 
   function getElementHeight() {
@@ -230,6 +245,8 @@ function Collapse({
     ? `${className} --c-${state.collapse}`
     : className;
 
+  debugLog("Render");
+
   return (
     <ElementType
       ref={callbackRef}
@@ -246,12 +263,5 @@ function Collapse({
     </ElementType>
   );
 }
-
-Collapse.defaultProps = {
-  className: "collapse-css-transition",
-  elementType: "div",
-  style: {},
-  collapseHeight: "0px"
-};
 
 export default Collapse;

@@ -77,6 +77,7 @@ const Collapse = require("@kunukn/react-collapse");
 | onChange       | function         |                         |
 | onInit         | function         |                         |
 | addState       | boolean          | false                   |
+| noAnim         | boolean          | false                   |
 
 <br>
 
@@ -170,7 +171,7 @@ Callback function for when the transition changes.
 let onChange = ({ state, style }) => {
   /*
     state: string = the state of the collapse component.
-    style: object = styles that applied to the component.
+    style: object = styles that are applied to the component.
   */
 };
 
@@ -205,6 +206,10 @@ If added, then one of the class names will be appended to the component dependin
 --c-expanded
 --c-expanding
 ```
+
+#### `noAnim` : boolean
+
+If added, then there will be no collapse animation. State changes between `collapsed` and `expanded`.
 
 #### Custom props
 

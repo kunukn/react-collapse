@@ -63,7 +63,10 @@ let App = props => {
         </pre>
         <C
           addState
-          style={{ outline: "1px dashed lightblue" }}
+          style={{
+            outline: "1px dashed lightblue",
+            transitionDuration: "260ms"
+          }}
           isOpen={state.isOpen1}
           onChange={props => mergeState({ spy1: props })}
           onInit={({ state, style, node = {} }) => {
@@ -71,7 +74,7 @@ let App = props => {
             mergeState({ spy1: { state, style } });
           }}
           elementType="article"
-          transition="height 280ms ease-in-out"
+          transition="height 290ms ease-in-out"
           className={cx(
             "collapse-css-transition",
             " app__collapse",
@@ -81,7 +84,7 @@ let App = props => {
         >
           {collapseState => (
             <div className={cx("app__content", collapseState)}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              {collapseState} Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
               nisi ut aliquip ex ea commodo consequat.
