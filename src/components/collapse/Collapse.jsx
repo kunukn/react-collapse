@@ -36,8 +36,6 @@ function nextFrame(callback) {
   });
 }
 
-let useInstance = object => useRef(object).current;
-
 function Collapse({
   children,
   transition,
@@ -62,13 +60,13 @@ function Collapse({
 
   // Avoiding setState to control when stuff are updated.
   // Might not be needed.
-  let state = useInstance({
+  let state = useRef({
     collapse: isOpen ? EXPANDED : COLLAPSED,
     style: {
       height: isOpen ? "" : collapseHeight,
       visibility: isOpen ? "" : getCollapsedVisibility()
     }
-  });
+  }).current;
 
   useEffect(() => {
     // Invoke callback when data are updated, use Effect to sync state.
