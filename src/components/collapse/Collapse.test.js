@@ -353,16 +353,16 @@ describe("<Collapse />", () => {
   });
 
   it("should have expanded as next state from collapsed when using noAnim", () => {
-    // TODO: write better test. Should not use onChange to detect the state
-
     const props = {
       isOpen: false,
       noAnim: true,
       onChange: jest.fn(),
-      children: <div>some content.</div>
+      children: state => <div>{state}</div>
     };
 
-    const { rerender } = render(<Collapse {...props} />);
+    const { rerender, getByText } = render(<Collapse {...props} />);
+
+    expect(getByText("collapsed")).toBeTruthy();
 
     rerender(<Collapse {...props} isOpen={true} />);
 
@@ -371,21 +371,22 @@ describe("<Collapse />", () => {
       jest.advanceTimersByTime(1);
     });
 
+    expect(getByText("expanded")).toBeTruthy();
     let callbackProps = props.onChange.mock.calls[0][0];
     expect(callbackProps.state).toBe("expanded");
   });
 
   it("should have collapsed as next state from expanded when using noAnim", () => {
-    // TODO: write better test. Should not use onChange to detect the state
-
     const props = {
       isOpen: true,
       noAnim: true,
       onChange: jest.fn(),
-      children: <div>some content.</div>
+      children: state => <div>{state}</div>
     };
 
-    const { rerender } = render(<Collapse {...props} />);
+    const { rerender, getByText } = render(<Collapse {...props} />);
+
+    expect(getByText("expanded")).toBeTruthy();
 
     rerender(<Collapse {...props} isOpen={false} />);
 
@@ -394,6 +395,7 @@ describe("<Collapse />", () => {
       jest.advanceTimersByTime(1);
     });
 
+    expect(getByText("collapsed")).toBeTruthy();
     let callbackProps = props.onChange.mock.calls[0][0];
     expect(callbackProps.state).toBe("collapsed");
   });
