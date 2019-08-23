@@ -1,9 +1,6 @@
 module.exports = {
   verbose: true,
-  setupFilesAfterEnv: [
-    "<rootDir>/test/__mocks__/client.js",
-    "@testing-library/react/cleanup-after-each"
-  ],
+  setupFilesAfterEnv: ["<rootDir>/test/__mocks__/client.js"],
   snapshotSerializers: [],
   transform: {
     "^.+\\.(js|jsx|tsx)?$": "babel-jest"
