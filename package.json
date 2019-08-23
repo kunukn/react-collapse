@@ -59,6 +59,8 @@
   "keywords": [
     "react",
     "collapsible",
+    "accordion",
+    "CSS-transition",
     "library"
   ],
   "browserslist": [
