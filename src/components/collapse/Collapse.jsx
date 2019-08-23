@@ -31,8 +31,8 @@ let defaultCollapseHeight = "0px";
  */
 function nextFrame(callback) {
   requestAnimationFrame(function() {
-    //setTimeout(callback, 0); // can be jumpy if click-spamming
-    requestAnimationFrame(callback);
+    //setTimeout(callback, 0); // NOT used because can be jumpy if click-spamming.
+    requestAnimationFrame(callback); // This is used.
   });
 }
 
@@ -53,7 +53,7 @@ function Collapse({
 }) {
   let getCollapsedVisibility = () => (collapseHeight === "0px" ? "hidden" : "");
 
-  const [_, forceUpdate] = useReducer(_ => _ + 1, 0);
+  const [__, forceUpdate] = useReducer(_ => _ + 1, 0);
 
   let elementRef = useRef();
   let [callbackTick, setCallbackTick] = useState(0);
