@@ -5,7 +5,7 @@ Collapse component with CSS transition for elements with variable and dynamic he
 [![npm version](https://img.shields.io/npm/v/@kunukn/react-collapse.svg?style=flat-square)](https://www.npmjs.com/package/@kunukn/react-collapse)
 [![npm downloads](https://img.shields.io/npm/dm/@kunukn/react-collapse.svg?style=flat-square)](https://www.npmjs.com/package/@kunukn/react-collapse)
 [![gzip](https://img.shields.io/bundlephobia/minzip/@kunukn/react-collapse.svg)](https://bundlephobia.com/result?p=@kunukn/react-collapse)
-[![license](https://img.shields.io/github/license/kunukn/react-collapse.svg)](https://github.com/kunukn/react-collapse/blob/master/license.md)
+[![license](https://img.shields.io/github/license/kunukn/react-collapse.svg)](https://github.com/kunukn/react-collapse/blob/master/LICENSE)
 
 
 
