@@ -10,6 +10,7 @@ import Collapse from "@kunukn/react-collapse";
   collapseHeight="4rem"
   addState
   noAnim
+  overflowOnExpanded
   style={{ transitionDuration: "260ms" }}
 >
   <div>this is some content</div>{" "}
