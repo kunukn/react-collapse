@@ -399,4 +399,39 @@ describe("<Collapse />", () => {
     let callbackProps = props.onChange.mock.calls[0][0];
     expect(callbackProps.state).toBe("collapsed");
   });
+
+  it("should be overflow hidden on expanded state by default", () => {
+    const props = {
+      isOpen: true,
+    };
+
+    const { container } = render(<Collapse {...props} />);
+    const collapse = container.firstChild;
+
+    expect(collapse.style.overflow).toBe("hidden");
+  });
+
+  it("should allow overflow on expanded state when overflowOnExpanded is added", () => {
+    const props = {
+      isOpen: true,
+      overflowOnExpanded: true
+    };
+
+    const { container } = render(<Collapse {...props} />);
+    const collapse = container.firstChild;
+
+    expect(collapse.style.overflow).toBe("");
+  });
+
+  it("should NOT allow overflow on collapsed state when overflowOnExpanded is added", () => {
+    const props = {
+      isOpen: false,
+      overflowOnExpanded: true
+    };
+
+    const { container } = render(<Collapse {...props} />);
+    const collapse = container.firstChild;
+
+    expect(collapse.style.overflow).toBe("hidden");
+  });
 });

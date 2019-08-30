@@ -49,6 +49,7 @@ function Collapse({
   className = defaultClassName,
   addState,
   noAnim,
+  overflowOnExpanded,
   ...rest
 }) {
   let getCollapsedVisibility = () => (collapseHeight === "0px" ? "hidden" : "");
@@ -220,8 +221,11 @@ function Collapse({
   if (didOpen && !isOpen) setCollapsing();
   // END getDerivedStateFromProps
 
+  let overflow =
+    state.collapse === EXPANDED && overflowOnExpanded ? "" : "hidden";
+
   let computedStyle = {
-    overflow: "hidden",
+    overflow,
     transition,
     ...style,
     ...state.style
