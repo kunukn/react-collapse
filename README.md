@@ -7,8 +7,6 @@ Collapse component with CSS transition for elements with variable and dynamic he
 [![gzip](https://img.shields.io/bundlephobia/minzip/@kunukn/react-collapse.svg)](https://bundlephobia.com/result?p=@kunukn/react-collapse)
 [![license](https://img.shields.io/github/license/kunukn/react-collapse.svg)](https://github.com/kunukn/react-collapse/blob/master/LICENSE)
 
-
-
 react-collapse
 
 ![logo](logo/collapse.svg "logo")
@@ -69,19 +67,20 @@ const Collapse = require("@kunukn/react-collapse");
 
 ## Properties
 
-| Prop           | Type             | Default                 |
-| -------------- | ---------------- | ----------------------- |
-| isOpen         | boolean          | false                   |
-| children       | node \| function |                         |
-| render         | function         |                         |
-| className      | string           | collapse-css-transition |
-| transition     | string           |                         |
-| elementType    | string           | div                     |
-| collapseHeight | string           | 0px                     |
-| onChange       | function         |                         |
-| onInit         | function         |                         |
-| addState       | boolean          | false                   |
-| noAnim         | boolean          | false                   |
+| Prop               | Type             | Default                 |
+| ------------------ | ---------------- | ----------------------- |
+| isOpen             | boolean          | false                   |
+| children           | node \| function |                         |
+| render             | function         |                         |
+| className          | string           | collapse-css-transition |
+| transition         | string           |                         |
+| elementType        | string           | div                     |
+| collapseHeight     | string           | 0px                     |
+| onChange           | function         |                         |
+| onInit             | function         |                         |
+| addState           | boolean          | false                   |
+| noAnim             | boolean          | false                   |
+| overflowOnExpanded | boolean          | false                   |
 
 <br>
 
@@ -214,6 +213,10 @@ If added, then one of the class names will be appended to the component dependin
 #### `noAnim` : boolean
 
 If added, then there will be no collapse animation. State changes between `collapsed` and `expanded`.
+
+#### `overflowOnExpanded` : boolean
+
+If added, then `overflow: hidden` style will not be added when the state is `expanded`.
 
 #### Custom props
 
