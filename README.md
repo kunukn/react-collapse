@@ -55,7 +55,7 @@ npm i @kunukn/react-collapse@^1
 yarn add @kunukn/react-collapse@^1
 ```
 
-```js
+```jsx
 import Collapse from "@kunukn/react-collapse";
 // or with require syntax
 const Collapse = require("@kunukn/react-collapse");
@@ -92,8 +92,8 @@ Expands or collapses content.
 
 Render the children.
 
-```js
-<Collapse isOpen={true || false}>
+```jsx
+<Collapse isOpen={isOpenState}>
   <p>Paragraph of text</p>
   <p>Another paragraph is also OK</p>
   <p>Images and any other content are ok too</p>
@@ -103,9 +103,9 @@ Render the children.
 
 Render content using the [render-props pattern](https://reactjs.org/docs/render-props.html).
 
-```js
+```jsx
 <Collapse
-  isOpen={ true || false }
+  isOpen={isOpenState}
 >
   {state => (
     <div className="using-collapse-state-to-add-css-class " + state>
@@ -119,9 +119,9 @@ Render content using the [render-props pattern](https://reactjs.org/docs/render-
 
 Render content using the render-props pattern.
 
-```js
+```jsx
 <Collapse
-  isOpen={ true || false }
+  isOpen={isOpenState}
   render={state => (
     <div className="using-collapse-state-to-add-css-class " + state>
       <p>I know the collapse state: {state}</p>
@@ -140,8 +140,11 @@ You can specify a custom className. The default value is `collapse-css-transitio
 
 You can also specify a CSS transition inline by using the `transition` prop.
 
-```js
-<Collapse transition="height 290ms cubic-bezier(.4, 0, .2, 1)">
+```jsx
+<Collapse
+  transition="height 290ms cubic-bezier(.4, 0, .2, 1)"
+  isOpen={isOpenState}
+>
   <p>Paragraph of text</p>
 </Collapse>
 ```
@@ -150,8 +153,8 @@ You can also specify a CSS transition inline by using the `transition` prop.
 
 You can specify the HTML element type for the collapse component. By default the element type is a `div` element.
 
-```js
-<Collapse elementType="article">
+```jsx
+<Collapse elementType="article" isOpen={isOpenState}>
   <p>Paragraph of text inside an article element</p>
 </Collapse>
 ```
@@ -160,8 +163,8 @@ You can specify the HTML element type for the collapse component. By default the
 
 You can specify the collapse height in CSS unit to partially show some content.
 
-```js
-<Collapse collapseHeight="40px">
+```jsx
+<Collapse collapseHeight="40px" isOpen={isOpenState}>
   <p>A long paragraph of text inside an article element</p>
 </Collapse>
 ```
@@ -178,7 +181,7 @@ let onChange = ({ state, style }) => {
   */
 };
 
-<Collapse onChange={onChange} isOpen={true || false}>
+<Collapse onChange={onChange} isOpen={isOpenState}>
   <p>A long paragraph of text inside an article element</p>
 </Collapse>;
 ```
@@ -194,7 +197,7 @@ let onInit = ({ state, style, node }) => {
   */
 };
 
-<Collapse onInit={onInit} isOpen={true || false}>
+<Collapse onInit={onInit} isOpen={isOpenState}>
   <p>A long paragraph of text inside an article element</p>
 </Collapse>;
 ```
@@ -222,7 +225,7 @@ If added, then `overflow: hidden` style will not be added when the state is `exp
 
 `Collapse` applies custom props such as `aria-` and `data-` attributes to the component's rendered DOM element. For example this can be used to set the `aria-hidden` attribute:
 
-```js
+```jsx
 <Collapse aria-hidden={isOpenState ? "false" : "true"} isOpen={isOpenState}>
   <p>Paragraph of text</p>
 </Collapse>
@@ -230,7 +233,7 @@ If added, then `overflow: hidden` style will not be added when the state is `exp
 
 Or you could specify a specific transitionDuration.
 
-```js
+```jsx
 <Collapse style={{ transitionDuration: "270ms" }} isOpen={isOpenState}>
   <p>Paragraph of text</p>
 </Collapse>
