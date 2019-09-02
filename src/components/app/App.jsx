@@ -105,7 +105,6 @@ let App = props => {
         </button>
         <C2
           isOpen={state.isOpen2}
-          lazyEffect
           className={cx(
             "collapse-css-transition",
             "app__collapse",
