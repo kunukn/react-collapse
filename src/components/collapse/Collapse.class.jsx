@@ -28,16 +28,22 @@ export default class Collapse extends React.Component {
       style,
       render,
       elementType,
+      noAnim,
+      overflowOnExpanded,
       collapseHeight, // exclude from ...rest
       onInit,
       onChange,
       isOpen,
-      noAnim,
       ...rest
     } = this.props;
 
+    let overflow =
+      this.state.collapseState === EXPANDED && overflowOnExpanded
+        ? ""
+        : "hidden";
+
     let computedStyle = {
-      overflow: "hidden",
+      overflow,
       transition
       //...style,
       //...this.state.collapseStyle

@@ -73,6 +73,7 @@ let App = props => {
             console.log("*** node onInit ***", node.className);
             mergeState({ spy1: { state, style } });
           }}
+          overflowOnExpanded
           elementType="article"
           transition="height 290ms ease-in-out"
           className={cx(
