@@ -145,9 +145,9 @@ You can specify a custom className. The default value is `collapse-css-transitio
 You can also specify a CSS transition inline by using the `transition` prop.
 
 ```jsx
-const MyComponent = ({ isOpen }) => (
+const MyComponent = ({ isOpen, duration = "290ms" }) => (
   <Collapse
-    transition="height 290ms cubic-bezier(.4, 0, .2, 1)"
+    transition={`height ${duration} cubic-bezier(.4, 0, .2, 1)`}
     isOpen={isOpen}
   >
     <p>Paragraph of text</p>
