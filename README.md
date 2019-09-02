@@ -174,7 +174,7 @@ You can specify the collapse height in CSS unit to partially show some content.
 Callback function for when the transition changes.
 
 ```jsx
-let onChange = ({ state, style }) => {
+const onChange = ({ state, style }) => {
   /*
     state: string = the state of the collapse component.
     style: object = styles that are applied to the component.
@@ -191,7 +191,7 @@ let onChange = ({ state, style }) => {
 Similar to onChange but only invoked on DOM mounted.
 
 ```jsx
-let onInit = ({ state, style, node }) => {
+const onInit = ({ state, style, node }) => {
   /*
     node: HTMLElement = the DOM node of the component.
   */
@@ -234,7 +234,10 @@ If added, then `overflow: hidden` style will not be added when the state is `exp
 Or you could specify a specific transitionDuration.
 
 ```jsx
-<Collapse style={{ transitionDuration: "270ms" }} isOpen={isOpenState}>
+
+const collapseStyles = { transitionDuration: "270ms" }
+
+<Collapse style={collapseStyles} isOpen={isOpenState}>
   <p>Paragraph of text</p>
 </Collapse>
 ```
