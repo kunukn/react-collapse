@@ -60,9 +60,11 @@ import Collapse from "@kunukn/react-collapse";
 // or with require syntax
 const Collapse = require("@kunukn/react-collapse");
 
-<Collapse isOpen={true || false}>
-  <div>Your content</div>
-</Collapse>;
+const MyComponent = () => (
+  <Collapse isOpen={true || false}>
+    <div>Your content</div>
+  </Collapse>
+);
 ```
 
 ## Properties
@@ -95,9 +97,9 @@ Render the children.
 ```jsx
 const MyComponent = () => (
   <Collapse isOpen={isOpenState}>
-    <p>Paragraph of text</p>
-    <p>Another paragraph is also OK</p>
-    <p>Images and any other content are ok too</p>
+    <p>Paragraph of text.</p>
+    <p>Another paragraph is also OK.</p>
+    <p>Images and any other content are ok too.</p>
     <img src="cutecat.gif" />
   </Collapse>
 );
@@ -109,7 +111,7 @@ Render content using the [render-props pattern](https://reactjs.org/docs/render-
 const MyComponent = () => (
   <Collapse isOpen={isOpenState}>
     {state => (
-      <div className={"using-collapse-state-to-add-css-class " + state}>
+      <div className={`using-collapse-state-to-add-css-class ${state}`}>
         <p>I know the collapse state: {state}</p>
       </div>
     )}
@@ -124,7 +126,7 @@ Render content using the render-props pattern.
 ```jsx
 const MyComponent = () => {
   const render = state => (
-    <div className={"using-collapse-state-to-add-css-class " + state}>
+    <div className={`using-collapse-state-to-add-css-class ${state}`}>
       <p>I know the collapse state: {state}</p>
     </div>
   );
