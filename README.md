@@ -93,26 +93,28 @@ Expands or collapses content.
 Render the children.
 
 ```jsx
-<Collapse isOpen={isOpenState}>
-  <p>Paragraph of text</p>
-  <p>Another paragraph is also OK</p>
-  <p>Images and any other content are ok too</p>
-  <img src="cutecat.gif" />
-</Collapse>
+const MyComponent = () => (
+  <Collapse isOpen={isOpenState}>
+    <p>Paragraph of text</p>
+    <p>Another paragraph is also OK</p>
+    <p>Images and any other content are ok too</p>
+    <img src="cutecat.gif" />
+  </Collapse>
+);
 ```
 
 Render content using the [render-props pattern](https://reactjs.org/docs/render-props.html).
 
 ```jsx
-<Collapse
-  isOpen={isOpenState}
->
-  {state => (
-    <div className="using-collapse-state-to-add-css-class " + state>
-      <p>I know the collapse state: {state}</p>
-    </div>
-  )}
-</Collapse>
+const MyComponent = () => (
+  <Collapse isOpen={isOpenState}>
+    {state => (
+      <div className={"using-collapse-state-to-add-css-class " + state}>
+        <p>I know the collapse state: {state}</p>
+      </div>
+    )}
+  </Collapse>
+);
 ```
 
 #### `render` : function
@@ -120,14 +122,14 @@ Render content using the [render-props pattern](https://reactjs.org/docs/render-
 Render content using the render-props pattern.
 
 ```jsx
-<Collapse
-  isOpen={isOpenState}
-  render={state => (
-    <div className="using-collapse-state-to-add-css-class " + state>
+const MyComponent = () => {
+  const render = state => (
+    <div className={"using-collapse-state-to-add-css-class " + state}>
       <p>I know the collapse state: {state}</p>
     </div>
-  )}
-/>
+  );
+  return <Collapse isOpen={isOpenState} render={render} />;
+};
 ```
 
 There are four possible collapse states: `collapsed`, `collapsing`, `expanded`, `expanding`.
@@ -141,12 +143,14 @@ You can specify a custom className. The default value is `collapse-css-transitio
 You can also specify a CSS transition inline by using the `transition` prop.
 
 ```jsx
-<Collapse
-  transition="height 290ms cubic-bezier(.4, 0, .2, 1)"
-  isOpen={isOpenState}
->
-  <p>Paragraph of text</p>
-</Collapse>
+const MyComponent = () => (
+  <Collapse
+    transition="height 290ms cubic-bezier(.4, 0, .2, 1)"
+    isOpen={isOpenState}
+  >
+    <p>Paragraph of text</p>
+  </Collapse>
+);
 ```
 
 #### `elementType` : string
@@ -154,9 +158,11 @@ You can also specify a CSS transition inline by using the `transition` prop.
 You can specify the HTML element type for the collapse component. By default the element type is a `div` element.
 
 ```jsx
-<Collapse elementType="article" isOpen={isOpenState}>
-  <p>Paragraph of text inside an article element</p>
-</Collapse>
+const MyComponent = () => (
+  <Collapse elementType="article" isOpen={isOpenState}>
+    <p>Paragraph of text inside an article element</p>
+  </Collapse>
+);
 ```
 
 #### `collapseHeight` : string
@@ -164,9 +170,11 @@ You can specify the HTML element type for the collapse component. By default the
 You can specify the collapse height in CSS unit to partially show some content.
 
 ```jsx
-<Collapse collapseHeight="40px" isOpen={isOpenState}>
-  <p>A long paragraph of text inside an article element</p>
-</Collapse>
+const MyComponent = () => (
+  <Collapse collapseHeight="40px" isOpen={isOpenState}>
+    <p>A long paragraph of text inside an article element</p>
+  </Collapse>
+);
 ```
 
 #### `onChange` : function
@@ -174,16 +182,20 @@ You can specify the collapse height in CSS unit to partially show some content.
 Callback function for when the transition changes.
 
 ```jsx
-const onChange = ({ state, style }) => {
-  /*
+const MyComponent = () => {
+  const onChange = ({ state, style }) => {
+    /*
     state: string = the state of the collapse component.
     style: object = styles that are applied to the component.
   */
-};
+  };
 
-<Collapse onChange={onChange} isOpen={isOpenState}>
-  <p>A long paragraph of text inside an article element</p>
-</Collapse>;
+  return (
+    <Collapse onChange={onChange} isOpen={isOpenState}>
+      <p>A long paragraph of text inside an article element</p>
+    </Collapse>
+  );
+};
 ```
 
 #### `onInit` : function
@@ -191,15 +203,19 @@ const onChange = ({ state, style }) => {
 Similar to onChange but only invoked on DOM mounted.
 
 ```jsx
-const onInit = ({ state, style, node }) => {
-  /*
+const MyComponent = () => {
+  const onInit = ({ state, style, node }) => {
+    /*
     node: HTMLElement = the DOM node of the component.
   */
-};
+  };
 
-<Collapse onInit={onInit} isOpen={isOpenState}>
-  <p>A long paragraph of text inside an article element</p>
-</Collapse>;
+  return (
+    <Collapse onInit={onInit} isOpen={isOpenState}>
+      <p>A long paragraph of text inside an article element</p>
+    </Collapse>
+  );
+};
 ```
 
 #### `addState` : boolean
@@ -226,20 +242,23 @@ If added, then `overflow: hidden` style will not be added when the state is `exp
 `Collapse` applies custom props such as `aria-` and `data-` attributes to the component's rendered DOM element. For example this can be used to set the `aria-hidden` attribute:
 
 ```jsx
-<Collapse aria-hidden={isOpenState ? "false" : "true"} isOpen={isOpenState}>
-  <p>Paragraph of text</p>
-</Collapse>
+const MyComponent = () => (
+  <Collapse aria-hidden={isOpenState ? "false" : "true"} isOpen={isOpenState}>
+    <p>Paragraph of text</p>
+  </Collapse>
+);
 ```
 
 Or you could specify a specific transitionDuration.
 
 ```jsx
+const collapseStyles = { transitionDuration: "270ms" };
 
-const collapseStyles = { transitionDuration: "270ms" }
-
-<Collapse style={collapseStyles} isOpen={isOpenState}>
-  <p>Paragraph of text</p>
-</Collapse>
+const MyComponent = () => (
+  <Collapse style={collapseStyles} isOpen={isOpenState}>
+    <p>Paragraph of text</p>
+  </Collapse>
+);
 ```
 
 ## Development and testing
