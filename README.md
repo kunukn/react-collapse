@@ -202,7 +202,7 @@ const MyComponent = ({ isOpen }) => {
 
 #### `onInit` : function
 
-Similar to onChange but only invoked on DOM mounted.
+Similar to onChange but only invoked on DOM mounted.<br/>
 This is an example that starts collapsed and expands on mount.
 
 ```jsx
