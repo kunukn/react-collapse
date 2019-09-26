@@ -203,19 +203,28 @@ const MyComponent = ({ isOpen }) => {
 #### `onInit` : function
 
 Similar to onChange but only invoked on DOM mounted.
+This is an example that starts collapsed and expands on mount.
 
 ```jsx
-const MyComponent = ({ isOpen }) => {
+const MyComponent = () => {
+
+  const [isOpen, setIsOpen] = React.useState(false);
+
   const onInit = ({ state, style, node }) => {
     /*
-    node: HTMLElement = the DOM node of the component.
-  */
+       node: HTMLElement = the DOM node of the component.
+    */
+  
+    setIsOpen(true);
   };
 
   return (
-    <Collapse onInit={onInit} isOpen={isOpen}>
-      <p>A long paragraph of text inside an article element</p>
-    </Collapse>
+    <div>
+      <button onClick={() => setIsOpen(state => !state)}> Toggle </button>
+      <Collapse onInit={onInit} isOpen={isOpen}>
+        <p>A long paragraph of text inside an article element</p>
+      </Collapse>
+    </div>
   );
 };
 ```
