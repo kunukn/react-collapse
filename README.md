@@ -42,7 +42,7 @@ UMD minified 3.8kb, gzipped 1.7kb
 ```bash
 npm i @kunukn/react-collapse
 # or
-yarn add @kunukn/react-collapse
+# yarn add @kunukn/react-collapse
 ```
 
 ## Installation for React 16.3+
@@ -52,13 +52,13 @@ UMD minified 5.8kb, gzipped 2.1kb
 ```bash
 npm i @kunukn/react-collapse@^1
 # or
-yarn add @kunukn/react-collapse@^1
+# yarn add @kunukn/react-collapse@^1
 ```
 
 ```jsx
 import Collapse from "@kunukn/react-collapse";
 // or with require syntax
-const Collapse = require("@kunukn/react-collapse");
+// const Collapse = require("@kunukn/react-collapse");
 
 const MyComponent = () => (
   <Collapse isOpen={true || false}>
