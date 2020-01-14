@@ -136,6 +136,7 @@
     "raw-loader": "^3.1.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-hot-loader": "^4.12.12",
     "react-test-renderer": "^16.9.0",
     "rimraf": "^3.0.0",
     "rollup": "^1.20.3",
@@ -160,8 +161,7 @@
     "webpack-cli": "^3.3.7",
     "webpack-dev-server": "^3.8.0",
     "webpack-hot-middleware": "^2.25.0",
-    "webpack-md5-hash": "0.0.6",
-    "react-hot-loader": "^4.12.12"
+    "webpack-md5-hash": "0.0.6"
   },
   "dependencies": {},
   "peerDependencies": {

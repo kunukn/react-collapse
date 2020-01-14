@@ -7,8 +7,8 @@ import {
   act
 } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-jest.mock("./debugLog");
-import Collapse from "./Collapse";
+jest.mock("../debugLog");
+import Collapse from "../Collapse";
 
 jest.useFakeTimers();
 
