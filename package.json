@@ -4,10 +4,6 @@
   "description": "Collapse library based on CSS transition for React",
   "main": "dist/Collapse.umd.js",
   "main-es2015": "dist/Collapse.umd.es2015.js",
-  "module": "dist/Collapse.es.js",
-  "cjs": "dist/Collapse.cjs.js",
-  "iife": "dist/Collapse.iife.js",
-  "jsnext:main": "dist/Collapse.es.js",
   "engines": {
     "node": ">=8",
     "npm": ">=5"
