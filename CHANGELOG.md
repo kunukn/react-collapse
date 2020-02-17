@@ -1,5 +1,9 @@
 # react-collapse changelog
 
+## 2.2.8
+
+Cleanup package.json file and bump module dependencies.
+
 ## 2.1.2
 
 Add typescript definition file.
