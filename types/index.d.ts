@@ -1,14 +1,14 @@
 import * as React from "react";
 
-type onChangeProps = {
+interface onChangeProps {
   state: string;
-  style: Object;
-};
-type onInitProps = {
+  style: React.CSSProperties;
+}
+interface onInitProps {
   state: string;
-  style: Object;
+  style: React.CSSProperties;
   node: HTMLElement;
-};
+}
 
 export interface CollapseProps {
   isOpen?: boolean;
@@ -19,7 +19,7 @@ export interface CollapseProps {
   onChange?: (props: onChangeProps) => void;
   onInit?: (props: onInitProps) => void;
   elementType?: string;
-  style?: Object;
+  style?: React.CSSProperties;
   addState?: boolean;
   noAnim?: boolean;
   overflowOnExpanded?: boolean;
