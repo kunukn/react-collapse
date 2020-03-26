@@ -10,7 +10,7 @@ type onInitProps = {
   node: HTMLElement;
 };
 
-interface CollapseProps {
+export interface CollapseProps {
   isOpen?: boolean;
   render?: (collapseState: string) => void;
   className?: string;
