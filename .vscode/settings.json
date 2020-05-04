@@ -1,15 +1,32 @@
 {
   "workbench.colorCustomizations": {
-    "titleBar.activeForeground": "#06b7a1",
-    "titleBar.activeBackground": "#111"
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.activeBackground": "#111111",
+    "activityBar.activeBackground": "#2a2a2a",
+    "activityBar.activeBorder": "#606020",
+    "activityBar.background": "#2a2a2a",
+    "activityBar.foreground": "#e7e7e7",
+    "activityBar.inactiveForeground": "#e7e7e799",
+    "activityBarBadge.background": "#606020",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "statusBar.background": "#111111",
+    "statusBar.border": "#111111",
+    "statusBar.foreground": "#e7e7e7",
+    "statusBarItem.hoverBackground": "#2a2a2a",
+    "titleBar.border": "#111111",
+    "titleBar.inactiveBackground": "#11111199",
+    "titleBar.inactiveForeground": "#e7e7e799"
   },
   "editor.formatOnSave": true,
   "[javascript]": {
     "editor.formatOnSave": false
   },
-  "eslint.autoFixOnSave": true,
   "eslint.alwaysShowStatus": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  }
+    // https://github.com/prettier/prettier-vscode#linter-integration
+    "source.fixAll.eslint": true,
+    "source.fixAll.tslint": true,
+    "source.fixAll.stylelint": true
+  },
+  "peacock.color": "#111"
 }
