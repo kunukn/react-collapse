@@ -1,18 +1,20 @@
 import * as React from "react";
 
-import Collapse from "@kunukn/react-collapse";
+import Collapse, { CollapseProps } from "@kunukn/react-collapse";
 
-<Collapse
-  isOpen
-  transition="height 260ms cubic-bezier(0.4, 0, 0.2, 1)"
-  className="CSS-class-name"
-  elementType="article"
-  collapseHeight="4rem"
-  addState
-  noAnim
-  overflowOnExpanded
-  style={{ transitionDuration: "260ms" }}
->
+const props: CollapseProps = {
+  addState: true,
+  className: "CSS-class-name",
+  collapseHeight: "4rem",
+  elementType: "article",
+  isOpen: false,
+  noAnim: true,
+  overflowOnExpanded: true,
+  style: { transitionDuration: "260ms" },
+  transition: "height 260ms cubic-bezier(0.4, 0, 0.2, 1)",
+};
+
+<Collapse {...props}>
   <div>this is some content</div>{" "}
 </Collapse>;
 
