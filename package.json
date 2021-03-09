@@ -135,7 +135,7 @@
     "react-hot-loader": "^4.12.19",
     "react-test-renderer": "^17.0.1",
     "rimraf": "^3.0.2",
-    "rollup": "^1.31.1",
+    "rollup": "^2.41.0",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-copy": "^3.3.0",
