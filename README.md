@@ -363,3 +363,7 @@ IE11 + Modern browsers
 # This was created with heavy inspiration from
 
 [https://github.com/SparebankenVest/react-css-collapse](https://github.com/SparebankenVest/react-css-collapse) 🎆
+
+# A version also exists for Vue
+
+https://github.com/kunukn/vue-height-collapsible
