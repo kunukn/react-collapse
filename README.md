@@ -9,7 +9,7 @@ Collapse component with CSS transition for elements with variable and dynamic he
 
 react-collapse
 
-![logo](logo/collapse.svg "logo")
+![logo](logo/collapse.svg 'logo')
 
 # Demo
 
@@ -41,22 +41,12 @@ react-collapse
 
 Alternatively you can add it using the `transition` prop.
 
-## Installation for React 18+
-
-UMD minified 3.8kb, gzipped 1.7kb
-
-```bash
-npm i @kunukn/react-collapse
-# or
-# yarn add @kunukn/react-collapse
-```
-
 ## Installation for React 16.8+
 
 UMD minified 3.8kb, gzipped 1.7kb
 
 ```bash
-npm i @kunukn/react-collapse@^2
+npm i @kunukn/react-collapse
 # or
 # yarn add @kunukn/react-collapse
 ```
@@ -72,7 +62,7 @@ npm i @kunukn/react-collapse@^1
 ```
 
 ```jsx
-import Collapse from "@kunukn/react-collapse";
+import Collapse from '@kunukn/react-collapse'
 // or with require syntax
 // const Collapse = require("@kunukn/react-collapse");
 
@@ -80,7 +70,7 @@ const MyComponent = () => (
   <Collapse isOpen={true || false}>
     <div>Your content</div>
   </Collapse>
-);
+)
 ```
 
 ## Properties
@@ -118,7 +108,7 @@ const MyComponent = ({ isOpen }) => (
     <p>Images and any other content are ok too.</p>
     <img src="cutecat.gif" />
   </Collapse>
-);
+)
 ```
 
 Render content using the [render-props pattern](https://reactjs.org/docs/render-props.html).
@@ -132,7 +122,7 @@ const MyComponent = ({ isOpen }) => (
       </div>
     )}
   </Collapse>
-);
+)
 ```
 
 #### `render` : function
@@ -145,9 +135,9 @@ const MyComponent = ({ isOpen }) => {
     <div className={`using-collapse-state-to-add-css-class ${state}`}>
       <p>I know the collapse state: {state}</p>
     </div>
-  );
-  return <Collapse isOpen={isOpen} render={render} />;
-};
+  )
+  return <Collapse isOpen={isOpen} render={render} />
+}
 ```
 
 There are four possible collapse states: `collapsed`, `collapsing`, `expanded`, `expanding`.
@@ -161,14 +151,14 @@ You can specify a custom className. The default value is `collapse-css-transitio
 You can also specify a CSS transition inline by using the `transition` prop.
 
 ```jsx
-const MyComponent = ({ isOpen, duration = "290ms" }) => (
+const MyComponent = ({ isOpen, duration = '290ms' }) => (
   <Collapse
     transition={`height ${duration} cubic-bezier(.4, 0, .2, 1)`}
     isOpen={isOpen}
   >
     <p>Paragraph of text</p>
   </Collapse>
-);
+)
 ```
 
 #### `elementType` : string
@@ -180,7 +170,7 @@ const MyComponent = ({ isOpen }) => (
   <Collapse elementType="article" isOpen={isOpen}>
     <p>Paragraph of text inside an article element</p>
   </Collapse>
-);
+)
 ```
 
 #### `collapseHeight` : string
@@ -192,7 +182,7 @@ const MyComponent = ({ isOpen }) => (
   <Collapse collapseHeight="40px" isOpen={isOpen}>
     <p>A long paragraph of text inside an article element</p>
   </Collapse>
-);
+)
 ```
 
 #### `onChange` : function
@@ -206,14 +196,14 @@ const MyComponent = ({ isOpen }) => {
     state: string = the state of the collapse component.
     style: object = styles that are applied to the component.
   */
-  };
+  }
 
   return (
     <Collapse onChange={onChange} isOpen={isOpen}>
       <p>A long paragraph of text inside an article element</p>
     </Collapse>
-  );
-};
+  )
+}
 ```
 
 #### `onInit` : function
@@ -223,15 +213,15 @@ This is an example that starts collapsed and expands on mount.
 
 ```jsx
 const MyComponent = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = React.useState(false)
 
   const onInit = ({ state, style, node }) => {
     /*
        node: HTMLElement = the DOM node of the component.
     */
 
-    setIsOpen(true);
-  };
+    setIsOpen(true)
+  }
 
   return (
     <div>
@@ -240,8 +230,8 @@ const MyComponent = () => {
         <p>A long paragraph of text inside an article element</p>
       </Collapse>
     </div>
-  );
-};
+  )
+}
 ```
 
 #### `addState` : boolean
@@ -269,40 +259,29 @@ If added, then `overflow: hidden` style will not be added when the state is `exp
 
 ```jsx
 const MyComponent = ({ isOpen }) => (
-  <Collapse aria-hidden={isOpen ? "false" : "true"} isOpen={isOpen}>
+  <Collapse aria-hidden={isOpen ? 'false' : 'true'} isOpen={isOpen}>
     <p>Paragraph of text</p>
   </Collapse>
-);
+)
 ```
 
 Or you could specify a specific transitionDuration.
 
 ```jsx
-const collapseStyles = { transitionDuration: "270ms" };
+const collapseStyles = { transitionDuration: '270ms' }
 
 const MyComponent = ({ isOpen }) => (
   <Collapse style={collapseStyles} isOpen={isOpen}>
     <p>Paragraph of text</p>
   </Collapse>
-);
+)
 ```
 
 ## Development and testing
 
 To run development
 
-`npm start` or `yarn start`
-
-```bash
-git clone [repo]
-cd [repo]
-npm i
-npm start
-open http://localhost:6007
-npm test
-```
-
-or with **yarn**
+`yarn start`
 
 ```bash
 git clone [repo]
@@ -331,7 +310,7 @@ https://unpkg.com/@kunukn/react-collapse/
 <script src="https://unpkg.com/@kunukn/react-collapse/dist/Collapse.umd.js"></script>
 
 <script>
-  var Collapse = window.Collapse;
+  var Collapse = window.Collapse
 </script>
 ```
 
