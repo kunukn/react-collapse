@@ -1,5 +1,9 @@
 # react-collapse changelog
 
+## 2.2.10
+
+Support React 18
+
 ## 2.2.9
 
 Better TypeScript definitions
