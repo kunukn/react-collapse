@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import cx from "classnames";
 
 import "components/base/base.scss";
@@ -7,6 +7,8 @@ import "components/app/app.scss";
 import "components/collapse/collapse.css";
 import CollapseClass from "components/collapse/Collapse.class";
 import Collapse from "components/collapse/Collapse";
+
+const root = createRoot(document.getElementById("root"));
 
 console.log("WEBPPACK_IS_CLASS_COMPONENT", WEBPPACK_IS_CLASS_COMPONENT);
 
@@ -85,10 +87,10 @@ let App = props => {
         >
           {collapseState => (
             <div className={cx("app__content", collapseState)}>
-              {collapseState} Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+              {collapseState} Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+              aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+              laboris nisi ut aliquip ex ea commodo consequat.
               <div className="image-wrapper">
                 <img
                   className="image-wrapper__img"
@@ -111,7 +113,7 @@ let App = props => {
   );
 };
 
-ReactDOM.render(
+root.render(
   <React.StrictMode>
     <App
       display="development"
@@ -122,6 +124,5 @@ ReactDOM.render(
       }
       Collapse={WEBPPACK_IS_CLASS_COMPONENT ? CollapseClass : Collapse}
     />
-  </React.StrictMode>,
-  document.getElementById("root")
+  </React.StrictMode>
 );

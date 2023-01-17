@@ -41,12 +41,22 @@ react-collapse
 
 Alternatively you can add it using the `transition` prop.
 
-## Installation for React 16.8+
+## Installation for React 18+
 
 UMD minified 3.8kb, gzipped 1.7kb
 
 ```bash
 npm i @kunukn/react-collapse
+# or
+# yarn add @kunukn/react-collapse
+```
+
+## Installation for React 16.8+
+
+UMD minified 3.8kb, gzipped 1.7kb
+
+```bash
+npm i @kunukn/react-collapse@^2
 # or
 # yarn add @kunukn/react-collapse
 ```
