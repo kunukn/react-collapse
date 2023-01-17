@@ -1,6 +1,6 @@
 {
   "name": "@kunukn/react-collapse",
-  "version": "2.2.10",
+  "version": "3",
   "description": "Collapse library based on CSS transition for React",
   "main": "dist/Collapse.umd.js",
   "main-es2015": "dist/Collapse.umd.es2015.js",
@@ -24,8 +24,6 @@
     "build": "npm run clean && yarn build-es5 && yarn build-es6",
     "build-class": "npm run clean && npm run build-es5-class && npm run build-es6-class",
     "dev": "npm-run-all -p -r build:watch storybook",
-    "webpack-dev": "npm-run-all -p -r start storybook",
-    "webpack-build": "webpack --mode production",
     "source-map": "source-map-explorer dist/Collapse.js",
     "sm": "yarn source-map",
     "storybook": "start-storybook -p 6060",
