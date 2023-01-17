@@ -1,6 +1,6 @@
 {
   "name": "@kunukn/react-collapse",
-  "version": "2.2.9",
+  "version": "2.2.10",
   "description": "Collapse library based on CSS transition for React",
   "main": "dist/Collapse.umd.js",
   "main-es2015": "dist/Collapse.umd.es2015.js",
@@ -80,7 +80,6 @@
     "@babel/runtime": "^7.13.10",
     "@emotion/core": "^10.0.27",
     "@emotion/styled": "^10.0.27",
-    "@reach/component-component": "^0.8.2",
     "@storybook/addon-actions": "^5.3.3",
     "@storybook/addon-backgrounds": "^5.3.3",
     "@storybook/addon-links": "^5.3.3",
@@ -92,7 +91,7 @@
     "@svgr/rollup": "^5.1.0",
     "@testing-library/jest-dom": "^5.1.1",
     "@testing-library/react": "^9.4.0",
-    "@types/react": "^17.0.3",
+    "@types/react": "^18.0.26",
     "autoprefixer": "^9.7.4",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^25.1.0",
@@ -130,10 +129,9 @@
     "prop-types": "^15.7.2",
     "raf": "^3.4.1",
     "raw-loader": "^4.0.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-hot-loader": "^4.12.19",
-    "react-test-renderer": "^17.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-test-renderer": "^18.2.0",
     "rimraf": "^3.0.2",
     "rollup": "^2.41.0",
     "rollup-plugin-babel": "^4.3.3",
@@ -161,7 +159,7 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "react": "^16.8 || ^17.x",
-    "react-dom": "^16.8 || ^17.x"
+    "react": "^16.8 || ^17.x  || ^18.x",
+    "react-dom": "^16.8 || ^17.x || ^18.x"
   }
 }
