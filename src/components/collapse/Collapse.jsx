@@ -52,7 +52,7 @@ function Collapse({
   overflowOnExpanded,
   ...rest
 }) {
-  let getCollapsedVisibility = () => (collapseHeight === "0px" ? "hidden" : "");
+  let getCollapsedVisibility = () => (collapseHeight === "0px" ? "hidden" : undefined);
 
   let [__, forceUpdate] = useReducer(_ => _ + 1, 0);
 
@@ -64,8 +64,8 @@ function Collapse({
   let state = useRef({
     collapse: isOpen ? EXPANDED : COLLAPSED,
     style: {
-      height: isOpen ? "" : collapseHeight,
-      visibility: isOpen ? "" : getCollapsedVisibility()
+      height: isOpen ? undefined : collapseHeight,
+      visibility: isOpen ? undefined : getCollapsedVisibility()
     }
   }).current;
 
@@ -116,7 +116,7 @@ function Collapse({
 
     state.style = {
       height: getElementHeight(),
-      visibility: ""
+      visibility: undefined
     };
     forceUpdate();
 
@@ -126,7 +126,7 @@ function Collapse({
 
       state.style = {
         height: collapseHeight,
-        visibility: ""
+        visibility: undefined
       };
       //forceUpdate();
 
@@ -152,7 +152,7 @@ function Collapse({
 
       state.style = {
         height: getElementHeight(),
-        visibility: ""
+        visibility: undefined
       };
       // forceUpdate();
 
@@ -169,8 +169,8 @@ function Collapse({
     debugLog("setExpanded");
 
     state.style = {
-      height: "",
-      visibility: ""
+      height: undefined,
+      visibility: undefined
     };
     forceUpdate();
 
@@ -190,7 +190,7 @@ function Collapse({
 
       switch (state.collapse) {
         case EXPANDING:
-          if (styleHeight === "" || styleHeight === collapseHeight)
+          if (styleHeight === undefined || styleHeight === collapseHeight)
             // This is stale, a newer event has happened before this could execute
             console.warn(
               `onTransitionEnd height unexpected ${styleHeight}`,
@@ -199,7 +199,7 @@ function Collapse({
           else setExpanded();
           break;
         case COLLAPSING:
-          if (styleHeight === "" || styleHeight !== collapseHeight)
+          if (styleHeight === undefined || styleHeight !== collapseHeight)
             // This is stale, a newer event has happened before this could execute
             console.warn(
               `onTransitionEnd height unexpected ${styleHeight}`,
@@ -222,7 +222,7 @@ function Collapse({
   // END getDerivedStateFromProps
 
   let overflow =
-    state.collapse === EXPANDED && overflowOnExpanded ? "" : "hidden";
+    state.collapse === EXPANDED && overflowOnExpanded ? undefined : "hidden";
 
   let computedStyle = {
     overflow,
