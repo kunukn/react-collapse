@@ -1,5 +1,13 @@
 # react-collapse changelog
 
+## 2.3.0
+
+_2024_
+
+- React 16.8+ version
+- Migrate library to use Vite.
+- Support SSR hydration.
+
 ## 2.2.10
 
 Support React 18

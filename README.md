@@ -116,7 +116,7 @@ Render content using the [render-props pattern](https://reactjs.org/docs/render-
 ```jsx
 const MyComponent = ({ isOpen }) => (
   <Collapse isOpen={isOpen}>
-    {state => (
+    {(state) => (
       <div className={`using-collapse-state-to-add-css-class ${state}`}>
         <p>I know the collapse state: {state}</p>
       </div>
@@ -131,7 +131,7 @@ Render content using the render-props pattern.
 
 ```jsx
 const MyComponent = ({ isOpen }) => {
-  const render = state => (
+  const render = (state) => (
     <div className={`using-collapse-state-to-add-css-class ${state}`}>
       <p>I know the collapse state: {state}</p>
     </div>
@@ -225,7 +225,7 @@ const MyComponent = () => {
 
   return (
     <div>
-      <button onClick={() => setIsOpen(state => !state)}> Toggle </button>
+      <button onClick={() => setIsOpen((state) => !state)}> Toggle </button>
       <Collapse onInit={onInit} isOpen={isOpen}>
         <p>A long paragraph of text inside an article element</p>
       </Collapse>
@@ -277,26 +277,21 @@ const MyComponent = ({ isOpen }) => (
 )
 ```
 
-## Development and testing
+## Development
 
 To run development
 
-`yarn start`
+`npm start`
 
 ```bash
 git clone [repo]
 cd [repo]
-yarn
-yarn start
-open http://localhost:6007
-yarn test
+npm i
+npm start
 ```
 
-- To develop and play around: `yarn start`
-- To build the bundle: `yarn build`
-- To validate the bundle: `yarn validate`
-
-To run example covering all features, use `npm run storybook` or `yarn storybook`.
+- To develop and play around: `npm start`
+- To build the bundle: `npm run build`
 
 # CDN
 

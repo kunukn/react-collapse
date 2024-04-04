@@ -1,31 +1,25 @@
 *,
-:before,
-:after {
+::before,
+::after {
   box-sizing: border-box;
 }
 
 :root {
-  font-size: x-small;
+  font-size: 100%;
   scroll-behavior: smooth;
 }
 
 body {
-  font: 1.6rem / 1.5 sans-serif;
+  font: 1.6rem / 1.5 'Montserrat', sans-serif;
   margin: 0;
-  min-height: 100vh;
-  overflow-y: scroll;
-}
-
-a {
-  color: black;
-  font-size: inherit;
+  min-height: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 button {
   font-size: inherit;
   box-shadow: none;
   background: transparent;
-  border: 1px solid #ccc;
-  padding: 0.5rem;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  border: 1px solid #ccc;
 }
