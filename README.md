@@ -62,7 +62,7 @@ npm i @kunukn/react-collapse@^1
 ```
 
 ```jsx
-import Collapse from '@kunukn/react-collapse'
+import { Collapse } from '@kunukn/react-collapse'
 // or with require syntax
 // const Collapse = require("@kunukn/react-collapse");
 

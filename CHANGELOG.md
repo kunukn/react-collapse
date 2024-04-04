@@ -4,9 +4,11 @@
 
 _2024_
 
+- Change API. Use this instead
+  - `import { Collapse } from '@kunukn/react-collapse'`
+- Support SSR hydration.
 - React 16.8+ version
 - Migrate library to use Vite.
-- Support SSR hydration.
 
 ## 2.2.10
 

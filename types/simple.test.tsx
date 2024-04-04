@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import Collapse, { CollapseProps } from '@kunukn/react-collapse'
+import { Collapse, CollapseProps } from '@kunukn/react-collapse'
 
 const props: CollapseProps = {
   addState: true,

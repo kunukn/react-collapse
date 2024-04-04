@@ -18,7 +18,7 @@ function nextFrame(callback: FrameRequestCallback) {
   })
 }
 
-export default function Collapse({
+export function Collapse({
   children,
   transition,
   style,

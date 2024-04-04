@@ -1,41 +1,32 @@
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
-import { libInjectCss } from 'vite-plugin-lib-inject-css'
 import react from '@vitejs/plugin-react'
 import { resolve } from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), libInjectCss(), dts({ include: ['lib'] })],
+  plugins: [react(), dts({ include: ['lib'] })],
   build: {
     copyPublicDir: true,
     lib: {
-      entry: resolve(__dirname, 'lib/Collapse.tsx'),
+      entry: resolve(__dirname, 'lib/main.ts'),
       name: 'Collapse',
+      fileName: 'react-collapse',
     },
     sourcemap: true,
     rollupOptions: {
+      // make sure to externalize deps that shouldn't be bundled
+      // into your library
       external: ['react', 'react-dom', 'react/jsx-runtime'],
-      input: resolve(__dirname, 'lib/Collapse.tsx'),
-      plugins: [],
-      output: [
-        {
-          dir: 'dist',
-          entryFileNames: '[name].es.js',
-          format: 'es',
+
+      output: {
+        // Provide global variables to use in the UMD build
+        // for externalized deps
+        globals: {
+          react: 'React',
+          'react-dom': 'ReactDOM',
         },
-        {
-          dir: 'dist',
-          entryFileNames: '[name].umd.js',
-          format: 'umd',
-          name: 'Collapse',
-          externalLiveBindings: false,
-          globals: {
-            react: 'React',
-            'react-dom': 'ReactDOM',
-          },
-        },
-      ],
+      },
     },
   },
 })

@@ -28,4 +28,4 @@ export interface CollapseProps {
 
 declare const Collapse: React.FunctionComponent<CollapseProps>
 
-export default Collapse
+export { Collapse }

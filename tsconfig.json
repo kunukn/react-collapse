@@ -23,6 +23,6 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": ["src", "lib"],
-  "exclude": ["node-tools"],
+  "exclude": ["dist", "node-tools"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -1,3 +1,3 @@
-import Collapse from './Collapse.tsx'
+import { Collapse } from './Collapse.tsx'
 
-export default Collapse
+export { Collapse }

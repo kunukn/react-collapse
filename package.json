@@ -5,8 +5,15 @@
   "private": false,
   "version": "2.3.0",
   "type": "module",
-  "main": "dist/Collapse.umd.js",
-  "types": "dist/Collapse.d.ts",
+  "main": "./dist/react-collapse.umd.cjs",
+  "module": "./dist/react-collapse.js",
+  "types": "dist/react-collapse.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/react-collapse.js",
+      "require": "./dist/react-collapse.umd.cjs"
+    }
+  },
   "files": [
     "dist"
   ],
