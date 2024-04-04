@@ -300,13 +300,13 @@ https://unpkg.com/@kunukn/react-collapse/
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@kunukn/react-collapse/dist/collapse.css"
+  href="https://unpkg.com/@kunukn/react-collapse/dist/react-collapse"
 />
-<script src="https://unpkg.com/@kunukn/react-collapse/dist/Collapse.umd.js"></script>
+<!-- UMD CJS -->
+<script src="https://unpkg.com/@kunukn/react-collapse/dist/react-collapse.umd.cjs"></script>
 
-<script>
-  var Collapse = window.Collapse
-</script>
+<!-- Module -->
+<script src="https://unpkg.com/@kunukn/react-collapse/dist/react-collapse.js"></script>
 ```
 
 # Supported browsers
@@ -342,7 +342,7 @@ Modern browsers
 - interruptible - can be reversed during movement
 - inert - when collapsed you should tab over the collapsed component
 - availability - from cdn or npm install
-- Collapsible on height only
+- collapsible on height only
 
 # This was created with heavy inspiration from
 
