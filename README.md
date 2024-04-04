@@ -300,7 +300,7 @@ https://unpkg.com/@kunukn/react-collapse/
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@kunukn/react-collapse/dist/Collapse.umd.css"
+  href="https://unpkg.com/@kunukn/react-collapse/dist/collapse.css"
 />
 <script src="https://unpkg.com/@kunukn/react-collapse/dist/Collapse.umd.js"></script>
 
@@ -311,7 +311,7 @@ https://unpkg.com/@kunukn/react-collapse/
 
 # Supported browsers
 
-IE11 + Modern browsers
+Modern browsers
 
 # Supported React versions
 
