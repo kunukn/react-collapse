@@ -1,12 +1,12 @@
 import './App.scss'
 
-import { Collapse } from '../lib/Collapse' // From library source
+import { Collapse } from '../' // From dist folder
 import React from 'react'
 import cx from 'classnames'
 
-// import { Collapse } from '../' // From dist folder
+// import { Collapse } from '../lib/Collapse' // From library source
 // import { Collapse } from '../dist/Collapse.es' // From dist folder
-//import { Collapse } from '../lib/Collapse' // From library source
+// import { Collapse } from '../' // From dist folder
 
 class App extends React.Component {
   state = {
