@@ -7,7 +7,7 @@
   "type": "module",
   "main": "./dist/react-collapse.umd.cjs",
   "module": "./dist/react-collapse.js",
-  "types": "dist/react-collapse.d.ts",
+  "types": "./dist/react-collapse.d.ts",
   "exports": {
     ".": {
       "import": "./dist/react-collapse.js",
@@ -15,7 +15,8 @@
     }
   },
   "files": [
-    "dist"
+    "dist",
+    "types"
   ],
   "description": "Collapse library based on CSS transition for React",
   "keywords": [
@@ -65,15 +66,11 @@
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
-    "glob": "^10.3.12",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "rollup-plugin-copy": "^3.5.0",
-    "rollup-plugin-strip": "^1.2.2",
     "sass": "^1.74.1",
     "typescript": "^5.4.3",
     "vite": "^5.2.8",
-    "vite-plugin-dts": "^3.8.1",
-    "vite-plugin-lib-inject-css": "^2.0.1"
+    "vite-plugin-remove-console": "^2.2.0"
   }
 }

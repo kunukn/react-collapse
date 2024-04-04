@@ -1,12 +1,14 @@
 import { defineConfig } from 'vite'
-import dts from 'vite-plugin-dts'
 import react from '@vitejs/plugin-react'
+import removeConsole from 'vite-plugin-remove-console'
 import { resolve } from 'path'
-import strip from 'rollup-plugin-strip'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), dts({ include: ['lib'] })],
+  plugins: [
+    react(),
+    removeConsole({ includes: ['log', 'warn', 'error', 'info'] }),
+  ],
   build: {
     copyPublicDir: true,
     lib: {
@@ -16,13 +18,7 @@ export default defineConfig({
     },
     sourcemap: true,
     rollupOptions: {
-      plugins: [
-        strip({
-          debugger: true,
-          functions: ['console.log', 'console.warn', 'debugLog', 'debug.trace'],
-          sourceMap: true,
-        }),
-      ],
+      plugins: [],
 
       // make sure to externalize deps that shouldn't be bundled
       // into your library
