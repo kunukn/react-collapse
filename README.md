@@ -62,9 +62,7 @@ npm i @kunukn/react-collapse@^1
 ```
 
 ```jsx
-import { Collapse } from '@kunukn/react-collapse'
-// or with require syntax
-// const Collapse = require("@kunukn/react-collapse");
+import { Collapse } from '@kunukn/react-collapse' // Notice how you import it. It has changed since version 2.3.
 
 const MyComponent = () => (
   <Collapse isOpen={true || false}>
@@ -302,7 +300,7 @@ https://unpkg.com/@kunukn/react-collapse/
   rel="stylesheet"
   href="https://unpkg.com/@kunukn/react-collapse/dist/react-collapse"
 />
-<!-- UMD CJS -->
+<!-- UMD or CJS -->
 <script src="https://unpkg.com/@kunukn/react-collapse/dist/react-collapse.umd.cjs"></script>
 
 <!-- Module -->
