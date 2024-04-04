@@ -1,12 +1,8 @@
-import { extname, relative, resolve } from 'path'
-
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
-import { fileURLToPath } from 'node:url'
-import { glob } from 'glob'
 import { libInjectCss } from 'vite-plugin-lib-inject-css'
-import pkg from './package.json'
 import react from '@vitejs/plugin-react'
+import { resolve } from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -24,7 +20,6 @@ export default defineConfig({
       plugins: [],
       output: [
         {
-          //file: 'dist/Collapse.es.js',
           dir: 'dist',
           entryFileNames: '[name].es.js',
           format: 'es',
