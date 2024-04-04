@@ -8,7 +8,7 @@
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",
     "lib": ["dom", "ES2020"],
-    "module": "commonjs",
+    "module": "ESNext",
     "noEmit": true,
     "noImplicitAny": true,
     "noImplicitThis": true,
