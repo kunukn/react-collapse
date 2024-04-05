@@ -39,7 +39,7 @@ react-collapse
 </style>
 ```
 
-Alternatively you can add it using the `transition` prop.
+Alternatively, you can add it using the `transition` prop.
 
 ## Installation for React 16.14+
 
@@ -55,7 +55,7 @@ npm i -D @kunukn/react-collapse
 
 ## Installation for React 16.3+
 
-Avoid if possible. This is no longer maintained.
+Avoid it if possible. This is no longer maintained.
 
 - UMD minified ~5.8 kb, gzipped ~2.1 kb
 
@@ -178,7 +178,7 @@ const MyComponent = ({ isOpen, duration = '290ms' }) => (
 
 #### `elementType` : string
 
-You can specify the HTML element type for the collapse component. By default the element type is a `div` element.
+You can specify the HTML element type for the collapse component. By default, the element type is a `div` element.
 
 ```jsx
 const MyComponent = ({ isOpen }) => (
@@ -270,7 +270,7 @@ If added, then `overflow: hidden` style will not be added when the state is `exp
 
 #### Custom props
 
-`Collapse` applies custom props such as `aria-` and `data-` attributes to the component's rendered DOM element. For example this can be used to set the `aria-hidden` attribute:
+`Collapse` applies custom props such as `aria-` and `data-` attributes to the component's rendered DOM element. For example, this can be used to set the `aria-hidden` attribute:
 
 ```jsx
 const MyComponent = ({ isOpen }) => (
@@ -342,7 +342,7 @@ Modern browsers (Edge, Firefox, Chrome, Safari, etc).
 
 - **render** (uses the style states to invoke CSS transition)
 - **componentDidMount** (initial expanded or collapsed state)
-- **getDerivedStateFromProps** (detect if isOpen props has changed and apply a new collapse state)
+- **getDerivedStateFromProps** (detect if isOpen props have changed and apply a new collapse state)
 - **componentDidUpdate** (update style states from the four possible collapse states)
 
 # Used React 16.8+ hooks
