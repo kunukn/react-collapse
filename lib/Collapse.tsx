@@ -34,17 +34,18 @@ export function Collapse({
   overflowOnExpanded,
   ...rest
 }: CollapseProps) {
-  let getCollapsedVisibility = () =>
+  const getCollapsedVisibility = () =>
     collapseHeight === '0px' ? 'hidden' : undefined
 
-  let [__, forceUpdate] = useReducer((_) => _ + 1, 0)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [_, forceUpdate] = useReducer((_) => _ + 1, 0)
 
-  let elementRef = useRef()
-  let [callbackTick, setCallbackTick] = useState(0)
+  const elementRef = useRef()
+  const [callbackTick, setCallbackTick] = useState(0)
 
   // Avoiding setState to control when stuff are updated.
   // Might not be needed.
-  let state = useRef({
+  const state = useRef({
     collapse: isOpen ? EXPANDED : COLLAPSED,
     style: {
       height: isOpen ? undefined : collapseHeight,
@@ -55,9 +56,10 @@ export function Collapse({
   useEffect(() => {
     // Invoke callback when data are updated, use Effect to sync state.
     callbackTick && onCallback(onChange)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [callbackTick])
 
-  let onCallback = (callback, params = {}) => {
+  const onCallback = (callback, params = {}) => {
     if (callback) {
       callback({ state: state.collapse, style: state.style, ...params })
     }
@@ -152,7 +154,7 @@ export function Collapse({
 
   function onTransitionEnd({ target, propertyName }) {
     if (target === elementRef.current && propertyName === 'height') {
-      let styleHeight = target.style.height
+      const styleHeight = target.style.height
 
       switch (state.collapse) {
         case EXPANDING:
@@ -180,35 +182,36 @@ export function Collapse({
   }
 
   // getDerivedStateFromProps
-  let didOpen = state.collapse === EXPANDED || state.collapse === EXPANDING
+  const didOpen = state.collapse === EXPANDED || state.collapse === EXPANDING
 
   if (!didOpen && isOpen) setExpanding()
 
   if (didOpen && !isOpen) setCollapsing()
   // END getDerivedStateFromProps
 
-  let overflow =
+  const overflow =
     state.collapse === EXPANDED && overflowOnExpanded ? undefined : 'hidden'
 
-  let computedStyle = {
+  const computedStyle = {
     overflow,
     transition,
     ...style,
     ...state.style,
   }
-  let ElementType = elementType
+  const ElementType = elementType
 
-  let callbackRef = useCallback(
+  const callbackRef = useCallback(
     (node) => {
       if (node) {
         elementRef.current = node
         onCallback(onInit, { node })
       }
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [elementType]
   )
 
-  let collapseClassName = addState
+  const collapseClassName = addState
     ? `${className} --c-${state.collapse}`
     : className
 
