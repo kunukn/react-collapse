@@ -12,16 +12,16 @@ import cx from 'classnames'
  import { Collapse } from '../' // From dist folder
 */
 
-export default function App(props) {
-  let [isOpen1, setIsOpen1] = useState(false)
-  let [isOpen2, setIsOpen2] = useState(false)
-  let [isOpen3, setIsOpen3] = useState(false)
+export default function App() {
+  const [isOpen1, setIsOpen1] = useState(false)
+  const [isOpen2, setIsOpen2] = useState(false)
+  const [isOpen3, setIsOpen3] = useState(false)
 
-  let [spy3, setSpy3] = useState({})
+  const [spy3, setSpy3] = useState({})
 
-  let toggle1 = () => setIsOpen1((s) => !s)
-  let toggle2 = () => setIsOpen2((s) => !s)
-  let toggle3 = () => setIsOpen3((s) => !s)
+  const toggle1 = () => setIsOpen1((s) => !s)
+  const toggle2 = () => setIsOpen2((s) => !s)
+  const toggle3 = () => setIsOpen3((s) => !s)
 
   return (
     <div className="app">
