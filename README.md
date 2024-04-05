@@ -63,7 +63,7 @@ npm i -D @kunukn/react-collapse@^1
 ```
 
 ```jsx
-import { Collapse } from '@kunukn/react-collapse' // Notice how you import it. It has changed since version 3.
+import { Collapse } from '@kunukn/react-collapse' // Notice how you import it, changed since ver 3.
 
 const MyComponent = () => (
   <Collapse isOpen={true || false}>
