@@ -29,7 +29,10 @@ export default defineConfig({
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
-          'react/jsx-runtime': 'ReactJsxRuntime', // Made up, probably don't exists as CDN or UMD anywhere. If needed, then a polyfill for ReactJsxRuntime or something is needed.
+          // Made up, probably don't exists as CDN or UMD anywhere. If needed, then a polyfill for ReactJsxRuntime or something is needed.
+          // Please use ES Modules in the browser or build tools when using this Collapse library.
+          // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
+          'react/jsx-runtime': 'ReactJsxRuntime',
         },
       },
     },
