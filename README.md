@@ -317,11 +317,11 @@ https://unpkg.com/@kunukn/react-collapse/
   rel="stylesheet"
   href="https://unpkg.com/@kunukn/react-collapse/dist/react-collapse"
 />
-<!-- UMD or CJS -->
-<script src="https://unpkg.com/@kunukn/react-collapse/dist/react-collapse.umd.cjs"></script>
+<!-- UMD -->
+<script src="https://unpkg.com/@kunukn/react-collapse/dist/react-collapse.umd.js"></script>
 
 <!-- Module -->
-<script src="https://unpkg.com/@kunukn/react-collapse/dist/react-collapse.js"></script>
+<script src="https://unpkg.com/@kunukn/react-collapse/dist/react-collapse.es.js"></script>
 ```
 
 # NPM
