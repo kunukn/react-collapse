@@ -1,7 +1,8 @@
 import './App.scss'
 
+import React, { useState } from 'react'
+
 import { Collapse } from '../lib/Collapse'
-import React from 'react'
 import cx from 'classnames'
 
 /*
@@ -11,136 +12,129 @@ import cx from 'classnames'
  import { Collapse } from '../' // From dist folder
 */
 
-class App extends React.Component {
-  state = {
-    isOpen1: false,
-    isOpen2: false,
-    isOpen3: false,
-    spy3: {},
-  }
+export default function App(props) {
+  let [isOpen1, setIsOpen1] = useState(false)
+  let [isOpen2, setIsOpen2] = useState(false)
+  let [isOpen3, setIsOpen3] = useState(false)
 
-  render() {
-    return (
-      <div className="app">
-        <button
-          className={cx('app__toggle', {
-            'app__toggle--active': this.state.isOpen1,
-          })}
-          onClick={() => this.toggle(1)}
-        >
-          <span className="app__toggle-text">toggle</span>
-          <div className="rotate90">
-            <svg
-              className={cx('icon', { 'icon--expanded': this.state.isOpen1 })}
-              viewBox="6 0 12 24"
-            >
-              <polygon points="8 0 6 1.8 14.4 12 6 22.2 8 24 18 12" />
-            </svg>
-          </div>
-        </button>
-        <Collapse
-          isOpen={this.state.isOpen1}
-          className={
-            'app__collapse app__collapse--gradient ' +
-            (this.state.isOpen1 ? 'app__collapse--active' : '')
-          }
-        >
-          <div className="app__content">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
-            <img
-              className="image"
-              alt="random"
-              src="https://source.unsplash.com/user/erondu/500x200"
-            />
-            <button onClick={() => this.toggle(1)} className="app__button">
-              close
-            </button>
-          </div>
-        </Collapse>
+  let [spy3, setSpy3] = useState({})
 
-        <button
-          className={cx('app__toggle', {
-            'app__toggle--active': this.state.isOpen2,
-          })}
-          onClick={() => this.toggle(2)}
-        >
-          toggle
-        </button>
+  let toggle1 = () => setIsOpen1((s) => !s)
+  let toggle2 = () => setIsOpen2((s) => !s)
+  let toggle3 = () => setIsOpen3((s) => !s)
 
-        <Collapse
-          isOpen={this.state.isOpen2}
-          className={
-            'app__collapse app__collapse--gradient ' +
-            (this.state.isOpen2 ? 'app__collapse--active' : '')
-          }
-          transition="height 800ms cubic-bezier(0.4, 0, 0.2, 1)"
-          aria-hidden={this.state.isOpen2 ? 'false' : 'true'}
-          elementType="article"
-          render={(collapseState) => (
-            <React.Fragment>
-              <div className="app__content">
-                <div>{collapseState}</div>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
-                <img
-                  className="image"
-                  alt="random"
-                  src="https://source.unsplash.com/user/erondu/500x200"
-                />
-                <button onClick={() => this.toggle(2)} className="app__button">
-                  close
-                </button>
-              </div>
-            </React.Fragment>
-          )}
-        />
+  return (
+    <div className="app">
+      <button
+        className={cx('app__toggle', {
+          'app__toggle--active': isOpen1,
+        })}
+        onClick={() => toggle1()}
+      >
+        <span className="app__toggle-text">toggle</span>
+        <div className="rotate90">
+          <svg
+            className={cx('icon', { 'icon--expanded': isOpen1 })}
+            viewBox="6 0 12 24"
+          >
+            <polygon points="8 0 6 1.8 14.4 12 6 22.2 8 24 18 12" />
+          </svg>
+        </div>
+      </button>
+      <Collapse
+        isOpen={isOpen1}
+        className={
+          'app__collapse app__collapse--gradient ' +
+          (isOpen1 ? 'app__collapse--active' : '')
+        }
+      >
+        <div className="app__content">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat.
+          <img
+            className="image"
+            alt="random"
+            src="https://source.unsplash.com/user/erondu/500x200"
+          />
+          <button onClick={() => toggle1()} className="app__button">
+            close
+          </button>
+        </div>
+      </Collapse>
 
-        <button
-          className={cx('app__toggle', {
-            'app__toggle--active': this.state.isOpen3,
-          })}
-          onClick={() => this.toggle(3)}
-        >
-          toggle
-        </button>
+      <button
+        className={cx('app__toggle', {
+          'app__toggle--active': isOpen2,
+        })}
+        onClick={() => toggle2()}
+      >
+        toggle
+      </button>
 
-        <pre style={{ fontSize: '10px', width: '100%' }}>
-          {JSON.stringify(this.state.spy3, null, 1)}
-        </pre>
-        <Collapse
-          isOpen={this.state.isOpen3}
-          collapseHeight="60px"
-          className={
-            'app__collapse app__collapse--gradient ' +
-            (this.state.isOpen3 ? 'app__collapse--active' : '')
-          }
-          onChange={(state) => this.setState({ spy3: state })}
-          render={(collapseState) => (
+      <Collapse
+        isOpen={isOpen2}
+        className={
+          'app__collapse app__collapse--gradient ' +
+          (isOpen2 ? 'app__collapse--active' : '')
+        }
+        transition="height 800ms cubic-bezier(0.4, 0, 0.2, 1)"
+        aria-hidden={isOpen2 ? 'false' : 'true'}
+        elementType="article"
+        render={(collapseState) => (
+          <React.Fragment>
             <div className="app__content">
               <div>{collapseState}</div>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
               nisi ut aliquip ex ea commodo consequat.
+              <img
+                className="image"
+                alt="random"
+                src="https://source.unsplash.com/user/erondu/500x200"
+              />
+              <button onClick={() => toggle2()} className="app__button">
+                close
+              </button>
             </div>
-          )}
-        />
+          </React.Fragment>
+        )}
+      />
 
-        <p className="app__text">Some content below</p>
-      </div>
-    )
-  }
+      <button
+        className={cx('app__toggle', {
+          'app__toggle--active': isOpen3,
+        })}
+        onClick={() => toggle3()}
+      >
+        toggle
+      </button>
 
-  toggle = (index) => {
-    let collapse = 'isOpen' + index
+      <pre style={{ fontSize: '10px', width: '100%' }}>
+        {JSON.stringify(spy3, null, 1)}
+      </pre>
+      <Collapse
+        isOpen={isOpen3}
+        collapseHeight="60px"
+        className={
+          'app__collapse app__collapse--gradient ' +
+          (isOpen3 ? 'app__collapse--active' : '')
+        }
+        onChange={(state) => setSpy3(state)}
+        render={(collapseState) => (
+          <div className="app__content">
+            <div>{collapseState}</div>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat.
+          </div>
+        )}
+      />
 
-    this.setState((prevState) => ({ [collapse]: !prevState[collapse] }))
-  }
+      <p className="app__text">Some content below</p>
+    </div>
+  )
 }
-
-export default App
