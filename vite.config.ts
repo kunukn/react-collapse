@@ -14,7 +14,7 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'lib/main.ts'),
       name: 'Collapse',
-      formats: ['es', 'umd', 'iife', 'cjs'],
+      formats: ['es', 'umd', 'cjs'],
       fileName: (format) => `react-collapse.${format}.js`,
     },
     sourcemap: true,
@@ -29,7 +29,7 @@ export default defineConfig({
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
-          'react/jsx-runtime': 'ReactJsxRuntime',
+          'react/jsx-runtime': 'ReactJsxRuntime', // Made up, probably don't exists as CDN or UMD anywhere. If needed, then a polyfill for ReactJsxRuntime or something is needed.
         },
       },
     },
