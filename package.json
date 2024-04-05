@@ -3,7 +3,7 @@
   "author": "Kunuk Nykjaer",
   "license": "MIT",
   "private": false,
-  "version": "3.0.0",
+  "version": "3.0.1",
   "type": "module",
   "main": "./dist/react-collapse.umd.cjs",
   "module": "./dist/react-collapse.js",
@@ -56,10 +56,10 @@
   },
   "devDependencies": {
     "@types/node": "^18.19.29",
-    "@types/react": "^18.2.71",
-    "@types/react-dom": "^18.2.22",
-    "@typescript-eslint/eslint-plugin": "^6.21.0",
-    "@typescript-eslint/parser": "^6.21.0",
+    "@types/react": "^18.2.74",
+    "@types/react-dom": "^18.2.24",
+    "@typescript-eslint/eslint-plugin": "^7.5.0",
+    "@typescript-eslint/parser": "^7.5.0",
     "@vitejs/plugin-react": "^4.2.1",
     "classnames": "^2.5.1",
     "copy-file": "^11.0.0",
@@ -69,7 +69,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sass": "^1.74.1",
-    "typescript": "^5.4.3",
+    "typescript": "^5.4.4",
     "vite": "^5.2.8",
     "vite-plugin-remove-console": "^2.2.0"
   }
