@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 import removeConsole from 'vite-plugin-remove-console'
 import { resolve } from 'path'
 
-// https://vitejs.dev/config/
+// https://vitejs.dev/guide/build.html#library-mode
 export default defineConfig({
   plugins: [
     react(),
@@ -18,11 +18,9 @@ export default defineConfig({
     },
     sourcemap: true,
     rollupOptions: {
-      plugins: [],
-
       // make sure to externalize deps that shouldn't be bundled
       // into your library
-      external: ['react', 'react-dom', 'react/jsx-runtime'],
+      external: ['react', 'react/jsx-runtime'],
 
       output: {
         // Provide global variables to use in the UMD build

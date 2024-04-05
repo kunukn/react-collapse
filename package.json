@@ -47,7 +47,8 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "copyfiles": "node node-tools/copy-files.js",
-    "cleandist": "node node-tools/clean-dist.js"
+    "cleandist": "node node-tools/clean-dist.js",
+    "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
     "react": "^16.14.0 || ^17 || ^18",
