@@ -14,7 +14,8 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'lib/main.ts'),
       name: 'Collapse',
-      fileName: 'react-collapse',
+      formats: ['es', 'umd', 'iife', 'cjs'],
+      fileName: (format) => `react-collapse.${format}.js`,
     },
     sourcemap: true,
     rollupOptions: {

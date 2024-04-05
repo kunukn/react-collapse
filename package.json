@@ -3,10 +3,10 @@
   "author": "Kunuk Nykjaer",
   "license": "MIT",
   "private": false,
-  "version": "3.0.1",
+  "version": "3.0.2",
   "type": "module",
-  "main": "./dist/react-collapse.umd.cjs",
-  "module": "./dist/react-collapse.js",
+  "main": "./dist/react-collapse.umd.js",
+  "module": "./dist/react-collapse.es.js",
   "types": "./dist/react-collapse.d.ts",
   "exports": {
     ".": {
