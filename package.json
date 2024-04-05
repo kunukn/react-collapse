@@ -3,7 +3,7 @@
   "author": "Kunuk Nykjaer",
   "license": "MIT",
   "private": false,
-  "version": "3.0.3",
+  "version": "3.0.4",
   "type": "module",
   "main": "./dist/react-collapse.umd.js",
   "module": "./dist/react-collapse.es.js",
@@ -12,9 +12,7 @@
     ".": {
       "import": "./dist/react-collapse.es.js",
       "require": "./dist/react-collapse.umd.cjs"
-    },
-    "./jsx-dev-runtime": "./jsx-dev-runtime.js",
-    "./jsx-runtime": "./jsx-runtime.js"
+    }
   },
   "files": [
     "dist"
