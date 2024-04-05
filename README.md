@@ -317,6 +317,10 @@ https://unpkg.com/@kunukn/react-collapse/
 <script src="https://unpkg.com/@kunukn/react-collapse/dist/react-collapse.js"></script>
 ```
 
+# NPM
+
+https://www.npmjs.com/package/@kunukn/react-collapse
+
 # Supported browsers
 
 Modern browsers (Edge, Firefox, Chrome, Safari, etc).
