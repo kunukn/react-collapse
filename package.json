@@ -15,8 +15,7 @@
     }
   },
   "files": [
-    "dist",
-    "types"
+    "dist"
   ],
   "description": "Collapse library based on CSS transition for React",
   "keywords": [
