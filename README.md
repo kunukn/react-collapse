@@ -319,7 +319,7 @@ https://unpkg.com/@kunukn/react-collapse/
 
 # Supported browsers
 
-Modern browsers
+Modern browsers + IE11
 
 # Supported React versions
 
