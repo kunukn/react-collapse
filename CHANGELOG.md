@@ -1,6 +1,6 @@
 # react-collapse changelog
 
-## 3.0.4
+## 3.0.5
 
 - Support these file types.
   - Module, UMD, CJS
