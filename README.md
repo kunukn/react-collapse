@@ -43,8 +43,9 @@ Alternatively you can add it using the `transition` prop.
 
 ## Installation for React 16.14+
 
-- UMD/CJS minified ~2.3 kb, gzipped ~1.1 kb
+- UMD minified ~2.3 kb, gzipped ~1.1 kb
 - Module minified ~2.9 kb, gzipped ~1.1 kb
+- CJS minified ~2.0 kb, gzipped ~1.0 kb
 
 ```bash
 npm i -D @kunukn/react-collapse
@@ -53,6 +54,8 @@ npm i -D @kunukn/react-collapse
 ```
 
 ## Installation for React 16.3+
+
+Avoid if possible. This is no longer maintained.
 
 - UMD minified ~5.8 kb, gzipped ~2.1 kb
 
