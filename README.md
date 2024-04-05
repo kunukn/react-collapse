@@ -325,6 +325,7 @@ Modern browsers (Edge, Firefox, Chrome, Safari, etc).
 
 - React version 16.3+ : use Collapse version 1
 - React version 16.8+ : use Collapse version 2+
+- React version 16.14+ : use Collapse version 3+
 
 # Used React 16.3 life-cycles
 
@@ -333,7 +334,7 @@ Modern browsers (Edge, Firefox, Chrome, Safari, etc).
 - **getDerivedStateFromProps** (detect if isOpen props has changed and apply a new collapse state)
 - **componentDidUpdate** (update style states from the four possible collapse states)
 
-# Used React 16.14 hooks
+# Used React 16.8+ hooks
 
 - **useState**
 - **useEffect**
