@@ -43,34 +43,42 @@ Alternatively you can add it using the `transition` prop.
 
 ## Installation for React 16.8+
 
-UMD minified 3.8kb, gzipped 1.7kb
+- UMD/CJS minified ~2.3 kb, gzipped ~1.1 kb
+- Module minified ~2.9 kb, gzipped ~1.1 kb
 
 ```bash
-npm i @kunukn/react-collapse
+npm i -D @kunukn/react-collapse
 # or
-# yarn add @kunukn/react-collapse
+# yarn add -D @kunukn/react-collapse
 ```
 
 ## Installation for React 16.3+
 
-UMD minified 5.8kb, gzipped 2.1kb
+- UMD minified ~5.8 kb, gzipped ~2.1 kb
 
 ```bash
-npm i @kunukn/react-collapse@^1
+npm i -D @kunukn/react-collapse@^1
 # or
-# yarn add @kunukn/react-collapse@^1
+# yarn add -D @kunukn/react-collapse@^1
 ```
 
 ```jsx
-import Collapse from '@kunukn/react-collapse'
-// or with require syntax
-// const Collapse = require("@kunukn/react-collapse");
+import { Collapse } from '@kunukn/react-collapse' // Notice how you import it. It has changed since version 3.
 
 const MyComponent = () => (
   <Collapse isOpen={true || false}>
     <div>Your content</div>
   </Collapse>
 )
+```
+
+```jsx
+// The possible imports
+
+import { Collapse } from '@kunukn/react-collapse/dist/react-collapse.js' // Module
+import { Collapse } from '@kunukn/react-collapse/dist/react-collapse.umd.cjs' // UMD/CJS
+import '@kunukn/react-collapse/dist/react-collapse.css' // CSS
+import type { CollapseProps } from '@kunukn/react-collapse/dist/react-collapse.d.ts' // TS
 ```
 
 ## Properties
@@ -116,7 +124,7 @@ Render content using the [render-props pattern](https://reactjs.org/docs/render-
 ```jsx
 const MyComponent = ({ isOpen }) => (
   <Collapse isOpen={isOpen}>
-    {state => (
+    {(state) => (
       <div className={`using-collapse-state-to-add-css-class ${state}`}>
         <p>I know the collapse state: {state}</p>
       </div>
@@ -131,7 +139,7 @@ Render content using the render-props pattern.
 
 ```jsx
 const MyComponent = ({ isOpen }) => {
-  const render = state => (
+  const render = (state) => (
     <div className={`using-collapse-state-to-add-css-class ${state}`}>
       <p>I know the collapse state: {state}</p>
     </div>
@@ -225,7 +233,7 @@ const MyComponent = () => {
 
   return (
     <div>
-      <button onClick={() => setIsOpen(state => !state)}> Toggle </button>
+      <button onClick={() => setIsOpen((state) => !state)}> Toggle </button>
       <Collapse onInit={onInit} isOpen={isOpen}>
         <p>A long paragraph of text inside an article element</p>
       </Collapse>
@@ -277,26 +285,21 @@ const MyComponent = ({ isOpen }) => (
 )
 ```
 
-## Development and testing
+## Development
 
 To run development
 
-`yarn start`
+`npm start`
 
 ```bash
 git clone [repo]
 cd [repo]
-yarn
-yarn start
-open http://localhost:6007
-yarn test
+npm i
+npm start
 ```
 
-- To develop and play around: `yarn start`
-- To build the bundle: `yarn build`
-- To validate the bundle: `yarn validate`
-
-To run example covering all features, use `npm run storybook` or `yarn storybook`.
+- To develop and play around: `npm start`
+- To build the bundle: `npm run build`
 
 # CDN
 
@@ -305,18 +308,18 @@ https://unpkg.com/@kunukn/react-collapse/
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@kunukn/react-collapse/dist/Collapse.umd.css"
+  href="https://unpkg.com/@kunukn/react-collapse/dist/react-collapse"
 />
-<script src="https://unpkg.com/@kunukn/react-collapse/dist/Collapse.umd.js"></script>
+<!-- UMD or CJS -->
+<script src="https://unpkg.com/@kunukn/react-collapse/dist/react-collapse.umd.cjs"></script>
 
-<script>
-  var Collapse = window.Collapse
-</script>
+<!-- Module -->
+<script src="https://unpkg.com/@kunukn/react-collapse/dist/react-collapse.js"></script>
 ```
 
 # Supported browsers
 
-IE11 + Modern browsers
+Modern browsers (Edge, Firefox, Chrome, Safari, etc).
 
 # Supported React versions
 
@@ -347,7 +350,7 @@ IE11 + Modern browsers
 - interruptible - can be reversed during movement
 - inert - when collapsed you should tab over the collapsed component
 - availability - from cdn or npm install
-- Collapsible on height only
+- collapsible on height only
 
 # This was created with heavy inspiration from
 

@@ -10,12 +10,14 @@
     "activityBarBadge.background": "#606020",
     "activityBarBadge.foreground": "#e7e7e7",
     "statusBar.background": "#111111",
-    "statusBar.border": "#111111",
     "statusBar.foreground": "#e7e7e7",
     "statusBarItem.hoverBackground": "#2a2a2a",
-    "titleBar.border": "#111111",
     "titleBar.inactiveBackground": "#11111199",
-    "titleBar.inactiveForeground": "#e7e7e799"
+    "titleBar.inactiveForeground": "#e7e7e799",
+    "commandCenter.border": "#e7e7e799",
+    "sash.hoverBorder": "#2a2a2a",
+    "statusBarItem.remoteBackground": "#111111",
+    "statusBarItem.remoteForeground": "#e7e7e7"
   },
   "editor.formatOnSave": true,
   "[javascript]": {
@@ -23,10 +25,9 @@
   },
   "eslint.alwaysShowStatus": true,
   "editor.codeActionsOnSave": {
-    // https://github.com/prettier/prettier-vscode#linter-integration
-    "source.fixAll.eslint": true,
-    "source.fixAll.tslint": true,
-    "source.fixAll.stylelint": true
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.tslint": "explicit",
+    "source.fixAll.stylelint": "explicit"
   },
   "peacock.color": "#111"
 }

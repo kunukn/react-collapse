@@ -7,22 +7,22 @@
     "baseUrl": "../",
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",
-    "lib": ["dom", "es2016"],
-    "module": "commonjs",
+    "lib": ["dom", "ES2020"],
+    "module": "ESNext",
     "noEmit": true,
     "noImplicitAny": true,
     "noImplicitThis": true,
     "strict": true,
     "strictNullChecks": true,
     "strictFunctionTypes": true,
-    "target": "es5",
+    "target": "ES2020",
     "typeRoots": ["../"],
     "types": [],
     "paths": {
       "@kunukn/react-collapse": ["types/index.d.ts"],
       "~/*": ["*"],
       "src/*": ["./src/*"],
-      "components/*": ["./components/*"]
+      "lib/*": ["./lib/*"]
     }
   }
 }
