@@ -78,6 +78,7 @@ const MyComponent = () => (
 import { Collapse } from '@kunukn/react-collapse/dist/react-collapse.js' // Module
 import { Collapse } from '@kunukn/react-collapse/dist/react-collapse.umd.cjs' // UMD/CJS
 import '@kunukn/react-collapse/dist/react-collapse.css' // CSS
+import type { CollapseProps } from '@kunukn/react-collapse/dist/react-collapse.d.ts' // TS
 ```
 
 ## Properties
