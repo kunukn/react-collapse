@@ -50,8 +50,8 @@
     "cleandist": "node node-tools/clean-dist.js"
   },
   "peerDependencies": {
-    "react": "^16.8.0 || ^17 || ^18",
-    "react-dom": "^16.8.0 || ^17 || ^18"
+    "react": "^16.14.0 || ^17 || ^18",
+    "react-dom": "^16.14.0 || ^17 || ^18"
   },
   "devDependencies": {
     "@types/node": "^18.19.29",

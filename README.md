@@ -41,7 +41,7 @@ react-collapse
 
 Alternatively you can add it using the `transition` prop.
 
-## Installation for React 16.8+
+## Installation for React 16.14+
 
 - UMD/CJS minified ~2.3 kb, gzipped ~1.1 kb
 - Module minified ~2.9 kb, gzipped ~1.1 kb
@@ -333,7 +333,7 @@ Modern browsers (Edge, Firefox, Chrome, Safari, etc).
 - **getDerivedStateFromProps** (detect if isOpen props has changed and apply a new collapse state)
 - **componentDidUpdate** (update style states from the four possible collapse states)
 
-# Used React 16.8 hooks
+# Used React 16.14 hooks
 
 - **useState**
 - **useEffect**
