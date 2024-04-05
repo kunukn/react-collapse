@@ -12,7 +12,9 @@
     ".": {
       "import": "./dist/react-collapse.js",
       "require": "./dist/react-collapse.umd.cjs"
-    }
+    },
+    "./jsx-dev-runtime": "./jsx-dev-runtime.js",
+    "./jsx-runtime": "./jsx-runtime.js"
   },
   "files": [
     "dist"
