@@ -1,6 +1,6 @@
 # react-collapse changelog
 
-## 2.3.0
+## 3.0.0
 
 _2024_
 
