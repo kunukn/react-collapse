@@ -68,6 +68,7 @@
     box-shadow: 0 2px 4px #888;
     background-color: #fff;
     transition: background-color 300ms;
+    cursor: pointer;
     &--active {
       background-color: #fafafa;
     }
