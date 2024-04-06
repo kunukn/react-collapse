@@ -30,6 +30,10 @@ export default function App() {
 
   return (
     <div className="app">
+      <h3 className="app__title">
+        Try to use keyboard navigation, tab and toggle with enter or space
+      </h3>
+
       <button
         className={cx('app__toggle', {
           'app__toggle--active': isOpen.a,
