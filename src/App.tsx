@@ -1,9 +1,8 @@
 import './App.scss'
 
-import React, { useState } from 'react'
-
 import { Collapse } from '../lib/Collapse'
 import cx from 'classnames'
+import { useState } from 'react'
 
 /*
  import { Collapse } from '../lib/Collapse' // From library source
@@ -89,7 +88,7 @@ export default function App() {
         aria-hidden={isOpen.b ? 'false' : 'true'}
         elementType="article"
         render={(collapseState) => (
-          <React.Fragment>
+          <>
             <div className="app__content">
               <div>{collapseState}</div>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -105,7 +104,7 @@ export default function App() {
                 close
               </button>
             </div>
-          </React.Fragment>
+          </>
         )}
       />
 
