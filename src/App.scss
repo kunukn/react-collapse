@@ -8,6 +8,12 @@
   max-width: 500px;
   padding: 3rem 1rem 1rem;
 
+  &__title {
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
   &__text {
     width: 100%;
   }
@@ -49,7 +55,7 @@
 
   &__content {
     border: 1px solid transparent;
-    padding: 1rem 0;
+    padding-block: 1rem;
     margin-bottom: 3rem;
     position: relative;
     transition: 300ms;
@@ -57,7 +63,7 @@
 
   &__toggle {
     width: 100%;
-    margin: 1rem 0;
+    margin-block: 1rem;
     border: 1px solid transparent;
     text-transform: uppercase;
     padding: 1rem;
@@ -83,7 +89,7 @@
     display: block;
     width: 20rem;
     max-width: 100%;
-    margin: 0 auto;
+    margin-inline: auto;
     padding: 1rem;
   }
 
