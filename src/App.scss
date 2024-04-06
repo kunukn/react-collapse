@@ -7,98 +7,98 @@
   align-items: center;
   max-width: 500px;
   padding: 3rem 1rem 1rem;
+}
 
-  &__title {
-    font-weight: 600;
-    line-height: 1.2;
-    margin-bottom: 1rem;
+.app__title {
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.app__text {
+  width: 100%;
+}
+
+.app__collapse {
+  width: 100%;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  transition: height 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.app__collapse--gradient {
+  .app__content {
+    border-color: transparent;
   }
 
-  &__text {
-    width: 100%;
-  }
-
-  &__collapse {
-    width: 100%;
+  &:after {
+    pointer-events: none;
+    transition: opacity 300ms;
+    will-change: opacity;
+    opacity: 1;
+    content: '';
     display: block;
-    position: relative;
-    overflow: hidden;
-    transition: height 300ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  &__collapse--gradient {
-    .app__content {
-      border-color: transparent;
-    }
-
-    &:after {
-      pointer-events: none;
-      transition: opacity 300ms;
-      will-change: opacity;
-      opacity: 1;
-      content: '';
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(transparent 50%, white);
-    }
-  }
-
-  &__collapse--active {
-    &:after {
-      opacity: 0;
-    }
-  }
-
-  &__content {
-    border: 1px solid transparent;
-    padding-block: 1rem;
-    margin-bottom: 3rem;
-    position: relative;
-    transition: 300ms;
-  }
-
-  &__toggle {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    margin-block: 1rem;
-    border: 1px solid transparent;
-    text-transform: uppercase;
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 2px;
-    box-shadow: 0 2px 4px #888;
-    background-color: #fff;
-    transition: background-color 300ms;
-    cursor: pointer;
+    height: 100%;
+    background: linear-gradient(transparent 50%, white);
   }
+}
 
-  &__toggle--active {
-    background-color: #fafafa;
+.app__collapse--active {
+  &:after {
+    opacity: 0;
   }
+}
 
-  &__toggle-text {
-    font-size: inherit;
-  }
+.app__content {
+  border: 1px solid transparent;
+  padding-block: 1rem;
+  margin-bottom: 3rem;
+  position: relative;
+  transition: 300ms;
+}
 
-  &__button {
-    display: block;
-    width: 20rem;
-    max-width: 100%;
-    margin-inline: auto;
-    padding: 1rem;
-  }
+.app__toggle {
+  width: 100%;
+  margin-block: 1rem;
+  border: 1px solid transparent;
+  text-transform: uppercase;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px #888;
+  background-color: #fff;
+  transition: background-color 300ms;
+  cursor: pointer;
+}
 
-  &__image {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    display: block;
-  }
+.app__toggle--active {
+  background-color: #fafafa;
+}
+
+.app__toggle-text {
+  font-size: inherit;
+}
+
+.app__button {
+  display: block;
+  width: 20rem;
+  max-width: 100%;
+  margin-inline: auto;
+  padding: 1rem;
+}
+
+.app__image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 .icon {
