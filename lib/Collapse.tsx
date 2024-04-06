@@ -18,7 +18,7 @@ function nextFrame(callback: FrameRequestCallback) {
   })
 }
 
-export function Collapse({
+export const Collapse: React.FunctionComponent<CollapseProps> = ({
   children,
   transition,
   style,
@@ -33,7 +33,7 @@ export function Collapse({
   noAnim,
   overflowOnExpanded,
   ...rest
-}: CollapseProps) {
+}: CollapseProps): React.JSX.Element => {
   const getCollapsedVisibility = () =>
     collapseHeight === '0px' ? 'hidden' : undefined
 
