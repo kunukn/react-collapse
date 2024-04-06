@@ -13,28 +13,34 @@ import cx from 'classnames'
 */
 
 export default function App() {
-  const [isOpen1, setIsOpen1] = useState(false)
-  const [isOpen2, setIsOpen2] = useState(false)
-  const [isOpen3, setIsOpen3] = useState(false)
+  const [isOpen, setIsOpen] = useState({
+    a: false,
+    b: false,
+    c: false,
+    d: false,
+    e: false,
+  })
+  function toggle(index: string) {
+    setIsOpen((s) => ({ ...s, [index]: !s[index] }))
+  }
 
-  const [spy3, setSpy3] = useState({})
-
-  const toggle1 = () => setIsOpen1((s) => !s)
-  const toggle2 = () => setIsOpen2((s) => !s)
-  const toggle3 = () => setIsOpen3((s) => !s)
+  const [spy, setSpy] = useState({ a: {}, b: {}, c: {}, d: {}, e: {} })
+  function onSpy(index: string, state) {
+    setSpy((s) => ({ ...s, [index]: state }))
+  }
 
   return (
     <div className="app">
       <button
         className={cx('app__toggle', {
-          'app__toggle--active': isOpen1,
+          'app__toggle--active': isOpen.a,
         })}
-        onClick={() => toggle1()}
+        onClick={() => toggle('a')}
       >
         <span className="app__toggle-text">toggle</span>
         <div className="rotate90">
           <svg
-            className={cx('icon', { 'icon--expanded': isOpen1 })}
+            className={cx('icon', { 'icon--expanded': isOpen.a })}
             viewBox="6 0 12 24"
           >
             <polygon points="8 0 6 1.8 14.4 12 6 22.2 8 24 18 12" />
@@ -42,10 +48,10 @@ export default function App() {
         </div>
       </button>
       <Collapse
-        isOpen={isOpen1}
+        isOpen={isOpen.a}
         className={
           'app__collapse app__collapse--gradient ' +
-          (isOpen1 ? 'app__collapse--active' : '')
+          (isOpen.a ? 'app__collapse--active' : '')
         }
       >
         <div className="app__content">
@@ -58,7 +64,7 @@ export default function App() {
             alt="random"
             src="https://source.unsplash.com/user/erondu/500x200"
           />
-          <button onClick={() => toggle1()} className="app__button">
+          <button onClick={() => toggle('a')} className="app__button">
             close
           </button>
         </div>
@@ -66,21 +72,21 @@ export default function App() {
 
       <button
         className={cx('app__toggle', {
-          'app__toggle--active': isOpen2,
+          'app__toggle--active': isOpen.b,
         })}
-        onClick={() => toggle2()}
+        onClick={() => toggle('b')}
       >
         toggle
       </button>
 
       <Collapse
-        isOpen={isOpen2}
+        isOpen={isOpen.b}
         className={
           'app__collapse app__collapse--gradient ' +
-          (isOpen2 ? 'app__collapse--active' : '')
+          (isOpen.b ? 'app__collapse--active' : '')
         }
         transition="height 800ms cubic-bezier(0.4, 0, 0.2, 1)"
-        aria-hidden={isOpen2 ? 'false' : 'true'}
+        aria-hidden={isOpen.b ? 'false' : 'true'}
         elementType="article"
         render={(collapseState) => (
           <React.Fragment>
@@ -95,7 +101,7 @@ export default function App() {
                 alt="random"
                 src="https://source.unsplash.com/user/erondu/500x200"
               />
-              <button onClick={() => toggle2()} className="app__button">
+              <button onClick={() => toggle('b')} className="app__button">
                 close
               </button>
             </div>
@@ -105,24 +111,24 @@ export default function App() {
 
       <button
         className={cx('app__toggle', {
-          'app__toggle--active': isOpen3,
+          'app__toggle--active': isOpen.c,
         })}
-        onClick={() => toggle3()}
+        onClick={() => toggle('c')}
       >
         toggle
       </button>
 
       <pre style={{ fontSize: '10px', width: '100%' }}>
-        {JSON.stringify(spy3, null, 1)}
+        {JSON.stringify(spy.c, null, 1)}
       </pre>
       <Collapse
-        isOpen={isOpen3}
+        isOpen={isOpen.c}
         collapseHeight="60px"
         className={
           'app__collapse app__collapse--gradient ' +
-          (isOpen3 ? 'app__collapse--active' : '')
+          (isOpen.c ? 'app__collapse--active' : '')
         }
-        onChange={(state) => setSpy3(state)}
+        onChange={(state) => onSpy('c', state)}
         render={(collapseState) => (
           <div className="app__content">
             <div>{collapseState}</div>
