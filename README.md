@@ -65,14 +65,30 @@ npm i -D @kunukn/react-collapse@^1
 # yarn add -D @kunukn/react-collapse@^1
 ```
 
-```jsx
-import { Collapse } from '@kunukn/react-collapse' // Notice how you import it, changed since ver 3.
+Minimal toggle content component example.
 
-const MyComponent = () => (
-  <Collapse isOpen={true || false}>
-    <div>Your content</div>
-  </Collapse>
-)
+```jsx
+// Notice how you import it, changed since ver 3.
+import { Collapse } from '@kunukn/react-collapse'
+import React from 'react'
+
+export default function MyComponent() {
+  const [isOpen, setIsOpen] = React.useState(false)
+  const onToggle = () => setIsOpen((s) => !s)
+
+  return (
+    <div className="my-component">
+      <button onClick={onToggle}> Toggle </button>
+      <Collapse
+        isOpen={isOpen}
+        transition="height 300ms cubic-bezier(0.4, 0, 0.2, 1)"
+      >
+        <p> Hello world </p>
+        <p> How are you? </p>
+      </Collapse>
+    </div>
+  )
+}
 ```
 
 ```jsx
