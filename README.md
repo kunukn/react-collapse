@@ -84,7 +84,6 @@ export default function MyComponent() {
         transition="height 300ms cubic-bezier(0.4, 0, 0.2, 1)"
       >
         <p> Hello world </p>
-        <p> How are you? </p>
       </Collapse>
     </div>
   )

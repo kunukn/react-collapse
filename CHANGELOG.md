@@ -1,5 +1,10 @@
 # react-collapse changelog
 
+## 3.0.6
+
+- Adjust README.md, correct links, etc.
+- Add \_Playground for playing with pure browser rendered JSX and Collapse component.
+
 ## 3.0.5
 
 - Support these file types.
