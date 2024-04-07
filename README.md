@@ -78,7 +78,6 @@ const MyComponent = () => (
 ```jsx
 // The possible imports
 
-import { Collapse } from '@kunukn/react-collapse/dist/react-collapse.es.js' // Module
 import { Collapse } from '@kunukn/react-collapse/dist/react-collapse.umd.js' // UMD
 import '@kunukn/react-collapse/dist/react-collapse.css' // CSS
 import type { CollapseProps } from '@kunukn/react-collapse/dist/react-collapse.d.ts' // TS
@@ -314,13 +313,10 @@ https://unpkg.com/@kunukn/react-collapse/
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@kunukn/react-collapse/dist/react-collapse"
+  href="https://unpkg.com/@kunukn/react-collapse/dist/react-collapse.css"
 />
 <!-- UMD -->
 <script src="https://unpkg.com/@kunukn/react-collapse/dist/react-collapse.umd.js"></script>
-
-<!-- Module -->
-<script src="https://unpkg.com/@kunukn/react-collapse/dist/react-collapse.es.js"></script>
 ```
 
 # NPM
