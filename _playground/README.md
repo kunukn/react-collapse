@@ -1,3 +1,3 @@
  ```bash
- npx browser-sync . -w
+ npx browser-sync . -w -o
  ```
