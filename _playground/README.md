@@ -1,3 +1,3 @@
- ```bash
- npx browser-sync . -w -o
- ```
+```bash
+npx browser-sync . --port 3333 -w -o
+```

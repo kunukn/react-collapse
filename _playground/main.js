@@ -1,16 +1,10 @@
-import { Collapse } from "react-collapse";
+import { Collapse } from "script-module-importmap-react-collapse";
 import React from 'react';
 import ReactDOM from 'react-dom';
 
 console.log("main.js");
 
 console.log(Collapse);
-
-console.log(React);
-
-console.log(ReactDOM);
-
-const e = React.createElement;
 
 function MyComponent() {
   const [isOpen, setIsOpen] = React.useState(false)
