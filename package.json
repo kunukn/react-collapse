@@ -11,7 +11,7 @@
   "exports": {
     ".": {
       "import": "./dist/react-collapse.es.js",
-      "require": "./dist/react-collapse.cjs.js"
+      "require": "./dist/react-collapse.cjs"
     }
   },
   "files": [
