@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSX in the browser using script module</title>
+</head>
+
+<body>
+  <script src="https://unpkg.com/@babel/standalone@7.24.4/babel.min.js"></script>
+
+  <div id="root">app</div>
+
+  <script type="importmap">
+        {
+            "imports": {
+              "react/jsx-runtime": "/react-jsx-runtime.js",
+              "react/jsx-dev-runtime": "/react-jsx-runtime.js",
+              "react": "/react-as-es-module.js",
+              "react-dom": "/react-dom-as-es-module.js",
+              "script-module-importmap-react-collapse": "https://unpkg.com/@kunukn/react-collapse@3.0.5/dist/react-collapse.es.js"
+            }
+        }
+      </script>
+
+  <!-- https://babel.dev/docs/babel-standalone -->
+  <script type="text/babel" data-type="module" src="/main.js"></script>
+</body>
+
+</html>

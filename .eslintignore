@@ -1,4 +1,6 @@
 build/*
 dist/*
 node-tools/*
+types/*
+_playground/*
 

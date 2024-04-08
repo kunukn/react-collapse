@@ -3,7 +3,7 @@
   "author": "Kunuk Nykjaer",
   "license": "MIT",
   "private": false,
-  "version": "3.0.4",
+  "version": "3.0.6",
   "type": "module",
   "main": "./dist/react-collapse.umd.js",
   "module": "./dist/react-collapse.es.js",
@@ -11,7 +11,7 @@
   "exports": {
     ".": {
       "import": "./dist/react-collapse.es.js",
-      "require": "./dist/react-collapse.umd.cjs"
+      "require": "./dist/react-collapse.cjs.js"
     }
   },
   "files": [
@@ -55,7 +55,7 @@
     "react-dom": "^16.14.0 || ^17 || ^18"
   },
   "devDependencies": {
-    "@types/node": "^18.19.29",
+    "@types/node": "^18.19.30",
     "@types/react": "^18.2.74",
     "@types/react-dom": "^18.2.24",
     "@typescript-eslint/eslint-plugin": "^7.5.0",

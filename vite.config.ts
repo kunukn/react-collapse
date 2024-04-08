@@ -19,19 +19,25 @@ export default defineConfig({
     },
     sourcemap: true,
     rollupOptions: {
-      // make sure to externalize deps that shouldn't be bundled
-      // into your library
+      /*
+       Make sure to externalize deps that shouldn't be bundled
+       into your library
+      */
       external: ['react', 'react/jsx-runtime'],
 
       output: {
-        // Provide global variables to use in the UMD build
-        // for externalized deps
+        /*
+         Provide global variables to use in the UMD build
+         for externalized deps
+        */
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
-          // Made up, probably don't exists as CDN or UMD anywhere. If needed, then a polyfill for ReactJsxRuntime or something is needed.
-          // Please use ES Modules in the browser or build tools when using this Collapse library.
-          // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
+          /*
+           Made up, probably don't exists as CDN or UMD anywhere. If needed, then a polyfill for ReactJsxRuntime or something is needed.
+           Please use ES Modules in the browser or build tools when using this Collapse library.
+           https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
+          */
           'react/jsx-runtime': 'ReactJsxRuntime',
         },
       },
