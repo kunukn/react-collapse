@@ -1,5 +1,13 @@
 # react-collapse changelog
 
+## 3.0.8
+
+- Adjust the README for the filename changes.
+
+## 3.0.7
+
+- Fix cjs export filename, changed filename to `react-collapse.cjs`
+
 ## 3.0.6
 
 - Adjust README.md, correct links, etc.
