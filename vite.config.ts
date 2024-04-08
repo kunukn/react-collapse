@@ -15,7 +15,18 @@ export default defineConfig({
       entry: resolve(__dirname, 'lib/main.ts'),
       name: 'Collapse',
       formats: ['es', 'umd', 'cjs'],
-      fileName: (format) => `react-collapse.${format}.js`,
+      fileName: (format) => {
+        switch (format) {
+          case 'es':
+            return 'react-collapse.es.js'
+          case 'umd':
+            return 'react-collapse.umd.js'
+          case 'cjs':
+            return 'react-collapse.cjs'
+          default:
+            throw new Error('Build file unknown format ' + format)
+        }
+      },
     },
     sourcemap: true,
     rollupOptions: {
