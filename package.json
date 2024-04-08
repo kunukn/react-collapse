@@ -8,12 +8,6 @@
   "main": "./dist/react-collapse.umd.js",
   "module": "./dist/react-collapse.es.js",
   "types": "./dist/react-collapse.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/react-collapse.es.js",
-      "require": "./dist/react-collapse.cjs"
-    }
-  },
   "files": [
     "dist"
   ],
