@@ -9,6 +9,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@kunukn/react-collapse": "^3.0.9"
+    "@kunukn/react-collapse": "^3.0.10"
   }
 }
