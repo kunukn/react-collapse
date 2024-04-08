@@ -18,7 +18,7 @@ export default defineConfig({
       fileName: (format) => {
         switch (format) {
           case 'es':
-            return 'react-collapse.es.js'
+            return 'react-collapse.mjs'
           case 'umd':
             return 'react-collapse.umd.js'
           case 'cjs':

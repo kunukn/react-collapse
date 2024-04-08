@@ -1,5 +1,9 @@
 # react-collapse changelog
 
+## 3.0.10
+
+- Use `mjs` extension for ES Modules.
+
 ## 3.0.8
 
 - Adjust the README for the filename changes.

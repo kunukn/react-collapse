@@ -6,7 +6,7 @@ import { useState } from 'react'
 
 /*
  import { Collapse } from '../lib/Collapse' // From library source
- import { Collapse } from '../dist/react-collapse.es.js' // From dist folder
+ import { Collapse } from '../dist/react-collapse.mjs' // From dist folder
  import { Collapse } from '../dist/react-collapse.umd.js' // From dist folder
  import { Collapse } from '../' // From dist folder
 */
