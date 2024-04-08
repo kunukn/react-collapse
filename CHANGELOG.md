@@ -1,5 +1,9 @@
 # react-collapse changelog
 
+## 3.0.11
+
+- Internal playgrounds added to ensure CommonJS and Module JS imports works.
+
 ## 3.0.10
 
 - Use `mjs` extension for ES Modules.

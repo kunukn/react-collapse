@@ -1,13 +1,15 @@
 {
   "name": "playground_common-js",
   "version": "0.0.1",
+  "type": "commonjs",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "engines": {
+    "node": ">=18.20",
+    "npm": ">=9"
+  },
   "devDependencies": {
     "@kunukn/react-collapse": "^3.0.10"
   }

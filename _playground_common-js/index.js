@@ -1,5 +1,5 @@
-const A = require('@kunukn/react-collapse')
+const A = require('@kunukn/react-collapse/dist/react-collapse.cjs')
+
 console.log(A)
 
-const B = require('@kunukn/react-collapse/dist/react-collapse.cjs')
-console.log(B)
+console.assert(typeof A.Collapse === 'function')

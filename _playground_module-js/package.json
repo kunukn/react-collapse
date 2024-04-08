@@ -3,10 +3,11 @@
   "version": "0.0.1",
   "main": "main.js",
   "type": "module",
+  "engines": {
+    "node": ">=18.20",
+    "npm": ">=9"
+  },
   "scripts": {
     "start": "npx browser-sync . --port 3333 -w -o"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  }
 }

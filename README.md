@@ -96,7 +96,7 @@ export default function MyComponent() {
 import { Collapse } from '@kunukn/react-collapse' // UMD
 import '@kunukn/react-collapse/dist/react-collapse.css' // CSS
 import type { CollapseProps } from '@kunukn/react-collapse/dist/react-collapse.d.ts' // TS
-const { Collapse } = require('@kunukn/react-collapse') // CommonJS
+const { Collapse } = require('@kunukn/react-collapse/dist/react-collapse.cjs') // CommonJS
 ```
 
 ## Properties
