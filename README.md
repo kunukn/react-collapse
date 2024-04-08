@@ -329,7 +329,7 @@ https://unpkg.com/@kunukn/react-collapse/
   href="https://unpkg.com/@kunukn/react-collapse/dist/react-collapse.css"
 />
 <!-- UMD -->
-<script src="https://unpkg.com/@kunukn/react-collapse/dist/react-collapse.umd.js"></script>
+<script src="https://unpkg.com/@kunukn/react-collapse"></script>
 ```
 
 # NPM
