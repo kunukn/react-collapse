@@ -23,6 +23,12 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": ["src", "lib"],
-  "exclude": ["dist", "node-tools", "_playground"],
+  "exclude": [
+    "dist",
+    "node-tools",
+    "_playground",
+    "_playground_module-js",
+    "_playground_common-js"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

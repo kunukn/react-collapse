@@ -1,13 +1,13 @@
-import { Collapse } from "script-module-importmap-react-collapse";
-import React from 'react';
-import ReactDOM from 'react-dom';
+import { Collapse } from 'script-module-importmap-react-collapse'
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-console.log("main.js");
+console.log('main.js')
 
-console.log(Collapse);
+console.log(Collapse)
 
 function MyComponent() {
-  const [isOpen, setIsOpen] = React.useState(false)
+  const [isOpen, setIsOpen] = React.useState(true)
   const onToggle = () => setIsOpen((s) => !s)
 
   return (
@@ -24,5 +24,5 @@ function MyComponent() {
   )
 }
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<MyComponent />);
+const root = ReactDOM.createRoot(document.getElementById('root'))
+root.render(<MyComponent />)
