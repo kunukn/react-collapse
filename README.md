@@ -19,6 +19,8 @@ react-collapse
 
 - <a href="https://codepen.io/kunukn/full/JwmEYL" target="_blank">read more - codepen</a>
 
+- <a href="https://stackblitz.com/edit/vitejs-vite-qfvnck" target="_blank">simple - edit stackblitz</a>
+
 - <a href="https://codesandbox.io/s/k1439yw2v5" target="_blank">codesandbox - collapsibles</a>
 
 - <a href="https://codesandbox.io/s/react-collapse-expand-all-collapse-all-0h4mc">codesandbox expand-all</a>
