@@ -12,6 +12,7 @@ module.exports = {
     '_playground',
     '_playground_module-js',
     '_playground_common-js',
+    'public',
   ],
   parser: '@typescript-eslint/parser',
   plugins: ['react-refresh'],
