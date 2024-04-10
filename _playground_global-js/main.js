@@ -28,10 +28,10 @@ function MyComponent() {
       <button onClick={onToggle}> Toggle global </button>
       <Collapse
         isOpen={isOpen}
-        transition="height 300ms cubic-bezier(0.4, 0, 0.2, 1)"
+        transition="height 320ms cubic-bezier(0.4, 0, 0.2, 1)"
       >
         <p> Hello world </p>
-        <p> How are you? </p>
+        <p> How are you today? </p>
       </Collapse>
     </div>
   )

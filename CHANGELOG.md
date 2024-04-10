@@ -1,5 +1,9 @@
 # react-collapse changelog
 
+## 3.0.13
+
+- Fiddle with the playgrounds.
+
 ## 3.0.12
 
 - Added ReactJsxRuntime file.
