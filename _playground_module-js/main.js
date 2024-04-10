@@ -12,7 +12,7 @@ function MyComponent() {
 
   return (
     <div className="my-component">
-      <button onClick={onToggle}> Toggle </button>
+      <button onClick={onToggle}> Toggle module </button>
       <Collapse
         isOpen={isOpen}
         transition="height 300ms cubic-bezier(0.4, 0, 0.2, 1)"

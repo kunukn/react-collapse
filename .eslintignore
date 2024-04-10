@@ -3,4 +3,7 @@ dist/*
 node-tools/*
 types/*
 _playground/*
+_playground_common-js/*
+_playground_module-js/*
+_playground_global-js/*
 

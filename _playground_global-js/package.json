@@ -1,5 +1,5 @@
 {
-  "name": "playground_module-js",
+  "name": "playground_global-js",
   "version": "0.0.1",
   "main": "main.js",
   "type": "module",
@@ -8,6 +8,6 @@
     "npm": ">=9"
   },
   "scripts": {
-    "start": "npx browser-sync . --port 3333 -w -o"
+    "start": "npx browser-sync . --port 3335 -w -o"
   }
 }
