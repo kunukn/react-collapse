@@ -1,17 +1,20 @@
 {
-  let Collapse = () => 'loading...' // Temp assignment.
-
   const polyfill = self.React ? self.React.createElement : () => {} // React must be loaded and added to globalThis.React
   self.ReactJsxRuntime = {
     /*
-     Polyfill the missing UMD required from the Collapse library.
-     Some other libraries seems to use window.jsxRuntime. I used window.ReactJsxRuntime for my library.
+      Polyfill the missing UMD required from the Collapse library.
+      Some other libraries seems to use jsxRuntime. I used ReactJsxRuntime for my library.
     */
+
     jsx: polyfill,
     jsxs: polyfill,
     jsxDEV: polyfill,
     jsxsDEV: polyfill,
   }
+}
+
+{
+  let Collapse = () => 'loading...' // Temp assignment.
 
   let s = document.getElementById('libscript')
   s.onload = function () {
@@ -24,7 +27,7 @@
   s.src =
     'https://unpkg.com/@kunukn/react-collapse@3.0.11/dist/react-collapse.umd.js'
 
-    // eslint-disable-next-line
+  // eslint-disable-next-line
   function MyComponent() {
     const [isOpen, setIsOpen] = self.React.useState(true)
     const onToggle = () => setIsOpen((s) => !s)
