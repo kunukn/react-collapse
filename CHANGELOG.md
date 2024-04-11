@@ -1,5 +1,9 @@
 # react-collapse changelog
 
+## 3.0.14
+
+- Adjust the readme files.
+
 ## 3.0.13
 
 - Fiddle with the playgrounds.

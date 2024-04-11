@@ -43,7 +43,7 @@ react-collapse
 
 Alternatively, you can add it using the `transition` prop.
 
-## Installation for React 16.14+
+## Installation for React 16.8+
 
 - UMD minified ~2.3 kb, gzipped ~1.1 kb
 - Module minified ~2.9 kb, gzipped ~1.1 kb
@@ -346,7 +346,6 @@ Modern browsers (Edge, Firefox, Chrome, Safari, etc).
 
 - React version 16.3+ : use Collapse version 1
 - React version 16.8+ : use Collapse version 2+
-- React version 16.14+ : use Collapse version 3+
 
 # Used React 16.3 life-cycles
 

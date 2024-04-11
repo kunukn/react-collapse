@@ -4,7 +4,7 @@
   "main": "main.js",
   "type": "module",
   "engines": {
-    "node": ">=18.18",
+    "node": ">=18",
     "npm": ">=9"
   },
   "scripts": {

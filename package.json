@@ -3,7 +3,7 @@
   "author": "Kunuk Nykjaer",
   "license": "MIT",
   "private": false,
-  "version": "3.0.13",
+  "version": "3.0.14",
   "type": "module",
   "main": "dist/react-collapse.umd.js",
   "module": "dist/react-collapse.mjs",
@@ -31,7 +31,7 @@
     "**/*.css"
   ],
   "engines": {
-    "node": ">=18.20",
+    "node": ">=18",
     "npm": ">=9"
   },
   "scripts": {
@@ -45,15 +45,15 @@
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
-    "react": "^16.14.0 || ^17 || ^18",
-    "react-dom": "^16.14.0 || ^17 || ^18"
+    "react": "^16.8.0 || ^17 || ^18",
+    "react-dom": "^16.8.0 || ^17 || ^18"
   },
   "devDependencies": {
-    "@types/node": "^18.19.30",
-    "@types/react": "^18.2.74",
+    "@types/node": "^18.19.31",
+    "@types/react": "^18.2.75",
     "@types/react-dom": "^18.2.24",
-    "@typescript-eslint/eslint-plugin": "^7.5.0",
-    "@typescript-eslint/parser": "^7.5.0",
+    "@typescript-eslint/eslint-plugin": "^7.6.0",
+    "@typescript-eslint/parser": "^7.6.0",
     "@vitejs/plugin-react": "^4.2.1",
     "classnames": "^2.5.1",
     "copy-file": "^11.0.0",
@@ -63,7 +63,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sass": "^1.74.1",
-    "typescript": "^5.4.4",
+    "typescript": "^5.4.5",
     "vite": "^5.2.8",
     "vite-plugin-remove-console": "^2.2.0"
   }
