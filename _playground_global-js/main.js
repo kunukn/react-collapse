@@ -12,12 +12,12 @@ let jsxScript = document.getElementById('lib_jsx_runtime')
 jsxScript.onload = function () {
   // Lazy loaded to ensure ReactJsxRuntime polyfill has been applied.
   collapseScript.src =
-    'https://unpkg.com/@kunukn/react-collapse@3.0.12/dist/react-collapse.umd.js'
+    'https://unpkg.com/@kunukn/react-collapse@3.0.14/dist/react-collapse.umd.js'
 }
 
 // Run this after onload has been defined.
 jsxScript.src =
-  'https://unpkg.com/@kunukn/react-collapse@3.0.12/dist/ReactJsxRuntime.js'
+  'https://unpkg.com/@kunukn/react-collapse@3.0.14/dist/ReactJsxRuntime.js'
 
 function MyComponent() {
   const [isOpen, setIsOpen] = self.React.useState(true)
