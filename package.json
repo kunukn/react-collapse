@@ -36,7 +36,7 @@
   },
   "scripts": {
     "start": "vite --host --open --port 3009",
-    "dev": "vite --host --open --port 3009",
+    "dev": "npm start",
     "build": "npm run cleandist && tsc --p ./tsconfig-build.json && vite build && npm run copyfiles",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
