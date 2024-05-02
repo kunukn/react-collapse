@@ -1,4 +1,4 @@
-import { Collapse } from 'script-module-importmap-react-collapse'
+import { Collapse } from 'importmap-react-collapse'
 import React from 'react'
 import ReactDOM from 'react-dom'
 
