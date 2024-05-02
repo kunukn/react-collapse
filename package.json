@@ -3,7 +3,7 @@
   "author": "Kunuk Nykjaer",
   "license": "MIT",
   "private": false,
-  "version": "3.0.14",
+  "version": "3.0.15",
   "type": "module",
   "main": "dist/react-collapse.umd.js",
   "module": "dist/react-collapse.mjs",
@@ -45,8 +45,8 @@
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
-    "react": "^16.8.0 || ^17 || ^18",
-    "react-dom": "^16.8.0 || ^17 || ^18"
+    "react": "^16.8.0 || ^17 || ^18 || ^19",
+    "react-dom": "^16.8.0 || ^17 || ^18 || ^19"
   },
   "devDependencies": {
     "@types/node": "^18.19.31",

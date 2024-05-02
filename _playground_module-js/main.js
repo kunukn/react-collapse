@@ -2,6 +2,8 @@ import { Collapse } from 'script-module-importmap-react-collapse'
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+// import { Collapse } from 'dist-react-collapse'
+
 console.log('main.js')
 
 console.log(Collapse)

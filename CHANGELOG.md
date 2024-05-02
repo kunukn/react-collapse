@@ -1,5 +1,9 @@
 # react-collapse changelog
 
+## 3.0.15
+
+- Support React 19.
+
 ## 3.0.14
 
 - Adjust the readme files.
